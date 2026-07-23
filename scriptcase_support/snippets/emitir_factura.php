@@ -9,8 +9,8 @@
  * Requiere la variable local {id_factura} conteniendo el ID de la tabla ofcm020.
  * =================================================================================
  */
-
-
+// CONFIGURACIÓN DE INTEGRACIÓN
+$api_base_url = "http://localhost:8000"; // Cambiar al host/puerto de producción si es necesario
 
 // 1. CONSULTAR CABECERA DE LA FACTURA (ofcm020) Y CLIENTE (ofcm001)
 $sql_cabecera = "SELECT 
@@ -357,7 +357,7 @@ if ($tipo_doc_fiscal === "02") {
 } elseif ($tipo_doc_fiscal === "03") {
     $endpoint = "/api/v1/emitir/nota-debito";
 }
-$url = "http://localhost:8000" . $endpoint;
+$url = $api_base_url . $endpoint;
 
 // Consumo con macro sc_http_request (Scriptcase)
 $options = array(
