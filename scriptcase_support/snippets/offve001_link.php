@@ -35,8 +35,10 @@ if (empty($id_fiscal) || trim($id_fiscal) == '' || trim($id_fiscal) == 'NULL') {
 clear_drafts_ve($ofcm020_id);
 
 // 4. DETERMINAR TIPO DE DOCUMENTO FISCAL VENEZUELA
+if ($ofcm020_tipo_factura == "F") {
 $tipo_doc_fiscal = "01"; // Factura
-if ($ofcm020_tipo_factura == "C") {
+}
+elseif ($ofcm020_tipo_factura == "C") {
     $tipo_doc_fiscal = "02"; // Nota de Crédito
 } elseif ($ofcm020_tipo_factura == "D") {
     $tipo_doc_fiscal = "03"; // Nota de Débito
