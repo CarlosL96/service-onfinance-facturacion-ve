@@ -12,6 +12,9 @@
 // CONFIGURACIÓN DE INTEGRACIÓN
 $api_base_url = "http://localhost:8000"; // Cambiar al host/puerto de producción si es necesario
 
+// IMPORTAR LIBRERÍA HTTP PERSONALIZADA (of_http_lib)
+sc_include_library("sys", "of_http_lib", "of_http_lib.php", true, true);
+
 // 1. CONSULTAR CABECERA DE LA FACTURA (ofcm020) Y CLIENTE (ofcm001)
 $sql_cabecera = "SELECT 
                     f.id,
@@ -359,25 +362,22 @@ if ($tipo_doc_fiscal === "02") {
 }
 $url = $api_base_url . $endpoint;
 
-// Consumo con macro sc_http_request (Scriptcase)
-$options = array(
-    'method' => 'POST',
-    'header' => "Content-Type: application/json",
-    'content' => $json_data,
-    'timeout' => 30
-);
-$response_raw = sc_http_request($url, $options);
-$http_status = 200;
+// Consumo a través de la librería HTTP personalizada (cURL)
+$http_res = of_http_lib::post_json($url, $json_data, 30);
+$response_raw    = $http_res['body'];
+$http_status     = $http_res['status'];
+$response_error  = $http_res['error'];
 
 // 9. PROCESAR RESPUESTA Y REGISTRAR LOG DE INTEGRACIÓN (ofint001)
-if ($response_raw === false) {
+if ($response_raw === null || $http_res['success'] === false) {
     // Registrar error de red en logs
+    $err_msg = !empty($response_error) ? addslashes($response_error) : 'No se pudo conectar con el servicio local de facturación';
     $insert_log_sql = "INSERT INTO ofint001 (
                          origen, endpoint, tipo_documento, numero_documento, referencia_id, 
                          peticion_json, respuesta_json, codigo_respuesta, exito
                        ) VALUES (
                          'Scriptcase', '" . $endpoint . "', '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', " . $factura_id . ",
-                         '" . addslashes($json_data) . "', 'No se pudo conectar con el servicio local de facturación (Node.js)', '500', 0
+                         '" . addslashes($json_data) . "', '" . $err_msg . "', '" . $http_status . "', 0
                        )";
     sc_exec_sql($insert_log_sql);
 
@@ -386,11 +386,11 @@ if ($response_raw === false) {
                             factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal
                          ) VALUES (
                             " . $factura_id . ", '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', 'Error', 
-                            'No se pudo conectar con el servicio local de facturación digital'
+                            'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
                          )";
     sc_exec_sql($insert_err_conn);
 
-    sc_error_message("Error: No hay conexión con el servicio local de facturación digital.");
+    sc_error_message("Error: No hay conexión con el servicio local de facturación. Detalle: " . $response_error);
     return;
 }
 
