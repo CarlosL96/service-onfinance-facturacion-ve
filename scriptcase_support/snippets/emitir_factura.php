@@ -86,8 +86,8 @@ if (strlen($num_part) >= 9) {
 }
 
 // Consolidar teléfono y correo
-$tel_cliente = !empty($telefono) ? $telefono : "0212-000-0000";
-$correo_cliente = !empty($email_adm) ? $email_adm : (!empty($email_compras) ? $email_compras : "cliente@correo.com");
+$tel_cliente = trim($telefono);
+$correo_cliente = !empty($email_adm) ? trim($email_adm) : (!empty($email_compras) ? trim($email_compras) : '');
 
 // 2. OBTENER DETALLE DE ÍTEMS DE LA FACTURA (ofcm021)
 $sql_detalles = "SELECT 
@@ -151,6 +151,23 @@ foreach ({ds_detalles} as $row) {
 }
 
 // 3. ESTRUCTURAR EL PAYLOAD JSON COMPLETO
+$comprador_payload = [
+    "TipoIdentificacion" => $tipo_ident,
+    "NumeroIdentificacion" => $rif_cliente,
+    "RazonSocial" => $nombre_fiscal,
+    "Direccion" => !empty($direccion) ? $direccion : "CARACAS VENEZUELA",
+    "Pais" => "VE"
+];
+
+// Inyectar opcionales dinámicamente según la disponibilidad en BD
+if (!empty($correo_cliente)) {
+    $comprador_payload["Correo"] = [$correo_cliente];
+    // Teléfono es requerido por TFHKA solo si se provee Correo
+    $comprador_payload["Telefono"] = [!empty($tel_cliente) ? $tel_cliente : "0212-000-0000"];
+} elseif (!empty($tel_cliente)) {
+    $comprador_payload["Telefono"] = [$tel_cliente];
+}
+
 $payload = [
     "documentoElectronico" => [
         "Encabezado" => [
@@ -163,15 +180,7 @@ $payload = [
                 "TipoDeVenta" => "Interna",
                 "Moneda" => "VES" // Siempre VES en fiscal nacional
             ],
-            "Comprador" => [
-                "TipoIdentificacion" => $tipo_ident,
-                "NumeroIdentificacion" => $rif_cliente,
-                "RazonSocial" => $nombre_fiscal,
-                "Direccion" => $direccion,
-                "Pais" => "VE",
-                "Telefono" => [$tel_cliente],
-                "Correo" => [$correo_cliente]
-            ],
+            "Comprador" => $comprador_payload,
             "Totales" => [
                 "NroItems" => (string)count($detalles_items),
                 "MontoGravadoTotal" => number_format((float)$monto_gravado, 2, '.', ''),
