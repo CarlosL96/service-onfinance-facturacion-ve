@@ -1,0 +1,1034 @@
+id,codigo,descripcion,descripcion_compras,tipo,ofin006_id,ofin001_id,ofpr010_id,ofin005_id,ofcm002_codigo,oftx020_id,categoria_fiscal,cant_disponible,observaciones,status,userid_creacion,fecha_creacion,fecha_ult_modificacion,userid_modificacion
+1,*ALQ-001,"Arrendamiento de Oficina Torre Chacao 19-02 Piso 7","Arrendamiento de Oficina Torre Chacao 19-02 Piso 7",S,NULL,33,8,2,,0,G,0,,A,admin,"2025-07-10 17:21:34",NULL,
+2,*GRD-001,"Gastos Reembolsables Alquiler de Oficina","Gastos Reembolsables Alquiler de Oficina",S,NULL,38,8,2,,0,G,0,,A,admin,"2025-07-11 07:35:13",NULL,
+3,R9W90A,"HPE ANW 8100-48XF4C FB3F2AC Bdl","HPE ANW 8100-48XF4C FB3F2AC Bdl",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 10:49:34",NULL,
+4,R9W90A#ABA,"HPE ANW 8100-48XF4C FB3F2AC Bdl US en","HPE ANW 8100-48XF4C FB3F2AC Bdl US en",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 10:59:25",NULL,
+5,H84A3E,"Aruba 3Y FC 4H OS HW 8100 40/48p SVC","Aruba 3Y FC 4H OS HW 8100 40/48p SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-07-14 11:06:13",NULL,
+6,J9150D,"Aruba 10G SFP+ LC SR 300m MMF XCVR","Aruba 10G SFP+ LC SR 300m MMF XCVR",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:09:23",NULL,
+7,J9151E,"Aruba 10G SFP+ LC LR 10km SMF XCVR","Aruba 10G SFP+ LC LR 10km SMF XCVR",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:09:56",NULL,
+8,J8177E,"HPE ANW 1G SFP RJ45 100m XCVR","HPE ANW 1G SFP RJ45 100m XCVR",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:10:25",NULL,
+9,J4859D,"Aruba 1G SFP LC LX 10km SMF XCVR","Aruba 1G SFP LC LX 10km SMF XCVR",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:10:53",NULL,
+10,JL728B,"HPE ANW 6200F 48G C4 4SFP+740W Sw","HPE ANW 6200F 48G C4 4SFP+740W Sw",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:12:13",NULL,
+11,JL728B#ABA,"HPE ANW 6200F 48G C4 4SFP+740W Sw US en","HPE ANW 6200F 48G C4 4SFP+740W Sw US en",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:12:53",NULL,
+12,H81Y2E,"Aruba 3Y FC NBDExchHW 6200F48GPoE+740SVC","Aruba 3Y FC NBDExchHW 6200F48GPoE+740SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-07-14 11:13:24",NULL,
+13,J9281D,"Aruba 10G SFP+ to SFP+ 1m DAC Cable","Aruba 10G SFP+ to SFP+ 1m DAC Cable",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:13:52",NULL,
+14,JL725B,"HPE ANW 6200F 24G C4 4SFP+370W Sw","HPE ANW 6200F 24G C4 4SFP+370W Sw",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:14:22",NULL,
+15,JL725B#ABA,"HPE ANW 6200F 24G C4 4SFP+370W Sw US en","HPE ANW 6200F 24G C4 4SFP+370W Sw US en",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-14 11:14:53",NULL,
+16,H73N9E,"Aruba 3Y FC NBD Exch HW 6200F 24GPoE+SVC","Aruba 3Y FC NBD Exch HW 6200F 24GPoE+SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-07-14 11:15:31",NULL,
+17,Q9Y74AAE,"HPE ANW Central Sw CL2 Fnd 3y E-STU","HPE ANW Central Sw CL2 Fnd 3y E-STU",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-07-14 11:28:00",NULL,
+18,R3K04AAE,"HPE ANW Central Sw CL5 Fnd 3y E-STU","HPE ANW Central Sw CL5 Fnd 3y E-STU",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-07-14 11:28:28",NULL,
+19,872487-B21,"HPE 4TB Discos SAS 12G 7200 rpm LFF SC","HPE 4TB Discos SAS 12G 7200 rpm LFF SC",P,1,1,2,1,WPL,0,G,0,,A,mcarosella,"2025-07-14 15:27:17",NULL,
+20,"EY-027 Escaner","Eyoyo Wearable Glove QR Code Scanner","Eyoyo Wearable Glove QR Code Scanner",P,11,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-07-14 15:41:18",NULL,
+21,SER-CSP,"Contrato de Soporte","Contrato Marca Canal",S,11,6,2,1,SMT,0,G,0,,I,mbastidas,"2025-07-14 16:15:06",NULL,
+22,SER-PCT,"Servicios Proactivos","Servicio Proactivos",S,11,9,2,1,SMT,0,G,0,,I,mbastidas,"2025-07-14 16:17:24",NULL,
+44,AP9544,"APC Tarjeta de Red para Monitoreo Easy UPS, 1 FASE","APC Tarjeta de Red para Monitoreo Easy UPS, 1 FASE",P,11,1,2,1,DCT,0,G,0,,A,mcarosella,"2025-07-23 07:04:37",NULL,
+23,3G632A,"HP Impresora 3103FDW Laserjet MFP","HP Impresora 3103FDW Laserjet MFP",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-07-17 14:44:24",NULL,
+24,W1450A,"Cartucho de toner HP Laser Jet 145A","Cartucho de toner HP Laser Jet 145A",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-07-17 14:45:28",NULL,
+25,W9004MC,"HP Black Managed LJ Toner Cartridge","HP Black Managed LJ Toner Cartridge",P,2,1,2,1,MPS,0,G,0,,A,mcarosella,"2025-07-17 15:59:10",NULL,
+26,J8J87A,"HP Laserjet 110v Manteinance Kit","HP Laserjet 110v Manteinance Kit",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-07-17 15:59:40",NULL,
+27,SER-ADM,"Servicios de Administración delegada","Servicios de Administración delegada",S,11,5,2,1,SER,0,G,0,,I,mcarosella,"2025-07-18 10:50:05",NULL,
+28,*IGT-001,"Impuesto a las Grandes Transacciones Financieras
+correspondiente al 3% del pago de la Factura No.
+por un monto de 
+realizado en fecha:
+según Gaceta Oficial No. 42.339 de fecha 17 de marzo de 2022","Impuesto a las Grandes Transacciones Financieras
+correspondiente al 3% del pago de la Factura No.
+por un monto de 
+realizado en fecha:
+según Gaceta Oficial No. 42.339 de fecha 17 de marzo de 2022",O,NULL,20,8,2,,0,E,0,,A,admin,"2025-07-18 19:08:20",NULL,
+29,R6P67A,"AP-POE-ATSR 1P SR 802.3at 30W Midspan","AP-POE-ATSR 1P SR 802.3at 30W Midspan",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-19 08:25:32",NULL,
+30,Q9H62A,"Aruba AP-515 (RW) Unified AP","Aruba AP-515 (RW) Unified AP",P,1,2,2,1,HWR,0,G,-14,,A,mcarosella,"2025-07-19 08:25:57",NULL,
+31,HG6T6E,"Aruba 3Y FC NBD Exch HW AP-515 SVC","Aruba 3Y FC NBD Exch HW AP-515 SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-07-19 08:26:27",NULL,
+32,R3J18A,"AP-MNT-D AP mount bracket individual D","AP-MNT-D AP mount bracket individual D",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-19 08:26:50",NULL,
+33,Q9Y59AAE,"HPE ANW Central AP Fnd 3y E-STU","HPE ANW Central AP Fnd 3y E-STU",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-07-19 08:27:33",NULL,
+34,JW124A,"PC-AC-NA AC Power Cord (North America)","PC-AC-NA AC Power Cord (North America)",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-19 08:27:58",NULL,
+35," AS308U16","Astra by Hiksemi Memoria 8GB DDR3 UDIMM 1600MHz","ASTRA by Hiksemi MEMORIA 8GB DDR3 UDIMM 1600MHz",P,11,1,2,1,WPL,0,G,0,,A,mcarosella,"2025-07-21 16:24:29",NULL,
+36,AS512GM2,"Astra Disco Duro de Estado Solido WAVE (P)  M.2  512GB PCIe Gen 3 x 4, NVMe","Astra Disco Duro de Estado Solido WAVE (P)  M.2  512GB PCIe Gen 3 x 4, NVMe",P,11,1,2,1,WPL,0,G,0,,A,mcarosella,"2025-07-21 16:26:03",NULL,
+37,SER-ITL,"Servicios de Instalacion","Servicios de Instalacion",S,11,5,2,4,SER,0,G,0,,I,mcarosella,"2025-07-21 16:32:37",NULL,
+38," P0Q48-60011","HP V202 Monitor","HP V202 Monitor",P,11,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-21 16:51:43",NULL,
+39,A5V72-60011,"HP LV1911 Monitor","HP LV1911 Monitor",P,11,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-21 16:52:38",NULL,
+40,T3U81-60008,"HP 19ka Monitor","HP 19ka Monitor",P,11,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-21 16:53:10",NULL,
+41,QV985AV#470,"HP Compaq PRO 6300 SFF, Intel Core i5 4590 3,0GHz (Sin Memoria, Discos Mecanico sin Sistema Operativo","HP Compaq PRO 6300 SFF, Intel Core i5 4590 3,0GHz (Sin Memoria, Discos Mecanico sin Sistema Operativo",P,11,2,2,1,HWR,0,G,10,,A,mcarosella,"2025-07-21 16:54:12",NULL,
+42,HSC308U16Z1,"Memoria RAM 8GB DDR3 1600MHZ UDIMM Desktop HIKSEMI HIKER HSC308U16Z1","Memoria RAM 8GB DDR3 1600MHZ UDIMM Desktop HIKSEMI HIKER HSC308U16Z1",P,11,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-21 16:55:02",NULL,
+43,SA400S37480G,"Kingston Disco Duro de Estado Solido// 480GB A400 SATA3 2.5 SSD (7mm height)","Kingston Disco Duro de Estado Solido// 480GB A400 SATA3 2.5 SSD (7mm height)",P,11,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-21 16:56:04",NULL,
+45,C1SRVPM6KILBP9A,"APC Easy UPS en linea 6KVA/6 KW Torre 230V (SRVPM6KIL) + Banco de Baterias (SRV240BP9A)","APC Easy UPS en linea 6KVA/6 KW Torre 230V (SRVPM6KIL) + Banco de Baterias (SRV240BP9A)",P,11,1,2,1,DCT,0,G,0,,A,mcarosella,"2025-07-23 07:06:38",NULL,
+46,P23549-B21,"Intel Xeon-S 4210R Kit for DL380 Gen10","Intel Xeon-S 4210R Kit for DL380 Gen10",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:13:50",NULL,
+47,P00924-B21,"HPE 32GB (1x32GB) Dual Rank x4 DDR4-2933 Smart Memory Kit","HPE 32GB (1x32GB) Dual Rank x4 DDR4-2933 Smart Memory Kit",P,1,2,2,1,HWR,0,G,8,,A,mcarosella,"2025-07-23 07:16:45",NULL,
+48,826688-B21,"HPE DL38X Gen10 2SFF HDD Riser Kit","HPE DL38X Gen10 2SFF HDD Riser Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:17:31",NULL,
+49,826691-B21,"HPE DL380 Gen10 Box1/2 Cage Bkpln Kit","HPE DL380 Gen10 Box1/2 Cage Bkpln Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:18:00",NULL,
+50,727054-B21,"HPE 10GbE 2p FLR-SFP+ X710 Adptr","HPE 10GbE 2p FLR-SFP+ X710 Adptr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:18:32",NULL,
+51,455883-B21,"HPE BLc 10G SFP+ SR Transceiver","HPE BLc 10G SFP+ SR Transceiver",P,1,2,2,1,HWR,0,G,2,,A,mcarosella,"2025-07-23 07:19:23",NULL,
+52,867810-B21,"HPE DL38X Gen10 High Perf Fan","HPE DL38X Gen10 High Perf Fan",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:19:49",NULL,
+53,865414-B21,"HPE 800W FS Plat Ht Plg LH Pwr Sply Kit","HPE 800W FS Plat Ht Plg LH Pwr Sply Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:20:22",NULL,
+54,867809-B21,"HPE Gen10 2U Bezel Kit","HPE Gen10 2U Bezel Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:23:49",NULL,
+55,826706-B21,"HPE DL380 Gen10 High Perf Heatsink Kit","HPE DL380 Gen10 High Perf Heatsink Kit",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2025-07-23 07:24:39",NULL,
+56,727055-B21,"HPE 10GbE 2p SFP+ X710 Adptr","HPE 10GbE 2p SFP+ X710 Adptr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:25:15",NULL,
+57,P12965-B21,"HPE NS204i-p Gen10+ Boot Ctrlr","HPE NS204i-p Gen10+ Boot Ctrlr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:26:03",NULL,
+58,Q0L14A,"HPE SN1200E 16Gb 2p FC HBA","HPE SN1200E 16Gb 2p FC HBA",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 07:29:07",NULL,
+59,870549-B21,"HPE DL38X Gen 10 12GB SAS Expander with cables","HPE DL38X Gen 10 12GB SAS Expander with cables",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-07-23 08:38:53",NULL,
+60,USNVAWS,"Amazon WorkSpaces Service (base x usuario)","Amazon WorkSpaces Service (base x usuario)",I,11,42,2,1,CLD,0,G,0,,A,mcarosella,"2025-08-01 14:40:02",NULL,
+61,USNVAWSII,"Consumo por horas (horas mensuales x usuarios x valor unitario)","Consumo por horas (horas mensuales x usuarios x valor unitario)",I,NULL,42,2,0,CLD,0,G,0,,A,mcarosella,"2025-08-01 14:41:23",NULL,
+62,USNVADS,"AWS Directory Service ","AWS Directory Service ",I,NULL,42,2,0,CLD,0,G,0,,A,mcarosella,"2025-08-01 14:41:44",NULL,
+63,USNVAVS,"Amazon VPC Service (+ 2TB Transfer Data Mensual)","Amazon VPC Service (+ 2TB Transfer Data Mensual)",I,NULL,42,2,0,CLD,0,G,0,,A,mcarosella,"2025-08-01 14:42:13",NULL,
+64,USNVAWSS,"AWS Support (Business)","AWS Support (Business)",I,NULL,42,2,0,CLD,0,G,0,,A,mcarosella,"2025-08-01 14:42:37",NULL,
+65,USNVADM,"Servicios Administrados","Servicios Administrados",I,NULL,42,2,0,CLD,0,G,0,,A,mcarosella,"2025-08-01 14:43:00",NULL,
+66,JL675A,"HPE Aruba Networking CX 6100 48G Class4 PoE 4SFP+ 370W Switch","HPE Aruba Networking CX 6100 48G Class4 PoE 4SFP+ 370W Switch",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:52:43",NULL,
+67,JL675A#ABA,"INCLUDED: Power Cord - U.S. localization","INCLUDED: Power Cord - U.S. localization",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:53:42",NULL,
+68,HY2L4E,"Aruba 3Y FC NBD Exch HW 6100 48G CL4 SVC  [for JL675A]","Aruba 3Y FC NBD Exch HW 6100 48G CL4 SVC  [for JL675A]",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-08-08 07:54:33",NULL,
+69,JL677A,"HPE Aruba Networking CX 6100 24G Class4 PoE 4SFP+ 370W Switch","HPE Aruba Networking CX 6100 24G Class4 PoE 4SFP+ 370W Switch",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:55:01",NULL,
+70,JL677A#ABA,"INCLUDED: Power Cord - U.S. localization","INCLUDED: Power Cord - U.S. localization",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:55:41",NULL,
+71,HY2P0E,"Aruba 3Y FC NBD Exch HW 6100 24G CL4 SVC  [for JL677A]","Aruba 3Y FC NBD Exch HW 6100 24G CL4 SVC  [for JL677A]",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-08-08 07:56:20",NULL,
+72,JL727B,"HPE Aruba Networking CX 6200F 48G Class4 PoE 4SFP+ 370W Switch","HPE Aruba Networking CX 6200F 48G Class4 PoE 4SFP+ 370W Switch",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:56:54",NULL,
+73,JL727B#ABA,"INCLUDED: Power Cord - U.S. localization","INCLUDED: Power Cord - U.S. localization",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:57:30",NULL,
+74,H74R1E,"Aruba 3Y FC NBD Exch HW 6200F 48G CL4 4SFP+ 370W SVC  [for JL727B]","Aruba 3Y FC NBD Exch HW 6200F 48G CL4 4SFP+ 370W SVC  [for JL727B]",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-08-08 07:58:06",NULL,
+75,JL679A,"HPE Aruba Networking CX 6100 12G Class4 PoE 2G/2SFP+ 139W Switch","HPE Aruba Networking CX 6100 12G Class4 PoE 2G/2SFP+ 139W Switch",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:59:11",NULL,
+76,JL679A#ABA,"INCLUDED: Power Cord - U.S. localization","INCLUDED: Power Cord - U.S. localization",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 07:59:46",NULL,
+77,HY2R6E,"Aruba 3Y FC NBD Exch HW 6100 12G CL4 SVC  [for JL679A]","Aruba 3Y FC NBD Exch HW 6100 12G CL4 SVC  [for JL679A]",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-08-08 08:00:19",NULL,
+78,Q9Y69AAE,"HPE Aruba Networking Central Switch Class-1 Foundation 3-year Subscription E-STU","HPE Aruba Networking Central Switch Class-1 Foundation 3-year Subscription E-STU",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-08 08:01:11",NULL,
+79,J4858D,"HPE Aruba Networking 1G SFP LC SX 500m OM2 MMF Transceiver","HPE Aruba Networking 1G SFP LC SX 500m OM2 MMF Transceiver",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-08 08:02:23",NULL,
+80,*MOF-001,"Productos / Servicios destinados para el mantenimiento/adecuación de oficina","Productos / Servicios destinados para el mantenimiento/adecuación de oficina",O,NULL,52,8,2,,0,G,0,,A,admin,"2025-08-08 08:19:30",NULL,
+81,LIC-001,"Canva Enterprise - First 12 months - 40 User","Canva Enterprise - First 12 months - 40 User",I,NULL,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-11 14:05:31",NULL,
+82,JL805A,"Aruba IOn 1960 12XT 4XF Sw","Aruba IOn 1960 12XT 4XF Sw",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-11 14:43:30",NULL,
+83,JL807A,"Aruba IOn 1960 24G 2XT 2XF 370W Sw","Aruba IOn 1960 24G 2XT 2XF 370W Sw",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-11 14:43:59",NULL,
+84,JL684B,"Aruba IOn 1930 24G 4SFP+ 370W Sw","Aruba IOn 1930 24G 4SFP+ 370W Sw",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-11 14:44:41",NULL,
+85,S0G21A,"HPE NW ION 10G LR SFP+ LC 10km SMF XCVR","HPE NW ION 10G LR SFP+ LC 10km SMF XCVR",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-11 14:45:18",NULL,
+86,756818-001,"SPS-Controller Assy StoreServ 7400c","SPS-Controller Assy StoreServ 7400c",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-08-12 07:40:08",NULL,
+87,A0BE5LS,"HP Z2 G9 TWR Workstation","HP Z2 G9 TWR Workstation",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-08-12 08:16:11",NULL,
+88,64W41AA,"HP P27h G5 FHD Monitor","HP P27h G5 FHD Monitor",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-08-12 08:16:48",NULL,
+89,CFQ7TTC0LHSV-0001,"Microsoft 365 Business Standard ","Microsoft 365 Business Standard ",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 06:37:54",NULL,
+90,CFQ7TTC0LH1M-0001,"OneDrive for business (Plan 1)","OneDrive for business (Plan 1)",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 10:10:19",NULL,
+91,CFQ7TTC0LHSF,"Power BI Pro","Power BI Pro",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 10:10:54",NULL,
+92,CFQ7TTC0LDPB-0001,"Microsoft 365 Business Standard","Microsoft 365 Business Standard",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 10:56:11",NULL,
+93,DG7GMGF0PWHC,"Windows Server 2025 Standard - 16 Core License Pack","Windows Server 2025 Standard - 16 Core License Pack",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 15:08:49",NULL,
+94,DG7GMGF0PWHT,"Windows Server 2025 - 1 User CAL","Windows Server 2025 - 1 User CAL",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 15:09:20",NULL,
+95,DG7GMGF0MF3T,"SQL Server 2022 - 1 User CAL","SQL Server 2022 - 1 User CAL",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 15:15:10",NULL,
+96,DG7GMGF0M80J,"SQL Server 2022 Standard Edition","SQL Server 2022 Standard Edition",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-13 15:16:27",NULL,
+97,R9Y04A,"HPE Aruba Networking CX 6100 48G Class4 PoE 4SFP+ 740W Switch","HPE Aruba Networking CX 6100 48G Class4 PoE 4SFP+ 740W Switch",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-14 10:28:47",NULL,
+98,R9Y04A#ABA,"INCLUDED: Power Cord - U.S. localization","INCLUDED: Power Cord - U.S. localization",P,1,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-08-14 10:29:20",NULL,
+99,H83A4E,"Aruba 3Y FC NBD Exch HW 6100 48G CL4 4SFP+ 740W SVC  [for R9Y04A]","Aruba 3Y FC NBD Exch HW 6100 48G CL4 4SFP+ 740W SVC  [for R9Y04A]",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-08-14 10:29:58",NULL,
+100,#SIT-SIN,"Soporte IT","Soporte IT",S,NULL,5,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+101,#ITS-SIN,"ITSM, Implementación y PMO","ITSM, Implementación y PMO",S,NULL,5,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+102,#IMP-SIN,"Implementacion, Despligue y Migracion ","Implementacion, Despligue y Migracion ",S,NULL,5,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+103,#CLD-SIN,"Servicios de Infraestructura Cloud ","Servicios de Infraestructura Cloud ",S,NULL,5,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+104,#OUT-SIN,"Outsourcing ","Outsourcing ",S,NULL,5,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+105,#CND-SIN,"Consultoria y Negocios Digitales","Consultoria y Negocios Digitales",S,NULL,5,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+106,#ECT-SIN,"Educación, Capacitacion y Talleres","Educación, Capacitacion y Talleres",S,NULL,5,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+107,#SIT-SCN,"Soporte IT","Soporte IT",S,NULL,6,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+108,#ITS-SCN,"ITSM, Implementación y PMO","ITSM, Implementación y PMO",S,NULL,6,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+109,#IMP-SCN,"Implementacion, Despligue y Migracion ","Implementacion, Despligue y Migracion ",S,NULL,6,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+110,#CLD-SCN,"Servicios de Infraestructura Cloud ","Servicios de Infraestructura Cloud ",S,NULL,6,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+111,#OUT-SCN,"Outsourcing ","Outsourcing ",S,NULL,6,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+112,#CND-SCN,"Consultoria y Negocios Digitales","Consultoria y Negocios Digitales",S,NULL,6,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+113,#ECT-SCN,"Educación, Capacitacion y Talleres","Educación, Capacitacion y Talleres",S,NULL,6,2,4,SER,0,G,0,,A,admin,"2025-08-14 12:00:00",NULL,NULL
+114,83A100QYLM,"Lenovo V15 G4 IRU, Intel® Core™ i7-13620H ","Lenovo V15 G4 IRU, Intel® Core™ i7-13620H ",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-08-14 15:56:02",NULL,
+115,5WS0Q81865,"3Y Onsite upgrade from 1Y Depot/CCI delivery","3Y Onsite upgrade from 1Y Depot/CCI delivery",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-08-14 15:56:57",NULL,
+116,#SAS-XAS,"Software as a Service","Software as a Service",I,NULL,42,2,2,SER,0,G,0,,A,admin,"2025-08-19 15:07:12",NULL,
+117,P00930-B21,"HPE 64GB (1x64GB) Dual Rank x4 DDR4-2933","HPE 64GB (1x64GB) Dual Rank x4 DDR4-2933",P,1,2,2,1,HWR,0,G,48,,A,mcarosella,"2025-08-20 16:50:10",NULL,
+118,K2P93B,"Disco HPE 3PAR 8000 1.2 TB SAS 10K SFF","Disco HPE 3PAR 8000 1.2 TB SAS 10K SFF",P,1,1,2,1,HWR,0,G,0,,A,mcarosella,"2025-08-25 07:52:04",NULL,
+119,*TRE-001,"Transportes y Envíos Internos (No Comerciales)","Transportes y Envíos Internos (No Comerciales)",S,NULL,43,12,4,,0,G,0,,A,ebolivar,"2025-08-25 08:37:46",NULL,
+120,E7Y71A," HPE 3PAR 8000 SFF (2.5in) Fld Int Dr Encl"," HPE 3PAR 8000 SFF (2.5in) Fld Int Dr Encl",P,1,1,2,1,HWR,0,G,1,,A,mcarosella,"2025-08-25 10:18:27",NULL,
+121,*ENT-001,"Capacitaciones y entrenamiento del personal","Capacitaciones y entrenamiento del personal",S,NULL,32,7,4,,0,G,0,,A,admin,"2025-08-26 09:21:03",NULL,
+122,H74S1E,"Aruba 3Y FC 24x7 Exch HW 6200F 48G CL4 4SFP+ 370W SVC  [for JL727B]","Aruba 3Y FC 24x7 Exch HW 6200F 48G CL4 4SFP+ 370W SVC  [for JL727B]",I,1,73,2,0,CPS,0,G,0,,A,mcarosella,"2025-08-26 14:31:11",NULL,
+123,ADP03-1-USB,"Adaptador M.2 Usb 3.1 Nvme M-key Tamaño 2230 / 42 /  60/ 80","Adaptador M.2 Usb 3.1 Nvme M-key Tamaño 2230 / 42 /  60/ 80",P,11,1,2,0,SER,0,G,0,,A,mcarosella,"2025-08-27 16:25:27",NULL,
+124,CAS-02-DD," Cable Adaptador Sata A Usb Convertidor Disco Duro Externo"," Cable Adaptador Sata A Usb Convertidor Disco Duro Externo",P,11,1,2,1,SER,0,G,0,,A,mcarosella,"2025-08-27 16:26:13",NULL,
+125,W2300X,"Cartucho de tóner original HP LaserJet 230A negro","Cartucho de tóner original HP LaserJet 230A negro",P,2,1,2,0,MPS,0,G,0,,A,mcarosella,"2025-08-28 15:18:22",NULL,
+126,9EM-00303,"WinSvrSTDCore SNGL SA OLV 2Lic NL 1Y AqY1 AP CoreLic","WinSvrSTDCore SNGL SA OLV 2Lic NL 1Y AqY1 AP CoreLic",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-28 16:28:04",NULL,
+127,228-04685,"SQLSvrStd SNGL SA OLV NL 1Y AqY1 AP","SQLSvrStd SNGL SA OLV NL 1Y AqY1 AP",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-28 16:28:40",NULL,
+128,312-03040,"ExchgSvrStd SNGL SA OLV NL 1Y AqY1 AP","ExchgSvrStd SNGL SA OLV NL 1Y AqY1 AP",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-28 16:29:10",NULL,
+129,5HU-00076,"SfBSvr SNGL SA OLV NL 1Y AqY1 AP","SfBSvr SNGL SA OLV NL 1Y AqY1 AP",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-08-28 16:29:40",NULL,
+130,21SY000YLM,"ThinkPad E14 Gen 7 (Intel)","ThinkPad E14 Gen 7 (Intel)",P,2,1,2,0,WPL,0,G,0,,A,mcarosella,"2025-08-29 11:21:05",NULL,
+131,*FLT-001,"Fletes y Transporte de Mercancías (Comercial)","Fletes y Transporte de Mercancías (Comercial)",S,NULL,44,3,4,,0,G,0,,A,admin,"2025-09-01 16:07:24",NULL,
+132,*SIN-001,"Telecomunicaciones e Internet","Telecomunicaciones e Internet",S,NULL,45,12,2,,0,G,0,,A,ebolivar,"2025-09-02 09:27:55",NULL,
+133,CFQ7TTC0LH1G,"Microsoft 365 Apps for business","Microsoft 365 Apps for business",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-09-04 10:45:05",NULL,
+134,@XAS-001,"Servicios de Azure","Servicios de Azure",I,14,42,2,2,CLD,0,G,0,,A,ebolivar,"2025-09-08 11:13:13",NULL,
+135,*POP-001,"Material POP Internos","Material POP Internos",S,NULL,11,12,2,,0,G,0,,A,ebolivar,"2025-09-08 14:13:51",NULL,
+136,*SBN-001,"Comisiones y Gastos Bancarios","Comisiones y Gastos Bancarios",O,NULL,19,8,2,,0,G,0,,A,ebolivar,"2025-09-10 13:21:56",NULL,
+137,878543-001,"HPE DL38X Gen10 SFF Box1/2 Cage/Backplane Kit","HPE DL38X Gen10 SFF Box1/2 Cage/Backplane Kit",P,1,2,2,1,HWR,0,G,0,,A,ebolivar,"2025-09-10 13:36:10",NULL,
+138,876907-001,"HPE DL38X Gen10 12GB Storage SAS Expander card","HPE DL38X Gen10 12GB Storage SAS Expander card",P,1,2,2,1,HWR,0,G,0,,A,ebolivar,"2025-09-10 13:37:35",NULL,
+139,*SLG-001,"Servicios Legales","Servicios Legales",S,NULL,48,14,2,,0,G,0,,A,ebolivar,"2025-09-10 16:35:14",NULL,
+140,*FLT-002,"Air-Freight ","Air-Freight ",S,NULL,44,3,2,,0,G,0,,A,ebolivar,"2025-09-12 07:53:24",NULL,
+141,*FLT-003,Handling,Handling,S,NULL,44,3,2,,0,G,0,,A,ebolivar,"2025-09-12 07:54:30",NULL,
+142,*FLT-004,"Pick Up","Pick Up",S,NULL,44,3,2,,0,G,0,,A,ebolivar,"2025-09-12 07:55:48",NULL,
+143,*FLT-005,"Ocean Freight","Ocean Freight",S,NULL,44,3,2,,0,G,0,,A,ebolivar,"2025-09-12 07:57:00",NULL,
+144,BVX1200L-LM,"APC Back- UPS 1200VA AVR NEMA","APC Back- UPS 1200VA AVR NEMA",P,11,2,2,1,HWR,0,G,0,,A,ebolivar,"2025-09-12 14:50:48",NULL,
+145,*TRL-001,"Traslados de Personal","Traslados de Personal (Comercial)",S,NULL,66,2,2,SER,0,G,0,,A,ebolivar,"2025-09-12 15:17:46",NULL,
+146,Q9G71A,"HPE Aruba Networking AP-MNT-MP10-D","HPE Aruba Networking Central Switch Class-2 Foundation 3-year Subscription E-STU",I,1,4,2,0,SWR,0,G,0,,A,mcarosella,"2025-09-15 10:31:28",NULL,
+445,*SVT-001,"Servicios Contables","Servicios Contables",O,NULL,89,9,0,,0,G,0,,A,ebolivar,"2026-04-20 11:51:47",NULL,
+147,*MIL-001,"Materiales para Embalaje Comercial y Logística","Materiales para Embalaje Comercial y Logística",P,NULL,46,3,1,,0,G,0,,A,ebolivar,"2025-09-15 11:28:11",NULL,
+148,*TDT-001,"Bono de Alimentación","TodoTicket Alimentación",O,NULL,49,6,2,,0,G,0,,A,ebolivar,"2025-09-15 14:28:58",NULL,
+149,83GW005FLD,"Lenovo V15 G5 IRL 83GW005FLD","Lenovo V15 G5 IRL 83GW005FLD",P,17,2,2,0,HWR,0,G,0,,A,mcarosella,"2025-09-16 10:49:11",NULL,
+150,*UNF-001,"Uniformes ","Uniformes ",O,NULL,50,6,1,,0,G,0,,A,ebolivar,"2025-09-16 16:17:21",NULL,
+151,*MBR-001,"Suscripciones y Membresías ","CAVEDATOS ",O,NULL,51,12,2,,0,G,0,"Suscripciones y Membrecías ",A,ebolivar,"2025-09-17 10:25:47",NULL,
+152,*OPT-001,"Obligaciones Patronales (Parafiscales)","Obligaciones Patronales (Parafiscales)",O,NULL,53,6,2,,0,E,0,"Banavih / Inces /Seguro Social",A,ebolivar,"2025-09-17 11:40:09",NULL,
+153,*MIS-001,"Materiales e Insumos (Servicios)","Materiales e Insumos (Servicios)",S,NULL,47,4,2,,0,G,0,,A,ebolivar,"2025-09-18 10:47:39",NULL,
+154,*LIC-001,"Licencias y Software (No Comercial)","Licencias y Software (No Comercial)",I,NULL,4,12,1,,0,G,0,,A,ebolivar,"2025-09-18 16:24:58",NULL,
+155,*PRO-001,"Préstamos Otorgados a Terceros","Préstamos Otorgados a Terceros",O,NULL,54,8,2,,0,E,0,,A,ebolivar,"2025-09-18 16:30:34",NULL,
+156,A1ZB6AW#ABM,"HP Mini IP Conf wMTR i713700T 16GB/256 PC Intel Core i7-13700T, 256GB SSD, 16GB DDR5, W11 IoT64 COL HIE, 1yr Wty, ax6G+BT","HP Mini IP Conf wMTR i713700T 16GB/256 PC Intel Core i7-13700T, 256GB SSD, 16GB DDR5, W11 IoT64 COL HIE, 1yr Wty, ax6G+BT",P,2,2,2,0,HWR,0,G,0,,A,mcarosella,"2025-09-19 10:27:42",NULL,
+157,U95HCPV,"3y Poly+ HP Mini IP Conf G9 wMTR i7 13700T 16GB/256PC","3y Poly+ HP Mini IP Conf G9 wMTR i7 13700T 16GB/256PC",P,2,2,2,0,CPS,0,G,0,,A,mcarosella,"2025-09-19 10:29:10",NULL,
+158,875K5AA,"Poly TC10 Touch Controller Black","Poly TC10 Touch Controller Black",P,2,2,2,0,HWR,0,G,0,,A,mcarosella,"2025-09-19 10:29:47",NULL,
+159,P37760312,"3yr Poly+ TC10","3yr Poly+ TC10",P,2,2,2,0,CPS,0,G,0,,A,mcarosella,"2025-09-19 10:30:15",NULL,
+160,*MLA-001,"Materiales de Limpieza ","Materiales de Limpieza ",O,NULL,55,12,1,,0,G,0,,A,ebolivar,"2025-09-22 16:24:31",NULL,
+161,*MCO-001,"Materiales de Cafetería","Materiales de Cafetería",O,NULL,56,12,1,,0,G,0,,A,ebolivar,"2025-09-22 16:26:33",NULL,
+162,JZ399AAE,"HPE Aruba Networking ClearPass NAC Cx000V VM-Based Appliance License E-LTU","HPE Aruba Networking ClearPass NAC Cx000V VM-Based Appliance License E-LTU",I,1,4,2,0,SER,0,G,0,,A,mcarosella,"2025-09-24 09:30:12",NULL,
+163,H9WX3E,"Aruba 3Y FC SW CP Cx000V VMAppl E-L SVC  [for JZ399AAE]","Aruba 3Y FC SW CP Cx000V VMAppl E-L SVC  [for JZ399AAE]",I,1,73,2,0,CPS,0,G,0,,A,mcarosella,"2025-09-24 09:31:15",NULL,
+164,JZ403AAE,"HPE Aruba Networking ClearPass Access License 2500 Concurrent Endpoints E-LTU","HPE Aruba Networking ClearPass Access License 2500 Concurrent Endpoints E-LTU",I,1,4,2,0,SWR,0,G,0,,A,mcarosella,"2025-09-24 09:32:01",NULL,
+165,HA0B0E,"Aruba 3Y FC SW CP NLAC 2500 CE E-L SVC  [for JZ403AAE]","Aruba 3Y FC SW CP NLAC 2500 CE E-L SVC  [for JZ403AAE]",I,1,4,2,0,CPS,0,G,0,,A,mcarosella,"2025-09-24 09:32:36",NULL,
+166,784629-001,"Mini-SAS cable kit (Includes six cables) ","Mini-SAS cable kit (Includes six cables) ",P,1,1,2,0,HWR,0,G,1,,A,mcarosella,"2025-09-24 12:10:27",NULL,
+167,869803-001,"HPE Mini SAS Cable","HPE Mini SAS Cable",P,1,1,2,0,HWR,0,G,0,,A,mcarosella,"2025-09-24 12:11:10",NULL,
+168,869802-001,"HPE Mini SAS Cable","HPE Mini SAS Cable",P,1,1,2,0,HWR,0,G,0,,A,mcarosella,"2025-09-24 12:11:38",NULL,
+169,*EVE-001,"Eventos ","Eventos ",S,NULL,13,5,2,,0,G,0,,A,ebolivar,"2025-09-24 17:19:17",NULL,
+170,R2H28A,"HPE Aruba Networking AP-505 (RW) Dual Radio 2x2 802.11ax Internal Antennas Unified Campus AP","HPE Aruba Networking AP-505 (RW) Dual Radio 2x2 802.11ax Internal Antennas Unified Campus AP",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-09-30 12:25:09",NULL,
+171,HP9W2E,"Aruba 3Y FC NBD Exch HW AP-505 SVC  [for R2H28A]","Aruba 3Y FC NBD Exch HW AP-505 SVC  [for R2H28A]",I,NULL,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-09-30 12:27:22",NULL,
+172,*HCM-001,"Seguros HCM","Seguros HCM",O,NULL,57,6,2,,0,G,0,,A,ebolivar,"2025-10-02 15:42:32",NULL,
+173,*SYF-001,"Seguro de Responsabilidad Civil","Seguro de Responsabilidad Civil",O,NULL,24,6,2,,0,G,0,,A,ebolivar,"2025-10-03 11:27:47",NULL,
+174,*SYF-002,"Seguro de Responsabilidad Patronal","Seguro de Responsabilidad Patronal",O,NULL,24,6,2,,0,G,0,,A,ebolivar,"2025-10-03 11:28:42",NULL,
+175,P88230312,"3YR POLY+ HP Mini Conferencing PC with MICROSOFT TEAMS ROOMS","3YR POLY+ HP Mini Conferencing PC with MICROSOFT TEAMS ROOMS",P,2,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-10-06 14:41:27",NULL,
+176,5HH65A,"HP 4303DW Color Laserjet PRO","HP 4303DW Color Laserjet PRO",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-10-08 10:44:20",NULL,
+177,683240-001,"SPS-Battery PCM 764W Assy","SPS-Battery PCM 764W Assy",P,1,1,2,1,HWR,0,G,1,,A,mcarosella,"2025-10-09 11:05:20",NULL,
+178,683245-001,"SPS-NODE MODULE 7200 NO HBA","SPS-NODE MODULE 7200 NO HBA",P,1,1,2,1,HWR,0,G,1,,A,mcarosella,"2025-10-09 11:10:42",NULL,
+179,727386-001,"SPS-PCM 764W Assy without Battery Gold","SPS-PCM 764W Assy without Battery Gold",P,1,1,2,1,HWR,0,G,1,,A,mcarosella,"2025-10-09 11:11:13",NULL,
+180,683232-001,"SPS-Enclosure Midplane 2U24 Assy","SPS-Enclosure Midplane 2U24 Assy",P,1,1,2,1,HWR,0,E,1,,A,mcarosella,"2025-10-09 11:14:47",NULL,
+181,*MOF-002,"Mantenimiento de Oficina y Áreas Comunes","Mantenimiento de Oficina y Áreas Comunes",S,NULL,15,12,2,,0,G,0,,A,ebolivar,"2025-10-10 15:19:28",NULL,
+182,*OTR-001,"Otros Costos y Gastos no Deducibles","Otros Costos y Gastos no Deducibles",O,NULL,36,8,0,,0,E,0,,A,ebolivar,"2025-10-14 16:08:35",NULL,
+183,*EVI-001,"Eventos y Agasajos al Personal","Eventos y Agasajos al Personal",S,NULL,14,5,0,,0,G,0,,A,ebolivar,"2025-10-16 10:36:34",NULL,
+184,*PAN-001,"Pasaje Aéreo Nacional","Pasaje Aéreo Nacional",O,NULL,59,12,0,,0,G,0,,A,ebolivar,"2025-10-17 11:39:04",NULL,
+185,*PAI-001,"Pasaje Aéreo Internacional","Pasaje Aéreo Internacional",O,NULL,60,12,0,,0,G,0,,A,ebolivar,"2025-10-17 11:41:18",NULL,
+186,*HAN-001,"Hospedaje y Alojamiento Nacional","Hospedaje y Alojamiento Nacional",O,NULL,61,12,4,,0,G,0,,A,ebolivar,"2025-10-17 11:42:11",NULL,
+187,*HAI-001,"Hospedaje y Alojamiento Internacional","Hospedaje y Alojamiento Internacional",O,NULL,62,12,4,,0,G,0,,A,ebolivar,"2025-10-17 11:43:49",NULL,
+188,CN598-67005,"HP Assembly main Tray for OfficeJet Pro","HP Assembly main Tray for OfficeJet Pro",P,2,1,2,0,MPS,0,G,0,,A,mcarosella,"2025-10-21 11:06:36",NULL,
+189,*GRD-002,"Reembolso de Gastos Comerciales","Reembolso de Gastos Comerciales",S,NULL,38,8,0,,0,E,0,,A,ebolivar,"2025-10-22 10:53:42",NULL,
+190,*INA-001,"Aranceles AD - Valorem","Impuestos por Nacionalización y Aduanas",S,NULL,8,3,0,,0,E,0,,A,ebolivar,"2025-10-24 12:50:45",NULL,
+191,*OCI-001,"Comisiones y Honorarios Agentes Aduanales","Comisiones y Honorarios Agentes Aduanales",O,NULL,63,3,0,,0,G,0,,A,ebolivar,"2025-10-24 12:54:06",NULL,
+192,697387-001,"SPS-Drive HD 300GB 6G SAS 15K","SPS-Drive HD 300GB 6G SAS 15K",P,1,1,2,1,SER,0,G,3,,A,mcarosella,"2025-10-24 13:28:39",NULL,
+193,P05394-001,"SPS DRB HDD 600GB 15K LFF SAS","SPS DRB HDD 600GB 15K LFF SAS",P,1,1,2,1,SER,0,G,2,,A,mcarosella,"2025-10-24 13:29:16",NULL,
+194,737573-001,"450GB SAS hard drive - 15,000 RPM, 3.5-inch large form factor 
+","450GB SAS hard drive - 15,000 RPM, 3.5-inch large form factor 
+",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2025-10-24 13:29:54",NULL,
+195,881457-B21,"HPE 2.4TB SAS 12G Mission Critical 10K SFF SC 3-year Warranty 512e Multi Vendor HDD","HPE 2.4TB SAS 12G Mission Critical 10K SFF SC 3-year Warranty 512e Multi Vendor HDD",P,1,2,2,0,HWR,0,G,0,,A,mcarosella,"2025-10-27 11:37:37",NULL,
+196,*GAL-001,"Gastos de Alimentación","Gastos de Alimentación (Viáticos)",O,NULL,64,1,2,,0,G,0,,A,admin,"2025-10-27 11:59:48",NULL,
+197,*GV-001,"Otros Gastos de Viaje (Impevistos) ***** Indicar suficiente detalle en descipción","Otros Gastos de Viaje (Impevistos) ***** Indicar suficiente detalle en descipción",O,NULL,67,1,0,,0,G,0,,A,admin,"2025-10-27 14:35:06",NULL,
+198,*INA-002,"Tasas de Aduana","Tasas de Aduana",S,NULL,8,3,0,,0,E,0,,A,ebolivar,"2025-10-27 15:31:22",NULL,
+199,*INA-003,"Impuesto al Valor Agregado (IVA) en Importaciones","Impuesto al Valor Agregado (IVA) en Importaciones",S,NULL,8,3,0,,0,E,0,,A,ebolivar,"2025-10-27 16:36:02",NULL,
+200,*DSA-001,"Desarrollo y Soporte de Aplicaciones Internas","Desarrollo y Soporte de Aplicaciones Internas",S,NULL,68,1,4,,0,G,0,,A,admin,"2025-10-28 14:39:05",NULL,
+201,B4U37AA,"8GB Certified Memory DDR3-1600 (PC3-12800) 1024x64 CL11 1.5v 240 Pin DIMM, Non-ECC","8GB Certified Memory DDR3-1600 (PC3-12800) 1024x64 CL11 1.5v 240 Pin DIMM, Non-ECC",P,2,1,2,1,WPL,0,G,0,,A,mcarosella,"2025-10-28 15:21:07",NULL,
+202,CT500BX500SSD1,"Crucial® BX500 500GB 3D NAND SATA 2.5-inch SSD - 3yr Warranty","Crucial® BX500 500GB 3D NAND SATA 2.5-inch SSD - 3yr Warranty",P,2,1,2,1,WPL,0,G,0,,A,mcarosella,"2025-10-28 15:21:40",NULL,
+203,*SCM-001,"Seguros de Carga Aérea, Marítima y Terrestre","Seguros de Carga Aérea, Marítima y Terrestre",S,NULL,69,3,2,,0,G,0,,A,ebolivar,"2025-10-30 11:04:41",NULL,
+204,P65392-B21,"HPE DL20 Gen11 4SFF Ht Plg CTO Svr","HPE DL20 Gen11 4SFF Ht Plg CTO Svr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:41:17",NULL,
+205,P77162-B21,"INT Xeon 6369P FIO CPU for HPE","INT Xeon 6369P FIO CPU for HPE",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:42:26",NULL,
+206,P64336-B21,"HPE 16GB 1Rx8 PC5-4800B-E STND Kit","HPE 16GB 1Rx8 PC5-4800B-E STND Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:42:57",NULL,
+207,P40497-B21,"HPE 480GB SATA RI SFF BC MV SSD","HPE 480GB SATA RI SFF BC MV SSD",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:44:00",NULL,
+208,P52753-B21,"HPE DL320 Gen11 FH Riser Kit","HPE DL320 Gen11 FH Riser Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:44:30",NULL,
+209,P51178-B21,"BCM 5719 1Gb 4p BASE-T Adptr","BCM 5719 1Gb 4p BASE-T Adptr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:45:11",NULL,
+210,P01366-B21,"HPE 96W Smart Stg Li-ion Batt 145mm Kit","HPE 96W Smart Stg Li-ion Batt 145mm Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:45:44",NULL,
+211,P58335-B21,"HPE MR408i-o Gen11 SPDM Storage Cntlr","HPE MR408i-o Gen11 SPDM Storage Cntlr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:46:11",NULL,
+212,865438-B21,"HPE 800W FS Ti Ht Plg LH Pwr Sply Kit","HPE 800W FS Ti Ht Plg LH Pwr Sply Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:48:35",NULL,
+213,AF573A,"HPE Rdnt 2m 10A C13-C14 Jpr Cord","HPE Rdnt 2m 10A C13-C14 Jpr Cord",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:49:00",NULL,
+214,S1A05A,"HPE Cmp Cloud Mgmt Srv FIO Enablement","HPE Cmp Cloud Mgmt Srv FIO Enablement",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:49:34",NULL,
+215,P65411-B21,"HPE DL20 Gen11 Ext OCP Cbl Kit","HPE DL20 Gen11 Ext OCP Cbl Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:54:29",NULL,
+216,P65412-B21,"HPE DL20 Gen11 2LFF/4SFF OCP Cbl Kit","HPE DL20 Gen11 2LFF/4SFF OCP Cbl Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:54:54",NULL,
+217,P64576-B21,"HPE Easy Install Rail 12 Kit","HPE Easy Install Rail 12 Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-05 13:55:22",NULL,
+218,E6U64ABE,"HPE iLO Adv Elec Lic 3yr Support","HPE iLO Adv Elec Lic 3yr Support",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-05 13:56:25",NULL,
+219,R7A12AAE,"HPE COM Std 5yr Up ProLiant SaaS","HPE COM Std 5yr Up ProLiant SaaS",I,1,42,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-05 13:57:37",NULL,
+220,HU4A6A3,"HPE 3Y Tech Care Essential SVC","HPE 3Y Tech Care Essential SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-05 13:58:37",NULL,
+221,HU4A6A30C8G,"HPE DL20 Gen11 Support","HPE DL20 Gen11 Support",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-05 13:59:11",NULL,
+222,*MDG-001,"Publicidad Digital","Publicidad Digital",S,NULL,22,5,4,,0,G,0,,A,ebolivar,"2025-11-05 15:43:04",NULL,
+223,*OIP-001,"Declaración de Provisión de Pensiones (DPP)","Declaración de Provisión de Pensiones (DPP)",O,NULL,72,9,0,,0,E,0,,A,ebolivar,"2025-11-06 10:37:35",NULL,
+224,*IVA-001,"I.V.A. por Pagar","I.V.A. por Pagar",O,NULL,71,9,0,,0,E,0,,A,ebolivar,"2025-11-06 10:39:18",NULL,
+225,*RRP-001,"Retenciones de ISLR por Pagar","Retenciones de ISLR por Pagar",O,NULL,70,9,0,,0,E,0,,A,ebolivar,"2025-11-06 10:40:33",NULL,
+226,AD4202BK," Adaptador unno tekno HDMI macho VGA hembra "," Adaptador unno tekno HDMI macho VGA hembra ",P,NULL,1,2,1,WPL,0,G,0,,A,mbastidas,"2025-11-06 18:03:06",NULL,
+227,697388-001,"450GB SAS hard drive-10,000 RPM, 2.5-inch small form factor SFF
+","450GB SAS hard drive - 10,000 RPM, 2.5-inch small form factor (SFF)
+",P,1,1,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-07 09:29:08",NULL,
+228,*MOF-003,"Material de Oficina ","Material de Oficina (No Servicios)",O,NULL,74,12,2,,0,G,0,,A,admin,"2025-11-08 10:38:29",NULL,
+229,*RSL-001,"Otros Costos de RRHH","Otros Costos de RRHH",S,NULL,10,6,0,,0,E,0,,A,ebolivar,"2025-11-10 09:10:06",NULL,
+230,BV650,"APC UNIDAD EASY UPS BV 650VA AVR 120V ","APC UNIDAD EASY UPS BV 650VA AVR 120V ",P,11,2,2,0,HWR,0,G,0,,A,mbastidas,"2025-11-11 11:54:34",NULL,
+231,C7SH6EC,"HP EB8G1a14AI RA7P350 14 32GB/512 PC","HP EB8G1a14AI RA7P350 14 32GB/512 PC",P,2,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-11 14:41:49",NULL,
+232,U80M4E,"HP 5y Priority Managemt PC 5K+ seats SVC","HP 5y Priority Managemt PC 5K+ seats SVC",I,2,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-11 14:42:39",NULL,
+233,U85X3E,"HP 5y ONS PDA TRV NB","HP 5y ONS PDA TRV NB",I,2,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-11 14:43:08",NULL,
+234,U87CGE,"HP 5y One Battery ONSITE Replacement","HP 5y One Battery ONSITE Replacement",I,2,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-11 14:43:44",NULL,
+235,5TW10AA,"HP USB-C Dock G5 SWIS2","HP USB-C Dock G5 SWIS2",P,2,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-11 14:44:34",NULL,
+236,6N4E8AA,"HP E22 G5 FHD Monitor","HP E22 G5 FHD Monitor",P,2,2,2,0,HWR,0,G,0,,A,mcarosella,"2025-11-11 14:45:48",NULL,
+237," P65392-B21-0D1","Factory integrated","Factory integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:32:03",NULL,
+238," P64336-B21-0D1","Factory integrated","Factory integrated",P,1,2,2,0,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:33:00",NULL,
+239," P40497-B21-0D1","Factory Integrated","Factory Integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:33:42",NULL,
+240," P52753-B21-0D1","Factory integrated","Factory integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:34:13",NULL,
+241," P51178-B21-0D1","Factory Integrated","Factory Integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:34:48",NULL,
+242," P01366-B21-0D1","Factory Integrated","Factory Integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:35:21",NULL,
+243," P58335-B21-0D1","Factory Integrated","Factory Integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:35:58",NULL,
+244," 865438-B21-0D1","Factory Integrated","Factory Integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:36:31",NULL,
+245," AF573A-0D1","Factory Integrated","Factory Integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:37:02",NULL,
+246," P65411-B21-0D1","Factory integrated","Factory integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:37:35",NULL,
+247," P65412-B21-0D1","Factory integrated","Factory integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:38:17",NULL,
+248," P64576-B21-0D1","Factory integrated","Factory integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-12 07:38:49",NULL,
+249,AD3006BK,"ADAPTADOR UNNO TEKNO DISPLAY PORT MACHO A VGA HEMBRA","ADAPTADOR UNNO TEKNO DISPLAY PORT MACHO A VGA HEMBRA",P,11,2,2,0,HWR,0,G,0,,A,mbastidas,"2025-11-13 09:00:59",NULL,
+250,*OCL-001,"Obsequios a Clientes","Obsequios a Clientes",O,NULL,76,5,2,,0,G,0,,A,admin,"2025-11-17 15:20:09",NULL,
+251,*OBC-001,"Obsequios a Trabajadores","Obsequios a Trabajadores",O,NULL,75,6,2,,0,G,0,,A,admin,"2025-11-17 15:21:55",NULL,
+252,R6U02A," HPE StoreOnce 3660 80TB Base System"," HPE StoreOnce 3660 80TB Base System",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-20 13:47:22",NULL,
+253,169-09048 ," Office Professional Plus SLng LSA OLV NL 1Y Aq Y3 AP"," Office Professional Plus SLng LSA OLV NL 1Y Aq Y3 AP",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-20 13:48:56",NULL,
+254,6VC-00981,"Win Remote Desktop Services CAL SLng LSA OLV NL 3Y Aq Y1 AP UCAL","Win Remote Desktop Services CAL SLng LSA OLV NL 1Y Aq Y1 AP UCAL",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-20 13:49:30",NULL,
+255,6VC-00701 ,"Win Remote Desktop Services CAL SLng LSA OLV NL 1Y Aq Y1 AP UCAL","Win Remote Desktop Services CAL SLng LSA OLV NL 1Y Aq Y1 AP UCAL",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-20 13:51:18",NULL,
+256,269-09048,"Office Professional Plus SLng LSA OLV NL 1Y Aq Y3 AP","Office Professional Plus SLng LSA OLV NL 1Y Aq Y3 AP",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-20 15:50:16",NULL,
+257,R18-01853,"Win Server CAL SLng LSA OLV NL 3Y Aq Y1 AP UCAL","Win Server CAL SLng LSA OLV NL 3Y Aq Y1 AP UCAL",I,14,4,2,0,SWR,0,G,0,,A,mcarosella,"2025-11-20 16:15:11",NULL,
+258,*CNF-001,"Participación en Conferencias y Semniarios","Participación en Conferencias y Semniarios",O,NULL,78,14,2,,0,G,0,,A,lgondelles,"2025-11-20 16:42:28",NULL,
+259,P00918-B21,"HPE 8GB 1Rx8 PC4-2933Y-R Smart Kit","HPE 8GB 1Rx8 PC4-2933Y-R Smart Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:09:18",NULL,
+260,P49028-B21,"HPE 960GB SAS RI SFF SC MV SSD","HPE 960GB SAS RI SFF SC MV SSD",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:10:05",NULL,
+261,867982-B21,"HPE DL360 Gen10 LP Riser Kit","HPE DL360 Gen10 LP Riser Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:10:43",NULL,
+262,P9D94A,"HPE SN1100Q 16Gb 2p FC HBA","HPE SN1100Q 16Gb 2p FC HBA",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:13:32",NULL,
+263,817753-B21,"HPE Eth 10/25Gb 2P 640SFP28 Adptr","HPE Eth 10/25Gb 2P 640SFP28 Adptr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:14:10",NULL,
+264,817709-B21,"HPE 10/25GbE 2p FLR-SFP28 BCM957414 Adp","HPE 10/25GbE 2p FLR-SFP28 BCM957414 Adp",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:15:55",NULL,
+265,R7M24A,"HPE StoreOnce Gen4+ 10/25Gb 2p SFP Adptr","HPE StoreOnce Gen4+ 10/25Gb 2p SFP Adptr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:17:07",NULL,
+266,BB983A,"HPE StoreOnce Gen4 10/25Gb SFP Card LTU","HPE StoreOnce Gen4 10/25Gb SFP Card LTU",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:17:53",NULL,
+267,R7M24A#0D1,"Factory Integrated","Factory Integrated",P,1,2,2,0,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:19:24",NULL,
+268,BB983A#0D1,"Factory Integrated","Factory Integrated",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:20:19",NULL,
+269,QK733A,"HPE Premier Flex LC/LC OM4 2f 2m Cbl","HPE Premier Flex LC/LC OM4 2f 2m Cbl",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:21:02",NULL,
+270,QK735A,"HPE Premier Flex LC/LC OM4 2f 15m Cbl","HPE Premier Flex LC/LC OM4 2f 15m Cbl",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:21:29",NULL,
+271,HU4A6A5,"HPE 5Y Tech Care Essential SVC","HPE 5Y Tech Care Essential SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-21 13:22:09",NULL,
+272,BB994AAE,"HPE StoreOnce Encryption E-LTU","HPE StoreOnce Encryption E-LTU",I,27,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-21 13:23:35",NULL,
+273,AK379A,"HPE MSL2024 0-Drive Tape Library","HPE MSL2024 0-Drive Tape Library",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:24:03",NULL,
+274,R6Q74A,"HPE MSL LTO-9 45000 FC Drv Upg Kit","HPE MSL LTO-9 45000 FC Drv Upg Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:24:32",NULL,
+275,142257-002,"HPE 10A IEC320 C14-C13 2.4m PDU Cable","HPE 10A IEC320 C14-C13 2.4m PDU Cable",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:25:00",NULL,
+276,TC406AAE,"HPE MSL CVTL-TapeAssure Adv E-LTU","HPE MSL CVTL-TapeAssure Adv E-LTU",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-21 13:25:47",NULL,
+277,C7978A,"HPE Ultrium Universal Cleaning Cartridge","HPE Ultrium Universal Cleaning Cartridge",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:26:10",NULL,
+278,Q2079AC,"HPE LTO-9 RW Cust Lbl No Case 20 Crtg","HPE LTO-9 RW Cust Lbl No Case 20 Crtg",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-11-21 13:26:51",NULL,
+279,R6Y75AAE,"CVLT DP Nonvirt File /FET 1yr Sub E-LTU","CVLT DP Nonvirt File /FET 1yr Sub E-LTU",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-21 13:29:32",NULL,
+280,R6Y80AAE,"CVLT DP for VM /VM 10pk 1yr Sub E-LTU","CVLT DP for VM /VM 10pk 1yr Sub E-LTU",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-21 13:29:58",NULL,
+281,HA124A1,"HPE Technical Installation Startup SVC","HPE Technical Installation Startup SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-21 13:30:24",NULL,
+282,RSW-NCI-STR-PR,"La Sub RNWL Starter and Prod SW Lics Suo SVC For 1 CPU Core","La Sub RNWL Starter and Prod SW Lics Suo SVC For 1 CPU Core",I,35,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-11-24 08:06:41",NULL,
+283,RS-HW-PRD-ST,"La 1YR RNWL Extended SVC Agreement","La 1YR RNWL Extended SVC Agreement",I,35,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-24 08:08:25",NULL,
+284,"21KDCTO1WW ","Notebook ThinkPad X1 Carbon G12","Notebook ThinkPad X1 Carbon G12",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:34:07",NULL,
+285,13A5S3DF00,"Desktop ThinkCentre M70q Gen 6 ","Desktop ThinkCentre M70q Gen 6 ",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:35:46",NULL,
+286,4X31R64424,"Lenovo Essential Wired Combo Keyboard and Mouse (LA Spanish 171)","Lenovo Essential Wired Combo Keyboard and Mouse (LA Spanish 171)",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:37:01",NULL,
+287,4X31R64500,"Lenovo Essential Wireless Combo Keyboard & Mouse Gen2 Black-LA Spanish 171(without battery)","Lenovo Essential Wireless Combo Keyboard & Mouse Gen2 Black-LA Spanish 171(without battery)",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:37:28",NULL,
+288,4X20M26268,"Lenovo 65W Standard AC Adapter (USB Type-C)-US/Can/Mex","Lenovo 65W Standard AC Adapter (USB Type-C)-US/Can/Mex",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:37:55",NULL,
+289,64A4MARXLA,"T24-40(C25238FT0) 23.8 Monitor-HDMI","T24-40(C25238FT0) 23.8 Monitor-HDMI",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:38:25",NULL,
+290,64B7UAR1LA,"T24D-4v(A25238FT3) 23.8 Monitor-HDMI webcam (5MP, IR+RGB) Microphone","T24D-4v(A25238FT3) 23.8 Monitor-HDMI webcam (5MP, IR+RGB) Microphone",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:38:50",NULL,
+291,4L41M90267,"LICENSEKEY Absolute Control 36M
+
+
+
+
+
+","LICENSEKEY Absolute Control 36M
+
+
+
+
+
+",P,17,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-24 10:42:37",NULL,
+292,*SAP-001,"Servicio de Almacenaje","Servicio de Almacenaje",S,NULL,79,3,0,,0,G,0,,A,ebolivar,"2025-11-25 10:32:00",NULL,
+293,ASP96RGLX,"Targus DEFCON™ Ultimate Universal Resettable Combination Lock","Targus DEFCON™ Ultimate Universal Resettable Combination Lock",P,1,1,2,0,WPL,0,G,0,,A,mcarosella,"2025-11-25 11:11:16",NULL,
+294,HU4A6A3#YHL,"HPE StoreOnce 3660 80TB Base System Supp","HPE StoreOnce 3660 80TB Base System Supp",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-25 12:13:48",NULL,
+295,HU4A6A3#80N,"HPE MSL2024 Library Support","HPE MSL2024 Library Support",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-25 12:14:14",NULL,
+296,HU4A6A3#QC1,"HPE MSL TapeAssure Adv Lic Support","HPE MSL TapeAssure Adv Lic Support",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-25 12:14:42",NULL,
+297,HA124A1#5VF,"HPE StoreOnce 36xx Stup SVC","HPE StoreOnce 36xx Stup SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-25 12:15:08",NULL,
+298,HU4A6A5#699,"For HPE Internal Entitlement Purposes","For HPE Internal Entitlement Purposes",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-11-25 12:23:11",NULL,
+299,20G05A,"HP ScanJet Pro 2600 f1","HP ScanJet Pro 2600 f1",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-11-26 13:03:00",NULL,
+300,*RSL-002,"Seguridad y Salud Laboral","Seguridad y Salud Laboral",O,NULL,80,6,0,,0,G,0,,A,mbastidas,"2025-11-27 12:19:27",NULL,
+301,BN4E7LT#ABM,"HP Zbook 8 G1i 16 Ultra 7 255H 32GB 1TB SSD Win11 Pro","HP Zbook 8 G1i 16 Ultra 7 255H 32GB 1TB SSD Win11 Pro",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-02 05:46:50",NULL,
+302,79U72AA,"32GB DDR5 (1x32GB) 5600 SODIMM NECC Memory","32GB DDR5 (1x32GB) 5600 SODIMM NECC Memory",P,2,1,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-02 05:49:27",NULL,
+303,*MEO-001,"Adquisición de mobiliario de oficina","Adquisición de mobiliario de oficina",O,NULL,52,12,2,,0,G,0,,A,lgondelles,"2025-12-02 11:19:38",NULL,
+304,C31C513A8911,"Epson TMU220A-163 Receipt Printer Monochrome USB I/F, AC, TU","Epson TMU220A-163 Receipt Printer Monochrome USB I/F, AC, TU",P,9,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-03 10:54:39",NULL,
+305,C31CJ57052,"EPSON Impresora Térmica de Recibos TM-T88VII","EPSON Impresora Térmica de Recibos TM-T88VII",P,9,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-03 10:57:20",NULL,
+306,P00523-001,"Controller Assy Store Server 8200 MC","Controller Assy Store Server 8200 MC",P,1,1,2,1,HWR,0,G,1,,A,mcarosella,"2025-12-04 12:31:47",NULL,
+307,WDS100T2G0C,"Western Digital Disco Duro Green ","Western Digital Disco Duro Green SSD SN350 NVMe 1TB  M.2 2280",P,2,1,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-08 10:18:51",NULL,
+308,JH696C,"HPE X240 10GB SFP+ to SFP 1,2m Direct Attach Cooper Campus Cable","HPE X240 10GB SFP+ to SFP 1,2m Direct Attach Cooper Campus Cable",P,3,1,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-09 15:08:10",NULL,
+309,P08443-B21,"INT E810 10/25GbE 2p SFP28 Adptr","INT E810 10/25GbE 2p SFP28 Adptr",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-10 09:45:11",NULL,
+310,H1SR4AS,"HPE Service Credit","HPE Service Credit",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-12-10 09:50:34",NULL,
+311,H0JD4A5,"HPE 5Y Service Credits 10 Per Yr SVC","HPE 5Y Service Credits 10 Per Yr SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-12-10 09:51:27",NULL,
+312,H0JD4A5#WFK,"HPE 5Y Service Credits Qty 50 SVC","HPE 5Y Service Credits Qty 50 SVC",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-12-10 09:51:52",NULL,
+313,*GRH-001,"Otros Gastos de Recursos Humanos","Otros Gastos de Recursos Humanos",O,NULL,80,6,0,,0,G,0,,A,ebolivar,"2025-12-10 16:08:54",NULL,
+314,*SYF-003,"Fianzas Comerciales","Fianzas Comerciales",O,NULL,24,8,2,,0,G,0,,A,ebolivar,"2025-12-11 08:55:21",NULL,
+315,V-FDNVUL-0I-PP000-00,"Veeam Data Platform Foundation Universal Perpetual License. ","Veeam Data Platform Foundation Universal Perpetual License. ",I,31,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-12 07:56:50",NULL,
+316,V-FDNVUL-0I-P04PP-00,"Veeam Data Platform Foundation Universal Perpetual. 4 additional years of Production (24/7) maintenance prepaid for Veeam Data Platform Foundation Universal Perpetual  License. 10 instance pack.","4 years of Production Support renewal Veeam Data Platform Foundation Universal Perpetual License. ",I,31,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-12 07:57:31",NULL,
+317,PWR-C1-350WAC-P=,"350W AC 80+ platinum Config 1 Power Supply Spare","350W AC 80+ platinum Config 1 Power Supply Spare",P,6,1,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-12 08:50:21",NULL,
+318,CAB-TA-NA,"North America AC Type A Power Cable","North America AC Type A Power Cable",P,6,1,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-12 10:13:50",NULL,
+319,L09526-001,"Cubierta trasera LCD para HP Probook 640 G4 645 G4","Cubierta trasera LCD para HP Probook 640 G4 645 G4",P,1,1,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-12 11:34:07",NULL,
+320,*OCV-001,"Agenciamiento ","Agenciamiento ",O,NULL,81,8,0,,0,G,0,,A,ebolivar,"2025-12-15 11:43:00",NULL,
+321,21NTS6PP00,"Notebook ThinkPad X1 Carbon G13","Notebook ThinkPad X1 Carbon G13",P,17,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-15 14:12:22",NULL,
+322,13A5S4PE00,"Desktop ThinkCentre M70q Gen 6 Windows 11 Pro 64 Spanish Processor Intel® Core™ ","Desktop ThinkCentre M70q Gen 6 Windows 11 Pro 64 Spanish Processor Intel® Core™ ",P,17,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-15 16:33:27",NULL,
+323,R7M22A,"HPE StoreOnce 3660 96TB Upg Kit","HPE StoreOnce 3660 96TB Upg Kit",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-17 13:24:11",NULL,
+324,HU4A6A3#YHM,"HPE StoreOnce 3660 96TB Upgrade Kit Supp","HPE StoreOnce 3660 96TB Upgrade Kit Supp",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-12-17 13:29:11",NULL,
+325,HU4A6A3#ZUK,"HPE StoreOnce 3660 96TB Upgrade Kit Supp","HPE StoreOnce 3660 96TB Upgrade Kit Supp",I,1,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-12-18 10:02:35",NULL,
+326,B0CG8UT,"HP S3 Pro 327ph FHD MNTR","HP S3 Pro 327ph FHD MNTR",P,2,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-19 14:26:00",NULL,
+327,D3MY8LS#ABM,"HP Z2 TWR G1i U9285 16GB/512 PC","HP Z2 TWR G1i U9285 16GB/512 PC",P,2,2,2,1,HWR,0,G,0,,A,mcarosella,"2025-12-19 14:26:29",NULL,
+328,2727C002,"Canon EOS Rebel T7 DSLR Camera with 18-55mm Lens | Built-in Wi-Fi | 24.1 MP CMOS Sensor | DIGIC 4+ Image Processor and Full HD Videos","Canon EOS Rebel T7 DSLR Camera with 18-55mm Lens | Built-in Wi-Fi | 24.1 MP CMOS Sensor | DIGIC 4+ Image Processor and Full HD Videos",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-22 09:06:55",NULL,
+329,"B0DJ6THHDF ","HP Victus 15.6" 144Hz FHD Gaming Laptop,AMD Ryzen 5 7535HS,32GB DDR5 RAM,1TB SSD,AMD Radeon RX 6550M(Beats RTX 2050),Backlit Keyboard,Windows11 Pro, Mica Silver (32GB RAM | 1TB SSD)","HP Victus 15.6" 144Hz FHD Gaming Laptop,AMD Ryzen 5 7535HS,32GB DDR5 RAM,1TB SSD,AMD Radeon RX 6550M(Beats RTX 2050),Backlit Keyboard,Windows11 Pro, Mica Silver (32GB RAM | 1TB SSD)",P,1,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-22 09:09:06",NULL,
+330,G005E,"Tamron Auto Focus 60mm f/2.0 SP DI II LD IF 1:1 Macro Lens for Canon Digital SLR Cameras","Tamron Auto Focus 60mm f/2.0 SP DI II LD IF 1:1 Macro Lens for Canon Digital SLR Cameras",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-22 09:10:33",NULL,
+331,YN24EX,"YONGNUO YN24EX YN-24EX 24EX, TTL Macro Ring Flash LED Macro Flash Speedlite, with 2pcs Flash Head and 4pcs Adapter Rings for Canon","YONGNUO YN24EX YN-24EX 24EX, TTL Macro Ring Flash LED Macro Flash Speedlite, with 2pcs Flash Head and 4pcs Adapter Rings for Canon",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-22 09:18:42",NULL,
+332,FR5567,"55-67MM Step-Up Ring Adapter, 55mm to 67mm Step Up Filter Ring, 55 mm Male 67 mm Female Stepping Up Ring for DSLR Camera Lens and ND UV CPL Infrared Filter","55-67MM Step-Up Ring Adapter, 55mm to 67mm Step Up Filter Ring, 55 mm Male 67 mm Female Stepping Up Ring for DSLR Camera Lens and ND UV CPL Infrared Filter",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2025-12-22 09:22:00",NULL,
+333,S3J29A,"HPE ANW AP-515 (RW) 10pk Campus AP","HPE ANW AP-515 (RW) 10pk Campus AP",P,3,2,2,1,NTW,0,G,0,,A,mcarosella,"2025-12-22 11:04:58",NULL,
+334,H06YBE,"HPE ANW FC 3Y NBD Exch HW AP-515 10PKSVC","HPE ANW FC 3Y NBD Exch HW AP-515 10PKSVC",I,3,73,2,1,CPS,0,G,0,,A,mcarosella,"2025-12-22 11:06:17",NULL,
+335,RH00003,"Red Hat Enterprise Linux Server, Premium (Physical or Virtual Nodes), 1 year(s)","Red Hat Enterprise Linux Server, Premium (Physical or Virtual Nodes), 1 year(s)",I,20,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 15:54:32",NULL,
+336,RH00026," Resilient Storage, 1 year(s)"," Resilient Storage, 1 year(s)",I,20,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 15:57:00",NULL,
+337,RH00763," Red Hat Enterprise Linux for SAP Solutions, Premium (Physical or Virtual Nodes), 1 year(s)"," Red Hat Enterprise Linux for SAP Solutions, Premium (Physical or Virtual Nodes), 1 year(s)",I,20,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 15:58:10",NULL,
+338,RH00060," Resilient Storage for Unlimited Guests, 1 year(s)"," Resilient Storage for Unlimited Guests, 1 year(s)",I,20,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 16:00:16",NULL,
+339,SP-AL018,"Data Protector On-line Backup for Windows SW E-LTU Support","Data Protector On-line Backup for Windows SW E-LTU Support",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 16:04:11",NULL,
+340,SU-AB133,"Extended Support - Limited Extended Support - Data Protector ","Extended Support - Limited Extended Support - Data Protector ",I,36,73,2,0,CPS,0,G,0,,A,mcarosella,"2025-12-29 16:07:51",NULL,
+341,SP-AK978,"Data Protector Advanced Backup to Disk 10TB SW E-LTU Support","Data Protector Advanced Backup to Disk 10TB SW E-LTU Support",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 16:08:49",NULL,
+342,SPAL038,"Data Protector Starter Pack Windows SW E-LTU Support","Data Protector Starter Pack Windows SW E-LTU Support",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 16:10:40",NULL,
+343,SU-AB488,"Prime Protect - Data Protector - FYM","Prime Protect - Data Protector - FYM",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2025-12-29 16:11:46",NULL,
+344,MD4G4LLA,"Apple iPad Wi-Fi 256GB - Silver  USB-C Charge Cable  20W USB-C Power Adapter","Apple iPad Wi-Fi 256GB - Silver  USB-C Charge Cable  20W USB-C Power Adapter",P,37,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-01-02 14:46:44",NULL,
+345,CFQ7TTC0LH18,"Microsoft 365 Business Basic","Microsoft 365 Business Basic",I,14,4,2,0,SWR,0,G,0,,A,mcarosella,"2026-01-07 10:04:32",NULL,
+346,"Canva Enterprise","February 13, 2026 to February 12, 2027","February 13, 2026 to February 12, 2027",I,38,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-01-15 09:54:49",NULL,
+347,DG7GMGF0PWHB," Windows Server 2025 Remote Desktop Services - 1 User CAL"," Windows Server 2025 Remote Desktop Services - 1 User CAL",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-01-16 15:25:09",NULL,
+348,HD002,"Astra Enclosure SATA3 A Tipo C HDD USB3.0","Astra Enclosure SATA3 A Tipo C HDD USB3.0",P,39,1,2,1,WPL,0,G,0,,A,mcarosella,"2026-01-20 10:45:10",NULL,
+349,HD1200,"Astra Enclosure M.2 NVME Tipo C 3.1 SSD","Astra Enclosure M.2 NVME Tipo C 3.1 SSD",P,39,1,2,1,WPL,0,G,0,,A,mcarosella,"2026-01-20 10:46:00",NULL,
+350,CB388A,"HP LaserJet 110V User Maintenance Kit  compatible with  HP LaserJet Enterprise HP LaserJet P4014, P4015, and P4515 series printers","HP LaserJet 110V User Maintenance Kit  compatible with  HP LaserJet Enterprise HP LaserJet P4014, P4015, and P4515 series printers",P,2,2,2,1,MPS,0,G,0,,A,mcarosella,"2026-01-20 16:07:52",NULL,
+351,CF064A,"HP LaserJet 110V Maintenance Kit  compatible with  HP LaserJet Enterprise 600 M601, M602, and M603 series printers","HP LaserJet 110V Maintenance Kit  compatible with  HP LaserJet Enterprise 600 M601, M602, and M603 series printers",P,2,2,2,1,MPS,0,G,0,,A,mcarosella,"2026-01-20 16:10:06",NULL,
+352,POED6PRO,"OLAX UPS  Mini DC 20000 MAH","OLAX UPS  Mini DC 20000 MAH",P,40,1,2,1,WPL,0,G,0,,A,mcarosella,"2026-01-22 13:10:26",NULL,
+353,N00082-001,"SPS-RAW PANEL 14 FHD AG 250","SPS-RAW PANEL 14 FHD AG 250",P,1,1,2,1,WPL,0,G,0,,A,mcarosella,"2026-01-26 16:51:48",NULL,
+354,DG7GMGF0VNJS,"SQL Server 2025 Standard Edition Perpetual 1 Server License plus 10 CALs","SQL Server 2025 Standard Edition Perpetual 1 Server License plus 10 CALs",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-01-28 13:50:10",NULL,
+355,461494-001,"4.0GB Fiber Channel (FC) disk shelf I/O module assembly","4.0GB Fiber Channel (FC) disk shelf I/O module assembly",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2026-01-29 13:04:23",NULL,
+356,461494-005,"4GB Fiber Channel (FC) disk shelf I/O module assembly","4GB Fiber Channel (FC) disk shelf I/O module assembly",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2026-01-29 13:05:06",NULL,
+357,*ARE-001,"Arrendamiento de Equipos ","Arrendamiento de Equipos ",O,NULL,82,12,0,,0,G,0,,A,ebolivar,"2026-01-29 13:19:14",NULL,
+358,2153335625-A,"Data Protector On-line Backup for Windows SW E-LTU Support","Data Protector On-line Backup for Windows SW E-LTU Support",I,NULL,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-01-30 16:00:17",NULL,
+359,L09539-001,"Bracket Kit","Bracket Kit",P,2,1,2,1,HWR,0,G,0,,A,mcarosella,"2026-02-03 08:55:46",NULL,
+360,L09545-001,"SPS-Hinge Covers 14","SPS-Hinge Covers 14",P,2,1,2,1,HWR,0,G,0,,A,mcarosella,"2026-02-03 08:56:16",NULL,
+361,"CBL-USB SATA","Cable USB a SATA 2,5","Cable USB a SATA 2,5",P,39,1,2,1,WPL,0,G,0,,A,mcarosella,"2026-02-03 13:49:56",NULL,
+362,L17374-001,"FHD LED UWVA AntiGlare display assembly-HDC IR PVCY full hinge-up
+","FHD LED UWVA AntiGlare display assembly-HDC IR PVCY full hinge-up
+",P,2,1,2,1,HWR,0,G,0,,A,mcarosella,"2026-02-03 14:23:27",NULL,
+363,594882-001,"Intel Xeon X5670 Six Core bit processor 2.93 Ghz 12MB","Intel Xeon X5670 Six Core bit processor 2.93 Ghz 12MB",P,1,1,2,1,HWR,0,G,0,,A,mcarosella,"2026-02-06 15:52:53",NULL,
+364,30001799CB01A12,"Licenciamiento Creative Cloud for teams All Apps","Licenciamiento Creative Cloud for teams All Apps",I,41,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-02-12 10:49:13",NULL,
+365,*EST-001,Estacionamiento,Estacionamiento,O,NULL,83,12,0,,0,G,0,,A,ebolivar,"2026-02-13 16:13:29",NULL,
+366,*PFT-001,"Plataforma Tecnológica","Plataforma Tecnológica",O,NULL,84,12,0,,0,G,0,,A,ebolivar,"2026-02-23 09:01:44",NULL,
+367,532149-001,"SPS-FAN, System","SPS-FAN, System",P,1,1,2,1,SER,0,G,1,,A,mcarosella,"2026-02-23 15:41:37",NULL,
+368,601778-001,"SPS-DRV HD 2TB 3G 7.2K 3.5 SATA P20","SPS-DRV HD 2TB 3G 7.2K 3.5 SATA P20",P,1,1,2,1,SER,0,G,1,,A,mcarosella,"2026-02-23 15:42:09",NULL,
+369,592267-002,"SPS-AC PWR Supply 595W","SPS-AC PWR Supply 595W",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-02-23 15:42:36",NULL,
+370,629074-001,"HP 1GBE ISCSI P2000 GE Controller","HP 1GBE ISCSI P2000 GE Controller",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-02-23 15:43:08",NULL,
+371,P03797-001,"SPS-DRV 600GB SFF HDD 10K SS7000 SGT","SPS-DRV 600GB SFF HDD 10K SS7000 SGT",P,1,1,2,1,SER,0,G,1,,A,mcarosella,"2026-02-23 15:43:41",NULL,
+372,840456-001,"600GB SAS hard drive - 6Gb/s transfer rate, 2.5-inch small form factor (SFF)
+","600GB SAS hard drive - 6Gb/s transfer rate, 2.5-inch small form factor (SFF)
+",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-02-23 15:44:05",NULL,
+373,511777-001,"SPS-POWER SUPPLY, 460W","SPS-POWER SUPPLY, 460W",P,1,1,2,1,SER,0,G,1,,A,mcarosella,"2026-02-23 15:44:29",NULL,
+374,660093-001,"Capacitor pack with 914mm (36 in) cable.","Capacitor pack with 914mm (36 in) cable.",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-02-23 15:44:54",NULL,
+375,633542-001,"SPS-BD DDR3 MINI DIMM MOD 1Gx72","SPS-BD DDR3 MINI DIMM MOD 1Gx72",P,1,1,2,1,SER,0,G,2,,A,mcarosella,"2026-02-23 15:45:22",NULL,
+376,787646-001,"SPS-DRV HD MSA 600GB 12G 10K 2.5 SAS ENT","SPS-DRV HD MSA 600GB 12G 10K 2.5 SAS ENT",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-02-24 12:28:48",NULL,
+377,840458-001,"SPS-DRV 600GB HDD 6G","SPS-DRV 600GB HDD 6G",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-02-24 12:29:13",NULL,
+378,407620-001,"4GB PCIe-to-Fibre Channel FC host bus adapter QLogic
+","4GB PCIe-to-Fibre Channel FC host bus adapter QLogic
+",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-02-24 12:29:46",NULL,
+379,454273-001,"SPS-DRV,HD,1TB,7.2K,SATA 3.5,3G NCQ","SPS-DRV,HD,1TB,7.2K,SATA 3.5,3G NCQ",P,1,1,2,1,SER,0,G,2,,A,mcarosella,"2026-02-24 12:30:11",NULL,
+380,759574-001,"SPS-DRV HDD 450GB 12G 15k 2.5SA","SPS-DRV  HDD 450GB 12G  15K 2.5SA",P,1,2,2,1,SER,0,G,0,,A,mcarosella,"2026-02-26 15:23:35",NULL,
+381,413996-001,"SPS-FAN, System","SPS-FAN, System",P,1,1,2,1,SER,0,G,3,,A,mcarosella,"2026-02-26 15:24:07",NULL,
+382,774172-001,"SPS-Memory DIMM 16GB PC4-2133P-R, 1Gx4","SPS-Memory DIMM 16GB PC4-2133P-R, 1Gx4",P,1,1,2,1,SER,0,G,2,,A,mcarosella,"2026-02-26 15:24:46",NULL,
+383,L0R20YC,"HP Black Contract Original PageWide Cartridge","HP Black Contract Original PageWide Cartridge",P,2,2,2,1,MPS,0,G,0,,A,mcarosella,"2026-02-27 07:15:59",NULL,
+384,W9008MC,"HP Black Managed LaserJet Toner Cartridge","HP Black Managed LaserJet Toner Cartridge",P,2,2,2,1,MPS,0,G,0,,A,mcarosella,"2026-02-27 07:16:50",NULL,
+385,W9037MC,"HP Black LaserJet Managed Toner Cartridge","HP Black LaserJet Managed Toner Cartridge",P,2,2,2,1,MPS,0,G,0,,A,mcarosella,"2026-02-27 07:17:23",NULL,
+386,W9016MC,"HP Managed LJ Toner Collection Kit","HP Managed LJ Toner Collection Kit",P,2,2,2,1,MPS,0,G,0,,A,mcarosella,"2026-02-27 07:18:05",NULL,
+387,"30012211CB01A12 ","Creative Cloud Pro Plus for enterprise Annual HED Fac/Staff Named Level 1 1 - 9 ","Creative Cloud Pro Plus for enterprise Annual HED Fac/Staff Named Level 1 1 - 9 ",I,41,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-02-27 08:37:16",NULL,
+388,CFQ7TTC0LHSV,"OneDrive for business (Plan 1)","OneDrive for business (Plan 1)",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-03-02 14:43:08",NULL,
+389,PC16250_U7ARL321TBWPS_3WX,"Modelo: DELL Pro Silver Intel Core Ultra","Modelo: DELL Pro Silver Intel Core Ultra 7 255U Memoria: RAM DDR5-5600 MT/s de 32 GB Disco Duro: SSD de 1 TB
+Pantalla: 16 Sistema Operativo: Windows 11 Pro 64 Garantia: 3 años",P,27,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-03 15:50:57",NULL,
+390,*OSG-001,"Otros gastos de Servicios Generales","Otros gastos de Servicios Generales",O,NULL,85,12,0,,0,G,0,,A,mbastidas,"2026-03-06 09:10:18",NULL,
+391,D9HF4LS#ABM,"HP Z2 TWR G1i U9285 16GB/512 PC","HP Z2 TWR G1i U9285 16GB/512 PC",P,2,2,2,1,HWR,0,G,0,,A,mcarosella,"2026-03-06 14:57:35",NULL,
+392,UJ0S9E,"HP 3y ONS PDA WS","HP 3y ONS PDA WS",I,2,73,2,1,CPS,0,G,0,,A,mcarosella,"2026-03-06 14:58:53",NULL,
+393,6941812793664,"Xiaomi Tablet Redmi PAD SE 128 4  8.7  Wifi Aurora Green","Xiaomi Tablet Redmi PAD SE 128+4  8.7" Wifi Aurora Green",P,42,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-17 11:38:59",NULL,
+394,CE340A,"Toner HP 651A Negro (Maxiprint) P/M775","Toner HP 651A Negro (Maxiprint) P/M775",P,2,1,2,0,MPS,0,G,0,,A,mcarosella,"2026-03-17 12:24:13",NULL,
+395,CE342A,"Toner 651 Amarillo (Maxiprint) P/M775","Toner 651 Amarillo (Maxiprint) P/M775",P,2,1,2,0,MPS,0,G,0,,A,mcarosella,"2026-03-17 12:25:47",NULL,
+396,CE255A,"Toner CE255A (Maxiprint) P/525","Toner CE255A (Maxiprint) P/525",P,2,1,2,0,MPS,0,G,0,,A,mcarosella,"2026-03-17 12:28:57",NULL,
+397,*PRI-001,PRSD,PRSD,S,NULL,86,4,0,,0,G,0,,A,ebolivar,"2026-03-17 16:27:50",NULL,
+398,*PRI-002,Instalaciones,Instalaciones,S,NULL,86,4,0,,0,G,0,,A,ebolivar,"2026-03-17 16:28:21",NULL,
+399,*MPT-001,"Mant. y Rep. Equipos","Mant. y Rep. Equipos",O,NULL,87,4,0,,0,G,0,,A,ebolivar,"2026-03-18 15:59:18",NULL,
+400,DG7GMGF0PN5F,"Office LTSC Professional Plus 2024","Office LTSC Professional Plus 2024",I,14,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-03-19 14:57:27",NULL,
+401,*OCI-002,"Otros gastos de Importación","Otros gastos de Importación",S,NULL,8,3,0,,0,G,0,,A,mbastidas,"2026-03-20 15:15:11",NULL,
+402,CFQ7TTC0LDPB,"Microsoft 365 Business Standard","Microsoft 365 Business Standard",I,14,4,2,0,SWR,0,G,0,,A,mcarosella,"2026-03-23 08:34:54",NULL,
+403,*OST-001,"Otros Servicios Tercerizados","Otros Servicios Tercerizados",O,NULL,88,3,0,,0,G,0,,A,ebolivar,"2026-03-23 14:05:24",NULL,
+404,FL3-1448-000,"Roller Duplexing Paper Feed Canon 2525","Roller Duplexing Paper Feed Canon 2525",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:09:56",NULL,
+405,FL2-3887-000,"Separation / Feed Roller Canon 1025","Separation / Feed Roller Canon 1025",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:10:24",NULL,
+406,FB4-9817-030,"Paper Pickup Roller Canon 1025 (Media Luna) ","Paper Pickup Roller Canon 1025 (Media Luna) ",P,5,2,2,1,MPS,0,G,0,,A,mcarosella,"2026-03-26 07:10:54",NULL,
+407,FM4-6216-000,"Main Controller PCB Asy Canon IR2525 FM1-H960-000","Main Controller PCB Asy Canon IR2525 FM1-H960-000",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:11:19",NULL,
+408,FM4-2864-000,"Engine Controller PCB Assembly FM1-D989-000","Engine Controller PCB Assembly FM1-D989-000",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:12:10",NULL,
+409,2772B004BA,"Drum Gpr35 (Canon Cilindro IR2525)","Drum Gpr35 (Canon Cilindro IR2525)",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:12:33",NULL,
+410,0388B003AA,"Drum Gpr22 (Canon Cilindro IR1025)","Drum Gpr22 (Canon Cilindro IR1025)",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:12:59",NULL,
+411,FM2-9045-000,"Fusor 1025 (Canon IR1025 Fixing Assembly)","Fusor 1025 (Canon IR1025 Fixing Assembly)",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:13:23",NULL,
+412,FM2-8214-000,"Reveladora 1025 (Canon IR1025 Developing)","Reveladora 1025 (Canon IR1025 Developing)",P,5,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-26 07:13:49",NULL,
+413,AJ716B,"HPE 8Gb Shortwave B-series Fibre Channel 1 Pack SFP+ Transceiver","HPE 8Gb Shortwave B-series Fibre Channel 1 Pack SFP+ Transceiver",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2026-03-26 14:41:40",NULL,
+414,QK734A,"HPE Premier Flex LC/LC Multi-mode OM4 2 fiber 5m Cable","HPE Premier Flex LC/LC Multi-mode OM4 2 fiber 5m Cable",P,1,2,2,1,HWR,0,G,0,,A,mcarosella,"2026-03-26 14:42:37",NULL,
+415,AH342-67101,"Blade module assembly","Blade module assembly",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2026-03-27 09:27:19",NULL,
+416,AH339-6938A,"Procesador Intel Itanium 9350 (1.73GHz)","Procesador Intel Itanium 9350 (1.73GHz)",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2026-03-27 09:27:43",NULL,
+417,AH339-67001,"Heatsink (Disipador) para Superdome 2","Heatsink (Disipador) para Superdome 2",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2026-03-27 09:28:06",NULL,
+418,AM327-69001,"Memoria 8GB (Kit 2x4GB) PC3-10600R","Memoria 8GB (Kit 2x4GB) PC3-10600R",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2026-03-27 09:28:29",NULL,
+419,*PFT-002,"Equipos de Comunicación","Equipos de Comunicación",O,NULL,84,12,1,,0,G,0,,A,ebolivar,"2026-03-27 11:05:46",NULL,
+420,RM1-8425,"Tray 1 / MP Pickup Assembly - Refurbished","Tray 1 / MP Pickup Assembly - Refurbished",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-27 15:57:20",NULL,
+421,3WT87-67901,"Genuine HP 3WT87-67901 (3WT88A) Fuser Unit - 120V - Original","Genuine HP 3WT87-67901 (3WT88A) Fuser Unit - 120V - Original",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-27 15:57:45",NULL,
+422,RM2-1504-000CN,"Genuine HP RM2-1504-000 (3WT89A) Intermediate Transfer Belt (ITB) Kit - Original","Genuine HP RM2-1504-000 (3WT89A) Intermediate Transfer Belt (ITB) Kit - Original",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-27 15:58:12",NULL,
+423,RM2-1525-000CN,"Genuine HP RM2-1525-000 (RM21525000) Paper Feed Kit - Tray 1 - Original","Genuine HP RM2-1525-000 (RM21525000) Paper Feed Kit - Tray 1 - Original",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-27 15:58:38",NULL,
+424,RM2-1526-000CN,"Genuine HP RM2-1526-000 (RM21526000) Paper Feed Kit - Tray 2 X - Original","Genuine HP RM2-1526-000 (RM21526000) Paper Feed Kit - Tray 2 X - Original",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-27 15:59:21",NULL,
+425,RM2-1399-010CN,"HP RM2-1399-010CN Transfer Assembly - Secondary transfer roller - Original","HP RM2-1399-010CN Transfer Assembly - Secondary transfer roller - Original",P,2,2,2,1,WPL,0,G,0,,A,mcarosella,"2026-03-27 15:59:44",NULL,
+426,697389-001,"SPS-DRV 900GB HDD 6G SAS 10K SS7000 HGST","SPS-DRV 900GB HDD 6G SAS 10K SS7000 HGST",P,1,2,2,1,HWR,0,G,3,,A,mcarosella,"2026-03-30 10:35:28",NULL,
+427,878643-001,"SPS-Batt Pack, 96W Megacell, 145mm Cbl-b","SPS-Batt Pack, 96W Megacell, 145mm Cbl-b",P,1,2,2,1,HWR,0,G,1,,A,mcarosella,"2026-03-30 13:00:55",NULL,
+428,"W9090MC ","Black Managed Original Laserjet Toner Cartridge","BLACK Managed Original Laserjet Toner Cartridge",P,2,1,2,1,MPS,0,G,0,,A,mcarosella,"2026-04-08 14:42:24",NULL,
+429,W9091MC,"Cyan Managed Original Laserjet Toner Cartridge ","CYAN  Managed Original Laserjet Toner Cartridge ",P,2,1,2,1,MPS,0,G,0,,A,mcarosella,"2026-04-08 14:42:52",NULL,
+430,W9092MC,"Yellow  Managed Original Laserjet Toner Cartridge","Yellow  Managed Original Laserjet Toner Cartridge",P,2,1,2,1,MPS,0,G,0,,A,mcarosella,"2026-04-08 14:43:20",NULL,
+431,W9093MC ,"Magenta  Managed Original Laserjet Toner Cartridge","Magenta  Managed Original Laserjet Toner Cartridge",P,2,1,2,1,MPS,0,G,0,,A,mcarosella,"2026-04-08 14:43:48",NULL,
+432,W2300A,"Cartucho de tóner original HP LaserJet 230A negro (W2300A)","Cartucho de tóner original HP LaserJet 230A negro (W2300A)",P,2,1,2,1,MPS,0,E,0,,A,mcarosella,"2026-04-08 14:44:15",NULL,
+433,L0R17YC,"HP 981YC INK Cartridge CYAN MANAGED Ink Cartridge","HP 981YC INK Cartridge CYAN MANAGED Ink Cartridge",P,2,1,2,1,MPS,0,G,0,,A,mcarosella,"2026-04-08 14:44:56",NULL,
+434,L0R19YC,"HP 981YC INK CARTRIDGE YELLOW MANAGED Ink Cartridge","HP 981YC INK CARTRIDGE YELLOW MANAGED Ink Cartridge",P,2,1,2,1,MPS,0,G,0,,A,mcarosella,"2026-04-08 14:45:27",NULL,
+435,SU-AB305,"Extended Support - Limited Extended Support - Data Protector","Extended Support - Limited Extended Support - Data Protector",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-04-10 15:40:35",NULL,
+436,SP-AK987,"Data Protector Drive Extension WIN/Netware/Linux SW E-LTU Support","Data Protector Drive Extension WIN/Netware/Linux SW E-LTU Support",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-04-10 15:49:51",NULL,
+437,UD0P5PE,"HP 1 year Post Warranty Next Business Day Response Onsite Notebook Hardware Support","HP 1 year Post Warranty Next Business Day Response Onsite Notebook Hardware Support",I,2,73,2,2,CPS,0,G,0,,A,mcarosella,"2026-04-14 16:51:59",NULL,
+438,SP-AK986,"Data Protector Drive Extension UNIX NAS SAN SW E-LTU Support ","Data Protector Drive Extension UNIX NAS SAN SW E-LTU Support ",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-04-16 10:53:06",NULL,
+439,"SU AB488","Prime Protect-Data Protector-FYM","Prime Protect-Data Protector-FYM",I,36,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-04-16 10:56:38",NULL,
+440,500661-004,"Aruba EC-10104 Chas","Aruba EC-10104 Chas",P,3,2,2,1,HWR,0,G,0,,A,mcarosella,"2026-04-16 16:39:50",NULL,
+441,R7J38A,"HPE Aruba Networking AP-655 (RW) Tri-radio 4x4 802.11ax Wi-Fi 6E Internal Antenna","HPE Aruba Networking AP-655 (RW) Tri-radio 4x4 802.11ax Wi-Fi 6E Internal Antenna",P,3,2,2,1,HWR,0,G,0,,A,mcarosella,"2026-04-16 17:00:42",NULL,
+442,H59G1E,"Aruba 3Y FC NBD Exch HW AP-65x SVC  [for R7J38A]","Aruba 3Y FC NBD Exch HW AP-65x SVC  [for R7J38A]",P,3,2,2,1,HWR,0,G,0,,A,mcarosella,"2026-04-16 17:01:28",NULL,
+443,V-ADVVUL-0I-PP1AR-00,"1 year of Production 24-7 maintenance renewal Veeam Data Platform Advanced Universal Perpetual License. 10 instance pack.","1 year of Production 24-7 maintenance renewal Veeam Data Platform Advanced Universal Perpetual License. 10 instance pack.",I,31,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-04-16 17:13:00",NULL,
+444,"HS-SSD-E1000 STD 1024G","Disco de Estado Solido HIKSEMI M.2 NVME 2280 1TB","Disco de Estado Solido HIKSEMI M.2 NVME 2280 1TB",P,43,2,2,0,HWR,0,G,0,,A,mcarosella,"2026-04-17 16:03:36",NULL,
+446,703521-001,"100GB solid state drive (SSD) - SAS 6Gb/s transfer rate, 2.5-in","100GB solid state drive (SSD) - SAS 6Gb/s transfer rate, 2.5-in",P,1,1,2,1,SER,0,G,1,,A,mcarosella,"2026-04-22 10:45:09",NULL,
+447," 697388-001","450GB SAS hard drive - 10,000 RPM, 2.5-inch small form factor (SFF)","450GB SAS hard drive - 10,000 RPM, 2.5-inch small form factor (SFF)",P,1,1,2,1,SER,0,G,0,,A,mcarosella,"2026-04-22 10:45:45",NULL,
+448,300599-001,"Aruba EC-10104Chas, 1MO-Maint","Aruba EC-10104Chas, 1MO-Maint",I,3,73,2,1,SER,0,G,0,,A,mcarosella,"2026-04-23 09:20:41",NULL,
+449,300657-001,"HPE ANW EC FDTN AAS 100M, 1Mo","HPE ANW EC FDTN AAS 100M, 1Mo",I,1,4,2,1,SWR,0,G,0,,A,mcarosella,"2026-04-23 09:21:19",NULL,
+450,413996-001,"SPS-FAN, SYSTEM","SPS-FAN, SYSTEM",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+451,454410-001,"SPS-DRV,HD,146GB,15K,EVA M6412 Enc,FC","SPS-DRV,HD,146GB,15K,EVA M6412 Enc,FC",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+452,664692-001,"SPS-DIMM 16GB PC3L 10600R 1G x4 IPL","SPS-DIMM 16GB PC3L 10600R 1G x4 IPL",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+453,737572-001,"SPS-DRV HDD 450GB 12G 15K 3.5 SAS ENT DP","SPS-DRV HDD 450GB 12G 15K 3.5 SAS ENT DP",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+454,789897-001,"SPS-ETHERNET ADPTR (1Gb 4P 331FLR) w/HS","SPS-ETHERNET ADPTR (1Gb 4P 331FLR) w/HS",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+455,802271-001,"SPS-DRV 300GB HDD 6G SAS 15K SFF SS7000","SPS-DRV 300GB HDD 6G SAS 15K SFF SS7000",P,1,1,2,1,GCN,0,G,4,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+456,836261-004,"SPS-AROC P816i-a SR G10 M83C MPQ Ctrlr","SPS-AROC P816i-a SR G10 M83C MPQ Ctrlr",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+457,840140-001,"SPS - PCA NIC Adptr 2p 25GBE SFP28","SPS - PCA NIC Adptr 2p 25GBE SFP28",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+458,866728-001,"SPS-PS, 1U 12V 800W HTPLG 48VDC","SPS-PS, 1U 12V 800W HTPLG 48VDC",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+459,872736-001,"SPS-DRV HDD 600GB 12G 10K SFF SAS DS SC","SPS-DRV HDD 600GB 12G 10K SFF SAS DS SC",P,1,1,2,1,GCN,0,G,9,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+460,875075-001,"SPS-FAN Module Standard","SPS-FAN Module Standard",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+461,875283-001,"SPS-FAN Mod STD","SPS-FAN Mod STD",P,1,1,2,1,GCN,0,G,114,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+462,638842-001,"SPS-UPS R/T3KVA 2U DTC","SPS-UPS R/T3KVA 2U DTC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+463,723570-001,"SPS  Base Library Chassis","SPS  Base Library Chassis",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+464,638841-001,"SPS-UPS R/T3KVA 2U L620 HV NA JPN G2","SPS-UPS R/T3KVA 2U L620 HV NA JPN G2",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+465,689229-001,"SPS-MID PLANE FAN PWR BD AMP SPECIAL","SPS-MID PLANE FAN PWR BD AMP SPECIAL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+466,AB463-69035,"SPS-Assy PCI-X IO Backplane","SPS-Assy PCI-X IO Backplane",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+467,J9477-61101,"HP Switch 8206zl Chassis-only","HP Switch 8206zl Chassis-only",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+468,AH342-69106,"SPS-Blade i4 System Board Base Unit","SPS-Blade i4 System Board Base Unit",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+469,694427-002,"SPS-NODE V CLASS 2.83GHZ V3 WIDE GUIDE","SPS-NODE V CLASS 2.83GHZ V3 WIDE GUIDE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+470,519345-001,"SPS-BD, MID PLANE ASSY","SPS-BD, MID PLANE ASSY",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+471,453934-001,"SPS-BD, SYSTEM I/O","SPS-BD, SYSTEM I/O",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+472,J9782-61001,"Switch 2530-24 Support Kit","Switch 2530-24 Support Kit",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+473,JH048-61001,"SU 527 802.11ac (AM) Unified Walljack","SU 527 802.11ac (AM) Unified Walljack",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+474,653050-001,"SPS-PROC WSM EX E7-4870 2.4 GHZ 130W","SPS-PROC WSM EX E7-4870 2.4 GHZ 130W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+475,498152-001,"SPS-P/S,1U,1200W,12V,HTPLG","SPS-P/S,1U,1200W,12V,HTPLG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+476,511778-001,"SPS-POWER SUPPLY, 750W","SPS-POWER SUPPLY, 750W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+477,715274-001,"SPS-DIMM 16GB PC3 14900R IPL 1Gx4","SPS-DIMM 16GB PC3 14900R IPL 1Gx4",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+478,682626-001,"SPS-SAS 560mm CA Assy Gen8","SPS-SAS 560mm CA Assy Gen8",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+479,780967-001,"SPS-M/B  W/TRAY GEN9","SPS-M/B  W/TRAY GEN9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+480,J9089-61101,"Kit Support, E2610-48 PoE Switch","Kit Support, E2610-48 PoE Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+481,J9738-61001,"HP X332 575W 100-240VAC to 54VDC PS","HP X332 575W 100-240VAC to 54VDC PS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+482,633540-001,"SPS-BD DDR3 MINI DIMM MOD 244P 512MBx40","SPS-BD DDR3 MINI DIMM MOD 244P 512MBx40",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+483,633543-001,"SPS-BD DDR3 MINI DIMM MOD 2Gx72","SPS-BD DDR3 MINI DIMM MOD 2Gx72",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+484,792347-001,"SPS-Fan ML150","SPS-Fan ML150",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+485,J9729-61101,"SU 2920-48G-POE+ SWITCH w/o PSU","SU 2920-48G-POE+ SWITCH w/o PSU",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+486,761880-001,"SPS-BD PCIe SAS P840 Cntrlr","SPS-BD PCIe SAS P840 Cntrlr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+487,314670-001,"SPS-BD,SYS,W/PROC CAGE","SPS-BD,SYS,W/PROC CAGE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+488,J4813-69101,"24 PRT MANAGED, 10/100 SWTCH","24 PRT MANAGED, 10/100 SWTCH",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+489,644498-001,"SPS-PCA W BL680c Motherboard B","SPS-PCA W BL680c Motherboard B",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+490,642266-001,"SPS-DRV HD 600GB 2.5  6G 10K QR SAS","SPS-DRV HD 600GB 2.5  6G 10K QR SAS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+491,849120-001,"SPS-BD SYSTEM MLB DL160 GEN8 YH","SPS-BD SYSTEM MLB DL160 GEN8 YH",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+492,J9147-61201,"KIT 2910-48G SMO Support","KIT 2910-48G SMO Support",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+493,JG928-61001,"SP HP 1920-48G-PoE+ (370W) Switch","SP HP 1920-48G-PoE+ (370W) Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+494,581310-001,"SPS-DRV HD 450GB 10K 2.5 6G SAS HP","SPS-DRV HD 450GB 10K 2.5 6G SAS HP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+495,653953-001,"SPS-DRV HD 500GB 6G SAS 7.2 2.5 DP ML SC","SPS-DRV HD 500GB 6G SAS 7.2 2.5 DP ML SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+496,802275-001,"SPS-PCA SPI Board with Brackets","SPS-PCA SPI Board with Brackets",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+497,701535-001,"SPS-MEZZ PCIe G3 2p 20GbE KR ELX","SPS-MEZZ PCIe G3 2p 20GbE KR ELX",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+498,735518-001,"SPS-BD CPU W DRAWER","SPS-BD CPU W DRAWER",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+499,875539-001,"SPS-PCA RISER+cage x16LP","SPS-PCA RISER+cage x16LP",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+500,723581-001,"SPS Spooling Mechanism","SPS Spooling Mechanism",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+501,J9621-61001,"HP MSM466 Dual Radio 802.11n AP (AM)","HP MSM466 Dual Radio 802.11n AP (AM)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+502,J9772-61001,"HP 2530-48G-PoE+ Switch (Support Kit)","HP 2530-48G-PoE+ Switch (Support Kit)",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+503,3CR17250-91,"HP E5500-24G Switch","HP E5500-24G Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+504,J4903-69101,"HP SWITCH 2824","HP SWITCH 2824",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+505,665749-001,"SPS-HDD EVA 900GB 6G 10K SFF M6625 SAS","SPS-HDD EVA 900GB 6G 10K SFF M6625 SAS",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+506,J9650-61001,"HP MSM430 Dual Radio 802.11n AP (AM)","HP MSM430 Dual Radio 802.11n AP (AM)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+507,407747-001,"SPS-FAN, HOT-PLUG, 60 X 38MM","SPS-FAN, HOT-PLUG, 60 X 38MM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+508,759548-001,"SPS-DRV HDD 600GB 12G 15K 2.5 SAS ENT SC","SPS-DRV HDD 600GB 12G 15K 2.5 SAS ENT SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+509,777279-001,"SPS-PCA dl380 8-SFF Backplane 12Gbs","SPS-PCA dl380 8-SFF Backplane 12Gbs",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+510,819079-001,"SPS-DRV HD 4TB 12G 7.2K 3.5 SAS MDL SC","SPS-DRV HD 4TB 12G 7.2K 3.5 SAS MDL SC",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+511,J9534-61201,"SU,24-port Gig-T PoE+ v2 zl Module","SU,24-port Gig-T PoE+ v2 zl Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+512,766879-001,"SPS-PS 1U 12V 550W NON-HTPLG GEN9","SPS-PS 1U 12V 550W NON-HTPLG GEN9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+513,747358-001,"SPS-PCA System I/O BL660c Gen8 IVB","SPS-PCA System I/O BL660c Gen8 IVB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+514,588733-001,"SPS-PS 2450W 12V-OUT HTPLG HI-EFF","SPS-PS 2450W 12V-OUT HTPLG HI-EFF",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+515,J9535-61101,"HP 20-port GT PoE+/4-port SFP v2 zl M","HP 20-port GT PoE+/4-port SFP v2 zl M",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+516,785412-001,"SPS-DRV HD 300GB 12G 10K 2.5 SAS ENT","SPS-DRV HD 300GB 12G 10K 2.5 SAS ENT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+517,462918-001,"SPS-BD,CONTROLLER,SAS,RAID","SPS-BD,CONTROLLER,SAS,RAID",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+518,AM377-6901A,"SPS-BL8x0 i4 SYS BD Base Unit (Mod 0)","SPS-BL8x0 i4 SYS BD Base Unit (Mod 0)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+519,779095-001,"SPS-PCA Gen9 iLO dedicate NIC board","SPS-PCA Gen9 iLO dedicate NIC board",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+520,737571-001,"SPS-DRV HDD 300GB 12G 15K 3.5 SAS ENT DP","SPS-DRV HDD 300GB 12G 15K 3.5 SAS ENT DP",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+521,869728-001,"SPS-DRV HDD 4TB 12G 7.2K LFF SAS MDL","SPS-DRV HDD 4TB 12G 7.2K LFF SAS MDL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+522,453906-001,"SPS-DRV LTO4 SCSI W/Mod MSLG3","SPS-DRV LTO4 SCSI W/Mod MSLG3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+523,JG708-61101,"SP, 1420 24G Switch","SP, 1420 24G Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+524,754381-001,"SPS-PS 800W FS PlatinumPlus","SPS-PS 800W FS PlatinumPlus",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+525,AM426-69023,"SPS-CABLE, JLINK, 14"","SPS-CABLE, JLINK, 14"",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+526,JD362-61101,"HP A5500 150WAC Power Supply","HP A5500 150WAC Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+527,580643-001,"SPS-KVM SWITCH SVR CNSL G2 0x2x16","SPS-KVM SWITCH SVR CNSL G2 0x2x16",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+528,660184-001,"SPS-POWER SUPPLY 460W 1U HEPB","SPS-POWER SUPPLY 460W 1U HEPB",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+529,683821-001,"SPS-PCA MLB BL465c Gen8","SPS-PCA MLB BL465c Gen8",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+530,J4899-69401,"HP J4899B SWITCH 2650","HP J4899B SWITCH 2650",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+531,AB565-69002,"SPS-2GB DIMM","SPS-2GB DIMM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+532,AM328-69001,"SPS-DIMM,8GB PC3-10600R,512Mx4,Ro","SPS-DIMM,8GB PC3-10600R,512Mx4,Ro",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+533,AM327-69001,"SPS-DIMM,4GB PC3-10600R,512Mx4,RoHS","SPS-DIMM,4GB PC3-10600R,512Mx4,RoHS",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+534,J9581-61001,"HP 400W tl Power Supply","HP 400W tl Power Supply",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+535,664688-001,"SPS-DIMM 4GB PC3L 10600R 512Mx4 IPL","SPS-DIMM 4GB PC3L 10600R 512Mx4 IPL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+536,784622-001,"SPS-CBL PWR 8SFF/12LFF/4LFF + 24SFF Kit","SPS-CBL PWR 8SFF/12LFF/4LFF + 24SFF Kit",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+537,775400-001,"SPS-PCA dl380/dl360 Gen9 SYS I/O","SPS-PCA dl380/dl360 Gen9 SYS I/O",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+538,801949-001,"SPS-BD SYS MLB W TRAY DL560P IVB G8S","SPS-BD SYS MLB W TRAY DL560P IVB G8S",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+539,684956-001,"SPS-BD SYS I/O W/SUBPAN","SPS-BD SYS I/O W/SUBPAN",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+540,748740-001,"SPS-KVM Adapter USB","SPS-KVM Adapter USB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+541,780976-001,"SPS-FAN MODULE ASSY GEN9","SPS-FAN MODULE ASSY GEN9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+542,467654-001,"SPS-DIMM,4GB PC2-5300F,256Mx4,RoHS,LP","SPS-DIMM,4GB PC2-5300F,256Mx4,RoHS,LP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+543,639852-001,"SPS-PortAggr VC Flex-10/10D Module","SPS-PortAggr VC Flex-10/10D Module",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+544,J4812-69101,"12 PRT. MANAGED 10/100 SWTCH","12 PRT. MANAGED 10/100 SWTCH",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+545,508040-001,"SPS-DRV,HD,2TB,7.2K 3.5" 3G SATA HP MDL","SPS-DRV,HD,2TB,7.2K 3.5" 3G SATA HP MDL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+546,762453-001,"SPS-PRO E5-2683v3 14C 2.0GHz 120W","SPS-PRO E5-2683v3 14C 2.0GHz 120W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+547,J4868-69101,"HP J4868A SWITCH 2124","HP J4868A SWITCH 2124",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+548,732150-001,"SPS-BD SYS IO DL360p Gen8 IVB","SPS-BD SYS IO DL360p Gen8 IVB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+549,726719-B21,"HP 16GB DDR4-2133 CAS-15-15-15 REG DIMM","HP 16GB DDR4-2133 CAS-15-15-15 REG DIMM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+550,AB463-67103,"Replacement, Core I/O w/ VGA","Replacement, Core I/O w/ VGA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+551,774170-001,"SPS-MEMORY DIMM 8GB PC4-2133P-R 1Gx4","SPS-MEMORY DIMM 8GB PC4-2133P-R 1Gx4",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+552,785410-001,"SPS-DRV HD 300GB 12G 10K 2.5 SAS SC ENT","SPS-DRV HD 300GB 12G 10K 2.5 SAS SC ENT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+553,872772-001,"SPS-DRV HDD 4TB 6G 7.2K LFF SATA DS SC","SPS-DRV HDD 4TB 6G 7.2K LFF SATA DS SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+554,J8713-69001,"HP 1500W zl Power Supply","HP 1500W zl Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+555,P12103-001,"SPS-DRV SAS 300GB SFF HDD 15K SS7K","SPS-DRV SAS 300GB SFF HDD 15K SS7K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+556,653947-001,"SPS-DRV HD 1TB 6G SAS 7.2K 3.5 DP MDL SC","SPS-DRV HD 1TB 6G SAS 7.2K 3.5 DP MDL SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+557,633538-001,"SPS-BD CNTRL INT SAS SA P420 LP PCIe","SPS-BD CNTRL INT SAS SA P420 LP PCIe",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+558,774174-001,"SPS-MEMORY DIMM 32GB 4Rx4 PC4-2133L-15","SPS-MEMORY DIMM 32GB 4Rx4 PC4-2133L-15",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+559,J8697-60005,"REMOVABLE 4U FAN TRAY ASSY","REMOVABLE 4U FAN TRAY ASSY",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+560,683804-001,"SPS-Memory DIMM 4GB DDR2 A400","SPS-Memory DIMM 4GB DDR2 A400",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+561,AH337-67121,"SPS-PCA DVD BACKPLANE 6","SPS-PCA DVD BACKPLANE 6",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+562,404712-001,"SPS-DRV,HD,146G,U320,15K, HP","SPS-DRV,HD,146G,U320,15K, HP",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+563,404714-001,"SPS-DRV,HD,36GB,U320,15K,HP","SPS-DRV,HD,36GB,U320,15K,HP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+564,P02757-001,"SPS-BD SYS DL360 380 G9 BW2 W SUBPAN","SPS-BD SYS DL360 380 G9 BW2 W SUBPAN",P,1,1,2,1,GCN,0,G,10,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+565,468508-002,"SPS-SFP 8GB FC SHORT WAVE","SPS-SFP 8GB FC SHORT WAVE",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+566,842476-001,"SPS -PCA P1228 W/O ENCRYPTION","SPS -PCA P1228 W/O ENCRYPTION",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+567,HITX5541890-P,"SPS-HDU 300GB SAS 10K/2.5IN (P9500)","SPS-HDU 300GB SAS 10K/2.5IN (P9500)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+568,501536-001,"SPS-DIMM,8GB PC3-10600R,512Mx4,RoHS","SPS-DIMM,8GB PC3-10600R,512Mx4,RoHS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+569,660183-001,"SPS-POWER SUPPLY 750W 1U HEPB","SPS-POWER SUPPLY 750W 1U HEPB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+570,AH341-67001,"Replacement, XFM","Replacement, XFM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+571,HITX5541894-P,"SPS-HDU 300GB SAS 15K/2.5IN (P9500)","SPS-HDU 300GB SAS 15K/2.5IN (P9500)",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+572,J9830-61101,"Aruba 5400R 2750W PoE+ zl2 PSU","Aruba 5400R 2750W PoE+ zl2 PSU",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+573,508039-001,"SPS-DRV HD 1TB 7.2K 3.5 3G SATA NHP MDL","SPS-DRV HD 1TB 7.2K 3.5 3G SATA NHP MDL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+574,594887-001,"SPS-PROC WSM 2.4 80W E5620","SPS-PROC WSM 2.4 80W E5620",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+575,579229-001,"SPS-POWER SUPPLY 1200W PHB","SPS-POWER SUPPLY 1200W PHB",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+576,J9590-61001,"HP MSM460 Dual Radio 802.11n AP (AM)","HP MSM460 Dual Radio 802.11n AP (AM)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+577,457273-001,"HP 1TB 7.2K rpm Hot Plug SATA Midline","HP 1TB 7.2K rpm Hot Plug SATA Midline",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+578,JG653-61001,"SP, HP 425 Wireless 802.11n (AM) AP","SP, HP 425 Wireless 802.11n (AM) AP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+579,P0000752-001,"FAN ASSY 2X 80MM","FAN ASSY 2X 80MM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+580,P20074-001,"SPS-HD 1.2T 10K -SGSKBN-DIF 3P SS7&8K","SPS-HD 1.2T 10K -SGSKBN-DIF 3P SS7&8K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+581,406393-001,"SPS-PWR SUPPLY,575W","SPS-PWR SUPPLY,575W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+582,418411-002,"SPS-DRV LTO3 FC-4GB W/Mod MSLG3","SPS-DRV LTO3 FC-4GB W/Mod MSLG3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+583,489865-003,"SPS-SWITCH SAN 8/24 V3","SPS-SWITCH SAN 8/24 V3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+584,P06190-001,"SPS-DIMM 64GB PC4-2933Y-L 2Gx4 Kit ","SPS-DIMM 64GB PC4-2933Y-L 2Gx4 Kit ",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+585,P07884-001,"Systemboard HPE DL20 G10","Systemboard HPE DL20 G10",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+586,873103-001,"SPS-DRV 1.92TBSSD SFF SS8000 SD","SPS-DRV 1.92TBSSD SFF SS8000 SD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+587,706825-001,"SPS-DRV LTO6HH FC MSL DRIVE","SPS-DRV LTO6HH FC MSL DRIVE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+588,727386-001,"SPS-PCM 764W Assy without Battery Gold","SPS-PCM 764W Assy without Battery Gold",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+589,727389-001,"SPS-Memory DIMM 16GB DDR3 Control Cache","SPS-Memory DIMM 16GB DDR3 Control Cache",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+590,735511-001,"SPS-BD IO","SPS-BD IO",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+591,587224-001,"SPS-BD CNTRL SMART ARRAY P812 1G","SPS-BD CNTRL SMART ARRAY P812 1G",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+592,612269-001,"SPS CPU Heatsink","SPS CPU Heatsink",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+593,AB566-69002,"SPS-4GB DIMM","SPS-4GB DIMM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+594,591197-001,"SPS-BD CPU MEMORY WITH TRAY DL580G7","SPS-BD CPU MEMORY WITH TRAY DL580G7",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+595,3CR17253-91,"HP E5500-48G-PoE Switch","HP E5500-48G-PoE Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+596,780760-001,"SPS-PRO HSW E5-2698v3 16C 2.3GHz 135W","SPS-PRO HSW E5-2698v3 16C 2.3GHz 135W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+597,862128-001,"SPS-DRV HDD 1TB 6G 7,2K LFF SATA ","SPS-DRV HDD 1TB 6G 7,2K LFF SATA ",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+598,873036-001,"SPS-DRV HDD 1,2TB 12G 10K SFF SA","SPS-DRV HDD 1,2TB 12G 10K SFF SA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+599,J9092-61101,"HP 8200 zl Management Module","HP 8200 zl Management Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+600,591196-001,"SPS-BD SYSTEM WITH SUBPAN DL580G7","SPS-BD SYSTEM WITH SUBPAN DL580G7",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+601,816551-001,"SPS-PCA NIC PCIeG2x4 4p 1GbE RJ45","SPS-PCA NIC PCIeG2x4 4p 1GbE RJ45",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+602,836274-002,"SPS-PCA, NROC P204i-c SR M83C Ctrlr","SPS-PCA, NROC P204i-c SR M83C Ctrlr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+603,871040-004,"SPS-AROC P408i-a SR G10 XR/MPQ 8G LH","SPS-AROC P408i-a SR G10 XR/MPQ 8G LH",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+604,599668-001,"SPS-BD INTERPOSER DUAL ROT LCD","SPS-BD INTERPOSER DUAL ROT LCD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+605,AH339-6937A,"SPS-Proc 1,60/1.73GHz/20MB (DBS) 4c V3","SPS-Proc 1,60/1.73GHz/20MB (DBS) 4c V3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+606,416474-001,"SPS-DIMM,8GB PC2-5300 FBD,512Mx4","SPS-DIMM,8GB PC2-5300 FBD,512Mx4",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+607,511776-001,"SPS-BACKPLANE, POWER","SPS-BACKPLANE, POWER",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+608,410300-001,"SPS-BD, BCKPLN, HDD","SPS-BD, BCKPLN, HDD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+609,532149-001,"SPS-FAN, SYSTEM","SPS-FAN, SYSTEM",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+610,3C17265,"HP E5500-48G-PoE Power Supply","HP E5500-48G-PoE Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+611,403781-001,"SPS-Power Supply 1000W","SPS-Power Supply 1000W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+612,639173-001,"SPS-POWER SUPPLY 750W","SPS-POWER SUPPLY 750W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+613,683241-001,"SPS-PCM 580W ASSY","SPS-PCM 580W ASSY",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+614,708069-001,"SPS-PROCURVE 6120XG BLADE SWITCH R2","SPS-PROCURVE 6120XG BLADE SWITCH R2",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+615,454416-001,"SPS-DRV,HD,1TB,7.2K,1",FATA","SPS-DRV,HD,1TB,7.2K,1",FATA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+616,730702-001,"SPS- DRV MSA 600GB 6G SAS 10k 2.5 SFF","SPS- DRV MSA 600GB 6G SAS 10k 2.5 SFF",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+617,871346-001,"SPS- SN 6600B 32GB 45/24 FC SWITCH","SPS- SN 6600B 32GB 45/24 FC SWITCH",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+618,J9145-61201,"KIT 2910-24G SMO Support","KIT 2910-24G SMO Support",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+619,756487-001,"HPE CONTROLLER MODULE","HPE CONTROLLER MODULE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+620,684031-001,"SPS-DIMM 16GB PC3 12800R 1G x4 IPL","SPS-DIMM 16GB PC3 12800R 1G x4 IPL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+621,858552-001,"SPS-MLB System I/O BL660c Gen9 Speedbump","SPS-MLB System I/O BL660c Gen9 Speedbump",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+622,407355-001,"SPS-MAG RIGHT MSL G3","SPS-MAG RIGHT MSL G3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+623,489191-001,"SPS-BD, HBA, 82q DP FC PCIe","SPS-BD, HBA, 82q DP FC PCIe",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+624,684370-001,"SPS-PCA Enhanced Cache SA BRD-TO-BRD","SPS-PCA Enhanced Cache SA BRD-TO-BRD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+625,AD388-69001,"SPS-CPU, 1.6G/24MB","SPS-CPU, 1.6G/24MB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+626,"JW124A #AC4","PC-AC-NA NORTH AMERICAAC POWERT CORD","PC-AC-NA NORTH AMERICAAC POWERT CORD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+627,P06188-001,"SPS-DIMM 16GB PC4-2933Y-R 1Gx8 Kit","SPS-DIMM 16GB PC4-2933Y-R 1Gx8 Kit",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+628,P18478-001,"SPS-DRV SSD 960GB SFF SATA SC MU","SPS-DRV SSD 960GB SFF SATA SC MU",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+629,P21081-001,"SPS-DRV SSD 480GB SATA SFF RI SC","SPS-DRV SSD 480GB SATA SFF RI SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+630,756484-001,"SPS-Drive Enclosure 2U24 12G Assy","SPS-Drive Enclosure 2U24 12G Assy",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+631,P11741-001,"SPS - PCA CLX SYS I/O (TI","SPS - PCA CLX SYS I/O (TI",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+632,511777-001,"SPS-POWER SUPPLY, 460W","SPS-POWER SUPPLY, 460W",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+633,701534-001,"SPS-ALOM G3x8 2p 10GbE BCM57810s","SPS-ALOM G3x8 2p 10GbE BCM57810s",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+634,506012-001,"SPS-PROC,Nehalem EP 2.93Ghz, 8M, 95W","SPS-PROC,Nehalem EP 2.93Ghz, 8M, 95W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+635,872738-001,"SPS-DRV HDD 1.8TB 12G 10K SFF 512e DS SC","SPS-DRV HDD 1.8TB 12G 10K SFF 512e DS SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+636,613921-001,"SPS-HDD EVA 450GB 10K SFF 6G M6625 SAS","SPS-HDD EVA 450GB 10K SFF 6G M6625 SAS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+637,867911-001,"SPS-POWER SUPPLY 1400W DL","SPS-POWER SUPPLY 1400W DL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+638,416471-001,"SPS-DIMM,1GB PC2-5300 FBD,64Mx8","SPS-DIMM,1GB PC2-5300 FBD,64Mx8",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+639,AH339-67001,"Replacement, CPU Heatsink","Replacement, CPU Heatsink",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+640,J9087-61101,"Kit Support, E2610-24 PoE Switch","Kit Support, E2610-24 PoE Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+641,656244-001,"SPS-BD ETHERNET 10GB 2P 530 ADPTR","SPS-BD ETHERNET 10GB 2P 530 ADPTR",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+642,701527-001,"SPS-BLOM PCI3x8 2p 20G KR2BCM57840S","SPS-BLOM PCI3x8 2p 20G KR2BCM57840S",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+643,P48501-001,"SPS-DIMM,32GB PC5-4800B-R,2Gx8","SPS-DIMM,32GB PC5-4800B-R,2Gx8",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+644,307132-001,"SPS-BTRY,NIMH,3.6V,500MAH","SPS-BTRY,NIMH,3.6V,500MAH",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+645,398648-001,"SPS-BD BATTERY MOD 4X V500HTX","SPS-BD BATTERY MOD 4X V500HTX",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+646,462976-001,"SPS-BD BATTERY CHARGER MOD 4/V700HT OPT","SPS-BD BATTERY CHARGER MOD 4/V700HT OPT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+647,746962-001,"SPS-CBL Assy 40G QSFP+ to SFP+ Adapter","SPS-CBL Assy 40G QSFP+ to SFP+ Adapter",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+648,719212-001,"SPS-BD HP SN1100E 16GB","SPS-BD HP SN1100E 16GB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+649,863372-001,"SPS-SODIMM 16GB PC4-2400T-T 14GX8","SPS-SODIMM 16GB PC4-2400T-T 14GX8",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+650,881118-001,"SPS-DIMM,16GB PC3L-12800R,1Gx4,3","SPS-DIMM,16GB PC3L-12800R,1Gx4,3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+651,P18483-001,"SPS-DRV SSD 960GB SFF SATA ","SPS-DRV SSD 960GB SFF SATA ",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+652,P11781-001,"SPS-PCA SYS I/O W/SUBPAN CLX","SPS-PCA SYS I/O W/SUBPAN CLX",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+653,413512-001,"SPS-MAG 3 MAILSLOT","SPS-MAG 3 MAILSLOT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+654,708907-001,"SPS-BATTERY M4T28","SPS-BATTERY M4T28",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+655,J9537-61101,"HP 24-port SFP v2 zl Module","HP 24-port SFP v2 zl Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+656,782410-001,"SPS-LIOH Batt Backup StoreServ 20000","SPS-LIOH Batt Backup StoreServ 20000",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+657,801942-001,"SPS-BD SYS MLB W TRAY ML350P IVB G8S","SPS-BD SYS MLB W TRAY ML350P IVB G8S",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+658,691271-001,"SPS-BD SYS IO W SUBPAN","SPS-BD SYS IO W SUBPAN",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+659,J9574-61201,"SU, E3800-48G-PoE+-4SFP+ Switch","SU, E3800-48G-PoE+-4SFP+ Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+660,P11709-001,"SPS-PCA, MB + HANDLE CLX","SPS-PCA, MB + HANDLE CLX",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+661,662520-001,"SPS-FAN HOTPLUG","SPS-FAN HOTPLUG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+662,P05394-001,"SPS DRB HDD 600GB 15K LFF SAS","SPS DRB HDD 600GB 15K LFF SAS",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+663,700517-001,"SPS-FAN ASSY RH","SPS-FAN ASSY RH",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+664,718781-001,"SPS-BD SYS IO W SUBPAN HW","SPS-BD SYS IO W SUBPAN HW",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+665,P19926-001,"SPS-MB SYS I/O, w/Subpan","SPS-MB SYS I/O, w/Subpan",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+666,P03798-001,"HPE StoreServ 8000 ","HPE StoreServ 8000 ",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+667,866793-001,"SPS-PS, 1U 12V 800W HTPLG HE-T PLC","SPS-PS, 1U 12V 800W HTPLG HE-T PLC",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+668,AD374-2100A,"HP CPU ITANIUM2 1.6GHZ-24MB/533 DC MONTVALE PROCESSOR","HP CPU ITANIUM2 1.6GHZ-24MB/533 DC MONTVALE PROCESSOR",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+669,J9536-61201,"ProCurve switch zl 20P Gig-T PoE","ProCurve switch zl 20P Gig-T PoE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+670,P45955-001,"SPS-HDD 600GB SAS SFF 15K SGT KSTS SS8K","SPS-HDD 600GB SAS SFF 15K SGT KSTS SS8K",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+671,338022-001,"SPS-PWR SUPPLY,575W","SPS-PWR SUPPLY,575W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+672,723571-001,"SPS Expansion Module Chassis","SPS Expansion Module Chassis",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+673,723580-001,"SPS Robotic Assembly","SPS Robotic Assembly",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+674,AH342-67101,"SPS PC Board,  Mod0 Blade Assy","SPS PC Board,  Mod0 Blade Assy",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+675,JC772-61001,"SP A5900AF-48XG-4QSFP Switch","SP A5900AF-48XG-4QSFP Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+676,412488-001,"SPS-CHASSIS MSL6000CR","SPS-CHASSIS MSL6000CR",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+677,598167-001,"SPS-BD SYSTEM I/O G6 C2","SPS-BD SYSTEM I/O G6 C2",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+678,639410-001,"SPS-CHASSIS 2U24 6G SINGLE MIDPLANE","SPS-CHASSIS 2U24 6G SINGLE MIDPLANE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+679,AH342-69006,"SPS-Blade i4 System Board Base Unit","SPS-Blade i4 System Board Base Unit",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+680,AT101-69001,"SPS- PCA, rx2800 i4 System Board","SPS- PCA, rx2800 i4 System Board",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+681,J4900-69501,"HP J4900B SWITCH 2626","HP J4900B SWITCH 2626",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+682,J9265-69001,"HP 6600-24XG Switch","HP 6600-24XG Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+683,J9584-61001,"HP E3800-24SFP-2SFP+ Switch","HP E3800-24SFP-2SFP+ Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+684,JC612-61001,"HP A10508 Switch Chassis","HP A10508 Switch Chassis",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+685,411121-001,"Brocade 4/24 Storage Area Network (SAN) switch","Brocade 4/24 Storage Area Network (SAN) switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+686,653053-001,"Processor E7-4830 2.13GHz 8-Core Proces","Processor E7-4830 2.13GHz 8-Core Proces",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+687,697889-001,"SPS-BD HP 81E 8Gb SP PCI-e FC HBA","SPS-BD HP 81E 8Gb SP PCI-e FC HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+688,765869-001,"HP 2TB 6G SATA 7.2k 2.5 MDL 512E SC HD","HP 2TB 6G SATA 7.2k 2.5 MDL 512E SC HD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+689,777284-001,"SPS-PCA DL360/380 12-LFF SAS Backplane","SPS-PCA DL360/380 12-LFF SAS Backplane",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+690,813829-001,"SPS-PS 2650W 12VOUT 1U HTPLG RED HIEFF","SPS-PS 2650W 12VOUT 1U HTPLG RED HIEFF",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+691,834167-001,"SPS- Drive Kit: MSL LTO-7 FC","SPS- Drive Kit: MSL LTO-7 FC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+692,840137-001,"HPE 840137-001 10GbE Dual-Port 562T Network Adapter for ProLiant Gen10","HPE 840137-001 10GbE Dual-Port 562T Network Adapter for ProLiant Gen10",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+693,876143-001,"SPS-MSA 26gb SW FC SFP ","SPS-MSA 26gb SW FC SFP ",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+694,AH338-67004,"Replacement, I/O Tray assy","Replacement, I/O Tray assy",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+695,P00523-001,"SPS-Controller assy StoreServ 8200 MC","SPS-Controller assy StoreServ 8200 MC",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+696,P05319-001,"SPS-DRV SSD 240GB SFF SATA RI SC DS","SPS-DRV SSD 240GB SFF SATA RI SC DS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+697,P05321-001,"SPS-DRV SSD 960GB SFF SATA RI SC DS","SPS-DRV SSD 960GB SFF SATA RI SC DS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+698,P05322-001,"SPS-DRV SSD 1.92TB SFF SATA RI SC DS","SPS-DRV SSD 1.92TB SFF SATA RI SC DS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+699,P08572-001,"SPS-DRV SSD 1.92TB SFF SATA RI SC DS","SPS-DRV SSD 1.92TB SFF SATA RI SC DS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+700,P11612-001,"SPS-CPU CLX 5218 - 2.3GHz 125W 16C","SPS-CPU CLX 5218 - 2.3GHz 125W 16C",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+701,P11618-001,"SPS-CLX 6248 - 2.5GHz 150W 20C","SPS-CLX 6248 - 2.5GHz 150W 20C",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+702,P11620-001,"SPS-CLX 6254 - 3.1GHz 200W 18C","SPS-CLX 6254 - 3.1GHz 200W 18C",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+703,P20504-001,"SPS-DIMM,64GB PC4-3200AA-R,4Gx4","SPS-DIMM,64GB PC4-3200AA-R,4Gx4",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+704,P20065-001,"SPS-HD 600G 15K 12G-SGKSTN-DIF 3P SS7&8K","SPS-HD 600G 15K 12G-SGKSTN-DIF 3P SS7&8K",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+705,P29141-001,"SPS-32G SFP+ SWL 1Pk","SPS-32G SFP+ SWL 1Pk",P,1,1,2,1,GCN,0,G,7,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+706,493083-001,"SPS DRV HD 300GB SAS","SPS DRV HD 300GB SAS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+707,717426-001,"SPS-CAGE PCI DL360P SE","SPS-CAGE PCI DL360P SE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+708,730248-001,"SPS-PROC E5-2643v2 6C 3.5GHz 25M 130W","SPS-PROC E5-2643v2 6C 3.5GHz 25M 130W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+709,732660-001,"SPS - Fan Assy NHP4056 Dual Rtr Gen8","SPS - Fan Assy NHP4056 Dual Rtr Gen8",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+710,768080-001,"SPS-PCA FLEX FABRIC 10GB","SPS-PCA FLEX FABRIC 10GB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+711,785407-001,"SPS-DRV HD 300GB 12G 15K 2.5 SAS ENT","SPS-DRV HD 300GB 12G 15K 2.5 SAS ENT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+712,791919-001,"SPS-PRO E5-4655v3 6C 2.9GHz 30M 135W","SPS-PRO E5-4655v3 6C 2.9GHz 30M 135W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+713,862133-001,"SPS-DRV HDD 4TB 6G 7,2K LFF SATA","SPS-DRV HDD 4TB 6G 7,2K LFF SATA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+714,866966-001,"SPS-PCM 48 vdc,764w, old, ss8000","SPS-PCM 48 vdc,764w, old, ss8000",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+715,872735-001,"SPS-DRV HDD 300GB 12G 10K SFF SAS DS SC","SPS-DRV HDD 300GB 12G 10K SFF SAS DS SC",P,1,1,2,1,GCN,0,G,4,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+716,875055-001,"SPS-FAN CAGE","SPS-FAN CAGE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+717,878412-001,"SPS-SWITCH HOOD INTR","SPS-SWITCH HOOD INTR",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+718,J9735-61001,"SU, 2920/2930M 1m Stacking Cable","SU, 2920/2930M 1m Stacking Cable",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+719,JG313-61001,"HP A5500 8-port Gig-T Module","HP A5500 8-port Gig-T Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+720,P00441-001,"SPS-DRV HDD 2.4TB 12G SFF SAS 512e","SPS-DRV HDD 2.4TB 12G SFF SAS 512e",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+721,P04177-001,"SPS DIMM 32GB PC4 2666V R 2G X4","SPS DIMM 32GB PC4 2666V R 2G X4",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+722,613922-001,"SPS-HDD EVA 600GB 10K SFF 6G M6625 SAS","SPS-HDD EVA 600GB 10K SFF 6G M6625 SAS",P,1,1,2,1,GCN,0,G,4,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+723,683251-001,"SPS-MODULE I/O DRIVE SHELF","SPS-MODULE I/O DRIVE SHELF",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+724,701536-001,"SPS-BLOM PCIe G3 2p 20GbE KR ELX","SPS-BLOM PCIe G3 2p 20GbE KR ELX",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+725,708068-001,"SPS-PROCURVE 6120G/XG BLADE SWITCH R2","SPS-PROCURVE 6120G/XG BLADE SWITCH R2",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+726,792834-001,"SPS-PCA Ethernet 10Gb 2P 557SFP+Adaptr","SPS-PCA Ethernet 10Gb 2P 557SFP+Adaptr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+727,802513-001,"SPS-4x16 Gb 2Km ICL QSFP","SPS-4x16 Gb 2Km ICL QSFP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+728,809669-001,"SPS-PS 1U 250W V2 MULTI-OUT NON HTPLG DL","SPS-PS 1U 250W V2 MULTI-OUT NON HTPLG DL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+729,813174-001,"SPS HPE VC SE 40GB F8 MODULE","SPS HPE VC SE 40GB F8 MODULE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+730,869706-001,"SPS-BD ENHANCED SPI","SPS-BD ENHANCED SPI",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+731,A6847-67101,"REPLACEMENT PART 1000 SX GB","REPLACEMENT PART 1000 SX GB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+732,AB463-67006,"Rplmt-PCA, SAS Disk Backplane, Common","Rplmt-PCA, SAS Disk Backplane, Common",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+733,AB464-2002C,"ASSY, FAN, POWER, SAPPHIRE","ASSY, FAN, POWER, SAPPHIRE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+734,AB464-67006,"RPLMT, PCA, INTERCONNECT BOARD, RX6600","RPLMT, PCA, INTERCONNECT BOARD, RX6600",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+735,AB563-69001,"SPS-512MB DIMM","SPS-512MB DIMM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+736,AB567-69001,"SPS-Memory Module DDR2 8GB","SPS-Memory Module DDR2 8GB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+737,AD279-60001,"Adapter, PCI 64P Serial MUX","Adapter, PCI 64P Serial MUX",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+738,AD355-67001,"Replacement, HP PCIe 2-port 4Gb FC HBA","Replacement, HP PCIe 2-port 4Gb FC HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+739,AD393-67001,"RPL,HP PCIe 2p 4GB FC & 2P 1000SX Adptr","RPL,HP PCIe 2p 4GB FC & 2P 1000SX Adptr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+740,AD399-69014,"SPS-ICH Mezzanine Card without TPM","SPS-ICH Mezzanine Card without TPM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+741,AH232-6706A,"Replacement, BDB: SAS Disk Backplane","Replacement, BDB: SAS Disk Backplane",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+742,AM426-69019,"SPS-BEZEL, UPPER CPU TRAY, FRONT","SPS-BEZEL, UPPER CPU TRAY, FRONT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+743,P11742-001,"SPS- PCA CLX CPU Mezz (TI)","SPS- PCA CLX CPU Mezz (TI)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+744,120978-001,"SPS-BATTERY, NIMH,4.8V","SPS-BATTERY, NIMH,4.8V",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+745,660185-001,"SPS-POWER SUPPLY 1200W 1U HEPB","SPS-POWER SUPPLY 1200W 1U HEPB",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+746,871265-001,"SPS-BATT PACK MC 12W V3","SPS-BATT PACK MC 12W V3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+747,AD142-2100B,"HP server S5 DW224EV DVD ROM","HP server S5 DW224EV DVD ROM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+748,J9734-61001,"SU, 2920/2930M 0.5m Stacking Cable","SU, 2920/2930M 0.5m Stacking Cable",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+749,J9828-61001,"SU 5400R 700W PoE+ Power Supply","SU 5400R 700W PoE+ Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+750,JG538-61001,"HP 1910-24 Switch","HP 1910-24 Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+751,493799-001,"SPS-BD,SYSTEM I/O","SPS-BD,SYSTEM I/O",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+752,606019-001,"SPS-BD SYS IO ENHANCED","SPS-BD SYS IO ENHANCED",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+753,777687-001,"SPS-Heatsink CPU 1 BL460c","SPS-Heatsink CPU 1 BL460c",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+754,791918-001,"SPS-PRO E5-4627v3 10C 2.6GHz 25M 135W","SPS-PRO E5-4627v3 10C 2.6GHz 25M 135W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+755,AH395-67003,"Replacmnt, Assy Fan Module","Replacmnt, Assy Fan Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+756,AH423-67001,"SPS-BD, PCA,PCIe 2D FireMV2250 Graphics","SPS-BD, PCA,PCIe 2D FireMV2250 Graphics",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+757,J9993-61001,"SU 8p 1G/10GbE SFP+ v3 zl2 Mod","SU 8p 1G/10GbE SFP+ v3 zl2 Mod",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+758,J9996-61001,"SU 2p 40GbE QSFP+ v3 zl2 Mod","SU 2p 40GbE QSFP+ v3 zl2 Mod",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+759,440328-001,"SPS-REDUNDANT POWER SUPPLY MSL G3","SPS-REDUNDANT POWER SUPPLY MSL G3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+760,500242-001,"SPS-P/S 2400W 12V HTPLG","SPS-P/S 2400W 12V HTPLG",P,1,1,2,1,GCN,0,G,6,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+761,532235-001,"SPS-BD, SYSTEM I/O","SPS-BD, SYSTEM I/O",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+762,777290-001,"SPS-Heatsink ASSYSTD 105WDL380","SPS-Heatsink ASSYSTD 105WDL380",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+763,AT085-69026,"SPS-Processor 2.53GHz, 32M, 170W 8 core","SPS-Processor 2.53GHz, 32M, 170W 8 core",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+764,AT094-69001,"HP PCIe 2p 8Gb FC and 2p 1/10GbE Adtr","HP PCIe 2p 8Gb FC and 2p 1/10GbE Adtr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+765,J9560-61001,"ProCurve 1410-16G Switch","ProCurve 1410-16G Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+766,J9737-61001,"SU, X332 1050W 100-240AC/54DC PS","SU, X332 1050W 100-240AC/54DC PS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+767,JG540-61001,"HP 1910-48 Switch","HP 1910-48 Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+768,289544-001,"SPS-FAN,60X38MM,HTPLG","SPS-FAN,60X38MM,HTPLG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+769,683240-001,"SPS-Battery PCM 764W Assy","SPS-Battery PCM 764W Assy",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+770,708067-001,"SPS-PCA W BL680c Motherboard A R2","SPS-PCA W BL680c Motherboard A R2",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+771,729639-001,"SPS-BD SA 244P Cache Module 4Gx72 1866","SPS-BD SA 244P Cache Module 4Gx72 1866",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+772,762451-001,"SPS-PRO E5-2680v3 12C 2.5GHz 120W","SPS-PRO E5-2680v3 12C 2.5GHz 120W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+773,784629-001,"SPS-CA SAS 2SFF+8SFF+AROC/H240+P440 Kit","SPS-CA SAS 2SFF+8SFF+AROC/H240+P440 Kit",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+774,806558-001,"SPS-CA SAS BL660c","SPS-CA SAS BL660c",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+775,A6968AX,"PC2100 512MB registered DDR DIMM 1.2"","PC2100 512MB registered DDR DIMM 1.2"",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+776,J9165-61001,"HP 10GbE al Switch Interconnect Kit","HP 10GbE al Switch Interconnect Kit",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+777,J9307A,"HP PROCURVE 24P 10/100/100 POE + ZI MOD","HP PROCURVE 24P 10/100/100 POE + ZI MOD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+778,J9311-61201,"ProCurve 3500yl-48G PoE+ Switch SMO Supp","ProCurve 3500yl-48G PoE+ Switch SMO Supp",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+779,J9651-61001,"HP MSM430 Dual Radio 802.11n AP (WW)","HP MSM430 Dual Radio 802.11n AP (WW)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+780,P04447-001,"SPS POWER SUPPLY 1600W 12V DC 90","SPS POWER SUPPLY 1600W 12V DC 90",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+781,P11532-001,"SPS-PCS M/B CLX","SPS-PCS M/B CLX",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+782,P19256-001,"SPS-PCA, MLB, DL20 CFLR w/BBU","SPS-PCA, MLB, DL20 CFLR w/BBU",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+783,P40841-001,"SPS-PCA, M/B SUBPAN, SYS BRD+PCA Handle","SPS-PCA, M/B SUBPAN, SYS BRD+PCA Handle",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+784,461488-001,"SPS-ASSY, 4GB ARRAY CTLR","SPS-ASSY, 4GB ARRAY CTLR",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+785,708046-001,"SPS-MODULE  OA  DDR2  R2","SPS-MODULE  OA  DDR2  R2",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+786,754376-001,"SPS-PS 950W RPS 1U HTPLG","SPS-PS 950W RPS 1U HTPLG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+787,J9546-61001,"HP 8-port 10GBASE-T v2 zl Module","HP 8-port 10GBASE-T v2 zl Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+788,JG348-61101,"HP 1910-8G Switch","HP 1910-8G Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+789,P04749-001,"SPS HPE SYNERGY FLM NEXT GN","SPS HPE SYNERGY FLM NEXT GN",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+790,P21088-001,"HP G8-G10 480-GB 2.5 SATA 6G MU SSD","HP G8-G10 480-GB 2.5 SATA 6G MU SSD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+791,773064-001,"SPS-M/B HASWELL-R v2","SPS-M/B HASWELL-R v2",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+792,785341-001,"SPS- Synergy 20Gb Interconnect Link Mod","SPS- Synergy 20Gb Interconnect Link Mod",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+793,AD221-67103,"Replacement, HP PCIe 1port GigE + 1Port","Replacement, HP PCIe 1port GigE + 1Port",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+794,AT111-69001,"SPS HP Integrity CN1100E PCIe 2-port CNA","SPS HP Integrity CN1100E PCIe 2-port CNA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+795,J8693-61401,"ProCurve Switch 3500yl 48G PoE chassis","ProCurve Switch 3500yl 48G PoE chassis",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+796,J9021-69001,"HP 2810-24G Switch","HP 2810-24G Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+797,J9573-61101,"HP E3800-24G-2XG-PoE+ tl Switch","HP E3800-24G-2XG-PoE+ tl Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+798,J9728-61001,"HP 2920-48G Switch w/o PSU","HP 2920-48G Switch w/o PSU",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+799,P19587-001,"SPS-DRV 1.92TB SFF FE SSD PRIMERA 600","SPS-DRV 1.92TB SFF FE SSD PRIMERA 600",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+800,P45957-001,"SPS-HDD 600GB SAS SFF 10K SGT SKBS SS8K","SPS-HDD 600GB SAS SFF 10K SGT SKBS SS8K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+801,657885-002,"SPS-BATTERY MODULE NODE","SPS-BATTERY MODULE NODE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+802,683808-001,"SPS-CABLE NODE LINK PCIE A400","SPS-CABLE NODE LINK PCIE A400",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+803,723574-001,"SPS Expansion Module Controller","SPS Expansion Module Controller",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+804,735513-001,SPS-FAN,SPS-FAN,P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+805,768079-001,"SPS - Compact Flash Card","SPS - Compact Flash Card",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+806,780971-001,"SPS-PCA HDD 8SFF ASSY GEN9","SPS-PCA HDD 8SFF ASSY GEN9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+807,780993-001,"SPS-Storage Power Cable Kit ML350 Gen9","SPS-Storage Power Cable Kit ML350 Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+808,832514-B21,"1TB SAS drive - 12Gb/s transfer rate, 7,500 RPM,2.5in","1TB SAS drive - 12Gb/s transfer rate, 7,500 RPM,2.5in",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+809,834168-001,"HP 834168-001 6tb/15tb Storeever Msl Lto-7 Ultrium 15000 Sas Tape Library","HP 834168-001 6tb/15tb Storeever Msl Lto-7 Ultrium 15000 Sas Tape Library",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+810,844283-001,"SPS-HPE 2PAR 400GB MLC SSD","SPS-HPE 2PAR 400GB MLC SSD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+811,852718-001,"SPS BD PC PASS THRU ASSY R3","SPS BD PC PASS THRU ASSY R3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+812,P00522-001,"SPS CONTROLLER ASSY STORESERV 8450 MC","SPS CONTROLLER ASSY STORESERV 8450 MC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+813,P20071-001,"SPS-HD 600G 10K 12G-SGSKBN-DIF 3P SS7&8K","SPS-HD 600G 10K 12G-SGSKBN-DIF 3P SS7&8K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+814,656452-001,"SPS-HP QMH2572 8Gb FC HBA","SPS-HP QMH2572 8Gb FC HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+815,765873-001,"SPS-DRV 2 TB 12G 7,2K 2,5 SAS 512e","SPS-DRV 2 TB 12G 7,2K 2,5 SAS 512e",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+816,769743-001,"SPS-M/B ENHANCED DL320e v3","SPS-M/B ENHANCED DL320e v3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+817,777281-001,"SPS-PCA dl380 3-S x8 PCI-E Riser","SPS-PCA dl380 3-S x8 PCI-E Riser",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+818,780989-001,"SPS-FAN CAGE ML350 GEN9","SPS-FAN CAGE ML350 GEN9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+819,809813-001,"SPS-BOOT DRIVE SS 128G SATA M.2 SDX300","SPS-BOOT DRIVE SS 128G SATA M.2 SDX300",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+820,810774-001,"SPS-DRV 480GB SSD SAS MLC SFF SS8000 HT","SPS-DRV 480GB SSD SAS MLC SFF SS8000 HT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+821,836266-001,"SPS-PCA, E208i-p SR Gen10 Cntrlr","SPS-PCA, E208i-p SR Gen10 Cntrlr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+822,846740-001,"SPS-MEMORY DIMM 16GB PC4-2400T-R 1Gx4","SPS-MEMORY DIMM 16GB PC4-2400T-R 1Gx4",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+823,863373-001,"SPS-PS, 1U 1600W 12V HTPLG RED PL","SPS-PS, 1U 1600W 12V HTPLG RED PL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+824,875284-001,"SPS-FAN Mod H/Performance","SPS-FAN Mod H/Performance",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+825,875711-001,"SPS-CPU SKL Xeon-S 4110 2.1G 8c 85W","SPS-CPU SKL Xeon-S 4110 2.1G 8c 85W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+826,AD337-60001,"HP PCle, 1000BASE-T 2P adapter","HP PCle, 1000BASE-T 2P adapter",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+827,AD339-67001,"SPS-BD, PCIe, 1000Base-T, 4p Adptr","SPS-BD, PCIe, 1000Base-T, 4p Adptr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+828,J9580-61001,"HP 1000W PoE+ tl Power Supply","HP 1000W PoE+ tl Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+829,J9736-61001,"SU, 2920/2930M 3m Stacking Cable","SU, 2920/2930M 3m Stacking Cable",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+830,411099-001,"SPS-PWR SUPLY, 2250W, HTPLG","SPS-PWR SUPLY, 2250W, HTPLG",P,1,1,2,1,GCN,0,G,5,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+831,784961-001,"SPS-CA SATA","SPS-CA SATA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+832,489865-001,"SPS-SWITCH SAN 8/24 V3","SPS-SWITCH SAN 8/24 V3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+833,610724-001,"SPS-BD ADAPTER NC552m FLEX 10GbE DP","SPS-BD ADAPTER NC552m FLEX 10GbE DP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+834,659570-001,"SPS-DRV HD 2TB 7.2K 3.5 6G MDL NHP SATA","SPS-DRV HD 2TB 7.2K 3.5 6G MDL NHP SATA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+835,775403-001,"SPS-Heatsink Scr Down/Standrd DL360 Gen9","SPS-Heatsink Scr Down/Standrd DL360 Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+836,775404-001,"SPS-HEATSINK SCR DOWN H/EFFICIENCY DL360","SPS-HEATSINK SCR DOWN H/EFFICIENCY DL360",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+837,775427-001,"SPS-Cage ODD VGA/USB FRNT dl360 Gen9","SPS-Cage ODD VGA/USB FRNT dl360 Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+838,777288-001,"SPS-Systems Insight Display MODDL38x","SPS-Systems Insight Display MODDL38x",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+839,786579-001,"SPS-FLEX BAY 2SFF ODD USB/VGA DL380 Gen9","SPS-FLEX BAY 2SFF ODD USB/VGA DL380 Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+840,AH339-6934A,"SPS-Proc 1.6GHz/10MB(No DBS)2core v3","SPS-Proc 1.6GHz/10MB(No DBS)2core v3",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+841,J9358-61301,"HP MSM422 Access Point (US)","HP MSM422 Access Point (US)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+842,JC097-61201,"HP 5800 PoE Module","HP 5800 PoE Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+843,JC682-61001,"HP A58x0AF bck(pwr)-frt(ports) Fan Tray","HP A58x0AF bck(pwr)-frt(ports) Fan Tray",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+844,P08727-001,"SPS-DRV 7,68TB SSD SAS 2,5 SFF S","SPS-DRV 7,68TB SSD SAS 2,5 SFF S",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+845,656108-001,"SPS-DRV HD 1TB 6G SATA 7.2K 2.5 MDL SC","SPS-DRV HD 1TB 6G SATA 7.2K 2.5 MDL SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+846,749797-001,"SPS-BD SA P440 PCIe Cntrlr","SPS-BD SA P440 PCIe Cntrlr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+847,749997-001,"SPS-BD AROC H240ar HBA","SPS-BD AROC H240ar HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+848,782829-001,"SPS-PCA HBA 16Gb FC","SPS-PCA HBA 16Gb FC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+849,782833-001,"SPS-PCA MEZZ C Gen3 2p 20GbE","SPS-PCA MEZZ C Gen3 2p 20GbE",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+850,P21676-001,"SPS-DIMM,64GB PC4-3200AA-R,4Gx4","SPS-DIMM,64GB PC4-3200AA-R,4Gx4",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+851,817913-001,"SPS-Adapter FC 16Gb 4 Port (SS 8000","SPS-Adapter FC 16Gb 4 Port (SS 8000",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+852,853011-001,"SPS-SN1100Q 16Gb 2p FC HBA","SPS-SN1100Q 16Gb 2p FC HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+853,872516-001,"SPS-DRV SSD 1.6TB 6G SFF SATA WI-3 SC","SPS-DRV SSD 1.6TB 6G SFF SATA WI-3 SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+854,873035-001,"SPS-DRV HDD 600GB 12G 10K SFF SAS ST DS","SPS-DRV HDD 600GB 12G 10K SFF SAS ST DS",P,1,1,2,1,GCN,0,G,4,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+855,875077-001,"SPS-PWR Module W/O SID","SPS-PWR Module W/O SID",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+856,875565-001,"SPS-PWR/UID USB SFF STD","SPS-PWR/UID USB SFF STD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+857,AH395-67004,"Replacmnt, CPU Heat Sink","Replacmnt, CPU Heat Sink",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+858,P18477-001,"SPS-DRV SSD 480GB SFF SATA SC MU","SPS-DRV SSD 480GB SFF SATA SC MU",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+859,P21082-001,"SPS-DRV SSD 960GB SATA SFF RI SC","SPS-DRV SSD 960GB SATA SFF RI SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+860,P22585-001,"SPS-DRV SSD 400GB SFF SAS SC","SPS-DRV SSD 400GB SFF SAS SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+861,P24048-001,"SPS-PCA, 3 x16,Tri-modeRiser","SPS-PCA, 3 x16,Tri-modeRiser",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+862,P37171-001,"SPS-DRV SSD 800GB SFF SAS MU SC","SPS-DRV SSD 800GB SFF SAS MU SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+863,P37172-001,"SPS-DRV SSD 1.6TB SFF SAS MU SC","SPS-DRV SSD 1.6TB SFF SAS MU SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+864,P45959-001,"SPS-HDD 1.2TB SAS SFF 10K SGT SKBS SS8K","SPS-HDD 1.2TB SAS SFF 10K SGT SKBS SS8K",P,1,1,2,1,GCN,0,G,4,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+865,P49744-001,"SPS-DRV SSD 800GB SFF SAS MU DS SC","SPS-DRV SSD 800GB SFF SAS MU DS SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+866,P49746-001,"SPS-DRV SSD 1.6TB SFF SAS MU SC DS","SPS-DRV SSD 1.6TB SFF SAS MU SC DS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+867,488623-001,"SPS-BD, SYSTEM I/O","SPS-BD, SYSTEM I/O",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+868,711305-001,"SPS-HP QMH2672 16Gb FC HBA","SPS-HP QMH2672 16Gb FC HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+869,723583-001,"SPS Base Library Bezel with OCP","SPS Base Library Bezel with OCP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+870,807964-001,"SPS-MANAGER MODULE ENCLSURE","SPS-MANAGER MODULE ENCLSURE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+871,8121-0941,"PWR-CORD OPT-930 3-COND 2.5-M-LG ROHS","PWR-CORD OPT-930 3-COND 2.5-M-LG ROHS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+872,848147-001,"SPS-PCA P840ar x16 DL380/360","SPS-PCA P840ar x16 DL380/360",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+873,871040-002,"SPS-PCA, AROC P408i-0 SR M83C LH Ctrlr","SPS-PCA, AROC P408i-0 SR M83C LH Ctrlr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+874,P21677-001,"SPS-DIMM,128GB PC4-3200AA-L,4Gx4","SPS-DIMM,128GB PC4-3200AA-L,4Gx4",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+875,AB352-67003,"PCI-X 2-PORT GBE CORE CARD","PCI-X 2-PORT GBE CORE CARD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+876,J9420-69001,"HP MSM760 Mobility Controller","HP MSM760 Mobility Controller",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+877,P02424-001,"SPS-PCA, Netw Adapt MEZZ G3 2p 25/50 GB","SPS-PCA, Netw Adapt MEZZ G3 2p 25/50 GB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+878,P08271-001,"SPS PCA , MLB SY 480CLX ","SPS PCA , MLB SY 480CLX ",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+879,P18482-001,"SPS-DRV SSD 480GB SFF SATA SC RI","SPS-DRV SSD 480GB SFF SATA SC RI",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+880,P19928-001,"SPS-PCA, SYS I/O W/O NIC","SPS-PCA, SYS I/O W/O NIC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+881,461494-005,"SPS-ASSY, 4GB FC DISK SHELF IO","SPS-ASSY, 4GB FC DISK SHELF IO",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+882,670026-001,"SPS-Controller SA P220i INTEL BL DC","SPS-Controller SA P220i INTEL BL DC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+883,687456-001,"SPS- HEAT SINIK","SPS- HEAT SINIK",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+884,703521-001,"SPS-Drive HD 100GB 6G SAS 2.5in SLC SSD","SPS-Drive HD 100GB 6G SAS 2.5in SLC SSD",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+885,746470-001,"SPS-FAN HOLDER 2-3 W FAN 92 X 38mm","SPS-FAN HOLDER 2-3 W FAN 92 X 38mm",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+886,749796-001,"SPS-BD AROC P440ar Cntrlr","SPS-BD AROC P440ar Cntrlr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+887,775415-001,"SPS-Fan Module dl360 Gen9","SPS-Fan Module dl360 Gen9",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+888,775418-001,"SPS-SFF SID+Cables DL360 Gen9","SPS-SFF SID+Cables DL360 Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+889,777285-001,"SPS-Fan Module (STD) DL38x Gen9","SPS-Fan Module (STD) DL38x Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+890,777286-001,"SPS-Fan Module (High PERF) DL38x Gen9","SPS-Fan Module (High PERF) DL38x Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+891,784621-001,"SPS-CBL Mini SAS  8SFF Kit","SPS-CBL Mini SAS  8SFF Kit",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+892,873099-001,"SPS-DRV 1.92TB SSD SFF SS7000 SD","SPS-DRV 1.92TB SSD SFF SS7000 SD",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+893,AD193-69001,"PCI-X 1p 4GB FC & 1p 1000BT Adptr Exc Bd","PCI-X 1p 4GB FC & 1p 1000BT Adptr Exc Bd",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+894,AH338-2127E,"Assy, Cable Management Arm, Right","Assy, Cable Management Arm, Right",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+895,J9732-61001,"HP 2920 2-port 10GBASE-T Module","HP 2920 2-port 10GBASE-T Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+896,JG298-61001,"SP 5920AF-24XG Frt(prt)-Bk(pwr) Fn Tray","SP 5920AF-24XG Frt(prt)-Bk(pwr) Fn Tray",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+897,456978-001,"SPS-BD,MEZZ,8Gb BLc","SPS-BD,MEZZ,8Gb BLc",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+898,633542-001,"SPS-BD DDR3 MINI DIMM MOD 1Gx72","SPS-BD DDR3 MINI DIMM MOD 1Gx72",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+899,718292-001,"SPS-DRV HD 1.2TB 6G SAS 10K 2.5 DP SC","SPS-DRV HD 1.2TB 6G SAS 10K 2.5 DP SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+900,793132-001,"SPS-DRV 600GB HDD SAS 15K SFF SS7000","SPS-DRV 600GB HDD SAS 15K SFF SS7000",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+901,793446-001,"SPS-CBL 12Gb Mini-SAS HD AOC 10m","SPS-CBL 12Gb Mini-SAS HD AOC 10m",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+902,807967-001,"SPS - TB BK FAN KIT","SPS - TB BK FAN KIT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+903,810764-001,"SPS-DRV 600GB HDD SAS 15K SFF SS8000 HT","SPS-DRV 600GB HDD SAS 15K SFF SS8000 HT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+904,8121-0671,"PWR-CORD OPT-927 3-COND 2.5-M-LG ROHS","PWR-CORD OPT-927 3-COND 2.5-M-LG ROHS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+905,819078-001,"SPS-DRV HD 2TB 12G 7.2K 3.5 SAS MDL SC","SPS-DRV HD 2TB 12G 7.2K 3.5 SAS MDL SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+906,826013-001,"SPS-DRV 1TB HDD SAS 7.2K SFF SS7000 SG","SPS-DRV 1TB HDD SAS 7.2K SFF SS7000 SG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+907,862130-001,"SPS-DRV HDD 1TB 6G 7.2K LFF SATA MDL LP","SPS-DRV HDD 1TB 6G 7.2K LFF SATA MDL LP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+908,869918-001,"SPS-BD BLC VC FLEX 10GB 24P R2B","SPS-BD BLC VC FLEX 10GB 24P R2B",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+909,871856-001,"SPS-DRV 4TB HDD SAS 7.2K LFF SS7000 SG","SPS-DRV 4TB HDD SAS 7.2K LFF SS7000 SG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+910,871864-001,"SPS-DRV 4TB HDD SAS LFF SS8000 SG","SPS-DRV 4TB HDD SAS LFF SS8000 SG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+911,A7011-69001,SPS-Assembly,SPS-Assembly,P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+912,AH339-6938A,"SPS-Proc 1.73/1.86GHz/24MB (DBS)4core v2","SPS-Proc 1.73/1.86GHz/24MB (DBS)4core v2",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+913,AT085-69024,"SPS-Processor 2.40GHz, 32M, 4 core","SPS-Processor 2.40GHz, 32M, 4 core",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+914,JC681-61001,"HP A58x0AF 650W DC Power Supply","HP A58x0AF 650W DC Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+915,JG348-61001,"HP 1910-8G Switch","HP 1910-8G Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+916,P08719-001,"SPS-DRV 920GB SSD SAS 2.5 SFF SS7K","SPS-DRV 920GB SSD SAS 2.5 SFF SS7K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+917,P08720-001,"SPS-DRV 1.92TB SSD SAS 2.5 SFF SS7K SS8K","SPS-DRV 1.92TB SSD SAS 2.5 SFF SS7K SS8K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+918,P20062-001,"SPS-HD 300G 15K -SGKSTN-DIF 3P SS7&8K","SPS-HD 300G 15K -SGKSTN-DIF 3P SS7&8K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+919,P21092-001,"SPS-DRV SSD 480GB SATA LFF MU SCC","SPS-DRV SSD 480GB SATA LFF MU SCC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+920,P27027-001,"SPS-DR 4TB HDD SAS 7.2K LFF SS7K & 8K SG","SPS-DR 4TB HDD SAS 7.2K LFF SS7K & 8K SG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+921,P37647-001,"SPS-DRV 3.84TB SSD SAS 2.5 SFF SS7K SS8K","SPS-DRV 3.84TB SSD SAS 2.5 SFF SS7K SS8K",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+922,P26987-001,"SPS-PCA NIC Gen3 2P 10GbE BT Opn ","SPS-PCA NIC Gen3 2P 10GbE BT Opn ",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+923,723573-001,"SPS Base Library Controller","SPS Base Library Controller",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+924,784636-001,"SPS-PWRBKPLN PS 1U 900W HVDC","SPS-PWRBKPLN PS 1U 900W HVDC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+925,879438-001,"SPS-V6 SE 100GB F32 MODULE","SPS-V6 SE 100GB F32 MODULE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+926,AD396-2101C,"CPU Assembly, 1.67GHz 18M 667FSB","CPU Assembly, 1.67GHz 18M 667FSB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+927,J9739-61001,"HP X331 165W 100-240VAC to 12VDC PS","HP X331 165W 100-240VAC to 12VDC PS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+928,JC680-61101,"HP A58x0AF 650W AC Power Supply","HP A58x0AF 650W AC Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+929,JG241-61001,"HP A5500-24G-PoE+ EI Switch","HP A5500-24G-PoE+ EI Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+930,JG350-61101,"HP 1910-8G-PoE+ (180W) Switch","HP 1910-8G-PoE+ (180W) Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+931,466308-001,"SPS-BD MEZZ 10GbE KR VIRTUAL CONNECT","SPS-BD MEZZ 10GbE KR VIRTUAL CONNECT",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+932,664693-001,"SPS-DIMM 32GB PC3L 10600L 1Gx4 IPL","SPS-DIMM 32GB PC3L 10600L 1Gx4 IPL",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+933,689143-001,"SPS-Heat Sink CPU 1 and 2 BL660c Gen8","SPS-Heat Sink CPU 1 and 2 BL660c Gen8",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+934,750054-001,"SPS-BD PCIe H241 HBA","SPS-BD PCIe H241 HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+935,795117-001,"SPS-PCA SAS/SATA HDD BKPLN BL660c","SPS-PCA SAS/SATA HDD BKPLN BL660c",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+936,AB463-2005B,"FAN POWER, INTERNAL MEMORY","FAN POWER, INTERNAL MEMORY",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+937,J8726-61101,"MANAGEMENT MODULE","MANAGEMENT MODULE",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+938,JL085-61001,"SU X371 12VDC 240W 100-240VAC PS","SU X371 12VDC 240W 100-240VAC PS",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+939,JL321-61001,"SU, 2930M 48G with 1-slot Switch","SU, 2930M 48G with 1-slot Switch",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+940,653957-001,"SPS-DRV HD 600GB 6G SAS 10K 2.5 DP EN SC","SPS-DRV HD 600GB 6G SAS 10K 2.5 DP EN SC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+941,750795-001,"SPS-DRV 4TB HDD 6GSAS 7.2K LFF SS7000 SG","SPS-DRV 4TB HDD 6GSAS 7.2K LFF SS7000 SG",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+942,AH337-2025A,"CABLE, EXTERNAL USB","CABLE, EXTERNAL USB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+943,AM363-69001,"SPS-DIMM, 16GB PC3-8500R","SPS-DIMM, 16GB PC3-8500R",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+944,J4119-69001,"HP Switch RPS 4000/80","HP Switch RPS 4000/80",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+945,J4858-69201,"HP X121 1G SFP LC SX Transceiver","HP X121 1G SFP LC SX Transceiver",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+946,J9538-61101,"HP 8-port 10GbE SFP+ v2 zl Module","HP 8-port 10GbE SFP+ v2 zl Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+947,J9845-61001,"560 Wireless 802.11ac (AM) AP","560 Wireless 802.11ac (AM) AP",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+948,JC683-61001,"HP A58x0AF frt(ports)-bck(pwr) Fan Tray","HP A58x0AF frt(ports)-bck(pwr) Fan Tray",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+949,438249-001,"SPS-BD,CLVRTN,BL460c MLB","SPS-BD,CLVRTN,BL460c MLB",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+950,756817-001,"SPS-Controller Assy StoreServ 7200c","SPS-Controller Assy StoreServ 7200c",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+951,780428-001,"SPS-PCA dl360 8SFF Flex Bay HDD Bkpln","SPS-PCA dl360 8SFF Flex Bay HDD Bkpln",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+952,A6961-67111,"Replacement, U320 Dual Chan SCSI PCI","Replacement, U320 Dual Chan SCSI PCI",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+953,J8768-61101,"HP 24-port Gig-T vl Module","HP 24-port Gig-T vl Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+954,530929-001,"HP STORAGEWORKS D2700 12-LFF (China","HP STORAGEWORKS D2700 12-LFF (China",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+955,JG237-61001,"HP A5120-48G-PoE+ EI Switch","HP A5120-48G-PoE+ EI Switch",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+956,508966-001,"SPS-BD, SYSTEM I/O, G6","SPS-BD, SYSTEM I/O, G6",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+957,638829-001,"SPS-BATTERY MOD R5KVA","SPS-BATTERY MOD R5KVA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+958,861585-001,"SPS-BD SYS MLB BL460C GEN8 CC","SPS-BD SYS MLB BL460C GEN8 CC",P,1,1,2,1,GCN,0,G,2,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+959,J9726-61001,"HP 2920-24G Switch w/o PSU","HP 2920-24G Switch w/o PSU",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+960,J9987-61001,"SU 24p 10/100/1000BASE-T v3 zl2 Mod","SU 24p 10/100/1000BASE-T v3 zl2 Mod",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+961,644497-001,"SPS-PCA W BL680c Motherboard A","SPS-PCA W BL680c Motherboard A",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+962,414055-001,"SPS-MODULE, ONBRD ADM","SPS-MODULE, ONBRD ADM",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+963,617727-001,"SPS-BD NC553m 2P FLEX FABRIC CNA","SPS-BD NC553m 2P FLEX FABRIC CNA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+964,660091-001,"SPS-CA CAPACITOR 12in FL","SPS-CA CAPACITOR 12in FL",P,1,1,2,1,GCN,0,G,4,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+965,782430-001,"SPS-CA mini SAS 8SFF+P440 DL160 Gen9","SPS-CA mini SAS 8SFF+P440 DL160 Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+966,784960-001,"SPS-Brkt Mezz Card BL460/420","SPS-Brkt Mezz Card BL460/420",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+967,A9784-69003,"SPS-PCI-X 2GB FC & 1000B-T Adptr","SPS-PCI-X 2GB FC & 1000B-T Adptr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+968,AH337-67001,"Replacement, GPSM","Replacement, GPSM",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+969,AH339-6918A,"SPS-Proc 1.73/1.86GHz/24MB (DBS) 4core","SPS-Proc 1.73/1.86GHz/24MB (DBS) 4core",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+970,J9306-61011,"HP Procurve 1500-Watts PoE zl 110/220V AC Power Supply","HP Procurve 1500-Watts PoE zl 110/220V AC Power Supply",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+971,J9421-69001,"HP MSM760 Access Controller","HP MSM760 Access Controller",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+972,412211-001,"SPS-POWER SUPPLY 700W","SPS-POWER SUPPLY 700W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+973,748741-001,"SPS-KVM Adapter USB VM CAC","SPS-KVM Adapter USB VM CAC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+974,750000-001,"SPS-BD BROC P246br Cntrlr","SPS-BD BROC P246br Cntrlr",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+975,879540-001,"SPS-Composer, SY, 2","SPS-Composer, SY, 2",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+976,A6825-67101,"1 Port Gigabit Ethernet Adapter","1 Port Gigabit Ethernet Adapter",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+977,AH389-67002,"Replacement, OA Assembly, RoHS 2.04","Replacement, OA Assembly, RoHS 2.04",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+978,J8696-61201,"KIT SMO PROCURVE 620RPS/EPS","KIT SMO PROCURVE 620RPS/EPS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+979,P11566-001,"
+HPE ProLiant BL460c Gen10 Server Blade - Spare Parts","
+HPE ProLiant BL460c Gen10 Server Blade - Spare Parts",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+980,802277-001,"SPS-Memory Cartridge (12D)","SPS-Memory Cartridge (12D)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+981,496069-001,"SPS-BD,SYSTEM I/O, W/SUBPAN","SPS-BD,SYSTEM I/O, W/SUBPAN",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+982,643379-001,"SPS-BD CONTROLLER SMT ARRAY P822 2G","SPS-BD CONTROLLER SMT ARRAY P822 2G",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+983,739928-001,"SPS-DIMM 16GB PC3L-10600R 1Gx4 RoHS","SPS-DIMM 16GB PC3L-10600R 1Gx4 RoHS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+984,750781-001,"SPS-DRV 450GB 6GSAS 10K FE SFFSS7000FIPS","SPS-DRV 450GB 6GSAS 10K FE SFFSS7000FIPS",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+985,762446-001,"SPS-PRO E5-2630v3 8C 2.4GHz 85W","SPS-PRO E5-2630v3 8C 2.4GHz 85W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+986,779098-001,"SPS-PCA DL160 Gen9 CPU1 x16/x8 riser","SPS-PCA DL160 Gen9 CPU1 x16/x8 riser",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+987,830022-001,"SPS-Power Supply;PWRBP;GNRC;1U 240Vdc/AC","SPS-Power Supply;PWRBP;GNRC;1U 240Vdc/AC",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+988,J9306-61111,"1500W PoE+ zl Power Supply","1500W PoE+ zl Power Supply",P,1,1,2,1,GCN,0,G,3,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+989,683245-001,"SPS-NODE MODULE 7200 NO HBA","SPS-NODE MODULE 7200 NO HBA",P,1,1,2,1,GCN,0,G,0,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+990,735514-001,SPS-HEATSINK,SPS-HEATSINK,P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+991,JC682-61101,"HP A58x0AF bck(pwr)-frt(ports) Fan Tray","HP A58x0AF bck(pwr)-frt(ports) Fan Tray",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+992,P00520-001,"Controller assembly StoreServ 8450 MC.","Controller assembly StoreServ 8450 MC.",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+993,783290-001,"SPS-PWR/UID W/CBL 8SFF GEN9","SPS-PWR/UID W/CBL 8SFF GEN9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+994,835603-001,"SPS-CPU BDW E5-2640 v4 10C 2.4GHz 90W","SPS-CPU BDW E5-2640 v4 10C 2.4GHz 90W",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+995,AH338-67102,"SPS PCA I/O, OLR (OnLine Replacemt)Bay1","SPS PCA I/O, OLR (OnLine Replacemt)Bay1",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+996,J9423-61001,"HP MSM317 Access Device (WW)","HP MSM317 Access Device (WW)",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+997,J9827-61001,"SU 5400R zl Management Module","SU 5400R zl Management Module",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+998,749800-001,"SPS-BD BROC P244br PCIe CNTRL","SPS-BD BROC P244br PCIe CNTRL",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+999,749999-001,"SPS-BD BROC H244br HBA","SPS-BD BROC H244br HBA",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL
+1000,779101-001,"SPS-Front I/O module SFF DL160 Gen9","SPS-Front I/O module SFF DL160 Gen9",P,1,1,2,1,GCN,0,G,1,NULL,A,admin,"2026-01-01 00:00:00",NULL,NULL

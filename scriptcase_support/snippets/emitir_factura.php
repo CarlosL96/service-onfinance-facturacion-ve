@@ -129,18 +129,24 @@ $correo_cliente = !empty($email_adm) ? trim($email_adm) : (!empty($email_compras
 // Nota: en detalles extraemos precio_un_loc y total_loc (los montos locales convertidos a VES)
 // ya que la lista de ítems en el JSON de TFHKA debe ir siempre en moneda nacional.
 $sql_detalles = "SELECT 
-                    id,
-                    ofin009_id, -- Código del ítem
-                    descripcion,
-                    cantidad,
-                    precio_un_loc,
-                    total_loc,
-                    iva_loc,
-                    gravable_loc,
-                    exento_loc
-                 FROM ofcm021
-                 WHERE ofcm020_id = " . $factura_id . "
-                 ORDER BY id ASC";
+                    d.id,
+                    d.ofin009_id, -- Código del ítem
+                    d.descripcion,
+                    d.cantidad,
+                    d.precio_un_loc,
+                    d.total_loc,
+                    d.iva_loc,
+                    d.gravable_loc,
+                    d.exento_loc,
+                    i.tipo,        -- Para determinar bien o servicio
+                    d.total_usd,
+                    d.gravable_usd,
+                    d.total_eur,
+                    d.gravable_eur
+                 FROM ofcm021 d
+                 LEFT JOIN ofin009 i ON d.ofin009_id = i.codigo
+                 WHERE d.ofcm020_id = " . $factura_id . "
+                 ORDER BY d.id ASC";
 
 sc_lookup(ds_detalles, $sql_detalles);
 
@@ -152,6 +158,17 @@ if (empty({ds_detalles}) || {ds_detalles} === false) {
 $detalles_items = [];
 $linea_count = 1;
 
+$has_igtf = false;
+$igtf_amount_loc = 0.0;
+$igtf_base_loc = 0.0;
+$igtf_exento_loc = 0.0;
+
+$igtf_amount_usd = 0.0;
+$igtf_base_usd = 0.0;
+
+$igtf_amount_eur = 0.0;
+$igtf_base_eur = 0.0;
+
 foreach ({ds_detalles} as $row) {
     $item_id         = $row[0];
     $codigo_item     = $row[1];
@@ -162,6 +179,31 @@ foreach ({ds_detalles} as $row) {
     $iva_loc         = (float)$row[6];
     $gravable_loc    = (float)$row[7];
     $exento_loc      = (float)$row[8];
+    $item_tipo       = $row[9];
+    $total_usd       = (float)$row[10];
+    $gravable_usd    = (float)$row[11];
+    $total_eur       = (float)$row[12];
+    $gravable_eur    = (float)$row[13];
+    
+    // Si la línea es de IGTF, la extraemos de los detalles y la consolidamos en los totales
+    if (strpos($codigo_item, '*IGT') === 0) {
+        $has_igtf = true;
+        
+        $igtf_amount_loc += $total_loc;
+        $igtf_base_loc   += $gravable_loc;
+        $igtf_exento_loc += $exento_loc;
+        
+        $igtf_amount_usd += $total_usd;
+        $igtf_base_usd   += $gravable_usd;
+        
+        $igtf_amount_eur += $total_eur;
+        $igtf_base_eur   += $gravable_eur;
+        
+        continue; // Excluir de DetallesItems
+    }
+    
+    // Determinar si es Bien o Servicio (tipo = 'S' -> Servicio (2), otro -> Bien (1))
+    $ind_bien_servicio = ($item_tipo === 'S') ? '2' : '1';
     
     // Calcular alícuota de IVA dinámicamente basándonos en los montos calculados por el ERP
     if ($gravable_loc > 0 && $iva_loc > 0) {
@@ -174,7 +216,7 @@ foreach ({ds_detalles} as $row) {
     
     $detalles_items[] = [
         "NumeroLinea" => (string)$linea_count,
-        "IndicadorBienoServicio" => "1", // 1=Bien por defecto (ajustable)
+        "IndicadorBienoServicio" => $ind_bien_servicio,
         "Descripcion" => trim(preg_replace('/\s+/', ' ', $descripcion)), // Sanitizar saltos de línea
         "Cantidad" => number_format($cantidad, 2, '.', ''),
         "UnidadMedida" => "UNI",
@@ -189,6 +231,34 @@ foreach ({ds_detalles} as $row) {
 }
 
 
+
+// 3. AJUSTAR LOS TOTALES CONSOLIDANDO EL IGTF SI CORRESPONDE (EN BOLÍVARES)
+$monto_gravado_ves   = (float)$monto_gravado - $igtf_base_loc;
+$monto_exento_ves    = (float)$monto_exento - $igtf_exento_loc;
+$monto_subtotal_ves  = (float)$monto_subtotal - $igtf_amount_loc;
+$monto_total_con_iva = (float)$monto_total - $igtf_amount_loc; // montoTotalConIVA (excluye IGTF)
+$monto_total_pagar   = (float)$monto_total; // totalAPagar (incluye IGTF)
+
+$impuestos_subtotal_ves = [];
+if ($monto_gravado_ves > 0) {
+    $impuestos_subtotal_ves[] = [
+        "CodigoTotalImp" => "G",
+        "AlicuotaImp" => "16.00",
+        "BaseImponibleImp" => number_format($monto_gravado_ves, 2, '.', ''),
+        "ValorTotalImp" => number_format((float)$monto_iva, 2, '.', '')
+    ];
+}
+
+// Inyectar IGTF en VES si existe
+if ($has_igtf && $igtf_amount_loc > 0) {
+    $base_igtf_calculada = ($igtf_base_loc > 0) ? $igtf_base_loc : round($igtf_amount_loc / 0.03, 2);
+    $impuestos_subtotal_ves[] = [
+        "CodigoTotalImp" => "IGTF",
+        "AlicuotaImp" => "3.00",
+        "BaseImponibleImp" => number_format($base_igtf_calculada, 2, '.', ''),
+        "ValorTotalImp" => number_format($igtf_amount_loc, 2, '.', '')
+    ];
+}
 
 // 4. CONSTRUIR NODO DE COMPRADOR DINÁMICO
 $comprador_payload = [
@@ -222,26 +292,19 @@ $payload = [
             "Comprador" => $comprador_payload,
             "Totales" => [
                 "NroItems" => (string)count($detalles_items),
-                "MontoGravadoTotal" => number_format((float)$monto_gravado, 2, '.', ''),
-                "MontoExentoTotal" => number_format((float)$monto_exento, 2, '.', ''),
-                "Subtotal" => number_format((float)$monto_subtotal, 2, '.', ''),
+                "MontoGravadoTotal" => number_format($monto_gravado_ves, 2, '.', ''),
+                "MontoExentoTotal" => number_format($monto_exento_ves, 2, '.', ''),
+                "Subtotal" => number_format($monto_subtotal_ves, 2, '.', ''),
                 "TotalIVA" => number_format((float)$monto_iva, 2, '.', ''),
-                "MontoTotalConIVA" => number_format((float)$monto_total, 2, '.', ''),
-                "TotalAPagar" => number_format((float)$monto_total, 2, '.', ''),
-                "ImpuestosSubtotal" => [
-                    [
-                        "CodigoTotalImp" => "G",
-                        "AlicuotaImp" => "16.00",
-                        "BaseImponibleImp" => number_format((float)$monto_gravado, 2, '.', ''),
-                        "ValorTotalImp" => number_format((float)$monto_iva, 2, '.', '')
-                    ]
-                ],
+                "MontoTotalConIVA" => number_format($monto_total_con_iva, 2, '.', ''),
+                "TotalAPagar" => number_format($monto_total_pagar, 2, '.', ''),
+                "ImpuestosSubtotal" => $impuestos_subtotal_ves,
                 "FormasPago" => [
                     [
                         "Descripcion" => "Efectivo",
                         "Fecha" => $fecha_emision,
                         "Forma" => "01",
-                        "Monto" => number_format((float)$monto_total, 2, '.', ''),
+                        "Monto" => number_format($monto_total_pagar, 2, '.', ''),
                         "Moneda" => "VES",
                         "TipoCambio" => "0.0000"
                     ]
@@ -263,28 +326,46 @@ if ($moneda_trn === 'USD') {
     $monto_gravado_u  = (float){ds_cabecera}[0][21];
     $monto_exento_u   = (float){ds_cabecera}[0][22];
     
+    // Ajustar montos USD restando el IGTF
+    $monto_gravado_u_net   = $monto_gravado_u - $igtf_base_usd;
+    $monto_exento_u_net    = $monto_exento_u; 
+    $monto_subtotal_u_net  = $monto_subtotal_u - $igtf_amount_usd;
+    $monto_total_u_con_iva = $monto_total_u - $igtf_amount_usd;
+    $monto_total_u_pagar   = $monto_total_u;
+    
     $impuestos_subtotal_otra = [];
-    if ($monto_gravado_u > 0) {
+    if ($monto_gravado_u_net > 0) {
         $impuestos_subtotal_otra[] = [
             "CodigoTotalImp" => "G",
             "AlicuotaImp" => "16.00",
-            "BaseImponibleImp" => number_format($monto_gravado_u, 2, '.', ''),
+            "BaseImponibleImp" => number_format($monto_gravado_u_net, 2, '.', ''),
             "ValorTotalImp" => number_format($monto_iva_u, 2, '.', '')
+        ];
+    }
+    
+    // Inyectar IGTF en USD si existe
+    if ($has_igtf && $igtf_amount_usd > 0) {
+        $base_igtf_calculada_usd = ($igtf_base_usd > 0) ? $igtf_base_usd : round($igtf_amount_usd / 0.03, 2);
+        $impuestos_subtotal_otra[] = [
+            "CodigoTotalImp" => "IGTF",
+            "AlicuotaImp" => "3.00",
+            "BaseImponibleImp" => number_format($base_igtf_calculada_usd, 2, '.', ''),
+            "ValorTotalImp" => number_format($igtf_amount_usd, 2, '.', '')
         ];
     }
     
     $totales_otra_moneda = [
         "moneda" => "USD",
         "tipoCambio" => number_format($tasa_cambio, 4, '.', ''),
-        "montoGravadoTotal" => number_format($monto_gravado_u, 2, '.', ''),
-        "montoExentoTotal" => number_format($monto_exento_u, 2, '.', ''),
+        "montoGravadoTotal" => number_format($monto_gravado_u_net, 2, '.', ''),
+        "montoExentoTotal" => number_format($monto_exento_u_net, 2, '.', ''),
         "MontoPercibidoTotal" => "0.00",
-        "subtotal" => number_format($monto_subtotal_u, 2, '.', ''),
-        "totalAPagar" => number_format($monto_total_u, 2, '.', ''),
+        "subtotal" => number_format($monto_subtotal_u_net, 2, '.', ''),
+        "totalAPagar" => number_format($monto_total_u_pagar, 2, '.', ''),
         "totalIVA" => number_format($monto_iva_u, 2, '.', ''),
-        "montoTotalIVAyOTI" => number_format($monto_total_u, 2, '.', ''),
+        "montoTotalIVAyOTI" => number_format($monto_total_u_pagar, 2, '.', ''),
         "MontoTotalOTI" => "0.00",
-        "montoTotalConIVA" => number_format($monto_total_u, 2, '.', ''),
+        "montoTotalConIVA" => number_format($monto_total_u_con_iva, 2, '.', ''),
         "totalDescuento" => "0.00",
         "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];
@@ -296,28 +377,46 @@ if ($moneda_trn === 'USD') {
     $monto_exento_e   = (float){ds_cabecera}[0][27];
     $tasa_cambio_e    = (float){ds_cabecera}[0][28];
     
+    // Ajustar montos EUR restando el IGTF
+    $monto_gravado_e_net   = $monto_gravado_e - $igtf_base_eur;
+    $monto_exento_e_net    = $monto_exento_e;
+    $monto_subtotal_e_net  = $monto_subtotal_e - $igtf_amount_eur;
+    $monto_total_e_con_iva = $monto_total_e - $igtf_amount_eur;
+    $monto_total_e_pagar   = $monto_total_e;
+    
     $impuestos_subtotal_otra = [];
-    if ($monto_gravado_e > 0) {
+    if ($monto_gravado_e_net > 0) {
         $impuestos_subtotal_otra[] = [
             "CodigoTotalImp" => "G",
             "AlicuotaImp" => "16.00",
-            "BaseImponibleImp" => number_format($monto_gravado_e, 2, '.', ''),
+            "BaseImponibleImp" => number_format($monto_gravado_e_net, 2, '.', ''),
             "ValorTotalImp" => number_format($monto_iva_e, 2, '.', '')
+        ];
+    }
+    
+    // Inyectar IGTF en EUR si existe
+    if ($has_igtf && $igtf_amount_eur > 0) {
+        $base_igtf_calculada_eur = ($igtf_base_eur > 0) ? $igtf_base_eur : round($igtf_amount_eur / 0.03, 2);
+        $impuestos_subtotal_otra[] = [
+            "CodigoTotalImp" => "IGTF",
+            "AlicuotaImp" => "3.00",
+            "BaseImponibleImp" => number_format($base_igtf_calculada_eur, 2, '.', ''),
+            "ValorTotalImp" => number_format($igtf_amount_eur, 2, '.', '')
         ];
     }
     
     $totales_otra_moneda = [
         "moneda" => "EUR",
         "tipoCambio" => number_format($tasa_cambio_e, 4, '.', ''),
-        "montoGravadoTotal" => number_format($monto_gravado_e, 2, '.', ''),
-        "montoExentoTotal" => number_format($monto_exento_e, 2, '.', ''),
+        "montoGravadoTotal" => number_format($monto_gravado_e_net, 2, '.', ''),
+        "montoExentoTotal" => number_format($monto_exento_e_net, 2, '.', ''),
         "MontoPercibidoTotal" => "0.00",
-        "subtotal" => number_format($monto_subtotal_e, 2, '.', ''),
-        "totalAPagar" => number_format($monto_total_e, 2, '.', ''),
+        "subtotal" => number_format($monto_subtotal_e_net, 2, '.', ''),
+        "totalAPagar" => number_format($monto_total_e_pagar, 2, '.', ''),
         "totalIVA" => number_format($monto_iva_e, 2, '.', ''),
-        "montoTotalIVAyOTI" => number_format($monto_total_e, 2, '.', ''),
+        "montoTotalIVAyOTI" => number_format($monto_total_e_pagar, 2, '.', ''),
         "MontoTotalOTI" => "0.00",
-        "montoTotalConIVA" => number_format($monto_total_e, 2, '.', ''),
+        "montoTotalConIVA" => number_format($monto_total_e_con_iva, 2, '.', ''),
         "totalDescuento" => "0.00",
         "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];
