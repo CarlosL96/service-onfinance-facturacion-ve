@@ -10,86 +10,7 @@
  * =================================================================================
  */
 
-// REGISTRO DE LA FUNCIÓN DE SOPORTE PARA NÚMEROS A LETRAS
-if (!function_exists('numeroALetras')) {
-    function numeroALetras($number, $moneda_nombre, $fraccion_nombre) {
-        $ones = array("", "UN", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ", "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISEIS", "DIECISIETE", "DIECIOCHO", "DIECINUEVE");
-        $tens = array("", "", "VEINTE", "TREINTA", "CUARENTA", "CINCUENTA", "SESENTA", "SETENTA", "OCHENTA", "NOVENTA");
-        $hundreds = array("", "CIENTO", "DOSCIENTOS", "TRESCIENTOS", "CUATROCIENTOS", "QUINIENTOS", "SEISCIENTOS", "SETECIENTOS", "OCHOCIENTOS", "NOVECIENTOS");
-        
-        $number = round((float)$number, 2);
-        $parts = explode('.', sprintf("%0.2f", $number));
-        $entero = (int)$parts[0];
-        $decimal = isset($parts[1]) ? (int)$parts[1] : 0;
-        
-        $convert_group = function($n) use ($ones, $tens, $hundreds) {
-            $res = "";
-            $h = (int)($n / 100);
-            $d = (int)(($n % 100) / 10);
-            $u = $n % 10;
-            
-            if ($h > 0) {
-                if ($h == 1 && $d == 0 && $u == 0) {
-                    $res .= "CIEN ";
-                } else {
-                    $res .= $hundreds[$h] . " ";
-                }
-            }
-            if ($d > 0) {
-                if ($d == 1) {
-                    $res .= $ones[10 + $u] . " ";
-                    return $res;
-                } elseif ($d == 2 && $u == 0) {
-                    $res .= "VEINTE ";
-                } elseif ($d == 2) {
-                    $res .= "VEINTI" . $ones[$u] . " ";
-                } else {
-                    $res .= $tens[$d] . " ";
-                    if ($u > 0) {
-                        $res .= "Y " . $ones[$u] . " ";
-                    }
-                }
-            } elseif ($u > 0) {
-                $res .= $ones[$u] . " ";
-            }
-            return $res;
-        };
-        
-        if ($entero == 0) {
-            $texto_entero = "CERO";
-        } else {
-            $texto_entero = "";
-            // Millones
-            $millones = (int)($entero / 1000000);
-            $resto = $entero % 1000000;
-            if ($millones > 0) {
-                if ($millones == 1) {
-                    $texto_entero .= "UN MILLON ";
-                } else {
-                    $texto_entero .= $convert_group($millones) . "MILLONES ";
-                }
-            }
-            // Miles
-            $miles = (int)($resto / 1000);
-            $resto = $resto % 1000;
-            if ($miles > 0) {
-                if ($miles == 1) {
-                    $texto_entero .= "MIL ";
-                } else {
-                    $texto_entero .= $convert_group($miles) . "MIL ";
-                }
-            }
-            // Centenas
-            if ($resto > 0) {
-                $texto_entero .= $convert_group($resto);
-            }
-        }
-        
-        $texto_decimal = $decimal > 0 ? $convert_group($decimal) : "CERO";
-        
-        return trim($texto_entero) . " " . $moneda_nombre . " CON " . trim($texto_decimal) . " " . $fraccion_nombre;
-    }
-}
+
 
 // 1. CONSULTAR CABECERA DE LA FACTURA (ofcm020) Y CLIENTE (ofcm001)
 $sql_cabecera = "SELECT 
@@ -264,8 +185,7 @@ foreach ({ds_detalles} as $row) {
     $linea_count++;
 }
 
-// 3. GENERAR REPRESENTACIÓN EN LETRAS DEL MONTO EN BOLÍVARES (VES)
-$monto_letras_ves = numeroALetras($monto_total, "BOLIVARES", "CENTIMOS");
+
 
 // 4. CONSTRUIR NODO DE COMPRADOR DINÁMICO
 $comprador_payload = [
@@ -305,7 +225,6 @@ $payload = [
                 "TotalIVA" => number_format((float)$monto_iva, 2, '.', ''),
                 "MontoTotalConIVA" => number_format((float)$monto_total, 2, '.', ''),
                 "TotalAPagar" => number_format((float)$monto_total, 2, '.', ''),
-                "MontoEnLetras" => $monto_letras_ves,
                 "ImpuestosSubtotal" => [
                     [
                         "CodigoTotalImp" => "G",
@@ -341,8 +260,6 @@ if ($moneda_trn === 'USD') {
     $monto_gravado_u  = (float){ds_cabecera}[0][21];
     $monto_exento_u   = (float){ds_cabecera}[0][22];
     
-    $monto_letras_usd = numeroALetras($monto_total_u, "DOLARES", "CENTAVOS");
-    
     $impuestos_subtotal_otra = [];
     if ($monto_gravado_u > 0) {
         $impuestos_subtotal_otra[] = [
@@ -365,7 +282,6 @@ if ($moneda_trn === 'USD') {
         "montoTotalIVAyOTI" => number_format($monto_total_u, 2, '.', ''),
         "MontoTotalOTI" => "0.00",
         "montoTotalConIVA" => number_format($monto_total_u, 2, '.', ''),
-        "montoEnLetras" => $monto_letras_usd,
         "totalDescuento" => "0.00",
         "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];
@@ -376,8 +292,6 @@ if ($moneda_trn === 'USD') {
     $monto_gravado_e  = (float){ds_cabecera}[0][26];
     $monto_exento_e   = (float){ds_cabecera}[0][27];
     $tasa_cambio_e    = (float){ds_cabecera}[0][28];
-    
-    $monto_letras_eur = numeroALetras($monto_total_e, "EUROS", "CENTAVOS");
     
     $impuestos_subtotal_otra = [];
     if ($monto_gravado_e > 0) {
@@ -401,7 +315,6 @@ if ($moneda_trn === 'USD') {
         "montoTotalIVAyOTI" => number_format($monto_total_e, 2, '.', ''),
         "MontoTotalOTI" => "0.00",
         "montoTotalConIVA" => number_format($monto_total_e, 2, '.', ''),
-        "montoEnLetras" => $monto_letras_eur,
         "totalDescuento" => "0.00",
         "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];
