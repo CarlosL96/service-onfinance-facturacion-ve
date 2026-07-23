@@ -1,7 +1,7 @@
 <?php
 /**
  * =================================================================================
- * SNIPPET DE INTEGRACIÓN - EMISIÓN DESDE SCRIPTCASE CON TABLAS REALES (ofcm020/ofcm021/ofcm001)
+ * SNIPPET DE INTEGRACIÓN - EMISIÓN DESDE SCRIPTCASE CON MULTIDIVISA (VEB/USD/EUR)
  * =================================================================================
  * Este código debe colocarse en el Evento correspondiente (botón PHP) de tu
  * aplicación de Scriptcase.
@@ -10,25 +10,129 @@
  * =================================================================================
  */
 
+// REGISTRO DE LA FUNCIÓN DE SOPORTE PARA NÚMEROS A LETRAS
+if (!function_exists('numeroALetras')) {
+    function numeroALetras($number, $moneda_nombre, $fraccion_nombre) {
+        $ones = array("", "UN", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ", "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISEIS", "DIECISIETE", "DIECIOCHO", "DIECINUEVE");
+        $tens = array("", "", "VEINTE", "TREINTA", "CUARENTA", "CINCUENTA", "SESENTA", "SETENTA", "OCHENTA", "NOVENTA");
+        $hundreds = array("", "CIENTO", "DOSCIENTOS", "TRESCIENTOS", "CUATROCIENTOS", "QUINIENTOS", "SEISCIENTOS", "SETECIENTOS", "OCHOCIENTOS", "NOVECIENTOS");
+        
+        $number = round((float)$number, 2);
+        $parts = explode('.', sprintf("%0.2f", $number));
+        $entero = (int)$parts[0];
+        $decimal = isset($parts[1]) ? (int)$parts[1] : 0;
+        
+        $convert_group = function($n) use ($ones, $tens, $hundreds) {
+            $res = "";
+            $h = (int)($n / 100);
+            $d = (int)(($n % 100) / 10);
+            $u = $n % 10;
+            
+            if ($h > 0) {
+                if ($h == 1 && $d == 0 && $u == 0) {
+                    $res .= "CIEN ";
+                } else {
+                    $res .= $hundreds[$h] . " ";
+                }
+            }
+            if ($d > 0) {
+                if ($d == 1) {
+                    $res .= $ones[10 + $u] . " ";
+                    return $res;
+                } elseif ($d == 2 && $u == 0) {
+                    $res .= "VEINTE ";
+                } elseif ($d == 2) {
+                    $res .= "VEINTI" . $ones[$u] . " ";
+                } else {
+                    $res .= $tens[$d] . " ";
+                    if ($u > 0) {
+                        $res .= "Y " . $ones[$u] . " ";
+                    }
+                }
+            } elseif ($u > 0) {
+                $res .= $ones[$u] . " ";
+            }
+            return $res;
+        };
+        
+        if ($entero == 0) {
+            $texto_entero = "CERO";
+        } else {
+            $texto_entero = "";
+            // Millones
+            $millones = (int)($entero / 1000000);
+            $resto = $entero % 1000000;
+            if ($millones > 0) {
+                if ($millones == 1) {
+                    $texto_entero .= "UN MILLON ";
+                } else {
+                    $texto_entero .= $convert_group($millones) . "MILLONES ";
+                }
+            }
+            // Miles
+            $miles = (int)($resto / 1000);
+            $resto = $resto % 1000;
+            if ($miles > 0) {
+                if ($miles == 1) {
+                    $texto_entero .= "MIL ";
+                } else {
+                    $texto_entero .= $convert_group($miles) . "MIL ";
+                }
+            }
+            // Centenas
+            if ($resto > 0) {
+                $texto_entero .= $convert_group($resto);
+            }
+        }
+        
+        $texto_decimal = $decimal > 0 ? $convert_group($decimal) : "CERO";
+        
+        return trim($texto_entero) . " " . $moneda_nombre . " CON " . trim($texto_decimal) . " " . $fraccion_nombre;
+    }
+}
+
 // 1. CONSULTAR CABECERA DE LA FACTURA (ofcm020) Y CLIENTE (ofcm001)
 $sql_cabecera = "SELECT 
                     f.id,
                     f.tipo_factura, -- 'F'=Factura, 'C'=Nota Crédito, 'D'=Nota Débito
                     f.numero,
                     f.fecha,
-                    f.moneda_trn,
+                    f.moneda_trn,    -- Moneda de transacción (VEB, USD, EUR)
                     c.id_fiscal,     -- RIF/Cédula (ej. J000723060)
                     c.nombre_fiscal, -- Razón Social
                     c.direccion,
                     c.telf_1,
                     c.email_contacto_adm,
                     c.email_contacto_compras,
+                    
+                    -- Montos en Moneda Local (VES)
                     f.gravable_loc,
                     f.exento_loc,
                     f.monto_loc,
                     f.monto_iva_loc,
                     f.neto_loc,
-                    f.doc_ref        -- Referencia para Notas de Crédito/Débito
+                    
+                    f.doc_ref,       -- Referencia para Notas de Crédito/Débito
+                    
+                    -- Tasas y Montos en USD
+                    f.tasa_cambio,   
+                    f.monto_usd,     
+                    f.monto_iva_usd, 
+                    f.neto_usd,      
+                    f.gravable_usd,  
+                    f.exento_usd,    
+                    
+                    -- Montos en EUR
+                    f.monto_eur,     
+                    f.monto_iva_eur, 
+                    f.neto_eur,      
+                    f.gravable_eur,  
+                    f.exento_eur,    
+                    f.tasa_cambio_eur,
+                    
+                    -- IGTF si aplica
+                    f.igtf_loc,
+                    f.igtf_usd
                  FROM ofcm020 f
                  INNER JOIN ofcm001 c ON f.cliente = c.codigo
                  WHERE f.id = " . {id_factura};
@@ -45,19 +149,27 @@ $factura_id       = {ds_cabecera}[0][0];
 $tipo_factura_db  = {ds_cabecera}[0][1];
 $num_documento    = {ds_cabecera}[0][2];
 $fecha_registro   = {ds_cabecera}[0][3];
-$moneda           = {ds_cabecera}[0][4];
+$moneda_trn       = strtoupper(trim({ds_cabecera}[0][4])); // Moneda de la Transacción (VEB/USD/EUR)
 $id_fiscal        = {ds_cabecera}[0][5];
 $nombre_fiscal    = {ds_cabecera}[0][6];
 $direccion        = {ds_cabecera}[0][7];
 $telefono         = {ds_cabecera}[0][8];
 $email_adm        = {ds_cabecera}[0][9];
 $email_compras    = {ds_cabecera}[0][10];
+
+// Montos en Moneda Local (Siempre VES)
 $monto_gravado    = {ds_cabecera}[0][11];
 $monto_exento     = {ds_cabecera}[0][12];
 $monto_subtotal   = {ds_cabecera}[0][13];
 $monto_iva        = {ds_cabecera}[0][14];
 $monto_total      = {ds_cabecera}[0][15];
 $doc_ref          = {ds_cabecera}[0][16];
+
+// VALIDACIÓN DE MONEDAS SOPORTADAS
+if (!in_array($moneda_trn, array('VEB', 'VES', 'USD', 'EUR'))) {
+    sc_error_message("Error: La moneda '" . $moneda_trn . "' no está soportada actualmente. Solo se permiten facturas en VEB, USD y EUR.");
+    return;
+}
 
 // Formatear tipo de documento fiscal
 $tipo_doc_fiscal = "01"; // Factura por defecto
@@ -85,11 +197,13 @@ if (strlen($num_part) >= 9) {
     $rif_cliente = $tipo_ident . "-" . $num_part;
 }
 
-// Consolidar teléfono y correo
+// Consolidar teléfono y correo del cliente
 $tel_cliente = trim($telefono);
 $correo_cliente = !empty($email_adm) ? trim($email_adm) : (!empty($email_compras) ? trim($email_compras) : '');
 
 // 2. OBTENER DETALLE DE ÍTEMS DE LA FACTURA (ofcm021)
+// Nota: en detalles extraemos precio_un_loc y total_loc (los montos locales convertidos a VES)
+// ya que la lista de ítems en el JSON de TFHKA debe ir siempre en moneda nacional.
 $sql_detalles = "SELECT 
                     id,
                     ofin009_id, -- Código del ítem
@@ -136,8 +250,8 @@ foreach ({ds_detalles} as $row) {
     
     $detalles_items[] = [
         "NumeroLinea" => (string)$linea_count,
-        "IndicadorBienoServicio" => "1", // 1=Bien por defecto (ajusta según tus reglas)
-        "Descripcion" => trim(preg_replace('/\s+/', ' ', $descripcion)), // Quitar saltos de línea molestos
+        "IndicadorBienoServicio" => "1", // 1=Bien por defecto (ajustable)
+        "Descripcion" => trim(preg_replace('/\s+/', ' ', $descripcion)), // Sanitizar saltos de línea
         "Cantidad" => number_format($cantidad, 2, '.', ''),
         "UnidadMedida" => "UNI",
         "PrecioUnitario" => number_format($precio_un_loc, 2, '.', ''),
@@ -150,7 +264,10 @@ foreach ({ds_detalles} as $row) {
     $linea_count++;
 }
 
-// 3. ESTRUCTURAR EL PAYLOAD JSON COMPLETO
+// 3. GENERAR REPRESENTACIÓN EN LETRAS DEL MONTO EN BOLÍVARES (VES)
+$monto_letras_ves = numeroALetras($monto_total, "BOLIVARES", "CENTIMOS");
+
+// 4. CONSTRUIR NODO DE COMPRADOR DINÁMICO
 $comprador_payload = [
     "TipoIdentificacion" => $tipo_ident,
     "NumeroIdentificacion" => $rif_cliente,
@@ -159,15 +276,14 @@ $comprador_payload = [
     "Pais" => "VE"
 ];
 
-// Inyectar opcionales dinámicamente según la disponibilidad en BD
 if (!empty($correo_cliente)) {
     $comprador_payload["Correo"] = [$correo_cliente];
-    // Teléfono es requerido por TFHKA solo si se provee Correo
     $comprador_payload["Telefono"] = [!empty($tel_cliente) ? $tel_cliente : "0212-000-0000"];
 } elseif (!empty($tel_cliente)) {
     $comprador_payload["Telefono"] = [$tel_cliente];
 }
 
+// 5. ESTRUCTURAR EL PAYLOAD JSON BÁSICO (EN BOLÍVARES)
 $payload = [
     "documentoElectronico" => [
         "Encabezado" => [
@@ -178,7 +294,7 @@ $payload = [
                 "HoraEmision" => $hora_emision,
                 "Serie" => "",
                 "TipoDeVenta" => "Interna",
-                "Moneda" => "VES" // Siempre VES en fiscal nacional
+                "Moneda" => "VES" // La moneda base del ticket fiscal es siempre VES
             ],
             "Comprador" => $comprador_payload,
             "Totales" => [
@@ -189,7 +305,7 @@ $payload = [
                 "TotalIVA" => number_format((float)$monto_iva, 2, '.', ''),
                 "MontoTotalConIVA" => number_format((float)$monto_total, 2, '.', ''),
                 "TotalAPagar" => number_format((float)$monto_total, 2, '.', ''),
-                "MontoEnLetras" => "MONTO EN LETRAS AUTOMATICO",
+                "MontoEnLetras" => $monto_letras_ves,
                 "ImpuestosSubtotal" => [
                     [
                         "CodigoTotalImp" => "G",
@@ -214,12 +330,94 @@ $payload = [
     ]
 ];
 
-// Si es Nota de Crédito (02) o Débito (03), inyectar obligatoriamente referencias del documento afectado
+// 6. INYECTAR MULTIDIVISA (SI moneda_trn ES USD O EUR)
+$totales_otra_moneda = null;
+
+if ($moneda_trn === 'USD') {
+    $tasa_cambio      = (float){ds_cabecera}[0][17];
+    $monto_subtotal_u = (float){ds_cabecera}[0][18];
+    $monto_iva_u      = (float){ds_cabecera}[0][19];
+    $monto_total_u    = (float){ds_cabecera}[0][20];
+    $monto_gravado_u  = (float){ds_cabecera}[0][21];
+    $monto_exento_u   = (float){ds_cabecera}[0][22];
+    
+    $monto_letras_usd = numeroALetras($monto_total_u, "DOLARES", "CENTAVOS");
+    
+    $impuestos_subtotal_otra = [];
+    if ($monto_gravado_u > 0) {
+        $impuestos_subtotal_otra[] = [
+            "CodigoTotalImp" => "G",
+            "AlicuotaImp" => "16.00",
+            "BaseImponibleImp" => number_format($monto_gravado_u, 2, '.', ''),
+            "ValorTotalImp" => number_format($monto_iva_u, 2, '.', '')
+        ];
+    }
+    
+    $totales_otra_moneda = [
+        "moneda" => "USD",
+        "tipoCambio" => number_format($tasa_cambio, 4, '.', ''),
+        "montoGravadoTotal" => number_format($monto_gravado_u, 2, '.', ''),
+        "montoExentoTotal" => number_format($monto_exento_u, 2, '.', ''),
+        "MontoPercibidoTotal" => "0.00",
+        "subtotal" => number_format($monto_subtotal_u, 2, '.', ''),
+        "totalAPagar" => number_format($monto_total_u, 2, '.', ''),
+        "totalIVA" => number_format($monto_iva_u, 2, '.', ''),
+        "montoTotalIVAyOTI" => number_format($monto_total_u, 2, '.', ''),
+        "MontoTotalOTI" => "0.00",
+        "montoTotalConIVA" => number_format($monto_total_u, 2, '.', ''),
+        "montoEnLetras" => $monto_letras_usd,
+        "totalDescuento" => "0.00",
+        "ImpuestosSubtotal" => $impuestos_subtotal_otra
+    ];
+} elseif ($moneda_trn === 'EUR') {
+    $monto_subtotal_e = (float){ds_cabecera}[0][23];
+    $monto_iva_e      = (float){ds_cabecera}[0][24];
+    $monto_total_e    = (float){ds_cabecera}[0][25];
+    $monto_gravado_e  = (float){ds_cabecera}[0][26];
+    $monto_exento_e   = (float){ds_cabecera}[0][27];
+    $tasa_cambio_e    = (float){ds_cabecera}[0][28];
+    
+    $monto_letras_eur = numeroALetras($monto_total_e, "EUROS", "CENTAVOS");
+    
+    $impuestos_subtotal_otra = [];
+    if ($monto_gravado_e > 0) {
+        $impuestos_subtotal_otra[] = [
+            "CodigoTotalImp" => "G",
+            "AlicuotaImp" => "16.00",
+            "BaseImponibleImp" => number_format($monto_gravado_e, 2, '.', ''),
+            "ValorTotalImp" => number_format($monto_iva_e, 2, '.', '')
+        ];
+    }
+    
+    $totales_otra_moneda = [
+        "moneda" => "EUR",
+        "tipoCambio" => number_format($tasa_cambio_e, 4, '.', ''),
+        "montoGravadoTotal" => number_format($monto_gravado_e, 2, '.', ''),
+        "montoExentoTotal" => number_format($monto_exento_e, 2, '.', ''),
+        "MontoPercibidoTotal" => "0.00",
+        "subtotal" => number_format($monto_subtotal_e, 2, '.', ''),
+        "totalAPagar" => number_format($monto_total_e, 2, '.', ''),
+        "totalIVA" => number_format($monto_iva_e, 2, '.', ''),
+        "montoTotalIVAyOTI" => number_format($monto_total_e, 2, '.', ''),
+        "MontoTotalOTI" => "0.00",
+        "montoTotalConIVA" => number_format($monto_total_e, 2, '.', ''),
+        "montoEnLetras" => $monto_letras_eur,
+        "totalDescuento" => "0.00",
+        "ImpuestosSubtotal" => $impuestos_subtotal_otra
+    ];
+}
+
+// Inyectar el nodo TotalesOtraMoneda en Encabezado si corresponde
+if ($totales_otra_moneda !== null) {
+    $payload["documentoElectronico"]["Encabezado"]["TotalesOtraMoneda"] = $totales_otra_moneda;
+}
+
+// 7. INYECTAR REFERENCIAS DE DOCUMENTO AFECTADO (NOTAS DE CRÉDITO/DÉBITO)
 if ($tipo_doc_fiscal === "02" || $tipo_doc_fiscal === "03") {
     $fecha_fac_afectada = $fecha_emision;
     $monto_fac_afectada = number_format((float)$monto_total, 2, '.', '');
     
-    // Buscar la factura afectada en ofcm020 si existe doc_ref
+    // Buscar datos históricos en ofcm020 si doc_ref no está vacío
     if (!empty($doc_ref)) {
         $sql_ref = "SELECT fecha, neto_loc FROM ofcm020 WHERE numero = '" . addslashes($doc_ref) . "'";
         sc_lookup(ds_ref, $sql_ref);
@@ -239,7 +437,7 @@ if ($tipo_doc_fiscal === "02" || $tipo_doc_fiscal === "03") {
 
 $json_data = json_encode($payload);
 
-// 4. CONFIGURAR ENDPOINT SEGÚN EL TIPO DE DOCUMENTO
+// 8. CONFIGURAR ENDPOINT SEGÚN EL TIPO DE DOCUMENTO FISCAL
 $endpoint = "/api/v1/emitir/factura";
 if ($tipo_doc_fiscal === "02") {
     $endpoint = "/api/v1/emitir/nota-credito";
@@ -258,7 +456,7 @@ $options = array(
 $response_raw = sc_http_request($url, $options);
 $http_status = 200;
 
-// 5. PROCESAR RESPUESTA Y ESCRIBIR LOG DE INTEGRACIÓN (ofint001)
+// 9. PROCESAR RESPUESTA Y REGISTRAR LOG DE INTEGRACIÓN (ofint001)
 if ($response_raw === false) {
     // Registrar error de red en logs
     $insert_log_sql = "INSERT INTO ofint001 (
@@ -330,7 +528,7 @@ if ($exito === 1) {
     sc_lookup(ds_last_id, "SELECT LAST_INSERT_ID()");
     $factura_fiscal_id = {ds_last_id}[0][0];
     
-    // 2. Insertar los ítems fiscales en offve011
+    // 2. Insertar los ítems fiscales en offve011 (En VES local)
     foreach ($detalles_items as $item) {
         $insert_item_sql = "INSERT INTO offve011 (
                               factura_fiscal_id,
