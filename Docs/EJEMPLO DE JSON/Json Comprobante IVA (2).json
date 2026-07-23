@@ -1,0 +1,119 @@
+{
+    "DocumentoElectronico": {
+        "Encabezado": {
+            "IdentificacionDocumento": {
+                "TipoDocumento": "05",
+                "NumeroDocumento": "20251200018552",
+                "TipoProveedor": null,
+                "TipoTransaccion": null,
+                "NumeroPlanillaImportacion": null,
+                "NumeroExpedienteImportacion": null,
+                "SerieFacturaAfectada": null,
+                "NumeroFacturaAfectada": null,
+                "FechaFacturaAfectada": null,
+                "MontoFacturaAfectada": null,
+                "ComentarioFacturaAfectada": null,
+                "RegimenEspTributacion": null,
+                "FechaEmision": "21/11/2025",
+                "FechaVencimiento": "21/11/2025",
+                "HoraEmision": "12:13:00 pm",
+                "Anulado": false,
+                "TipoDePago": "Contado",
+                "Serie": "",
+                "Sucursal": "0001",
+                "TipoDeVenta": "Interna",
+                "Moneda": "BSD"
+            },
+            "Vendedor": null,
+            "Comprador": null,
+            "SujetoRetenido": {
+                "TipoPerceptor": null,
+                "TipoIdentificacion": "J",
+                "NumeroIdentificacion": "111111111",
+                "RazonSocial": "proveedor de prueba",
+                "Direccion": "DIRECCIÓN DE PRUEBA",
+                "Ubigeo": null,
+                "Pais": "VE",
+                "Notificar": "Si",
+                "Telefono": [
+                    "000-000-0000"
+                ],
+                "Correo": [
+                    "correo@correo.com"
+                ],
+                "OtrosEnvios": null
+            },
+            "Tercero": null,
+            "Totales": {
+                "NroItems": "1",
+                "MontoGravadoTotal": "0",
+                "MontoExentoTotal": "0",
+                "MontoPercibidoTotal": null,
+                "SubtotalAntesDescuento": null,
+                "TotalDescuento": "0.00",
+                "TotalRecargos": null,
+                "Subtotal": "0.00",
+                "TotalIVA": "0.00",
+                "MontoTotalConIVA": "297643.01",
+                "TotalAPagar": "0.00",
+                "MontoEnLetras": "N/A",
+                "ListaRecargo": null,
+                "ListaDescBonificacion": null,
+                "ImpuestosSubtotal": null,
+                "OtrosImpuestosSubtotal": null,
+                "FormasPago": null,
+                "TotalIGTF": null,
+                "TotalIGTF_VES": null,
+                "MontoTotalOTI": null,
+                "MontoTotalIVAyOTI": null
+            },
+            "TotalesRetencion": {
+                "TotalBaseImponible": "256588.80",
+                "NumeroCompRetencion": "11",
+                "FechaEmisionCR": "21/11/2025",
+                "TotalIVA": "41054.21",
+                "TotalRetenido": "30790.66",
+                "TotalISRL": "",
+                "TotalIGTF": "",
+                "TipoComprobante": null
+            },
+            "TotalesOtraMoneda": null,
+            "Orden": null
+        },
+        "DetallesItems": null,
+        "DetallesRetencion": [
+            {
+                "NumeroLinea": "1",
+                "FechaDocumento": "11/11/2025",
+                "SerieDocumento": null,
+                "TipoDocumento": "01",
+                "NumeroDocumento": "82616",
+                "NumeroControl": "00-00067444",
+                "TipoTransaccion": null,
+                "MontoTotal": "297643.01",
+                "MontoExento": "0",
+                "BaseImponible": "256588.80",
+                "Porcentaje": "0.16",
+                "PorcentajeRetencion": "0.75",
+                "Sustraendo": null,
+                "MontoIVA": "41054.21",
+                "Retenido": "30790.66",
+                "Percibido": "0",
+                "CodigoConcepto": null,
+                "Moneda": "BSD",
+                "InfoAdicionalItem": [
+                    {
+                        "Campo":"Fafectada",
+                        "Valor":""
+                    }
+                ]
+            }
+        ],
+        "Viajes": null,
+        "InfoAdicional": [],
+        "GuiaDespacho": null,
+        "Transporte": null,
+        "EsLote": false,
+        "EsMinimo": false
+    }
+}

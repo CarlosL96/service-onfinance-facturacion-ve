@@ -1,0 +1,149 @@
+{
+    "documentoElectronico": {
+        "Encabezado": {
+            "IdentificacionDocumento": {
+                "TipoDocumento": "01",
+                "NumeroDocumento": "50373",
+                "TipoProveedor": null,
+                "TipoTransaccion": null,
+                "NumeroPlanillaImportacion": null,
+                "NumeroExpedienteImportacion": null,
+                "SerieFacturaAfectada": null,
+                "NumeroFacturaAfectada": null,
+                "FechaFacturaAfectada": null,
+                "MontoFacturaAfectada": null,
+                "ComentarioFacturaAfectada": null,
+                "RegimenEspTributacion": null,
+                "FechaEmision": "23/01/2026",
+                "FechaVencimiento": "23/01/2026",
+                "HoraEmision": "10:58:00 am",
+                "Anulado": false,
+                "TipoDePago": "Inmediato",
+                "Serie": "",
+                "Sucursal": "",
+                "TipoDeVenta": "Interna",
+                "Moneda": "BSD"
+            },
+            "Vendedor": null,
+            "Comprador": {
+                "TipoIdentificacion": "J",
+                "NumeroIdentificacion": "59858589-9",
+                "RazonSocial": "PRUEBA DE EMPRESA",
+                "Direccion": "CARACAS",
+                "Ubigeo": null,
+                "Pais": "VE",
+                "Notificar": null,
+                "Telefono": [
+                    "212-202-0811"
+                ],
+                "Correo": [
+                    "prueba@yopmail.com"
+                ],
+                "OtrosEnvios": null
+            },
+            "SujetoRetenido": null,
+            "Tercero": null,
+            "Totales": {
+                "NroItems": "1",
+                "MontoGravadoTotal": "100.00",
+                "MontoExentoTotal": "0.00",
+                "MontoPercibidoTotal": "0.00",
+                "SubtotalAntesDescuento": "100.00",
+                "TotalDescuento": null,
+                "TotalRecargos": null,
+                "Subtotal": "100.00",
+                "TotalIVA": "16.00",
+                "MontoTotalConIVA": "116.00",
+                "TotalAPagar": "116.00",
+                "MontoEnLetras": "ciento dieciséis bolivares con cero centimos",
+                "ListaRecargo": null,
+                "ListaDescBonificacion": null,
+                "ImpuestosSubtotal": [
+                    {
+                        "CodigoTotalImp": "G",
+                        "AlicuotaImp": "16.00",
+                        "BaseImponibleImp": "100.00",
+                        "ValorTotalImp": "16.00"
+                    }
+                ],
+                "OtrosImpuestosSubtotal": null,
+                "FormasPago": [
+                    {
+                        "Descripcion": "Tarjeta de débito",
+                        "Fecha": "23/01/2026",
+                        "Forma": "05",
+                        "Monto": "116.00",
+                        "Moneda": "BSD",
+                        "TipoCambio": "0.0000"
+                    }
+                ],
+                "TotalIGTF": null,
+                "TotalIGTF_VES": null,
+                "MontoTotalOTI": null,
+                "MontoTotalIVAyOTI": null
+            },
+            "TotalesRetencion": null,
+            "TotalesOtraMoneda": {
+                "Moneda": "USD",
+                "TipoCambio": "352.7063",
+                "MontoGravadoTotal": "0.28",
+                "MontoPercibidoTotal": "0.00",
+                "MontoExentoTotal": "0.00",
+                "Subtotal": "0.28",
+                "TotalAPagar": "0.33",
+                "TotalIVA": "0.05",
+                "MontoTotalConIVA": "0.33",
+                "MontoEnLetras": "cero dolares con treinta y tres centimos",
+                "SubtotalAntesDescuento": "0.28",
+                "TotalDescuento": null,
+                "TotalRecargos": null,
+                "ListaRecargo": null,
+                "ListaDescBonificacion": null,
+                "ImpuestosSubtotal": [
+                    {
+                        "CodigoTotalImp": "G",
+                        "AlicuotaImp": "16.00",
+                        "BaseImponibleImp": "0.28",
+                        "ValorTotalImp": "0.05"
+                    }
+                ],
+                "OtrosImpuestosSubtotal": null,
+                "MontoTotalOTI": null,
+                "MontoTotalIVAyOTI": null
+            },
+            "Orden": null
+        },
+        "DetallesItems": [
+            {
+                "NumeroLinea": "1",
+                "CodigoCIIU": "0198",
+                "CodigoPLU": "0198599",
+                "IndicadorBienoServicio": "1",
+                "Descripcion": "PRODUCTO O SERVICIO A FACTURAR 1",
+                "Cantidad": "1",
+                "UnidadMedida": "4L",
+                "PrecioUnitario": "200.00",
+                "PrecioUnitarioDescuento": null,
+                "MontoBonificacion": null,
+                "DescripcionBonificacion": null,
+                "DescuentoMonto": "100.00",
+                "RecargoMonto": "0",
+                "PrecioItem": "100.00",
+                "PrecioAntesDescuento": "200.00",
+                "CodigoImpuesto": "G",
+                "TasaIVA": "16",
+                "ValorIVA": "16.00",
+                "ValorTotalItem": "116",
+                "InfoAdicionalItem": [],
+                "ListaItemOTI": null
+            }
+        ],
+        "DetallesRetencion": null,
+        "Viajes": null,
+        "InfoAdicional": [],
+        "GuiaDespacho": null,
+        "Transporte": null,
+        "EsLote": null,
+        "EsMinimo": null
+    }
+}

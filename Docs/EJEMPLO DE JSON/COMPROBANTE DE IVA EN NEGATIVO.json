@@ -1,0 +1,117 @@
+{
+    "Documentoelectronico":{
+    "Encabezado": {
+        "IdentificacionDocumento": {
+            "TipoDocumento": "05",
+            "NumeroDocumento": "20260200000005",
+            "TipoProveedor": null,
+            "TipoTransaccion": null,
+            "NumeroPlanillaImportacion": null,
+            "NumeroExpedienteImportacion": null,
+            "SerieFacturaAfectada": null,
+            "NumeroFacturaAfectada": null,
+            "FechaFacturaAfectada": null,
+            "MontoFacturaAfectada": null,
+            "ComentarioFacturaAfectada": null,
+            "RegimenEspTributacion": null,
+            "FechaEmision": "23/02/2026",
+            "FechaVencimiento": "23/02/2026",
+            "HoraEmision": "02:32:00 pm",
+            "Anulado": false,
+            "TipoDePago": "Inmediato",
+            "Serie": "",
+            "Sucursal": "",
+            "TipoDeVenta": "Interna",
+            "Moneda": "BSD",
+            "TransaccionId": "RIVA20260200000005",
+            "UrlPdf": null
+        },
+        "Vendedor": null,
+        "Comprador": null,
+        "SujetoRetenido": {
+            "TipoPerceptor": null,
+            "TipoIdentificacion": "J",
+            "NumeroIdentificacion": "000000140",
+            "RazonSocial": "PRUEBA X5",
+            "Direccion": "CCS",
+            "Ubigeo": null,
+            "Pais": "VE",
+            "Notificar": "Si",
+            "Telefono": [
+                "444-444-4444"
+            ],
+            "Correo": [
+                "pruebas@yopmail.com"
+            ],
+            "OtrosEnvios": null
+        },
+        "Tercero": null,
+        "Totales": {
+            "NroItems": "1",
+            "MontoGravadoTotal": "0",
+            "MontoExentoTotal": "0",
+            "MontoPercibidoTotal": null,
+            "SubtotalAntesDescuento": null,
+            "TotalDescuento": "0.00",
+            "TotalRecargos": null,
+            "Subtotal": "0.00",
+            "TotalIVA": "0.00",
+            "MontoTotalConIVA": "7637.6",
+            "TotalAPagar": "0.00",
+            "MontoEnLetras": "N/A",
+            "ListaRecargo": null,
+            "ListaDescBonificacion": null,
+            "ImpuestosSubtotal": null,
+            "OtrosImpuestosSubtotal": null,
+            "FormasPago": null,
+            "TotalIGTF": null,
+            "TotalIGTF_VES": null,
+            "MontoTotalOTI": null,
+            "MontoTotalIVAyOTI": null
+        },
+        "TotalesRetencion": {
+            "TotalBaseImponible": "6584.14",
+            "NumeroCompRetencion": "5",
+            "FechaEmisionCR": "23/02/2026",
+            "TotalIVA": "1053.46",
+            "TotalRetenido": "790.09",
+            "TotalISRL": "",
+            "TotalIGTF": "",
+            "TipoComprobante": null,
+            "EsNegativo": true
+        },
+        "TotalesOtraMoneda": null,
+        "Orden": null
+    },
+    "DetallesItems": null,
+    "DetallesRetencion": [
+        {
+            "NumeroLinea": "1",
+            "FechaDocumento": "23/02/2026",
+            "SerieDocumento": null,
+            "TipoDocumento": "02",
+            "NumeroDocumento": "000000001",
+            "NumeroControl": "01-0014848548",
+            "TipoTransaccion": null,
+            "MontoTotal": "7637.60",
+            "MontoExento": "0",
+            "BaseImponible": "6584.14",
+            "Porcentaje": "0.16",
+            "PorcentajeRetencion": "0.75",
+            "Sustraendo": null,
+            "MontoIVA": "1053.46",
+            "Retenido": "790.09",
+            "Percibido": "0",
+            "CodigoConcepto": null,
+            "Moneda": "BSD",
+            "InfoAdicionalItem": []
+        }
+    ],
+    "Viajes": null,
+    "InfoAdicional": [],
+    "GuiaDespacho": null,
+    "Transporte": null,
+    "EsLote": false,
+    "EsMinimo": false
+}
+}

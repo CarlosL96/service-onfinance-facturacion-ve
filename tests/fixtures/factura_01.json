@@ -1,0 +1,115 @@
+{
+  "documentoElectronico": {
+    "Encabezado": {
+      "IdentificacionDocumento": {
+        "TipoDocumento": "01",
+        "NumeroDocumento": "12345",
+        "TipoProveedor": null,
+        "TipoTransaccion": null,
+        "NumeroPlanillaImportacion": null,
+        "NumeroExpedienteImportacion": null,
+        "SerieFacturaAfectada": null,
+        "NumeroFacturaAfectada": null,
+        "FechaFacturaAfectada": null,
+        "MontoFacturaAfectada": null,
+        "ComentarioFacturaAfectada": null,
+        "RegimenEspTributacion": null,
+        "FechaEmision": "23/07/2026",
+        "FechaVencimiento": "23/07/2026",
+        "HoraEmision": "10:00:00 am",
+        "Anulado": false,
+        "TipoDePago": "Inmediato",
+        "Serie": "",
+        "Sucursal": "",
+        "TipoDeVenta": "Interna",
+        "Moneda": "VES"
+      },
+      "Vendedor": null,
+      "Comprador": {
+        "TipoIdentificacion": "J",
+        "NumeroIdentificacion": "V-59858589-9",
+        "RazonSocial": "CLIENTE PRUEBA S.A.",
+        "Direccion": "CARACAS VENEZUELA",
+        "Ubigeo": null,
+        "Pais": "VE",
+        "Notificar": null,
+        "Telefono": [
+          "0212-202-0811"
+        ],
+        "Correo": [
+          "prueba@yopmail.com"
+        ],
+        "OtrosEnvios": null
+      },
+      "SujetoRetenido": null,
+      "Tercero": null,
+      "Totales": {
+        "NroItems": "1",
+        "MontoGravadoTotal": "100.00",
+        "MontoExentoTotal": "0.00",
+        "MontoPercibidoTotal": "0.00",
+        "SubtotalAntesDescuento": "100.00",
+        "TotalDescuento": null,
+        "TotalRecargos": null,
+        "Subtotal": "100.00",
+        "TotalIVA": "16.00",
+        "MontoTotalConIVA": "116.00",
+        "TotalAPagar": "116.00",
+        "MontoEnLetras": "ciento dieciséis bolivares con cero centimos",
+        "ListaRecargo": null,
+        "ListaDescBonificacion": null,
+        "ImpuestosSubtotal": [
+          {
+            "CodigoTotalImp": "G",
+            "AlicuotaImp": "16.00",
+            "BaseImponibleImp": "100.00",
+            "ValorTotalImp": "16.00"
+          }
+        ],
+        "OtrosImpuestosSubtotal": null,
+        "FormasPago": [
+          {
+            "Descripcion": "Efectivo",
+            "Fecha": "23/07/2026",
+            "Forma": "01",
+            "Monto": "116.00",
+            "Moneda": "VES",
+            "TipoCambio": "0.0000"
+          }
+        ],
+        "TotalIGTF": null,
+        "TotalIGTF_VES": null,
+        "MontoTotalOTI": null,
+        "MontoTotalIVAyOTI": null
+      },
+      "TotalesRetencion": null,
+      "TotalesOtraMoneda": null,
+      "Orden": null
+    },
+    "DetallesItems": [
+      {
+        "NumeroLinea": "1",
+        "CodigoCIIU": "0198",
+        "CodigoPLU": "0198599",
+        "IndicadorBienoServicio": "1",
+        "Descripcion": "SERVICIO DE INTEGRACION TECNICA API",
+        "Cantidad": "1",
+        "UnidadMedida": "UNI",
+        "PrecioUnitario": "100.00",
+        "PrecioUnitarioDescuento": null,
+        "MontoBonificacion": null,
+        "DescripcionBonificacion": null,
+        "DescuentoMonto": "0.00",
+        "RecargoMonto": "0",
+        "PrecioItem": "100.00",
+        "PrecioAntesDescuento": "100.00",
+        "CodigoImpuesto": "G",
+        "TasaIVA": "16",
+        "ValorIVA": "16.00",
+        "ValorTotalItem": "116",
+        "InfoAdicionalItem": [],
+        "ListaItemOTI": null
+      }
+    ]
+  }
+}

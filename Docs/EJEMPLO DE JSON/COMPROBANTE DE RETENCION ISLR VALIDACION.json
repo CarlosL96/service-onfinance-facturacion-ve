@@ -1,0 +1,90 @@
+{
+    "documentoElectronico": {
+        "Encabezado": {
+            "IdentificacionDocumento": {
+                "TipoDocumento": "06",
+                "NumeroDocumento": "",
+                "FechaEmision": "03/06/2025",
+                "HoraEmision": "03:29:15 am",
+                "Anulado": false,
+                "TipoDePago": "Inmediato",
+                "Serie": "",
+                "Sucursal": null,
+                "TipoDeVenta": "interna",
+                "Moneda": "BSD",
+                "TransaccionId": "28012228"
+            },
+            "SujetoRetenido": {
+                "TipoPerceptor": null,
+                "TipoIdentificacion": "V",
+                "NumeroIdentificacion": "99999999",
+                "RazonSocial": "PEDRO PEREZ",
+                "Direccion": "PRUEBA",
+                "Ubigeo": null,
+                "Pais": "VE",
+                "Notificar": "Si",
+                "Telefono": null,
+                "Correo": [
+                    "prueba@yopmail.com"
+                ]
+            },
+            "Totales": {
+            "NroItems": "1",
+            "MontoGravadoTotal": "0.00",
+            "MontoExentoTotal": "0.00",
+            "MontoPercibidoTotal": null,
+            "SubtotalAntesDescuento": null,
+            "TotalDescuento": "0.00",
+            "TotalRecargos": null,
+            "Subtotal": "0.00",
+            "TotalIVA": "0.00",
+            "MontoTotalConIVA": "35451.11",
+            "TotalAPagar": "0.00",
+            "MontoEnLetras": "n/a",
+            "ListaRecargo": null,
+            "ListaDescBonificacion": null,
+            "ImpuestosSubtotal": null,
+            "OtrosImpuestosSubtotal": null,
+            "FormasPago": null,
+            "TotalIGTF": null,
+            "TotalIGTF_VES": null,
+            "MontoTotalOTI": null,
+            "MontoTotalIVAyOTI": null
+        },
+            "TotalesRetencion": {
+                "TotalBaseImponible": "10000.00",
+                "NumeroCompRetencion": "28012228",
+                "FechaEmisionCR": "03/06/2025",
+                "TotalIVA": null,
+                "TotalRetenido": null,
+                "TotalISRL": "299.00",
+                "TotalIGTF": null,
+                "TipoComprobante": "1"
+            }
+        },
+        "DetallesItems": null,
+        "DetallesRetencion": [
+            {
+                "NumeroLinea": "1",
+                "FechaDocumento": "03/06/2025",
+                "SerieDocumento": "",
+                "TipoDocumento": "01",
+                "NumeroDocumento": "20250603",
+                "NumeroControl": "202506063",
+                "TipoTransaccion": null,
+                "MontoTotal": null,
+                "MontoExento": null,
+                "BaseImponible": "10000.00",
+                "Porcentaje": "0.03",
+                "PorcentajeRetencion": "0.03",
+                "Sustraendo": "1.00",
+                "MontoIVA": null,
+                "Retenido": "299.00",
+                "Percibido": null,
+                "CodigoConcepto": "025",
+                "Moneda": "BSD",
+                "InfoAdicionalItem": null
+            }
+        ]
+    }
+}
