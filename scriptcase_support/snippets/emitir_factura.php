@@ -507,6 +507,15 @@ $insert_log_sql = "INSERT INTO ofint001 (
                    )";
 sc_exec_sql($insert_log_sql);
 
+// Verificar si ya existe un registro de borrador/histórico en offve001
+$sql_check = "SELECT id FROM offve001 WHERE factura_id = $factura_id AND tipo_documento = '$tipo_doc_fiscal'";
+sc_lookup(ds_exist, $sql_check);
+
+$factura_fiscal_id = null;
+if (!empty({ds_exist}) && {ds_exist} !== false) {
+    $factura_fiscal_id = {ds_exist}[0][0];
+}
+
 if ($exito === 1) {
     // EMISIÓN FISCAL EXITOSA
     $resultado = $response['resultado'];
@@ -514,31 +523,47 @@ if ($exito === 1) {
     $fecha_asig  = $resultado['fechaAsignacion'] . ' ' . $resultado['horaAsignacion'];
     $url_web     = $resultado['urlConsulta'];
     
-    // 1. Insertar el encabezado fiscal en offve001
-    $insert_fiscal_sql = "INSERT INTO offve001 (
-                            factura_id, 
-                            tipo_documento, 
-                            numero_documento, 
-                            numero_control, 
-                            estatus_fiscal, 
-                            fecha_asignacion, 
-                            url_consulta, 
-                            mensaje_fiscal
-                          ) VALUES (
-                            " . $factura_id . ",
-                            '" . $tipo_doc_fiscal . "',
-                            '" . addslashes($num_documento) . "',
-                            '" . addslashes($nro_control) . "',
-                            'Procesado',
-                            STR_TO_DATE('" . addslashes($fecha_asig) . "', '%d/%m/%Y %h:%i:%s %p'),
-                            '" . addslashes($url_web) . "',
-                            'Documento procesado correctamente'
-                          )";
-    sc_exec_sql($insert_fiscal_sql);
-    
-    // Obtener ID insertado
-    sc_lookup(ds_last_id, "SELECT LAST_INSERT_ID()");
-    $factura_fiscal_id = {ds_last_id}[0][0];
+    if ($factura_fiscal_id !== null) {
+        // 1. Actualizar el borrador existente a Procesado
+        $update_fiscal_sql = "UPDATE offve001 SET 
+                                numero_documento = '" . addslashes($num_documento) . "',
+                                numero_control = '" . addslashes($nro_control) . "',
+                                estatus_fiscal = 'Procesado',
+                                fecha_asignacion = STR_TO_DATE('" . addslashes($fecha_asig) . "', '%d/%m/%Y %h:%i:%s %p'),
+                                url_consulta = '" . addslashes($url_web) . "',
+                                mensaje_fiscal = 'Documento procesado correctamente'
+                              WHERE id = $factura_fiscal_id";
+        sc_exec_sql($update_fiscal_sql);
+        
+        // Limpiar los ítems previos de borrador para re-insertar los finales definitivos
+        sc_exec_sql("DELETE FROM offve011 WHERE factura_fiscal_id = $factura_fiscal_id");
+    } else {
+        // 1. Insertar nuevo encabezado fiscal en offve001
+        $insert_fiscal_sql = "INSERT INTO offve001 (
+                                factura_id, 
+                                tipo_documento, 
+                                numero_documento, 
+                                numero_control, 
+                                estatus_fiscal, 
+                                fecha_asignacion, 
+                                url_consulta, 
+                                mensaje_fiscal
+                              ) VALUES (
+                                " . $factura_id . ",
+                                '" . $tipo_doc_fiscal . "',
+                                '" . addslashes($num_documento) . "',
+                                '" . addslashes($nro_control) . "',
+                                'Procesado',
+                                STR_TO_DATE('" . addslashes($fecha_asig) . "', '%d/%m/%Y %h:%i:%s %p'),
+                                '" . addslashes($url_web) . "',
+                                'Documento procesado correctamente'
+                              )";
+        sc_exec_sql($insert_fiscal_sql);
+        
+        // Obtener ID insertado
+        sc_lookup(ds_last_id, "SELECT LAST_INSERT_ID()");
+        $factura_fiscal_id = {ds_last_id}[0][0];
+    }
     
     // 2. Insertar los ítems fiscales en offve011 (En VES local)
     foreach ($detalles_items as $item) {
@@ -582,23 +607,33 @@ if ($exito === 1) {
     }
     $mensaje_error_db = addslashes($mensaje_error);
     
-    // Registrar el error en offve001 para auditoría histórica
-    $insert_error_sql = "INSERT INTO offve001 (
-                            factura_id, 
-                            tipo_documento, 
-                            numero_documento, 
-                            numero_control, 
-                            estatus_fiscal, 
-                            mensaje_fiscal
-                          ) VALUES (
-                            " . $factura_id . ",
-                            '" . $tipo_doc_fiscal . "',
-                            '" . addslashes($num_documento) . "',
-                            NULL,
-                            'Error',
-                            '" . $mensaje_error_db . "'
-                          )";
-    sc_exec_sql($insert_error_sql);
+    if ($factura_fiscal_id !== null) {
+        // Actualizar el borrador existente con el estatus de Error
+        $update_error_sql = "UPDATE offve001 SET 
+                                numero_documento = '" . addslashes($num_documento) . "',
+                                estatus_fiscal = 'Error',
+                                mensaje_fiscal = '" . $mensaje_error_db . "'
+                             WHERE id = $factura_fiscal_id";
+        sc_exec_sql($update_error_sql);
+    } else {
+        // Registrar el error en offve001 para auditoría histórica
+        $insert_error_sql = "INSERT INTO offve001 (
+                                factura_id, 
+                                tipo_documento, 
+                                numero_documento, 
+                                numero_control, 
+                                estatus_fiscal, 
+                                mensaje_fiscal
+                              ) VALUES (
+                                " . $factura_id . ",
+                                '" . $tipo_doc_fiscal . "',
+                                '" . addslashes($num_documento) . "',
+                                NULL,
+                                'Error',
+                                '" . $mensaje_error_db . "'
+                              )";
+        sc_exec_sql($insert_error_sql);
+    }
     
     sc_error_message("Error en Emisión Fiscal: " . $mensaje_error);
 }
