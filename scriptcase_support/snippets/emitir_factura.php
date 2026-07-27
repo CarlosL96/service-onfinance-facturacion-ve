@@ -6,7 +6,7 @@
  * Este código debe colocarse en el Evento correspondiente (botón PHP) de tu
  * aplicación de Scriptcase.
  * 
- * Requiere la variable local {id_factura} conteniendo el ID de la tabla ofcm020.
+ * Requiere la variable local {factura_id} conteniendo el ID de la tabla ofcm020.
  * =================================================================================
  */
 // CONFIGURACIÓN DE INTEGRACIÓN
@@ -59,12 +59,12 @@ $sql_cabecera = "SELECT
                     f.igtf_usd
                  FROM ofcm020 f
                  INNER JOIN ofcm001 c ON f.cliente = c.codigo
-                 WHERE f.id = " . {id_factura};
+                 WHERE f.id = " . {factura_id};
 
 sc_lookup(ds_cabecera, $sql_cabecera);
 
 if (empty({ds_cabecera}) || {ds_cabecera} === false) {
-    throw new Exception("No se encontró la cabecera de la factura en ofcm020 con ID: " . {id_factura});
+    throw new Exception("No se encontró la cabecera de la factura en ofcm020 con ID: " . {factura_id});
 }
 
 // Mapear campos de cabecera a variables PHP
