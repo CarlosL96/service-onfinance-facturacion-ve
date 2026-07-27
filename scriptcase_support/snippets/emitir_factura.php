@@ -124,28 +124,12 @@ if (empty($forma_pago_val) || $forma_pago_val === "NULL" || $forma_pago_val === 
     return;
 }
 
-// 4. Mapear descripción amigable según Catálogo 11 de TFHKA
+// 4. Mapear descripción amigable consultando la tabla offve002
 $forma_pago_desc = "Otros";
-switch ($forma_pago_val) {
-    case "01": $forma_pago_desc = "Depósito en cuenta"; break;
-    case "02": $forma_pago_desc = "Pago Móvil"; break;
-    case "03": $forma_pago_desc = "Transferencia de fondos"; break;
-    case "04": $forma_pago_desc = "Orden de Pago"; break;
-    case "05": $forma_pago_desc = "Tarjeta de Débito"; break;
-    case "06": $forma_pago_desc = "Tarjeta de crédito"; break;
-    case "07": $forma_pago_desc = "Cheque"; break;
-    case "08": $forma_pago_desc = "Efectivo Moneda Curso Legal"; break;
-    case "09": $forma_pago_desc = "Efectivo Divisas"; break;
-    case "10": $forma_pago_desc = "Medios de pago Comercio Exterior"; break;
-    case "11": $forma_pago_desc = "Transferencia - Comercio exterior"; break;
-    case "12": $forma_pago_desc = "Cheque - Comercio exterior"; break;
-    case "13": $forma_pago_desc = "Orden de pago simple - Comercio exterior"; break;
-    case "14": $forma_pago_desc = "Orden de pago documentario - Comercio exterior"; break;
-    case "15": $forma_pago_desc = "Remesa simple - Comercio exterior"; break;
-    case "16": $forma_pago_desc = "Remesa documentaria - Comercio exterior"; break;
-    case "17": $forma_pago_desc = "Carta de crédito simple - Comercio exterior"; break;
-    case "18": $forma_pago_desc = "Carta de crédito documentario - Comercio exterior"; break;
-    case "99": $forma_pago_desc = "Otros medios de pago"; break;
+$sql_desc_fp = "SELECT descripcion FROM offve002 WHERE codigo = '" . addslashes($forma_pago_val) . "' AND activo = 1";
+sc_lookup(ds_desc_fp, $sql_desc_fp);
+if (!empty({ds_desc_fp}) && {ds_desc_fp} !== false) {
+    $forma_pago_desc = trim({ds_desc_fp}[0][0]);
 }
 
 // 5. Determinar moneda, tasa de cambio y monto de la forma de pago según la moneda de transacción

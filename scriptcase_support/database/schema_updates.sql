@@ -71,4 +71,34 @@ CREATE TABLE IF NOT EXISTS `ofint001` (
 ALTER TABLE `offve001` 
 ADD COLUMN `forma_pago` VARCHAR(45) NULL AFTER `numero_control`;
 
+-- 4. Catálogo de Formas de Pago - Venezuela (offve002)
+CREATE TABLE IF NOT EXISTS `offve002` (
+  `codigo` VARCHAR(2) NOT NULL PRIMARY KEY COMMENT 'Código de dos dígitos (ej: 01, 02)',
+  `descripcion` VARCHAR(100) NOT NULL COMMENT 'Descripción de la forma de pago',
+  `activo` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '1 = Activo, 0 = Inactivo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Catálogo de Formas de Pago Fiscales';
+
+-- Insertar valores iniciales (Catálogo 11 de TFHKA)
+INSERT INTO `offve002` (`codigo`, `descripcion`) VALUES
+('01', 'Depósito en cuenta'),
+('02', 'Pago Móvil'),
+('03', 'Transferencia de fondos'),
+('04', 'Orden de Pago'),
+('05', 'Tarjeta de Débito'),
+('06', 'Tarjeta de crédito'),
+('07', 'Cheque'),
+('08', 'Efectivo Moneda Curso Legal'),
+('09', 'Efectivo Divisas'),
+('10', 'Medios de pago Comercio Exterior'),
+('11', 'Transferencias – Comercio exterior'),
+('12', 'Cheques bancarios - Comercio exterior'),
+('13', 'Orden de pago simple - Comercio exterior'),
+('14', 'Orden de pago documentario - Comercio exterior'),
+('15', 'Remesa simple - Comercio exterior'),
+('16', 'Remesa documentaria - Comercio exterior'),
+('17', 'Carta de crédito simple - Comercio exterior'),
+('18', 'Carta de crédito documentario - Comercio exterior'),
+('99', 'Otros medios de pago')
+ON DUPLICATE KEY UPDATE `descripcion` = VALUES(`descripcion`);
+
 
