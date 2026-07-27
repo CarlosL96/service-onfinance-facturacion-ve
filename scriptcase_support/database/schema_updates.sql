@@ -64,3 +64,11 @@ CREATE TABLE IF NOT EXISTS `ofint001` (
   INDEX `idx_ofint001_documento` (`tipo_documento`, `numero_documento`),
   INDEX `idx_ofint001_referencia` (`referencia_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Logs de Integración del Sistema de Facturación';
+
+
+-- Actualizaciones manuales a la BD
+
+ALTER TABLE `offve001` 
+ADD COLUMN `forma_pago` VARCHAR(45) NULL AFTER `numero_control`;
+
+

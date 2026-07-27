@@ -103,6 +103,72 @@ if ($tipo_factura_db === 'C') {
     $tipo_doc_fiscal = "03"; // Nota de Débito
 }
 
+// --- VALIDAR FORMA DE PAGO ---
+$forma_pago_val = "";
+
+// 1. Intentar obtener de la variable de Scriptcase {forma_pago} si está definida en el formulario
+if (isset({forma_pago}) && !empty({forma_pago})) {
+    $forma_pago_val = trim({forma_pago});
+} else {
+    // 2. Si no está en el formulario, consultar en la base de datos offve001 usando el ID de la factura
+    $sql_fp = "SELECT forma_pago FROM offve001 WHERE factura_id = " . $factura_id . " AND tipo_documento = '" . $tipo_doc_fiscal . "'";
+    sc_lookup(ds_fp, $sql_fp);
+    if (!empty({ds_fp}) && {ds_fp} !== false) {
+        $forma_pago_val = trim({ds_fp}[0][0]);
+    }
+}
+
+// 3. Validar si está vacío o es nulo
+if (empty($forma_pago_val) || $forma_pago_val === "NULL" || $forma_pago_val === "") {
+    sc_error_message("Error: Debe especificar la Forma de Pago antes de proceder con la emisión fiscal.");
+    return;
+}
+
+// 4. Mapear descripción amigable según Catálogo 11 de TFHKA
+$forma_pago_desc = "Otros";
+switch ($forma_pago_val) {
+    case "01": $forma_pago_desc = "Depósito en cuenta"; break;
+    case "02": $forma_pago_desc = "Pago Móvil"; break;
+    case "03": $forma_pago_desc = "Transferencia de fondos"; break;
+    case "04": $forma_pago_desc = "Orden de Pago"; break;
+    case "05": $forma_pago_desc = "Tarjeta de Débito"; break;
+    case "06": $forma_pago_desc = "Tarjeta de crédito"; break;
+    case "07": $forma_pago_desc = "Cheque"; break;
+    case "08": $forma_pago_desc = "Efectivo Moneda Curso Legal"; break;
+    case "09": $forma_pago_desc = "Efectivo Divisas"; break;
+    case "10": $forma_pago_desc = "Medios de pago Comercio Exterior"; break;
+    case "11": $forma_pago_desc = "Transferencia - Comercio exterior"; break;
+    case "12": $forma_pago_desc = "Cheque - Comercio exterior"; break;
+    case "13": $forma_pago_desc = "Orden de pago simple - Comercio exterior"; break;
+    case "14": $forma_pago_desc = "Orden de pago documentario - Comercio exterior"; break;
+    case "15": $forma_pago_desc = "Remesa simple - Comercio exterior"; break;
+    case "16": $forma_pago_desc = "Remesa documentaria - Comercio exterior"; break;
+    case "17": $forma_pago_desc = "Carta de crédito simple - Comercio exterior"; break;
+    case "18": $forma_pago_desc = "Carta de crédito documentario - Comercio exterior"; break;
+    case "99": $forma_pago_desc = "Otros medios de pago"; break;
+}
+
+// 5. Determinar moneda, tasa de cambio y monto de la forma de pago según la moneda de transacción
+$forma_pago_moneda = "VES";
+$forma_pago_tipo_cambio = "0.0000";
+$forma_pago_monto = (float)$monto_total; // Inicialmente en VES
+
+if ($moneda_trn === 'USD') {
+    $tasa_cambio_val = (float){ds_cabecera}[0][17];
+    $monto_total_u_val = (float){ds_cabecera}[0][20];
+    
+    $forma_pago_moneda = "USD";
+    $forma_pago_tipo_cambio = number_format($tasa_cambio_val, 4, '.', '');
+    $forma_pago_monto = $monto_total_u_val;
+} elseif ($moneda_trn === 'EUR') {
+    $tasa_cambio_e_val = (float){ds_cabecera}[0][28];
+    $monto_total_e_val = (float){ds_cabecera}[0][25];
+    
+    $forma_pago_moneda = "EUR";
+    $forma_pago_tipo_cambio = number_format($tasa_cambio_e_val, 4, '.', '');
+    $forma_pago_monto = $monto_total_e_val;
+}
+
 // Formatear fecha y hora al estándar de TFHKA
 $fecha_emision = date("d/m/Y", strtotime($fecha_registro));
 $hora_emision  = date("h:i:s a", strtotime($fecha_registro));
@@ -301,12 +367,12 @@ $payload = [
                 "ImpuestosSubtotal" => $impuestos_subtotal_ves,
                 "FormasPago" => [
                     [
-                        "Descripcion" => "Efectivo",
+                        "Descripcion" => $forma_pago_desc,
                         "Fecha" => $fecha_emision,
-                        "Forma" => "01",
-                        "Monto" => number_format($monto_total_pagar, 2, '.', ''),
-                        "Moneda" => "VES",
-                        "TipoCambio" => "0.0000"
+                        "Forma" => $forma_pago_val,
+                        "Monto" => number_format($forma_pago_monto, 2, '.', ''),
+                        "Moneda" => $forma_pago_moneda,
+                        "TipoCambio" => $forma_pago_tipo_cambio
                     ]
                 ]
             ]
@@ -531,7 +597,8 @@ if ($exito === 1) {
                                 estatus_fiscal = 'Procesado',
                                 fecha_asignacion = STR_TO_DATE('" . addslashes($fecha_asig) . "', '%d/%m/%Y %h:%i:%s %p'),
                                 url_consulta = '" . addslashes($url_web) . "',
-                                mensaje_fiscal = 'Documento procesado correctamente'
+                                mensaje_fiscal = 'Documento procesado correctamente',
+                                forma_pago = '" . addslashes($forma_pago_val) . "'
                               WHERE id = $factura_fiscal_id";
         sc_exec_sql($update_fiscal_sql);
         
@@ -547,7 +614,8 @@ if ($exito === 1) {
                                 estatus_fiscal, 
                                 fecha_asignacion, 
                                 url_consulta, 
-                                mensaje_fiscal
+                                mensaje_fiscal,
+                                forma_pago
                               ) VALUES (
                                 " . $factura_id . ",
                                 '" . $tipo_doc_fiscal . "',
@@ -556,7 +624,8 @@ if ($exito === 1) {
                                 'Procesado',
                                 STR_TO_DATE('" . addslashes($fecha_asig) . "', '%d/%m/%Y %h:%i:%s %p'),
                                 '" . addslashes($url_web) . "',
-                                'Documento procesado correctamente'
+                                'Documento procesado correctamente',
+                                '" . addslashes($forma_pago_val) . "'
                               )";
         sc_exec_sql($insert_fiscal_sql);
         
