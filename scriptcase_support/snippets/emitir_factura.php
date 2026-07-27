@@ -526,14 +526,27 @@ if ($response_raw === null || $http_res['success'] === false) {
                        )";
     sc_exec_sql($insert_log_sql);
 
-    // Escribir en cabecera fiscal offve001
-    $insert_err_conn = "INSERT INTO offve001 (
-                            factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal
-                         ) VALUES (
-                            " . $factura_id . ", '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', 'Error', 
-                            'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
-                         )";
-    sc_exec_sql($insert_err_conn);
+    // Escribir en cabecera fiscal offve001 (Verificar si ya existe un borrador)
+    $sql_check_conn = "SELECT id FROM offve001 WHERE factura_id = $factura_id AND tipo_documento = '$tipo_doc_fiscal'";
+    sc_lookup(ds_exist_conn, $sql_check_conn);
+    
+    if (!empty({ds_exist_conn}) && {ds_exist_conn} !== false) {
+        $factura_fiscal_id_conn = {ds_exist_conn}[0][0];
+        $update_err_conn = "UPDATE offve001 SET 
+                                numero_documento = '" . addslashes($num_documento) . "',
+                                estatus_fiscal = 'Error',
+                                mensaje_fiscal = 'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
+                             WHERE id = $factura_fiscal_id_conn";
+        sc_exec_sql($update_err_conn);
+    } else {
+        $insert_err_conn = "INSERT INTO offve001 (
+                                factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal
+                             ) VALUES (
+                                " . $factura_id . ", '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', 'Error', 
+                                'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
+                             )";
+        sc_exec_sql($insert_err_conn);
+    }
 
     throw new Exception("Error: No hay conexión con el servicio local de facturación. Detalle: " . $response_error);
 }
