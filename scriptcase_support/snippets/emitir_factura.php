@@ -64,8 +64,7 @@ $sql_cabecera = "SELECT
 sc_lookup(ds_cabecera, $sql_cabecera);
 
 if (empty({ds_cabecera}) || {ds_cabecera} === false) {
-    sc_error_message("No se encontró la cabecera de la factura en ofcm020 con ID: " . {id_factura});
-    return;
+    throw new Exception("No se encontró la cabecera de la factura en ofcm020 con ID: " . {id_factura});
 }
 
 // Mapear campos de cabecera a variables PHP
@@ -91,8 +90,7 @@ $doc_ref          = {ds_cabecera}[0][16];
 
 // VALIDACIÓN DE MONEDAS SOPORTADAS
 if (!in_array($moneda_trn, array('VEB', 'VES', 'USD', 'EUR'))) {
-    sc_error_message("Error: La moneda '" . $moneda_trn . "' no está soportada actualmente. Solo se permiten facturas en VEB, USD y EUR.");
-    return;
+    throw new Exception("Error: La moneda '" . $moneda_trn . "' no está soportada actualmente. Solo se permiten facturas en VEB, USD y EUR.");
 }
 
 // Formatear tipo de documento fiscal
@@ -120,8 +118,7 @@ if (isset({forma_pago}) && !empty({forma_pago})) {
 
 // 3. Validar si está vacío o es nulo
 if (empty($forma_pago_val) || $forma_pago_val === "NULL" || $forma_pago_val === "") {
-    sc_error_message("Error: Debe especificar la Forma de Pago antes de proceder con la emisión fiscal.");
-    return;
+    throw new Exception("Error: Debe especificar la Forma de Pago antes de proceder con la emisión fiscal.");
 }
 
 // 4. Mapear descripción amigable consultando la tabla offve002
@@ -201,8 +198,7 @@ $sql_detalles = "SELECT
 sc_lookup(ds_detalles, $sql_detalles);
 
 if (empty({ds_detalles}) || {ds_detalles} === false) {
-    sc_error_message("La factura en ofcm021 debe contener al menos un detalle o ítem.");
-    return;
+    throw new Exception("La factura en ofcm021 debe contener al menos un detalle o ítem.");
 }
 
 $detalles_items = [];
@@ -539,8 +535,7 @@ if ($response_raw === null || $http_res['success'] === false) {
                          )";
     sc_exec_sql($insert_err_conn);
 
-    sc_error_message("Error: No hay conexión con el servicio local de facturación. Detalle: " . $response_error);
-    return;
+    throw new Exception("Error: No hay conexión con el servicio local de facturación. Detalle: " . $response_error);
 }
 
 $response = json_decode($response_raw, true);
@@ -688,5 +683,5 @@ if ($exito === 1) {
         sc_exec_sql($insert_error_sql);
     }
     
-    sc_error_message("Error en Emisión Fiscal: " . $mensaje_error);
+    throw new Exception("Error en Emisión Fiscal: " . $mensaje_error);
 }
