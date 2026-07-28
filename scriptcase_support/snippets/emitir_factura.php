@@ -68,7 +68,7 @@ if (empty({ds_cabecera}) || {ds_cabecera} === false) {
 // Mapear campos de cabecera a variables PHP
 $factura_id       = {ds_cabecera}[0][0];
 $tipo_factura_db  = {ds_cabecera}[0][1];
-$num_documento    = {ds_cabecera}[0][2];
+$num_documento    = preg_replace('/[^0-9]/', '', {ds_cabecera}[0][2]);
 $fecha_registro   = {ds_cabecera}[0][3];
 $moneda_trn       = strtoupper(trim({ds_cabecera}[0][4])); // Moneda de la Transacción (VEB/USD/EUR)
 $id_fiscal        = {ds_cabecera}[0][5];

@@ -50,7 +50,7 @@ elseif ($ofcm020_tipo_factura == "C") {
 // 5. OBTENER CORRELATIVO ERP PARA ASIGNAR EN BORRADOR
 $strSQL = "SELECT numero FROM ofcm020 WHERE id = $ofcm020_id";
 sc_lookup(rs_fac, $strSQL);
-$numero_documento = {rs_fac}[0][0];
+$numero_documento = preg_replace('/[^0-9]/', '', {rs_fac}[0][0]);
 
 // 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador = 0)
 $insert_cabecera = "INSERT INTO offve001 (
