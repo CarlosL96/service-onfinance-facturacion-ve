@@ -12,8 +12,6 @@
 // CONFIGURACIÓN DE INTEGRACIÓN
 $api_base_url = "http://localhost:8000"; // Cambiar al host/puerto de producción si es necesario
 
-// IMPORTAR LIBRERÍA HTTP PERSONALIZADA (of_http_lib)
-sc_include_library("sys", "of_http_lib", "of_http_lib.php", true, true);
 
 // 1. CONSULTAR CABECERA DE LA FACTURA (ofcm020) Y CLIENTE (ofcm001)
 $sql_cabecera = "SELECT 
@@ -534,7 +532,7 @@ if ($response_raw === null || $http_res['success'] === false) {
         $factura_fiscal_id_conn = {ds_exist_conn}[0][0];
         $update_err_conn = "UPDATE offve001 SET 
                                 numero_documento = '" . addslashes($num_documento) . "',
-                                estatus_fiscal = 'Error',
+                                estatus_fiscal = -1,
                                 mensaje_fiscal = 'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
                              WHERE id = $factura_fiscal_id_conn";
         sc_exec_sql($update_err_conn);
@@ -542,7 +540,7 @@ if ($response_raw === null || $http_res['success'] === false) {
         $insert_err_conn = "INSERT INTO offve001 (
                                 factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal
                              ) VALUES (
-                                " . $factura_id . ", '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', 'Error', 
+                                " . $factura_id . ", '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', -1, 
                                 'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
                              )";
         sc_exec_sql($insert_err_conn);
@@ -586,7 +584,7 @@ if ($exito === 1) {
         $update_fiscal_sql = "UPDATE offve001 SET 
                                 numero_documento = '" . addslashes($num_documento) . "',
                                 numero_control = '" . addslashes($nro_control) . "',
-                                estatus_fiscal = 'Procesado',
+                                estatus_fiscal = 1,
                                 fecha_asignacion = STR_TO_DATE('" . addslashes($fecha_asig) . "', '%d/%m/%Y %h:%i:%s %p'),
                                 url_consulta = '" . addslashes($url_web) . "',
                                 mensaje_fiscal = 'Documento procesado correctamente',
@@ -613,7 +611,7 @@ if ($exito === 1) {
                                 '" . $tipo_doc_fiscal . "',
                                 '" . addslashes($num_documento) . "',
                                 '" . addslashes($nro_control) . "',
-                                'Procesado',
+                                1,
                                 STR_TO_DATE('" . addslashes($fecha_asig) . "', '%d/%m/%Y %h:%i:%s %p'),
                                 '" . addslashes($url_web) . "',
                                 'Documento procesado correctamente',
@@ -672,7 +670,7 @@ if ($exito === 1) {
         // Actualizar el borrador existente con el estatus de Error
         $update_error_sql = "UPDATE offve001 SET 
                                 numero_documento = '" . addslashes($num_documento) . "',
-                                estatus_fiscal = 'Error',
+                                estatus_fiscal = -1,
                                 mensaje_fiscal = '" . $mensaje_error_db . "'
                              WHERE id = $factura_fiscal_id";
         sc_exec_sql($update_error_sql);
@@ -690,7 +688,7 @@ if ($exito === 1) {
                                 '" . $tipo_doc_fiscal . "',
                                 '" . addslashes($num_documento) . "',
                                 NULL,
-                                'Error',
+                                -1,
                                 '" . $mensaje_error_db . "'
                               )";
         sc_exec_sql($insert_error_sql);

@@ -52,11 +52,11 @@ $strSQL = "SELECT numero FROM ofcm020 WHERE id = $ofcm020_id";
 sc_lookup(rs_fac, $strSQL);
 $numero_documento = {rs_fac}[0][0];
 
-// 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador)
+// 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador = 0)
 $insert_cabecera = "INSERT INTO offve001 (
                         factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal
                     ) VALUES (
-                        $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 'Borrador', 'Borrador preliminar generado'
+                        $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, 'Borrador preliminar generado'
                     )";
 sc_exec_sql($insert_cabecera);
 
@@ -124,7 +124,7 @@ sc_redir("form_offve001", invoiceId = $recordId; sHeader = ''; sStatus = -1; sPr
  * Función auxiliar para limpiar borradores antiguos del mismo documento fiscal.
  */
 function clear_drafts_ve($ofcm020_id) {
-    $strSQL = "SELECT id FROM offve001 WHERE factura_id = $ofcm020_id AND estatus_fiscal = 'Borrador'";
+    $strSQL = "SELECT id FROM offve001 WHERE factura_id = $ofcm020_id AND estatus_fiscal = 0";
     sc_lookup(rs_drafts, $strSQL);
     if (!empty({rs_drafts}) && {rs_drafts} !== false) {
         foreach ({rs_drafts} as $row) {
