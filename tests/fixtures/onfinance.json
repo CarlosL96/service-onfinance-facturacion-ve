@@ -1,0 +1,66 @@
+{
+  "documentoElectronico": {
+    "Encabezado": {
+      "IdentificacionDocumento": {
+        "TipoDocumento": "01",
+        "NumeroDocumento": "00000511",
+        "FechaEmision": "27/07/2026",
+        "HoraEmision": "12:00:00 am",
+        "Serie": "",
+        "TipoDeVenta": "Interna",
+        "Moneda": "VES"
+      },
+      "Comprador": {
+        "TipoIdentificacion": "J",
+        "NumeroIdentificacion": "J-00070230-6",
+        "RazonSocial": "Fundacion Universidad Metropolitana",
+        "Direccion": "Distribuidor Petare-Guarenas, Campus Unimet, Edif. Fundamet, Urb.Terrezas                                                      del Avila",
+        "Pais": "VE",
+        "Correo": ["lparra@fundamet.org.ve"],
+        "Telefono": ["(0212) 2403776"]
+      },
+      "Totales": {
+        "NroItems": "1",
+        "MontoGravadoTotal": "210200.33",
+        "MontoExentoTotal": "0.00",
+        "Subtotal": "210200.33",
+        "TotalIVA": "33632.05",
+        "MontoTotalConIVA": "243832.38",
+        "TotalAPagar": "243832.38",
+        "ImpuestosSubtotal": [
+          {
+            "CodigoTotalImp": "G",
+            "AlicuotaImp": "16.00",
+            "BaseImponibleImp": "210200.33",
+            "ValorTotalImp": "33632.05"
+          }
+        ],
+        "FormasPago": [
+          {
+            "Descripcion": "Depósito en cuenta",
+            "Fecha": "27/07/2026",
+            "Forma": "01",
+            "Monto": "243832.38",
+            "Moneda": "VES",
+            "TipoCambio": "0.0000"
+          }
+        ]
+      }
+    },
+    "DetallesItems": [
+      {
+        "NumeroLinea": "1",
+        "IndicadorBienoServicio": "2",
+        "Descripcion": "Servicios en linea para Fiundamet Julio 2026",
+        "Cantidad": "1.00",
+        "UnidadMedida": "UNI",
+        "PrecioUnitario": "210200.33",
+        "PrecioItem": "210200.33",
+        "CodigoImpuesto": "G",
+        "TasaIVA": "16",
+        "ValorIVA": "33632.05",
+        "ValorTotalItem": "243832.38"
+      }
+    ]
+  }
+}

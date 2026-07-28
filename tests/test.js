@@ -64,12 +64,13 @@ async function runTests() {
         // ==========================================
         // A. EMISIÓN DE FACTURA
         // ==========================================
-        const invoicePath = path.join(__dirname, './fixtures/factura_01.json');
+        const invoicePath = path.join(__dirname, './fixtures/onfinance.json');
         if (!fs.existsSync(invoicePath)) {
           throw new Error(`No se encontró el JSON de factura en: ${invoicePath}`);
         }
         const invoicePayload = JSON.parse(fs.readFileSync(invoicePath, 'utf8'));
-        const invoiceNum = String(Math.floor(10000 + Math.random() * 90000));
+        //const invoiceNum = String(Math.floor(10000 + Math.random() * 90000));
+        const invoiceNum = invoicePayload.documentoElectronico.Encabezado.IdentificacionDocumento.NumeroDocumento;
         
         if (invoicePayload.documentoElectronico?.Encabezado?.IdentificacionDocumento) {
           const ident = invoicePayload.documentoElectronico.Encabezado.IdentificacionDocumento;

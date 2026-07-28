@@ -64,7 +64,8 @@ class TFHKAClient {
       });
       return response.data;
     } catch (error) {
-      console.error('TFHKAClient: Error de emisión:', error.response?.data || error.message);
+      const errorDetail = error.response?.data ? JSON.stringify(error.response.data, null, 2) : (error.message || error);
+      console.error('TFHKAClient: Error de emisión:', errorDetail);
       throw error;
     }
   }
@@ -121,7 +122,8 @@ class TFHKAClient {
       });
       return response.data;
     } catch (error) {
-      console.error('TFHKAClient: Error de descarga de archivo:', error.response?.data || error.message);
+      const errorDetail = error.response?.data ? JSON.stringify(error.response.data, null, 2) : (error.message || error);
+      console.error('TFHKAClient: Error de descarga de archivo:', errorDetail);
       throw error;
     }
   }
