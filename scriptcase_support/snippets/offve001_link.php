@@ -47,6 +47,17 @@ elseif ($ofcm020_tipo_factura == "C") {
     return;
 }
 
+// 4b. VERIFICAR SI YA EXISTE UN REGISTRO PROCESADO (estatus_fiscal = 1)
+$strSQL = "SELECT id FROM offve001 WHERE factura_id = $ofcm020_id AND tipo_documento = '$tipo_doc_fiscal'";
+sc_lookup(rs_existente, $strSQL);
+
+if (!empty({rs_existente}) && {rs_existente} !== false) {
+    $recordId = {rs_existente}[0][0];
+    // Redireccionar directamente al formulario de revisión
+    sc_redir("form_offve001", invoiceId = $recordId; sHeader = ''; sStatus = 1; sPrefilledCreditNote = 0);
+    return;
+}
+
 // 5. OBTENER CORRELATIVO ERP PARA ASIGNAR EN BORRADOR
 $strSQL = "SELECT numero FROM ofcm020 WHERE id = $ofcm020_id";
 sc_lookup(rs_fac, $strSQL);
