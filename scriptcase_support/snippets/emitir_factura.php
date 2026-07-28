@@ -512,7 +512,7 @@ $http_status     = $http_res['status'];
 $response_error  = $http_res['error'];
 
 // 9. PROCESAR RESPUESTA Y REGISTRAR LOG DE INTEGRACIÓN (ofint001)
-if ($response_raw === null || $http_res['success'] === false) {
+if ($response_raw === null || $response_raw === '') {
     // Registrar error de red en logs
     $err_msg = !empty($response_error) ? addslashes($response_error) : 'No se pudo conectar con el servicio local de facturación';
     $insert_log_sql = "INSERT INTO ofint001 (
