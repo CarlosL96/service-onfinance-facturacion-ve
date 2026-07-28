@@ -71,6 +71,9 @@ CREATE TABLE IF NOT EXISTS `ofint001` (
 ALTER TABLE `offve001` 
 ADD COLUMN `forma_pago` VARCHAR(45) NULL AFTER `numero_control`;
 
+ALTER TABLE `offve001` 
+MODIFY COLUMN `estatus_fiscal` TINYINT NOT NULL DEFAULT 0 COMMENT '0 = Borrador, 1 = Procesado, -1 = Error';
+
 -- 4. Catálogo de Formas de Pago - Venezuela (offve002)
 CREATE TABLE IF NOT EXISTS `offve002` (
   `codigo` VARCHAR(2) NOT NULL PRIMARY KEY COMMENT 'Código de dos dígitos (ej: 01, 02)',

@@ -124,7 +124,7 @@ sc_redir("form_offve001", invoiceId = $recordId; sHeader = ''; sStatus = -1; sPr
  * Función auxiliar para limpiar borradores antiguos del mismo documento fiscal.
  */
 function clear_drafts_ve($ofcm020_id) {
-    $strSQL = "SELECT id FROM offve001 WHERE factura_id = $ofcm020_id AND estatus_fiscal = 0";
+    $strSQL = "SELECT id FROM offve001 WHERE factura_id = $ofcm020_id AND estatus_fiscal != 1";
     sc_lookup(rs_drafts, $strSQL);
     if (!empty({rs_drafts}) && {rs_drafts} !== false) {
         foreach ({rs_drafts} as $row) {
