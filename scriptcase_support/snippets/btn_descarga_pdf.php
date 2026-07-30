@@ -15,9 +15,8 @@ try {
     // Invocar el método PHP del formulario que descarga y sirve el PDF
     descarga_documento_pdf();
 } catch (Exception $e) {
-    // Capturar y mostrar el error de forma detallada para depuración
+    // Capturar y mostrar el error de forma amigable
     echo "<div style='color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 12px; margin: 10px 0; border-radius: 4px; font-family: Arial, sans-serif; font-size: 14px;'>";
-    echo "<strong>Error al Descargar PDF:</strong> " . htmlspecialchars($e->getMessage()) . "<br>";
-    echo "<small style='color: #555;'>Ocurrido en: " . htmlspecialchars($e->getFile()) . " línea " . $e->getLine() . "</small>";
+    echo "<strong>Error al Descargar PDF:</strong> " . htmlspecialchars($e->getMessage());
     echo "</div>";
 }

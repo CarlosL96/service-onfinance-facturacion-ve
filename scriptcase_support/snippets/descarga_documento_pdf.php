@@ -11,6 +11,9 @@
  * =================================================================================
  */
 
+// CONFIGURACIÓN DE INTEGRACIÓN
+$api_base_url = "http://localhost:8000"; // Host/puerto del servicio de facturación
+
 // 1. OBTENER ID DEL BORRADOR/REGISTRO ACTIVO EN EL FORMULARIO
 $draft_id = null;
 if (isset({id}) && !empty({id})) {
@@ -52,8 +55,6 @@ if ($estatus_fiscal !== 1) {
 
 // 4. SI EL PDF NO ESTÁ CACHEADO EN LA BD, DESCARGARLO DESDE LA API
 if (empty($pdf_base64) || $pdf_base64 === 'NULL') {
-    // URL del API de integración
-    $api_base_url = "http://localhost:8000"; // Ajustar si es necesario
     $url = $api_base_url . "/api/v1/descargar-pdf";
 
     // Cuerpo de la petición
@@ -67,16 +68,6 @@ if (empty($pdf_base64) || $pdf_base64 === 'NULL') {
     $http_res = of_http_lib::post_json($url, $payload, 30);
     $response_raw = $http_res['body'];
     
-    // Registrar Log de integración para auditoría/depuración
-    $insert_log_sql = "INSERT INTO ofint001 (
-                         origen, endpoint, tipo_documento, numero_documento, referencia_id, 
-                         peticion_json, respuesta_json, codigo_respuesta, exito
-                       ) VALUES (
-                         'Scriptcase-PDF', '/api/v1/descargar-pdf', '" . $tipo_documento . "', '" . addslashes($numero_documento) . "', " . (int)$draft_id . ",
-                         '" . addslashes(json_encode($payload)) . "', '" . addslashes($response_raw) . "', '" . $http_res['status'] . "', " . ($http_res['success'] ? 1 : 0) . "
-                       )";
-    sc_exec_sql($insert_log_sql);
-
     if (empty($response_raw)) {
         throw new Exception("No se recibió respuesta del servicio de facturación local al descargar el PDF. Detalle: " . $http_res['error']);
     }
