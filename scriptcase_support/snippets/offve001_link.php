@@ -97,7 +97,7 @@ $insert_cabecera = "INSERT INTO offve001 (
                         factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal,
                         monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar
                     ) VALUES (
-                        $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, 'Borrador preliminar generado',
+                        $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, '',
                         $monto_subtotal, $monto_gravable, $monto_exento, $monto_iva, $monto_total, $monto_igtf, $monto_total_pagar
                     )";
 sc_exec_sql($insert_cabecera);

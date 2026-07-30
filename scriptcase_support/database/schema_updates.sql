@@ -17,6 +17,15 @@ CREATE TABLE IF NOT EXISTS `offve001` (
   `monto_total` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
   `monto_igtf` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
   `monto_total_pagar` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `moneda_trn` VARCHAR(3) NOT NULL DEFAULT 'VES',
+  `tasa_cambio` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_subtotal_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_gravable_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_exento_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_iva_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_total_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_igtf_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_total_pagar_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
   `estatus_fiscal` TINYINT NOT NULL DEFAULT 0 COMMENT '0 = Borrador, 1 = Procesado, -1 = Error',
   `fecha_asignacion` DATETIME NULL DEFAULT NULL COMMENT 'Fecha y hora de registro de la firma fiscal',
   `url_consulta` TEXT NULL DEFAULT NULL COMMENT 'URL devuelta por TFHKA para consultar el documento en línea',
@@ -120,7 +129,17 @@ ADD COLUMN `monto_exento` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_gra
 ADD COLUMN `monto_iva` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_exento`,
 ADD COLUMN `monto_total` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_iva`,
 ADD COLUMN `monto_igtf` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_total`,
-ADD COLUMN `monto_total_pagar` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_igtf`;
+ADD COLUMN `monto_total_pagar` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_igtf`,
+ADD COLUMN `moneda_trn` VARCHAR(3) NOT NULL DEFAULT 'VES' AFTER `monto_total_pagar`,
+ADD COLUMN `tasa_cambio` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `moneda_trn`,
+ADD COLUMN `monto_subtotal_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `tasa_cambio`,
+ADD COLUMN `monto_gravable_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_subtotal_trn`,
+ADD COLUMN `monto_exento_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_gravable_trn`,
+ADD COLUMN `monto_iva_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_exento_trn`,
+ADD COLUMN `monto_total_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_iva_trn`,
+ADD COLUMN `monto_igtf_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_total_trn`,
+ADD COLUMN `monto_total_pagar_trn` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_igtf_trn`;
+
 
 
 

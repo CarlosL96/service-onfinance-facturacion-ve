@@ -89,7 +89,8 @@ if ($tipo_factura_db === 'C') {
 // 2. CONSULTAR REGISTRO FISCAL PRELIMINAR (offve001) PARA CARGAR LOS TOTALES DEL BORRADOR
 $sql_fiscal = "SELECT 
                    id, forma_pago, 
-                   monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar 
+                   monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar,
+                   moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn
                FROM offve001 
                WHERE factura_id = " . $factura_id . " AND tipo_documento = '" . $tipo_doc_fiscal . "'";
 sc_lookup(ds_fiscal, $sql_fiscal);
@@ -107,6 +108,9 @@ $monto_iva           = (float){ds_fiscal}[0][5];
 $monto_total_con_iva = (float){ds_fiscal}[0][6];
 $monto_igtf          = (float){ds_fiscal}[0][7];
 $monto_total_pagar   = (float){ds_fiscal}[0][8];
+$db_moneda_trn       = strtoupper(trim({ds_fiscal}[0][9]));
+$db_tasa_cambio      = (float){ds_fiscal}[0][10];
+$db_total_pagar_trn  = (float){ds_fiscal}[0][17];
 
 $doc_ref             = {ds_cabecera}[0][16];
 
@@ -144,20 +148,10 @@ $forma_pago_moneda = "VES";
 $forma_pago_tipo_cambio = "0.0000";
 $forma_pago_monto = (float)$monto_total_pagar; // Inicialmente en VES (incluyendo IGTF)
 
-if ($moneda_trn === 'USD') {
-    $tasa_cambio_val = (float){ds_cabecera}[0][17];
-    $monto_total_u_val = (float){ds_cabecera}[0][20];
-    
-    $forma_pago_moneda = "USD";
-    $forma_pago_tipo_cambio = number_format($tasa_cambio_val, 4, '.', '');
-    $forma_pago_monto = $monto_total_u_val;
-} elseif ($moneda_trn === 'EUR') {
-    $tasa_cambio_e_val = (float){ds_cabecera}[0][28];
-    $monto_total_e_val = (float){ds_cabecera}[0][25];
-    
-    $forma_pago_moneda = "EUR";
-    $forma_pago_tipo_cambio = number_format($tasa_cambio_e_val, 4, '.', '');
-    $forma_pago_monto = $monto_total_e_val;
+if ($moneda_trn === 'USD' || $moneda_trn === 'EUR') {
+    $forma_pago_moneda = $moneda_trn;
+    $forma_pago_tipo_cambio = number_format($db_tasa_cambio, 4, '.', '');
+    $forma_pago_monto = $db_total_pagar_trn;
 }
 
 // Formatear fecha y hora al estándar de TFHKA
