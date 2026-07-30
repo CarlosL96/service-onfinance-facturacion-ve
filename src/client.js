@@ -62,6 +62,7 @@ class TFHKAClient {
           'Content-Type': 'application/json'
         }
       });
+      console.log(`TFHKAClient: Emisión procesada. Código: ${response.data?.codigo}. Mensaje: ${response.data?.mensaje}. Control: ${response.data?.resultado?.numeroControl || 'N/A'}`);
       return response.data;
     } catch (error) {
       const errorDetail = error.response?.data ? JSON.stringify(error.response.data, null, 2) : (error.message || error);
@@ -93,6 +94,7 @@ class TFHKAClient {
           'Content-Type': 'application/json'
         }
       });
+      console.log(`TFHKAClient: Anulación procesada. Código: ${response.data?.codigo}. Mensaje: ${response.data?.mensaje}`);
       return response.data;
     } catch (error) {
       console.error('TFHKAClient: Error de anulación:', error.response?.data || error.message);
@@ -120,6 +122,8 @@ class TFHKAClient {
           'Content-Type': 'application/json'
         }
       });
+      const pdfLen = response.data?.archivo ? response.data.archivo.length : (response.data?.Archivo ? response.data.Archivo.length : 0);
+      console.log(`TFHKAClient: Descarga procesada. Código: ${response.data?.codigo}. Mensaje: ${response.data?.mensaje}. PDF Size: ${pdfLen} chars.`);
       return response.data;
     } catch (error) {
       const errorDetail = error.response?.data ? JSON.stringify(error.response.data, null, 2) : (error.message || error);

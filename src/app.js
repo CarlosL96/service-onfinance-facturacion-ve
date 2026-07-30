@@ -5,6 +5,27 @@ import { tfhkaClient } from './client.js';
 const app = express();
 app.use(express.json({ limit: '10mb' }));
 
+// Middleware para registrar la actividad de la API en consola (PM2 captura esto en sus logs)
+app.use((req, res, next) => {
+  const start = Date.now();
+  const { method, url } = req;
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    const status = res.statusCode;
+    
+    // Logs simplificados de healthcheck para evitar spam en logs
+    if (url === '/health') {
+      console.log(`[HEALTHCHECK] ${method} ${url} - Status: ${status} (${duration}ms)`);
+    } else {
+      console.log(`[API REQUEST] ${method} ${url} - Status: ${status} - IP: ${ip} - Duration: ${duration}ms`);
+    }
+  });
+
+  next();
+});
+
 // Middleware para formatear las respuestas de error
 const errorHandler = (err, req, res, next) => {
   console.error('Express Error Handler:', err);
@@ -71,7 +92,7 @@ app.post('/api/v1/emitir/factura', async (req, res, next) => {
     setTipoDocumento(documentoElectronico, '01');
 
     const ident = getIdentificacionDocumento(documentoElectronico);
-    console.log('Emitiendo factura para documento nro:', ident.NumeroDocumento || ident.numeroDocumento);
+    console.log(`[API] => EMISIÓN FACTURA - Solicitando emisión para Documento Nro: ${ident.NumeroDocumento || ident.numeroDocumento}`);
     
     const result = await tfhkaClient.emitirDocumento(documentoElectronico);
     res.status(200).json(result);
@@ -112,7 +133,7 @@ app.post('/api/v1/emitir/nota-credito', async (req, res, next) => {
     // Forzar tipo de documento de nota de crédito
     setTipoDocumento(documentoElectronico, '02');
 
-    console.log('Emitiendo nota de crédito afectando factura:', numFactura);
+    console.log(`[API] => EMISIÓN NOTA CRÉDITO - Documento Nro: ${ident.NumeroDocumento || ident.numeroDocumento} - Afecta Factura Nro: ${numFactura}`);
 
     const result = await tfhkaClient.emitirDocumento(documentoElectronico);
     res.status(200).json(result);
@@ -153,7 +174,7 @@ app.post('/api/v1/emitir/nota-debito', async (req, res, next) => {
     // Forzar tipo de documento de nota de débito
     setTipoDocumento(documentoElectronico, '03');
 
-    console.log('Emitiendo nota de débito afectando factura:', numFactura);
+    console.log(`[API] => EMISIÓN NOTA DÉBITO - Documento Nro: ${ident.NumeroDocumento || ident.numeroDocumento} - Afecta Factura Nro: ${numFactura}`);
 
     const result = await tfhkaClient.emitirDocumento(documentoElectronico);
     res.status(200).json(result);
@@ -185,7 +206,7 @@ app.post('/api/v1/anular', async (req, res, next) => {
       datosAnulacion.serie = '';
     }
 
-    console.log(`Anulando documento nro: ${datosAnulacion.numeroDocumento} de tipo: ${datosAnulacion.tipoDocumento}`);
+    console.log(`[API] => ANULACIÓN - Solicitando anulación para Documento Nro: ${datosAnulacion.numeroDocumento} - Tipo: ${datosAnulacion.tipoDocumento} - Motivo: ${datosAnulacion.motivoAnulacion}`);
 
     const result = await tfhkaClient.anularDocumento(datosAnulacion);
     res.status(200).json(result);
@@ -212,7 +233,7 @@ app.post('/api/v1/descargar-pdf', async (req, res, next) => {
       });
     }
 
-    console.log(`Descargando PDF del documento nro: ${numeroDocumento} de tipo: ${tipoDocumento}`);
+    console.log(`[API] => DESCARGA PDF - Solicitando archivo para Documento Nro: ${numeroDocumento} - Tipo: ${tipoDocumento}`);
 
     const result = await tfhkaClient.descargarArchivo({
       tipoDocumento,
