@@ -86,7 +86,11 @@ $sql_detalles = "SELECT
                     d.gravable_loc,
                     i.tipo
                  FROM ofcm021 d
-                 LEFT JOIN ofin009 i ON d.ofin009_id = i.codigo
+                 LEFT JOIN (
+                     SELECT TRIM(codigo) AS codigo, MAX(tipo) AS tipo
+                     FROM ofin009
+                     GROUP BY TRIM(codigo)
+                 ) i ON TRIM(d.ofin009_id) = i.codigo
                  WHERE d.ofcm020_id = $ofcm020_id";
 sc_lookup(rs_det, $sql_detalles);
 

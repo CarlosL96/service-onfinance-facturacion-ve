@@ -189,7 +189,11 @@ $sql_detalles = "SELECT
                     d.total_eur,
                     d.gravable_eur
                  FROM ofcm021 d
-                 LEFT JOIN ofin009 i ON d.ofin009_id = i.codigo
+                 LEFT JOIN (
+                     SELECT TRIM(codigo) AS codigo, MAX(tipo) AS tipo
+                     FROM ofin009
+                     GROUP BY TRIM(codigo)
+                 ) i ON TRIM(d.ofin009_id) = i.codigo
                  WHERE d.ofcm020_id = " . $factura_id . "
                  ORDER BY d.id ASC";
 
