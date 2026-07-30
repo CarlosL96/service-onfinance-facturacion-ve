@@ -59,16 +59,25 @@ if (!empty({rs_existente}) && {rs_existente} !== false) {
 }
 
 // 5. OBTENER CORRELATIVO Y TOTALES ERP PARA ASIGNAR EN BORRADOR
-$strSQL = "SELECT numero, monto_loc, monto_iva_loc, neto_loc, gravable_loc, exento_loc FROM ofcm020 WHERE id = $ofcm020_id";
+$strSQL = "SELECT 
+               numero, moneda_trn, 
+               monto_loc, monto_iva_loc, neto_loc, gravable_loc, exento_loc,
+               tasa_cambio, monto_usd, monto_iva_usd, neto_usd, gravable_usd, exento_usd,
+               tasa_cambio_eur, monto_eur, monto_iva_eur, neto_eur, gravable_eur, exento_eur
+           FROM ofcm020 
+           WHERE id = $ofcm020_id";
 sc_lookup(rs_fac, $strSQL);
 $numero_documento = preg_replace('/[^0-9]/', '', {rs_fac}[0][0]);
-$raw_subtotal = (float){rs_fac}[0][1];
-$raw_iva      = (float){rs_fac}[0][2];
-$raw_total    = (float){rs_fac}[0][3];
-$raw_gravable = (float){rs_fac}[0][4];
-$raw_exento   = (float){rs_fac}[0][5];
+$moneda_trn       = strtoupper(trim({rs_fac}[0][1]));
 
-// Calcular consolidación de IGTF desde ofcm021
+// Montos Locales (VES)
+$raw_subtotal = (float){rs_fac}[0][2];
+$raw_iva      = (float){rs_fac}[0][3];
+$raw_total    = (float){rs_fac}[0][4];
+$raw_gravable = (float){rs_fac}[0][5];
+$raw_exento   = (float){rs_fac}[0][6];
+
+// Calcular consolidación de IGTF local desde ofcm021
 $strSQL_igtf = "SELECT SUM(total_loc), SUM(gravable_loc), SUM(exento_loc) FROM ofcm021 
                 WHERE ofcm020_id = $ofcm020_id 
                   AND (ofin009_id LIKE '*IGT%' OR descripcion LIKE '*IGT%' OR descripcion LIKE 'Impuesto a las Grandes Transacciones%')";
@@ -83,7 +92,7 @@ if (!empty({rs_igtf}) && {rs_igtf} !== false) {
     $igtf_exento = (float){rs_igtf}[0][2];
 }
 
-// Calcular los montos finales sanitizados de IGTF
+// Calcular los montos locales finales sanitizados de IGTF
 $monto_subtotal    = $raw_subtotal - $igtf_amount;
 $monto_gravable    = $raw_gravable - $igtf_base;
 $monto_exento      = $raw_exento - $igtf_exento;
@@ -92,13 +101,88 @@ $monto_total       = $raw_total - $igtf_amount; // sin IGTF
 $monto_igtf        = $igtf_amount;
 $monto_total_pagar = $raw_total; // con IGTF
 
+// Inicializar montos transaccionales en moneda extranjera
+$tasa_cambio           = 0.0000;
+$monto_subtotal_trn    = 0.0000;
+$monto_gravable_trn    = 0.0000;
+$monto_exento_trn      = 0.0000;
+$monto_iva_trn         = 0.0000;
+$monto_total_trn       = 0.0000;
+$monto_igtf_trn        = 0.0000;
+$monto_total_pagar_trn = 0.0000;
+
+if ($moneda_trn === 'USD') {
+    $tasa_cambio        = (float){rs_fac}[0][7];
+    $raw_subtotal_trn   = (float){rs_fac}[0][8];
+    $raw_iva_trn        = (float){rs_fac}[0][9];
+    $raw_total_trn      = (float){rs_fac}[0][10];
+    $raw_gravable_trn   = (float){rs_fac}[0][11];
+    $raw_exento_trn     = (float){rs_fac}[0][12];
+
+    // IGTF USD
+    $strSQL_igtf_usd = "SELECT SUM(total_usd), SUM(gravable_usd), SUM(exento_usd) FROM ofcm021 
+                        WHERE ofcm020_id = $ofcm020_id 
+                          AND (ofin009_id LIKE '*IGT%' OR descripcion LIKE '*IGT%' OR descripcion LIKE 'Impuesto a las Grandes Transacciones%')";
+    sc_lookup(rs_igtf_usd, $strSQL_igtf_usd);
+    
+    $igtf_amount_trn = 0.0;
+    $igtf_base_trn   = 0.0;
+    $igtf_exento_trn = 0.0;
+    if (!empty({rs_igtf_usd}) && {rs_igtf_usd} !== false) {
+        $igtf_amount_trn = (float){rs_igtf_usd}[0][0];
+        $igtf_base_trn   = (float){rs_igtf_usd}[0][1];
+        $igtf_exento_trn = (float){rs_igtf_usd}[0][2];
+    }
+
+    $monto_subtotal_trn    = $raw_subtotal_trn - $igtf_amount_trn;
+    $monto_gravable_trn    = $raw_gravable_trn - $igtf_base_trn;
+    $monto_exento_trn      = $raw_exento_trn - $igtf_exento_trn;
+    $monto_iva_trn         = $raw_iva_trn;
+    $monto_total_trn       = $raw_total_trn - $igtf_amount_trn;
+    $monto_igtf_trn        = $igtf_amount_trn;
+    $monto_total_pagar_trn = $raw_total_trn;
+
+} elseif ($moneda_trn === 'EUR') {
+    $tasa_cambio        = (float){rs_fac}[0][13];
+    $raw_subtotal_trn   = (float){rs_fac}[0][14];
+    $raw_iva_trn        = (float){rs_fac}[0][15];
+    $raw_total_trn      = (float){rs_fac}[0][16];
+    $raw_gravable_trn   = (float){rs_fac}[0][17];
+    $raw_exento_trn     = (float){rs_fac}[0][18];
+
+    // IGTF EUR
+    $strSQL_igtf_eur = "SELECT SUM(total_eur), SUM(gravable_eur), SUM(exento_eur) FROM ofcm021 
+                        WHERE ofcm020_id = $ofcm020_id 
+                          AND (ofin009_id LIKE '*IGT%' OR descripcion LIKE '*IGT%' OR descripcion LIKE 'Impuesto a las Grandes Transacciones%')";
+    sc_lookup(rs_igtf_eur, $strSQL_igtf_eur);
+    
+    $igtf_amount_trn = 0.0;
+    $igtf_base_trn   = 0.0;
+    $igtf_exento_trn = 0.0;
+    if (!empty({rs_igtf_eur}) && {rs_igtf_eur} !== false) {
+        $igtf_amount_trn = (float){rs_igtf_eur}[0][0];
+        $igtf_base_trn   = (float){rs_igtf_eur}[0][1];
+        $igtf_exento_trn = (float){rs_igtf_eur}[0][2];
+    }
+
+    $monto_subtotal_trn    = $raw_subtotal_trn - $igtf_amount_trn;
+    $monto_gravable_trn    = $raw_gravable_trn - $igtf_base_trn;
+    $monto_exento_trn      = $raw_exento_trn - $igtf_exento_trn;
+    $monto_iva_trn         = $raw_iva_trn;
+    $monto_total_trn       = $raw_total_trn - $igtf_amount_trn;
+    $monto_igtf_trn        = $igtf_amount_trn;
+    $monto_total_pagar_trn = $raw_total_trn;
+}
+
 // 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador = 0)
 $insert_cabecera = "INSERT INTO offve001 (
                         factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal,
-                        monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar
+                        monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar,
+                        moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn
                     ) VALUES (
                         $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, '',
-                        $monto_subtotal, $monto_gravable, $monto_exento, $monto_iva, $monto_total, $monto_igtf, $monto_total_pagar
+                        $monto_subtotal, $monto_gravable, $monto_exento, $monto_iva, $monto_total, $monto_igtf, $monto_total_pagar,
+                        '$moneda_trn', $tasa_cambio, $monto_subtotal_trn, $monto_gravable_trn, $monto_exento_trn, $monto_iva_trn, $monto_total_trn, $monto_igtf_trn, $monto_total_pagar_trn
                     )";
 sc_exec_sql($insert_cabecera);
 
