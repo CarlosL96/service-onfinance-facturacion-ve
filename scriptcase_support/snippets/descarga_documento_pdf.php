@@ -73,14 +73,21 @@ if (empty($pdf_base64) || $pdf_base64 === 'NULL') {
 
     $response = json_decode($response_raw, true);
     
+    $archivo_base64 = '';
     if (isset($response['Archivo']) && !empty($response['Archivo'])) {
-        $pdf_base64 = $response['Archivo'];
+        $archivo_base64 = $response['Archivo'];
+    } elseif (isset($response['archivo']) && !empty($response['archivo'])) {
+        $archivo_base64 = $response['archivo'];
+    }
+
+    if (!empty($archivo_base64)) {
+        $pdf_base64 = $archivo_base64;
         
         // Guardar el PDF en base de datos para no tener que consultarlo de nuevo
         $update_pdf = "UPDATE offve001 SET pdf_base64 = '" . addslashes($pdf_base64) . "' WHERE id = $draft_id";
         sc_exec_sql($update_pdf);
     } else {
-        $msg_err = isset($response['message']) ? $response['message'] : "Archivo PDF no devuelto por el servicio.";
+        $msg_err = isset($response['mensaje']) ? $response['mensaje'] : (isset($response['message']) ? $response['message'] : "Archivo PDF no devuelto por el servicio.");
         throw new Exception("Error al descargar PDF desde el portal fiscal: " . $msg_err);
     }
 }

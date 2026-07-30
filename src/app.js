@@ -221,9 +221,10 @@ app.post('/api/v1/descargar-pdf', async (req, res, next) => {
     });
 
     // Si el cliente pide explícitamente binario (ej. query params o header), enviamos el PDF decodificado
-    if (result && result.Archivo) {
+    const pdfBase64 = result ? (result.Archivo || result.archivo) : null;
+    if (pdfBase64) {
       if (req.query.format === 'binary' || req.headers.accept === 'application/pdf') {
-        const pdfBuffer = Buffer.from(result.Archivo, 'base64');
+        const pdfBuffer = Buffer.from(pdfBase64, 'base64');
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', `attachment; filename=documento_${numeroDocumento}.pdf`);
         return res.send(pdfBuffer);
