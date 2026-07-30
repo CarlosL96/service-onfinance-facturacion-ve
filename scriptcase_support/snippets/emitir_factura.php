@@ -110,6 +110,12 @@ $monto_igtf          = (float){ds_fiscal}[0][7];
 $monto_total_pagar   = (float){ds_fiscal}[0][8];
 $db_moneda_trn       = strtoupper(trim({ds_fiscal}[0][9]));
 $db_tasa_cambio      = (float){ds_fiscal}[0][10];
+$monto_subtotal_trn  = (float){ds_fiscal}[0][11];
+$monto_gravable_trn  = (float){ds_fiscal}[0][12];
+$monto_exento_trn    = (float){ds_fiscal}[0][13];
+$monto_iva_trn       = (float){ds_fiscal}[0][14];
+$monto_total_trn     = (float){ds_fiscal}[0][15];
+$monto_igtf_trn      = (float){ds_fiscal}[0][16];
 $db_total_pagar_trn  = (float){ds_fiscal}[0][17];
 
 $doc_ref             = {ds_cabecera}[0][16];
@@ -307,104 +313,76 @@ $payload = [
 $totales_otra_moneda = null;
 
 if ($moneda_trn === 'USD') {
-    $tasa_cambio      = (float){ds_cabecera}[0][17];
-    $monto_subtotal_u = (float){ds_cabecera}[0][18];
-    $monto_iva_u      = (float){ds_cabecera}[0][19];
-    $monto_total_u    = (float){ds_cabecera}[0][20];
-    $monto_gravado_u  = (float){ds_cabecera}[0][21];
-    $monto_exento_u   = (float){ds_cabecera}[0][22];
-    
-    // Ajustar montos USD restando el IGTF
-    $monto_gravado_u_net   = $monto_gravado_u - $igtf_base_usd;
-    $monto_exento_u_net    = $monto_exento_u; 
-    $monto_subtotal_u_net  = $monto_subtotal_u - $igtf_amount_usd;
-    $monto_total_u_con_iva = $monto_total_u - $igtf_amount_usd;
-    $monto_total_u_pagar   = $monto_total_u;
-    
     $impuestos_subtotal_otra = [];
-    if ($monto_gravado_u_net > 0) {
+    if ($monto_gravable_trn > 0) {
         $impuestos_subtotal_otra[] = [
             "CodigoTotalImp" => "G",
             "AlicuotaImp" => "16.00",
-            "BaseImponibleImp" => number_format($monto_gravado_u_net, 2, '.', ''),
-            "ValorTotalImp" => number_format($monto_iva_u, 2, '.', '')
+            "BaseImponibleImp" => number_format($monto_gravable_trn, 2, '.', ''),
+            "ValorTotalImp" => number_format($monto_iva_trn, 2, '.', '')
         ];
     }
     
     // Inyectar IGTF en USD si existe
-    if ($has_igtf && $igtf_amount_usd > 0) {
-        $base_igtf_calculada_usd = ($igtf_base_usd > 0) ? $igtf_base_usd : round($igtf_amount_usd / 0.03, 2);
+    if ($monto_igtf_trn > 0) {
+        $base_igtf_calculada_usd = round($monto_igtf_trn / 0.03, 2);
         $impuestos_subtotal_otra[] = [
             "CodigoTotalImp" => "IGTF",
             "AlicuotaImp" => "3.00",
             "BaseImponibleImp" => number_format($base_igtf_calculada_usd, 2, '.', ''),
-            "ValorTotalImp" => number_format($igtf_amount_usd, 2, '.', '')
+            "ValorTotalImp" => number_format($monto_igtf_trn, 2, '.', '')
         ];
     }
     
     $totales_otra_moneda = [
         "moneda" => "USD",
-        "tipoCambio" => number_format($tasa_cambio, 4, '.', ''),
-        "montoGravadoTotal" => number_format($monto_gravado_u_net, 2, '.', ''),
-        "montoExentoTotal" => number_format($monto_exento_u_net, 2, '.', ''),
+        "tipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
+        "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
+        "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "MontoPercibidoTotal" => "0.00",
-        "subtotal" => number_format($monto_subtotal_u_net, 2, '.', ''),
-        "totalAPagar" => number_format($monto_total_u_pagar, 2, '.', ''),
-        "totalIVA" => number_format($monto_iva_u, 2, '.', ''),
-        "montoTotalIVAyOTI" => number_format($monto_total_u_pagar, 2, '.', ''),
+        "subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
+        "totalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
+        "totalIVA" => number_format($monto_iva_trn, 2, '.', ''),
+        "montoTotalIVAyOTI" => number_format($db_total_pagar_trn, 2, '.', ''),
         "MontoTotalOTI" => "0.00",
-        "montoTotalConIVA" => number_format($monto_total_u_con_iva, 2, '.', ''),
+        "montoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
         "totalDescuento" => "0.00",
         "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];
 } elseif ($moneda_trn === 'EUR') {
-    $monto_subtotal_e = (float){ds_cabecera}[0][23];
-    $monto_iva_e      = (float){ds_cabecera}[0][24];
-    $monto_total_e    = (float){ds_cabecera}[0][25];
-    $monto_gravado_e  = (float){ds_cabecera}[0][26];
-    $monto_exento_e   = (float){ds_cabecera}[0][27];
-    $tasa_cambio_e    = (float){ds_cabecera}[0][28];
-    
-    // Ajustar montos EUR restando el IGTF
-    $monto_gravado_e_net   = $monto_gravado_e - $igtf_base_eur;
-    $monto_exento_e_net    = $monto_exento_e;
-    $monto_subtotal_e_net  = $monto_subtotal_e - $igtf_amount_eur;
-    $monto_total_e_con_iva = $monto_total_e - $igtf_amount_eur;
-    $monto_total_e_pagar   = $monto_total_e;
-    
     $impuestos_subtotal_otra = [];
-    if ($monto_gravado_e_net > 0) {
+    if ($monto_gravable_trn > 0) {
         $impuestos_subtotal_otra[] = [
             "CodigoTotalImp" => "G",
             "AlicuotaImp" => "16.00",
-            "BaseImponibleImp" => number_format($monto_gravado_e_net, 2, '.', ''),
-            "ValorTotalImp" => number_format($monto_iva_e, 2, '.', '')
+            "BaseImponibleImp" => number_format($monto_gravable_trn, 2, '.', ''),
+            "ValorTotalImp" => number_format($monto_iva_trn, 2, '.', '')
         ];
     }
     
     // Inyectar IGTF en EUR si existe
-    if ($has_igtf && $igtf_amount_eur > 0) {
-        $base_igtf_calculada_eur = ($igtf_base_eur > 0) ? $igtf_base_eur : round($igtf_amount_eur / 0.03, 2);
+    if ($monto_igtf_trn > 0) {
+        $base_igtf_calculada_eur = round($monto_igtf_trn / 0.03, 2);
         $impuestos_subtotal_otra[] = [
             "CodigoTotalImp" => "IGTF",
             "AlicuotaImp" => "3.00",
             "BaseImponibleImp" => number_format($base_igtf_calculada_eur, 2, '.', ''),
-            "ValorTotalImp" => number_format($igtf_amount_eur, 2, '.', '')
+            "ValorTotalImp" => number_format($monto_igtf_trn, 2, '.', '')
         ];
     }
     
     $totales_otra_moneda = [
         "moneda" => "EUR",
-        "tipoCambio" => number_format($tasa_cambio_e, 4, '.', ''),
-        "montoGravadoTotal" => number_format($monto_gravado_e_net, 2, '.', ''),
-        "montoExentoTotal" => number_format($monto_exento_e_net, 2, '.', ''),
+        "tipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
+        "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
+        "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "MontoPercibidoTotal" => "0.00",
-        "subtotal" => number_format($monto_subtotal_e_net, 2, '.', ''),
-        "totalAPagar" => number_format($monto_total_e_pagar, 2, '.', ''),
-        "totalIVA" => number_format($monto_iva_e, 2, '.', ''),
-        "montoTotalIVAyOTI" => number_format($monto_total_e_pagar, 2, '.', ''),
+        "subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
+        "totalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
+        "totalIVA" => number_format($monto_iva_trn, 2, '.', ''),
+        "montoTotalIVAyOTI" => number_format($db_total_pagar_trn, 2, '.', ''),
         "MontoTotalOTI" => "0.00",
-        "montoTotalConIVA" => number_format($monto_total_e_con_iva, 2, '.', ''),
+        "montoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
         "totalDescuento" => "0.00",
         "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];

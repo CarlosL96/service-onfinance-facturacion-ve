@@ -3,8 +3,8 @@
     "Encabezado": {
       "IdentificacionDocumento": {
         "TipoDocumento": "01",
-        "NumeroDocumento": "00000511",
-        "FechaEmision": "27/07/2026",
+        "NumeroDocumento": "00000478",
+        "FechaEmision": "27\/07\/2026",
         "HoraEmision": "12:00:00 am",
         "Serie": "",
         "TipoDeVenta": "Interna",
@@ -12,37 +12,57 @@
       },
       "Comprador": {
         "TipoIdentificacion": "J",
-        "NumeroIdentificacion": "J-00070230-6",
-        "RazonSocial": "Fundacion Universidad Metropolitana",
-        "Direccion": "Distribuidor Petare-Guarenas, Campus Unimet, Edif. Fundamet, Urb.Terrezas                                                      del Avila",
-        "Pais": "VE",
-        "Correo": ["lparra@fundamet.org.ve"],
-        "Telefono": ["(0212) 2403776"]
+        "NumeroIdentificacion": "J-40023950-8",
+        "RazonSocial": "Atenea Mercantil C.A",
+        "Direccion": "Av. Andres Galarraga con calle El Sam\u00e1n, Edf. Dalia Rosa, Piso 3, Ofc.Unica, Urb. Chacao Caracas (Chacao) Miranda Zona Postal 1064",
+        "Pais": "VE"
       },
       "Totales": {
         "NroItems": "1",
-        "MontoGravadoTotal": "210200.33",
+        "MontoGravadoTotal": "4788632.71",
         "MontoExentoTotal": "0.00",
-        "Subtotal": "210200.33",
-        "TotalIVA": "33632.05",
-        "MontoTotalConIVA": "243832.38",
-        "TotalAPagar": "243832.38",
+        "Subtotal": "4788632.71",
+        "TotalIVA": "766181.23",
+        "MontoTotalConIVA": "5554813.94",
+        "TotalAPagar": "5554813.94",
         "ImpuestosSubtotal": [
           {
             "CodigoTotalImp": "G",
             "AlicuotaImp": "16.00",
-            "BaseImponibleImp": "210200.33",
-            "ValorTotalImp": "33632.05"
+            "BaseImponibleImp": "4788632.71",
+            "ValorTotalImp": "766181.23"
           }
         ],
         "FormasPago": [
           {
-            "Descripcion": "Depósito en cuenta",
-            "Fecha": "27/07/2026",
+            "Descripcion": "Dep\u00f3sito en cuenta",
+            "Fecha": "27\/07\/2026",
             "Forma": "01",
-            "Monto": "243832.38",
-            "Moneda": "VES",
-            "TipoCambio": "0.0000"
+            "Monto": "7483.96",
+            "Moneda": "USD",
+            "TipoCambio": "742.2200"
+          }
+        ]
+      },
+      "TotalesOtraMoneda": {
+        "moneda": "USD",
+        "tipoCambio": "742.2292",
+        "montoGravadoTotal": "6451.69",
+        "montoExentoTotal": "0.00",
+        "MontoPercibidoTotal": "0.00",
+        "subtotal": "6451.69",
+        "totalAPagar": "7483.96",
+        "totalIVA": "1032.27",
+        "montoTotalIVAyOTI": "7483.96",
+        "MontoTotalOTI": "0.00",
+        "montoTotalConIVA": "7483.96",
+        "totalDescuento": "0.00",
+        "ImpuestosSubtotal": [
+          {
+            "CodigoTotalImp": "G",
+            "AlicuotaImp": "16.00",
+            "BaseImponibleImp": "6451.69",
+            "ValorTotalImp": "1032.27"
           }
         ]
       }
@@ -51,15 +71,15 @@
       {
         "NumeroLinea": "1",
         "IndicadorBienoServicio": "2",
-        "Descripcion": "Servicios en linea para Fiundamet Julio 2026",
+        "Descripcion": "Servicios de impementaci\u00f3n de Jira & Jira SM",
         "Cantidad": "1.00",
         "UnidadMedida": "UNI",
-        "PrecioUnitario": "210200.33",
-        "PrecioItem": "210200.33",
+        "PrecioUnitario": "4788632.71",
+        "PrecioItem": "4788632.71",
         "CodigoImpuesto": "G",
         "TasaIVA": "16",
-        "ValorIVA": "33632.05",
-        "ValorTotalItem": "243832.38"
+        "ValorIVA": "766181.23",
+        "ValorTotalItem": "5554813.94"
       }
     ]
   }
