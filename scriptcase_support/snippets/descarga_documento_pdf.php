@@ -67,6 +67,16 @@ if (empty($pdf_base64) || $pdf_base64 === 'NULL') {
     $http_res = of_http_lib::post_json($url, $payload, 30);
     $response_raw = $http_res['body'];
     
+    // Registrar Log de integración para auditoría/depuración
+    $insert_log_sql = "INSERT INTO ofint001 (
+                         origen, endpoint, tipo_documento, numero_documento, referencia_id, 
+                         peticion_json, respuesta_json, codigo_respuesta, exito
+                       ) VALUES (
+                         'Scriptcase-PDF', '/api/v1/descargar-pdf', '" . $tipo_documento . "', '" . addslashes($numero_documento) . "', " . (int)$draft_id . ",
+                         '" . addslashes(json_encode($payload)) . "', '" . addslashes($response_raw) . "', '" . $http_res['status'] . "', " . ($http_res['success'] ? 1 : 0) . "
+                       )";
+    sc_exec_sql($insert_log_sql);
+
     if (empty($response_raw)) {
         throw new Exception("No se recibió respuesta del servicio de facturación local al descargar el PDF. Detalle: " . $http_res['error']);
     }
