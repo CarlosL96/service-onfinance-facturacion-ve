@@ -476,7 +476,7 @@ if ($response_raw === null || $response_raw === '') {
         $factura_fiscal_id_conn = {ds_exist_conn}[0][0];
         $update_err_conn = "UPDATE offve001 SET 
                                 numero_documento = '" . addslashes($num_documento) . "',
-                                estatus_fiscal = -1,
+                                estatus_fiscal = 0,
                                 mensaje_fiscal = 'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
                              WHERE id = $factura_fiscal_id_conn";
         sc_exec_sql($update_err_conn);
@@ -484,7 +484,7 @@ if ($response_raw === null || $response_raw === '') {
         $insert_err_conn = "INSERT INTO offve001 (
                                 factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal
                              ) VALUES (
-                                " . $factura_id . ", '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', -1, 
+                                " . $factura_id . ", '" . $tipo_doc_fiscal . "', '" . addslashes($num_documento) . "', 0, 
                                 'No se pudo conectar con el servicio local de facturación: " . $err_msg . "'
                              )";
         sc_exec_sql($insert_err_conn);
@@ -611,15 +611,15 @@ if ($exito === 1) {
     $mensaje_error_db = addslashes($mensaje_error);
     
     if ($factura_fiscal_id !== null) {
-        // Actualizar el borrador existente con el estatus de Error
+        // Actualizar el borrador existente manteniendo estatus de Borrador (0) con el mensaje de error
         $update_error_sql = "UPDATE offve001 SET 
                                 numero_documento = '" . addslashes($num_documento) . "',
-                                estatus_fiscal = -1,
+                                estatus_fiscal = 0,
                                 mensaje_fiscal = '" . $mensaje_error_db . "'
                              WHERE id = $factura_fiscal_id";
         sc_exec_sql($update_error_sql);
     } else {
-        // Registrar el error en offve001 para auditoría histórica
+        // Registrar el error en offve001 con estatus de Borrador (0) para auditoría histórica
         $insert_error_sql = "INSERT INTO offve001 (
                                 factura_id, 
                                 tipo_documento, 
@@ -632,7 +632,7 @@ if ($exito === 1) {
                                 '" . $tipo_doc_fiscal . "',
                                 '" . addslashes($num_documento) . "',
                                 NULL,
-                                -1,
+                                0,
                                 '" . $mensaje_error_db . "'
                               )";
         sc_exec_sql($insert_error_sql);
