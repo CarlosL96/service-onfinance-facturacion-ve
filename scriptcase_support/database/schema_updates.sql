@@ -9,7 +9,15 @@ CREATE TABLE IF NOT EXISTS `offve001` (
   `tipo_documento` VARCHAR(2) NOT NULL COMMENT '01 = Factura, 02 = Nota de Crédito, 03 = Nota de Débito',
   `numero_documento` VARCHAR(30) NOT NULL COMMENT 'Número correlativo enviado a la API',
   `numero_control` VARCHAR(30) NULL DEFAULT NULL COMMENT 'Número de control asignado por el SENIAT',
-  `estatus_fiscal` VARCHAR(20) NOT NULL DEFAULT 'Procesado' COMMENT 'Procesado, Anulado, Error',
+  `forma_pago` VARCHAR(45) NULL DEFAULT NULL COMMENT 'Forma de pago elegida',
+  `monto_subtotal` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_gravable` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_exento` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_iva` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_total` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_igtf` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `monto_total_pagar` DECIMAL(16,4) NOT NULL DEFAULT 0.0000,
+  `estatus_fiscal` TINYINT NOT NULL DEFAULT 0 COMMENT '0 = Borrador, 1 = Procesado, -1 = Error',
   `fecha_asignacion` DATETIME NULL DEFAULT NULL COMMENT 'Fecha y hora de registro de la firma fiscal',
   `url_consulta` TEXT NULL DEFAULT NULL COMMENT 'URL devuelta por TFHKA para consultar el documento en línea',
   `mensaje_fiscal` TEXT NULL DEFAULT NULL COMMENT 'Mensaje o error detallado retornado por la API',
@@ -103,5 +111,16 @@ INSERT INTO `offve002` (`codigo`, `descripcion`) VALUES
 ('18', 'Carta de crédito documentario - Comercio exterior'),
 ('99', 'Otros medios de pago')
 ON DUPLICATE KEY UPDATE `descripcion` = VALUES(`descripcion`);
+
+-- 5. Agregar columnas de montos y totales a offve001 para soportar vista previa
+ALTER TABLE `offve001`
+ADD COLUMN `monto_subtotal` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `forma_pago`,
+ADD COLUMN `monto_gravable` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_subtotal`,
+ADD COLUMN `monto_exento` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_gravable`,
+ADD COLUMN `monto_iva` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_exento`,
+ADD COLUMN `monto_total` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_iva`,
+ADD COLUMN `monto_igtf` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_total`,
+ADD COLUMN `monto_total_pagar` DECIMAL(16,4) NOT NULL DEFAULT 0.0000 AFTER `monto_igtf`;
+
 
 

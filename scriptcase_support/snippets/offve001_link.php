@@ -58,16 +58,47 @@ if (!empty({rs_existente}) && {rs_existente} !== false) {
     return;
 }
 
-// 5. OBTENER CORRELATIVO ERP PARA ASIGNAR EN BORRADOR
-$strSQL = "SELECT numero FROM ofcm020 WHERE id = $ofcm020_id";
+// 5. OBTENER CORRELATIVO Y TOTALES ERP PARA ASIGNAR EN BORRADOR
+$strSQL = "SELECT numero, monto_loc, monto_iva_loc, neto_loc, gravable_loc, exento_loc FROM ofcm020 WHERE id = $ofcm020_id";
 sc_lookup(rs_fac, $strSQL);
 $numero_documento = preg_replace('/[^0-9]/', '', {rs_fac}[0][0]);
+$raw_subtotal = (float){rs_fac}[0][1];
+$raw_iva      = (float){rs_fac}[0][2];
+$raw_total    = (float){rs_fac}[0][3];
+$raw_gravable = (float){rs_fac}[0][4];
+$raw_exento   = (float){rs_fac}[0][5];
+
+// Calcular consolidación de IGTF desde ofcm021
+$strSQL_igtf = "SELECT SUM(total_loc), SUM(gravable_loc), SUM(exento_loc) FROM ofcm021 
+                WHERE ofcm020_id = $ofcm020_id 
+                  AND (ofin009_id LIKE '*IGT%' OR descripcion LIKE '*IGT%' OR descripcion LIKE 'Impuesto a las Grandes Transacciones%')";
+sc_lookup(rs_igtf, $strSQL_igtf);
+
+$igtf_amount = 0.0;
+$igtf_base   = 0.0;
+$igtf_exento = 0.0;
+if (!empty({rs_igtf}) && {rs_igtf} !== false) {
+    $igtf_amount = (float){rs_igtf}[0][0];
+    $igtf_base   = (float){rs_igtf}[0][1];
+    $igtf_exento = (float){rs_igtf}[0][2];
+}
+
+// Calcular los montos finales sanitizados de IGTF
+$monto_subtotal    = $raw_subtotal - $igtf_amount;
+$monto_gravable    = $raw_gravable - $igtf_base;
+$monto_exento      = $raw_exento - $igtf_exento;
+$monto_iva         = $raw_iva;
+$monto_total       = $raw_total - $igtf_amount; // sin IGTF
+$monto_igtf        = $igtf_amount;
+$monto_total_pagar = $raw_total; // con IGTF
 
 // 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador = 0)
 $insert_cabecera = "INSERT INTO offve001 (
-                        factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal
+                        factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal,
+                        monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar
                     ) VALUES (
-                        $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, 'Borrador preliminar generado'
+                        $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, 'Borrador preliminar generado',
+                        $monto_subtotal, $monto_gravable, $monto_exento, $monto_iva, $monto_total, $monto_igtf, $monto_total_pagar
                     )";
 sc_exec_sql($insert_cabecera);
 

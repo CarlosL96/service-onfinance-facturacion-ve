@@ -78,25 +78,41 @@ $telefono         = {ds_cabecera}[0][8];
 $email_adm        = {ds_cabecera}[0][9];
 $email_compras    = {ds_cabecera}[0][10];
 
-// Montos en Moneda Local (Siempre VES)
-$monto_gravado    = {ds_cabecera}[0][11];
-$monto_exento     = {ds_cabecera}[0][12];
-$monto_subtotal   = {ds_cabecera}[0][13];
-$monto_iva        = {ds_cabecera}[0][14];
-$monto_total      = {ds_cabecera}[0][15];
-$doc_ref          = {ds_cabecera}[0][16];
-
-// VALIDACIÓN DE MONEDAS SOPORTADAS
-if (!in_array($moneda_trn, array('VEB', 'VES', 'USD', 'EUR'))) {
-    throw new Exception("Error: La moneda '" . $moneda_trn . "' no está soportada actualmente. Solo se permiten facturas en VEB, USD y EUR.");
-}
-
 // Formatear tipo de documento fiscal
 $tipo_doc_fiscal = "01"; // Factura por defecto
 if ($tipo_factura_db === 'C') {
     $tipo_doc_fiscal = "02"; // Nota de Crédito
 } elseif ($tipo_factura_db === 'D') {
     $tipo_doc_fiscal = "03"; // Nota de Débito
+}
+
+// 2. CONSULTAR REGISTRO FISCAL PRELIMINAR (offve001) PARA CARGAR LOS TOTALES DEL BORRADOR
+$sql_fiscal = "SELECT 
+                   id, forma_pago, 
+                   monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar 
+               FROM offve001 
+               WHERE factura_id = " . $factura_id . " AND tipo_documento = '" . $tipo_doc_fiscal . "'";
+sc_lookup(ds_fiscal, $sql_fiscal);
+
+if (empty({ds_fiscal}) || {ds_fiscal} === false) {
+    throw new Exception("No se encontró el registro fiscal preliminar en offve001 para la factura ID: " . $factura_id);
+}
+
+$factura_fiscal_id   = {ds_fiscal}[0][0];
+$db_forma_pago       = trim({ds_fiscal}[0][1]);
+$monto_subtotal_ves  = (float){ds_fiscal}[0][2];
+$monto_gravado_ves   = (float){ds_fiscal}[0][3];
+$monto_exento_ves    = (float){ds_fiscal}[0][4];
+$monto_iva           = (float){ds_fiscal}[0][5];
+$monto_total_con_iva = (float){ds_fiscal}[0][6];
+$monto_igtf          = (float){ds_fiscal}[0][7];
+$monto_total_pagar   = (float){ds_fiscal}[0][8];
+
+$doc_ref             = {ds_cabecera}[0][16];
+
+// VALIDACIÓN DE MONEDAS SOPORTADAS
+if (!in_array($moneda_trn, array('VEB', 'VES', 'USD', 'EUR'))) {
+    throw new Exception("Error: La moneda '" . $moneda_trn . "' no está soportada actualmente. Solo se permiten facturas en VEB, USD y EUR.");
 }
 
 // --- VALIDAR FORMA DE PAGO ---
@@ -106,12 +122,8 @@ $forma_pago_val = "";
 if (isset({forma_pago}) && !empty({forma_pago})) {
     $forma_pago_val = trim({forma_pago});
 } else {
-    // 2. Si no está en el formulario, consultar en la base de datos offve001 usando el ID de la factura
-    $sql_fp = "SELECT forma_pago FROM offve001 WHERE factura_id = " . $factura_id . " AND tipo_documento = '" . $tipo_doc_fiscal . "'";
-    sc_lookup(ds_fp, $sql_fp);
-    if (!empty({ds_fp}) && {ds_fp} !== false) {
-        $forma_pago_val = trim({ds_fp}[0][0]);
-    }
+    // 2. Si no está en el formulario, usar la forma de pago guardada en la base de datos
+    $forma_pago_val = $db_forma_pago;
 }
 
 // 3. Validar si está vacío o es nulo
@@ -130,7 +142,7 @@ if (!empty({ds_desc_fp}) && {ds_desc_fp} !== false) {
 // 5. Determinar moneda, tasa de cambio y monto de la forma de pago según la moneda de transacción
 $forma_pago_moneda = "VES";
 $forma_pago_tipo_cambio = "0.0000";
-$forma_pago_monto = (float)$monto_total; // Inicialmente en VES
+$forma_pago_monto = (float)$monto_total_pagar; // Inicialmente en VES (incluyendo IGTF)
 
 if ($moneda_trn === 'USD') {
     $tasa_cambio_val = (float){ds_cabecera}[0][17];
@@ -170,97 +182,39 @@ if (strlen($num_part) >= 9) {
 $tel_cliente = trim($telefono);
 $correo_cliente = !empty($email_adm) ? trim($email_adm) : (!empty($email_compras) ? trim($email_compras) : '');
 
-// 2. OBTENER DETALLE DE ÍTEMS DE LA FACTURA (ofcm021)
-// Nota: en detalles extraemos precio_un_loc y total_loc (los montos locales convertidos a VES)
-// ya que la lista de ítems en el JSON de TFHKA debe ir siempre en moneda nacional.
+// 2. OBTENER DETALLE DE ÍTEMS DE LA FACTURA PRE-CALCULADOS (offve011)
 $sql_detalles = "SELECT 
-                    d.id,
-                    d.ofin009_id, -- Código del ítem
-                    d.descripcion,
-                    d.cantidad,
-                    d.precio_un_loc,
-                    d.total_loc,
-                    d.iva_loc,
-                    d.gravable_loc,
-                    d.exento_loc,
-                    i.tipo,        -- Para determinar bien o servicio
-                    d.total_usd,
-                    d.gravable_usd,
-                    d.total_eur,
-                    d.gravable_eur
-                 FROM ofcm021 d
-                 LEFT JOIN (
-                     SELECT TRIM(codigo) AS codigo, MAX(tipo) AS tipo
-                     FROM ofin009
-                     GROUP BY TRIM(codigo)
-                 ) i ON TRIM(d.ofin009_id) = i.codigo
-                 WHERE d.ofcm020_id = " . $factura_id . "
-                 ORDER BY d.id ASC";
-
+                    indicador_bien_servicio, 
+                    descripcion, 
+                    cantidad, 
+                    precio_unitario, 
+                    precio_item, 
+                    codigo_impuesto, 
+                    tasa_iva, 
+                    valor_iva, 
+                    valor_total_item
+                 FROM offve011
+                 WHERE factura_fiscal_id = $factura_fiscal_id
+                 ORDER BY numero_linea ASC";
 sc_lookup(ds_detalles, $sql_detalles);
 
 if (empty({ds_detalles}) || {ds_detalles} === false) {
-    throw new Exception("La factura en ofcm021 debe contener al menos un detalle o ítem.");
+    throw new Exception("La factura en offve011 debe contener al menos un detalle o ítem.");
 }
 
 $detalles_items = [];
 $linea_count = 1;
 
-$has_igtf = false;
-$igtf_amount_loc = 0.0;
-$igtf_base_loc = 0.0;
-$igtf_exento_loc = 0.0;
-
-$igtf_amount_usd = 0.0;
-$igtf_base_usd = 0.0;
-
-$igtf_amount_eur = 0.0;
-$igtf_base_eur = 0.0;
-
 foreach ({ds_detalles} as $row) {
-    $item_id         = $row[0];
-    $codigo_item     = $row[1];
-    $descripcion     = $row[2];
-    $cantidad        = (float)$row[3];
-    $precio_un_loc   = (float)$row[4];
-    $total_loc       = (float)$row[5];
-    $iva_loc         = (float)$row[6];
-    $gravable_loc    = (float)$row[7];
-    $exento_loc      = (float)$row[8];
-    $item_tipo       = $row[9];
-    $total_usd       = (float)$row[10];
-    $gravable_usd    = (float)$row[11];
-    $total_eur       = (float)$row[12];
-    $gravable_eur    = (float)$row[13];
-    
-    // Si la línea es de IGTF, la extraemos de los detalles y la consolidamos en los totales
-    if (strpos($codigo_item, '*IGT') === 0) {
-        $has_igtf = true;
-        
-        $igtf_amount_loc += $total_loc;
-        $igtf_base_loc   += $gravable_loc;
-        $igtf_exento_loc += $exento_loc;
-        
-        $igtf_amount_usd += $total_usd;
-        $igtf_base_usd   += $gravable_usd;
-        
-        $igtf_amount_eur += $total_eur;
-        $igtf_base_eur   += $gravable_eur;
-        
-        continue; // Excluir de DetallesItems
-    }
-    
-    // Determinar si es Bien o Servicio (tipo = 'S' -> Servicio (2), otro -> Bien (1))
-    $ind_bien_servicio = ($item_tipo === 'S') ? '2' : '1';
-    
-    // Calcular alícuota de IVA dinámicamente basándonos en los montos calculados por el ERP
-    if ($gravable_loc > 0 && $iva_loc > 0) {
-        $tasa_iva_val = round(($iva_loc / $gravable_loc) * 100);
-        $codigo_imp = "G"; // Tasa General (16%)
-    } else {
-        $tasa_iva_val = 0;
-        $codigo_imp = "E"; // Exento
-    }
+    $ind_bien_servicio = $row[0];
+    $descripcion       = $row[1];
+    $cantidad          = (float)$row[2];
+    $precio_un_loc     = (float)$row[3];
+    $total_loc         = (float)$row[4];
+    $codigo_imp        = $row[5];
+    $tasa_iva_val      = (int)$row[6];
+    $iva_loc           = (float)$row[7];
+    $valor_total_item  = (float)$row[8];
     
     $detalles_items[] = [
         "NumeroLinea" => (string)$linea_count,
@@ -273,38 +227,30 @@ foreach ({ds_detalles} as $row) {
         "CodigoImpuesto" => $codigo_imp,
         "TasaIVA" => (string)$tasa_iva_val,
         "ValorIVA" => number_format($iva_loc, 2, '.', ''),
-        "ValorTotalItem" => number_format($total_loc + $iva_loc, 2, '.', '')
+        "ValorTotalItem" => number_format($valor_total_item, 2, '.', '')
     ];
     $linea_count++;
 }
 
-
-
-// 3. AJUSTAR LOS TOTALES CONSOLIDANDO EL IGTF SI CORRESPONDE (EN BOLÍVARES)
-$monto_gravado_ves   = (float)$monto_gravado - $igtf_base_loc;
-$monto_exento_ves    = (float)$monto_exento - $igtf_exento_loc;
-$monto_subtotal_ves  = (float)$monto_subtotal - $igtf_amount_loc;
-$monto_total_con_iva = (float)$monto_total - $igtf_amount_loc; // montoTotalConIVA (excluye IGTF)
-$monto_total_pagar   = (float)$monto_total; // totalAPagar (incluye IGTF)
-
+// 3. CONSTRUIR IMPUESTOS DEL SUB-TOTAL (EN BOLÍVARES)
 $impuestos_subtotal_ves = [];
 if ($monto_gravado_ves > 0) {
     $impuestos_subtotal_ves[] = [
         "CodigoTotalImp" => "G",
         "AlicuotaImp" => "16.00",
         "BaseImponibleImp" => number_format($monto_gravado_ves, 2, '.', ''),
-        "ValorTotalImp" => number_format((float)$monto_iva, 2, '.', '')
+        "ValorTotalImp" => number_format($monto_iva, 2, '.', '')
     ];
 }
 
 // Inyectar IGTF en VES si existe
-if ($has_igtf && $igtf_amount_loc > 0) {
-    $base_igtf_calculada = ($igtf_base_loc > 0) ? $igtf_base_loc : round($igtf_amount_loc / 0.03, 2);
+if ($monto_igtf > 0) {
+    $base_igtf_calculada = round($monto_igtf / 0.03, 2);
     $impuestos_subtotal_ves[] = [
         "CodigoTotalImp" => "IGTF",
         "AlicuotaImp" => "3.00",
         "BaseImponibleImp" => number_format($base_igtf_calculada, 2, '.', ''),
-        "ValorTotalImp" => number_format($igtf_amount_loc, 2, '.', '')
+        "ValorTotalImp" => number_format($monto_igtf, 2, '.', '')
     ];
 }
 
