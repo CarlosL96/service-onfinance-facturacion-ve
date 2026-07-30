@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "test": "node tests/test.js"
+    "test": "node tests/test.js",
+    "test:pdf": "node tests/test_pdf_download.js"
   },
   "keywords": [],
   "author": "",
