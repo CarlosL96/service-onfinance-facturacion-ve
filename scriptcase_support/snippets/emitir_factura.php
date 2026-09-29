@@ -7,10 +7,19 @@
  * aplicación de Scriptcase.
  * 
  * Requiere la variable local {factura_id} conteniendo el ID de la tabla ofcm020.
- * =================================================================================
- */
-// CONFIGURACIÓN DE INTEGRACIÓN
-$api_base_url = "http://localhost:8000"; // Cambiar al host/puerto de producción si es necesario
+// =================================================================================
+// 0. OBTENER CONFIGURACIÓN DINÁMICA DE ENTORNO (tb_env)
+// =================================================================================
+// Cargar la librería interna si no está cargada
+if (!function_exists('of_http_get_hka_config')) {
+    sc_include_library("sys", "of_http_lib", "of_http_lib.php", true, true);
+}
+
+// Obtener la URL, token y entorno configurados en tb_env (estricto sin fallback)
+$hka_cfg      = of_http_get_hka_config();
+$api_base_url = $hka_cfg['url'];
+$api_token    = $hka_cfg['token'];
+$current_env  = $hka_cfg['env'];
 
 
 // 1. CONSULTAR CABECERA DE LA FACTURA (ofcm020) Y CLIENTE (ofcm001)
@@ -101,22 +110,22 @@ if (empty({ds_fiscal}) || {ds_fiscal} === false) {
 
 $factura_fiscal_id   = {ds_fiscal}[0][0];
 $db_forma_pago       = trim({ds_fiscal}[0][1]);
-$monto_subtotal_ves  = (float){ds_fiscal}[0][2];
-$monto_gravado_ves   = (float){ds_fiscal}[0][3];
-$monto_exento_ves    = (float){ds_fiscal}[0][4];
-$monto_iva           = (float){ds_fiscal}[0][5];
-$monto_total_con_iva = (float){ds_fiscal}[0][6];
-$monto_igtf          = (float){ds_fiscal}[0][7];
-$monto_total_pagar   = (float){ds_fiscal}[0][8];
+$monto_subtotal_ves  = abs((float){ds_fiscal}[0][2]);
+$monto_gravado_ves   = abs((float){ds_fiscal}[0][3]);
+$monto_exento_ves    = abs((float){ds_fiscal}[0][4]);
+$monto_iva           = abs((float){ds_fiscal}[0][5]);
+$monto_total_con_iva = abs((float){ds_fiscal}[0][6]);
+$monto_igtf          = abs((float){ds_fiscal}[0][7]);
+$monto_total_pagar   = abs((float){ds_fiscal}[0][8]);
 $db_moneda_trn       = strtoupper(trim({ds_fiscal}[0][9]));
-$db_tasa_cambio      = (float){ds_fiscal}[0][10];
-$monto_subtotal_trn  = (float){ds_fiscal}[0][11];
-$monto_gravable_trn  = (float){ds_fiscal}[0][12];
-$monto_exento_trn    = (float){ds_fiscal}[0][13];
-$monto_iva_trn       = (float){ds_fiscal}[0][14];
-$monto_total_trn     = (float){ds_fiscal}[0][15];
-$monto_igtf_trn      = (float){ds_fiscal}[0][16];
-$db_total_pagar_trn  = (float){ds_fiscal}[0][17];
+$db_tasa_cambio      = abs((float){ds_fiscal}[0][10]);
+$monto_subtotal_trn  = abs((float){ds_fiscal}[0][11]);
+$monto_gravable_trn  = abs((float){ds_fiscal}[0][12]);
+$monto_exento_trn    = abs((float){ds_fiscal}[0][13]);
+$monto_iva_trn       = abs((float){ds_fiscal}[0][14]);
+$monto_total_trn     = abs((float){ds_fiscal}[0][15]);
+$monto_igtf_trn      = abs((float){ds_fiscal}[0][16]);
+$db_total_pagar_trn  = abs((float){ds_fiscal}[0][17]);
 
 $doc_ref             = {ds_cabecera}[0][16];
 
@@ -151,18 +160,18 @@ if (!empty({ds_desc_fp}) && {ds_desc_fp} !== false) {
 
 // 5. Determinar moneda, tasa de cambio y monto de la forma de pago según la moneda de transacción
 $forma_pago_moneda = "VES";
-$forma_pago_tipo_cambio = "0.0000";
+$forma_pago_tipo_cambio = "0.000000";
 $forma_pago_monto = (float)$monto_total_pagar; // Inicialmente en VES (incluyendo IGTF)
 
 if ($moneda_trn === 'USD' || $moneda_trn === 'EUR') {
     $forma_pago_moneda = $moneda_trn;
-    $forma_pago_tipo_cambio = number_format($db_tasa_cambio, 4, '.', '');
-    $forma_pago_monto = $db_total_pagar_trn;
+    $forma_pago_tipo_cambio = number_format($db_tasa_cambio, 6, '.', '');
+    $forma_pago_monto = ($db_tasa_cambio > 0) ? round($monto_total_pagar / $db_tasa_cambio, 2) : $db_total_pagar_trn;
 }
 
-// Formatear fecha y hora al estándar de TFHKA
-$fecha_emision = date("d/m/Y", strtotime($fecha_registro));
-$hora_emision  = date("h:i:s a", strtotime($fecha_registro));
+// Formatear fecha y hora actual en tiempo real al estándar de TFHKA
+$fecha_emision = date("d/m/Y");
+$hora_emision  = date("h:i:s a");
 
 // Normalizar RIF / Cédula del Cliente (ej: J000723060 -> J-00072306-0)
 $raw_rif = trim($id_fiscal);
@@ -208,21 +217,21 @@ $linea_count = 1;
 foreach ({ds_detalles} as $row) {
     $ind_bien_servicio = $row[0];
     $descripcion       = $row[1];
-    $cantidad          = (float)$row[2];
-    $precio_un_loc     = (float)$row[3];
-    $total_loc         = (float)$row[4];
+    $cantidad          = abs((float)$row[2]);
+    $precio_un_loc     = abs((float)$row[3]);
+    $total_loc         = abs((float)$row[4]);
     $codigo_imp        = $row[5];
-    $tasa_iva_val      = (int)$row[6];
-    $iva_loc           = (float)$row[7];
-    $valor_total_item  = (float)$row[8];
+    $tasa_iva_val      = abs((int)$row[6]);
+    $iva_loc           = abs((float)$row[7]);
+    $valor_total_item  = abs((float)$row[8]);
     
     $detalles_items[] = [
         "NumeroLinea" => (string)$linea_count,
         "IndicadorBienoServicio" => $ind_bien_servicio,
         "Descripcion" => trim(preg_replace('/\s+/', ' ', $descripcion)), // Sanitizar saltos de línea
-        "Cantidad" => number_format($cantidad, 2, '.', ''),
+        "Cantidad" => number_format($cantidad, 4, '.', ''),
         "UnidadMedida" => "UNI",
-        "PrecioUnitario" => number_format($precio_un_loc, 2, '.', ''),
+        "PrecioUnitario" => number_format($precio_un_loc, 4, '.', ''),
         "PrecioItem" => number_format($total_loc, 2, '.', ''),
         "CodigoImpuesto" => $codigo_imp,
         "TasaIVA" => (string)$tasa_iva_val,
@@ -336,7 +345,7 @@ if ($moneda_trn === 'USD') {
     
     $totales_otra_moneda = [
         "moneda" => "USD",
-        "tipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
+        "tipoCambio" => number_format($db_tasa_cambio, 6, '.', ''),
         "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
         "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "MontoPercibidoTotal" => "0.00",
@@ -373,7 +382,7 @@ if ($moneda_trn === 'USD') {
     
     $totales_otra_moneda = [
         "moneda" => "EUR",
-        "tipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
+        "tipoCambio" => number_format($db_tasa_cambio, 6, '.', ''),
         "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
         "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "MontoPercibidoTotal" => "0.00",
@@ -396,20 +405,21 @@ if ($totales_otra_moneda !== null) {
 // 7. INYECTAR REFERENCIAS DE DOCUMENTO AFECTADO (NOTAS DE CRÉDITO/DÉBITO)
 if ($tipo_doc_fiscal === "02" || $tipo_doc_fiscal === "03") {
     $fecha_fac_afectada = $fecha_emision;
-    $monto_fac_afectada = number_format((float)$monto_total, 2, '.', '');
+    $monto_fac_afectada = number_format(abs((float)$monto_total_con_iva), 2, '.', '');
     
     // Buscar datos históricos en ofcm020 si doc_ref no está vacío
+    $clean_doc_ref = preg_replace('/[^0-9]/', '', (string)$doc_ref);
     if (!empty($doc_ref)) {
-        $sql_ref = "SELECT fecha, neto_loc FROM ofcm020 WHERE numero = '" . addslashes($doc_ref) . "'";
+        $sql_ref = "SELECT fecha, neto_loc FROM ofcm020 WHERE numero = '" . addslashes($doc_ref) . "' OR numero = '" . addslashes($clean_doc_ref) . "'";
         sc_lookup(ds_ref, $sql_ref);
         if (!empty({ds_ref}) && {ds_ref} !== false) {
             $fecha_fac_afectada = date("d/m/Y", strtotime({ds_ref}[0][0]));
-            $monto_fac_afectada = number_format((float){ds_ref}[0][1], 2, '.', '');
+            $monto_fac_afectada = number_format(abs((float){ds_ref}[0][1]), 2, '.', '');
         }
     }
     
     $ident_ref = &$payload["documentoElectronico"]["Encabezado"]["IdentificacionDocumento"];
-    $ident_ref["NumeroFacturaAfectada"] = $doc_ref;
+    $ident_ref["NumeroFacturaAfectada"] = (string)$clean_doc_ref;
     $ident_ref["FechaFacturaAfectada"] = $fecha_fac_afectada;
     $ident_ref["MontoFacturaAfectada"] = $monto_fac_afectada;
     $ident_ref["SerieFacturaAfectada"] = "";
@@ -427,8 +437,8 @@ if ($tipo_doc_fiscal === "02") {
 }
 $url = $api_base_url . $endpoint;
 
-// Consumo a través de la librería HTTP personalizada (cURL)
-$http_res = of_http_lib::post_json($url, $json_data, 30);
+// Consumo a través de la librería HTTP personalizada (cURL) pasando token y entorno de tb_env
+$http_res = of_http_post_json($url, $json_data, $api_token, $current_env, 30);
 $response_raw    = $http_res['body'];
 $http_status     = $http_res['status'];
 $response_error  = $http_res['error'];

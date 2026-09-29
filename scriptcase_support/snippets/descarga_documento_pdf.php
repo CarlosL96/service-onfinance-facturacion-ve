@@ -11,8 +11,18 @@
  * =================================================================================
  */
 
-// CONFIGURACIÓN DE INTEGRACIÓN
-$api_base_url = "http://localhost:8000"; // Host/puerto del servicio de facturación
+// =================================================================================
+// 0. OBTENER CONFIGURACIÓN DINÁMICA DE ENTORNO (tb_env)
+// =================================================================================
+if (!function_exists('of_http_get_hka_config')) {
+    sc_include_library("sys", "of_http_lib", "of_http_lib.php", true, true);
+}
+
+// Obtener la URL, token y entorno desde tb_env (estricto sin fallback)
+$hka_cfg      = of_http_get_hka_config();
+$api_base_url = $hka_cfg['url'];
+$api_token    = $hka_cfg['token'];
+$current_env  = $hka_cfg['env'];
 
 // 1. OBTENER ID DEL BORRADOR/REGISTRO ACTIVO EN EL FORMULARIO
 $draft_id = null;
@@ -65,7 +75,7 @@ if (empty($pdf_base64) || $pdf_base64 === 'NULL') {
     ];
 
     // Realizar llamada POST a la API
-    $http_res = of_http_lib::post_json($url, $payload, 30);
+    $http_res = of_http_post_json($url, $payload, $api_token, $current_env, 30);
     $response_raw = $http_res['body'];
     
     if (empty($response_raw)) {

@@ -20,7 +20,11 @@ Se encarga de gestionar de forma automática en segundo plano la autenticación 
    TFHKA_USUARIO=TuUsuarioDePruebas
    TFHKA_CLAVE=TuClaveDePruebas
    TFHKA_BASE_URL=https://demoemisionv2.thefactoryhka.com.ve
+   API_KEY=TuClaveSecretaCompartida
    ```
+
+> [!NOTE]
+> **Seguridad (API Key)**: Las rutas protegidas (`/api/v1/*`) requieren la cabecera `x-api-key: TuClaveSecretaCompartida` (o `Authorization: Bearer <API_KEY>`). `/health` se mantiene pública. La librería `of_http_lib.php` de Scriptcase ya incluye esta cabecera por defecto.
 
 ---
 

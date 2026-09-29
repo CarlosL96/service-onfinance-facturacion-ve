@@ -10,11 +10,14 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 # Environment files
+*.env
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
+
+# Database and data exports
+*.sql
+*.csv
 
 # OS files
 .DS_Store

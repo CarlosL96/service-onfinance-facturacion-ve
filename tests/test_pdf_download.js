@@ -15,6 +15,10 @@ async function runPdfTest() {
     console.log(`[TEST] Servidor de prueba en ejecución en http://localhost:${PORT}`);
 
     try {
+      if (process.env.API_KEY) {
+        axios.defaults.headers.common['x-api-key'] = process.env.API_KEY;
+      }
+
       console.log('[TEST] 1. Solicitando PDF en formato JSON (Base64)...');
       const response = await axios.post(`http://localhost:${PORT}/api/v1/descargar-pdf`, {
         tipoDocumento: '01',

@@ -30,13 +30,31 @@ async function runTests() {
     console.log(`[TEST] Servidor temporal levantado en http://localhost:${PORT}`);
     
     try {
-      // 1. Probar Endpoint de Healthcheck
+      // 1. Probar Endpoint de Healthcheck (Público)
       console.log('\n[TEST] 1. Probando GET /health...');
       const healthRes = await axios.get(`http://localhost:${PORT}/health`);
       if (healthRes.status === 200 && healthRes.data.status === 'ok') {
-        console.log('✓ Healthcheck exitoso.');
+        console.log('✓ Healthcheck exitoso (público sin token).');
       } else {
         throw new Error('Healthcheck falló.');
+      }
+
+      // 1.1 Probar Middleware de Seguridad (Debe rechazar sin API Key)
+      console.log('\n[TEST] 1.1 Probando rechazo 401 sin API Key...');
+      try {
+        await axios.post(`http://localhost:${PORT}/api/v1/anular`, {});
+        throw new Error('La API debió rechazar la petición sin API Key con 401 Unauthorized.');
+      } catch (authErr) {
+        if (authErr.response?.status === 401) {
+          console.log('✓ Middleware de API Key validado exitosamente (401 Unauthorized detectado).');
+        } else {
+          throw authErr;
+        }
+      }
+
+      // Inyectar API Key en axios para el resto de las pruebas autorizadas
+      if (config.apiKey) {
+        axios.defaults.headers.common['x-api-key'] = config.apiKey;
       }
 
       // 2. Validar credenciales de integración
@@ -69,8 +87,7 @@ async function runTests() {
           throw new Error(`No se encontró el JSON de factura en: ${invoicePath}`);
         }
         const invoicePayload = JSON.parse(fs.readFileSync(invoicePath, 'utf8'));
-        //const invoiceNum = String(Math.floor(10000 + Math.random() * 90000));
-        const invoiceNum = invoicePayload.documentoElectronico.Encabezado.IdentificacionDocumento.NumeroDocumento;
+        const invoiceNum = String(Math.floor(10000000 + Math.random() * 90000000));
         
         if (invoicePayload.documentoElectronico?.Encabezado?.IdentificacionDocumento) {
           const ident = invoicePayload.documentoElectronico.Encabezado.IdentificacionDocumento;
@@ -180,8 +197,9 @@ async function runTests() {
         });
         
         if (downloadRes.status === 200) {
-          if (downloadRes.data.Archivo) {
-            console.log(`✓ PDF descargado exitosamente en formato Base64 (Largo: ${downloadRes.data.Archivo.length} caracteres)`);
+          const pdfBase64 = downloadRes.data.Archivo || downloadRes.data.archivo;
+          if (pdfBase64) {
+            console.log(`✓ PDF descargado exitosamente en formato Base64 (Largo: ${pdfBase64.length} caracteres)`);
             
             // Probar también formato binario si el archivo existe
             console.log(`[TEST E2E] E2. Descargando PDF de Factura en formato binario...`);
@@ -190,10 +208,10 @@ async function runTests() {
               { tipoDocumento: '01', numeroDocumento: invoiceNum },
               { responseType: 'arraybuffer' }
             );
-            if (downloadBinRes.status === 200 && downloadBinRes.headers['content-type'] === 'application/pdf') {
+            if (downloadBinRes.status === 200 && downloadBinRes.headers['content-type']?.includes('application/pdf')) {
               console.log(`✓ PDF binario descargado exitosamente (Tamaño: ${downloadBinRes.data.byteLength} bytes)`);
             } else {
-              throw new Error(`Fallo al descargar PDF binario`);
+              throw new Error(`Fallo al descargar PDF binario. Content-Type recibido: ${downloadBinRes.headers['content-type']}`);
             }
           } else if (downloadRes.data.codigo === '201') {
             console.log(`✓ Integración de descarga verificada. TFHKA respondió correctamente: 201 - ${downloadRes.data.mensaje} (Comportamiento esperado en Demo si la plantilla no está pre-renderizada)`);

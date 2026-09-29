@@ -40,7 +40,7 @@ const errorHandler = (err, req, res, next) => {
   });
 };
 
-// Endpoint de Healthcheck
+// Endpoint de Healthcheck (Público)
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
@@ -48,6 +48,28 @@ app.get('/health', (req, res) => {
     uptime: process.uptime(),
     env: process.env.NODE_ENV || 'development'
   });
+});
+
+// Middleware de autenticación mediante API Key para rutas protegidas
+app.use((req, res, next) => {
+  // Si no se configuró API_KEY en el entorno, permitir acceso (modo abierto)
+  if (!config.apiKey) {
+    return next();
+  }
+
+  // Se acepta la clave en cabecera 'x-api-key' o 'Authorization: Bearer <key>'
+  const clientKey = req.headers['x-api-key'] ||
+    (req.headers['authorization']?.startsWith('Bearer ') ? req.headers['authorization'].slice(7).trim() : null);
+
+  if (!clientKey || clientKey !== config.apiKey) {
+    return res.status(401).json({
+      status: 'error',
+      message: 'No autorizado: API Key no proporcionada o inválida.',
+      validations: ['Cabecera x-api-key requerida']
+    });
+  }
+
+  next();
 });
 
 // Helper para establecer el tipo de documento respetando la capitalización original (PascalCase o camelCase)
@@ -72,6 +94,24 @@ function getIdentificacionDocumento(doc) {
   return encabezado.IdentificacionDocumento || encabezado.identificacionDocumento || {};
 }
 
+// Helper para interceptar y sustituir el correo del comprador en ambiente de desarrollo
+function applyDevEmailInterception(doc, req) {
+  const clientEnv = (req.headers['x-environment'] || 'dev').toLowerCase();
+  
+  if (config.devInterceptEmail && clientEnv === 'dev') {
+    const encabezado = doc.Encabezado || doc.encabezado;
+    if (encabezado) {
+      if (encabezado.Comprador) {
+        console.log(`[DEV INTERCEPT] Sustituyendo correos originales [${encabezado.Comprador.Correo || 'ninguno'}] por: ${config.devInterceptEmail}`);
+        encabezado.Comprador.Correo = [config.devInterceptEmail];
+      } else if (encabezado.comprador) {
+        console.log(`[DEV INTERCEPT] Sustituyendo correos originales [${encabezado.comprador.correo || 'ninguno'}] por: ${config.devInterceptEmail}`);
+        encabezado.comprador.correo = [config.devInterceptEmail];
+      }
+    }
+  }
+}
+
 /**
  * Endpoint para emitir Facturas (tipoDocumento = "01")
  */
@@ -90,6 +130,9 @@ app.post('/api/v1/emitir/factura', async (req, res, next) => {
 
     // Forzar tipo de documento de factura
     setTipoDocumento(documentoElectronico, '01');
+
+    // Interceptar correo en desarrollo si aplica
+    applyDevEmailInterception(documentoElectronico, req);
 
     const ident = getIdentificacionDocumento(documentoElectronico);
     console.log(`[API] => EMISIÓN FACTURA - Solicitando emisión para Documento Nro: ${ident.NumeroDocumento || ident.numeroDocumento}`);
@@ -133,6 +176,9 @@ app.post('/api/v1/emitir/nota-credito', async (req, res, next) => {
     // Forzar tipo de documento de nota de crédito
     setTipoDocumento(documentoElectronico, '02');
 
+    // Interceptar correo en desarrollo si aplica
+    applyDevEmailInterception(documentoElectronico, req);
+
     console.log(`[API] => EMISIÓN NOTA CRÉDITO - Documento Nro: ${ident.NumeroDocumento || ident.numeroDocumento} - Afecta Factura Nro: ${numFactura}`);
 
     const result = await tfhkaClient.emitirDocumento(documentoElectronico);
@@ -173,6 +219,9 @@ app.post('/api/v1/emitir/nota-debito', async (req, res, next) => {
 
     // Forzar tipo de documento de nota de débito
     setTipoDocumento(documentoElectronico, '03');
+
+    // Interceptar correo en desarrollo si aplica
+    applyDevEmailInterception(documentoElectronico, req);
 
     console.log(`[API] => EMISIÓN NOTA DÉBITO - Documento Nro: ${ident.NumeroDocumento || ident.numeroDocumento} - Afecta Factura Nro: ${numFactura}`);
 

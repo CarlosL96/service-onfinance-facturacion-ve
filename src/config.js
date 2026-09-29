@@ -3,6 +3,8 @@ dotenv.config();
 
 export const config = {
   port: parseInt(process.env.PORT || '8000', 10),
+  apiKey: process.env.API_KEY || null,
+  devInterceptEmail: process.env.DEV_INTERCEPT_EMAIL || null,
   tfhka: {
     usuario: process.env.TFHKA_USUARIO,
     clave: process.env.TFHKA_CLAVE,

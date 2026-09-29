@@ -70,12 +70,12 @@ sc_lookup(rs_fac, $strSQL);
 $numero_documento = preg_replace('/[^0-9]/', '', {rs_fac}[0][0]);
 $moneda_trn       = strtoupper(trim({rs_fac}[0][1]));
 
-// Montos Locales (VES)
-$raw_subtotal = (float){rs_fac}[0][2];
-$raw_iva      = (float){rs_fac}[0][3];
-$raw_total    = (float){rs_fac}[0][4];
-$raw_gravable = (float){rs_fac}[0][5];
-$raw_exento   = (float){rs_fac}[0][6];
+// Montos Locales (VES) con valor absoluto para Notas de Crédito
+$raw_subtotal = abs((float){rs_fac}[0][2]);
+$raw_iva      = abs((float){rs_fac}[0][3]);
+$raw_total    = abs((float){rs_fac}[0][4]);
+$raw_gravable = abs((float){rs_fac}[0][5]);
+$raw_exento   = abs((float){rs_fac}[0][6]);
 
 // Calcular consolidación de IGTF local desde ofcm021
 $strSQL_igtf = "SELECT SUM(total_loc), SUM(gravable_loc), SUM(exento_loc) FROM ofcm021 
@@ -87,9 +87,9 @@ $igtf_amount = 0.0;
 $igtf_base   = 0.0;
 $igtf_exento = 0.0;
 if (!empty({rs_igtf}) && {rs_igtf} !== false) {
-    $igtf_amount = (float){rs_igtf}[0][0];
-    $igtf_base   = (float){rs_igtf}[0][1];
-    $igtf_exento = (float){rs_igtf}[0][2];
+    $igtf_amount = abs((float){rs_igtf}[0][0]);
+    $igtf_base   = abs((float){rs_igtf}[0][1]);
+    $igtf_exento = abs((float){rs_igtf}[0][2]);
 }
 
 // Calcular los montos locales finales sanitizados de IGTF
@@ -97,12 +97,12 @@ $monto_subtotal    = $raw_subtotal - $igtf_amount;
 $monto_gravable    = $raw_gravable - $igtf_base;
 $monto_exento      = $raw_exento - $igtf_exento;
 $monto_iva         = $raw_iva;
-$monto_total       = $raw_total - $igtf_amount; // sin IGTF
+$monto_total       = $monto_subtotal + $monto_iva; // Garantiza suma matemática estricta
 $monto_igtf        = $igtf_amount;
-$monto_total_pagar = $raw_total; // con IGTF
+$monto_total_pagar = $monto_total + $monto_igtf;
 
 // Inicializar montos transaccionales en moneda extranjera
-$tasa_cambio           = 0.0000;
+$tasa_cambio           = 0.000000;
 $monto_subtotal_trn    = 0.0000;
 $monto_gravable_trn    = 0.0000;
 $monto_exento_trn      = 0.0000;
@@ -112,13 +112,8 @@ $monto_igtf_trn        = 0.0000;
 $monto_total_pagar_trn = 0.0000;
 
 if ($moneda_trn === 'USD') {
-    $tasa_cambio        = (float){rs_fac}[0][7];
-    $raw_subtotal_trn   = (float){rs_fac}[0][8];
-    $raw_iva_trn        = (float){rs_fac}[0][9];
-    $raw_total_trn      = (float){rs_fac}[0][10];
-    $raw_gravable_trn   = (float){rs_fac}[0][11];
-    $raw_exento_trn     = (float){rs_fac}[0][12];
-
+    $tasa_cambio = round((float){rs_fac}[0][7], 6);
+    
     // IGTF USD
     $strSQL_igtf_usd = "SELECT SUM(total_usd), SUM(gravable_usd), SUM(exento_usd) FROM ofcm021 
                         WHERE ofcm020_id = $ofcm020_id 
@@ -129,26 +124,24 @@ if ($moneda_trn === 'USD') {
     $igtf_base_trn   = 0.0;
     $igtf_exento_trn = 0.0;
     if (!empty({rs_igtf_usd}) && {rs_igtf_usd} !== false) {
-        $igtf_amount_trn = (float){rs_igtf_usd}[0][0];
-        $igtf_base_trn   = (float){rs_igtf_usd}[0][1];
-        $igtf_exento_trn = (float){rs_igtf_usd}[0][2];
+        $igtf_amount_trn = abs(round((float){rs_igtf_usd}[0][0], 4));
+        $igtf_base_trn   = abs(round((float){rs_igtf_usd}[0][1], 4));
+        $igtf_exento_trn = abs(round((float){rs_igtf_usd}[0][2], 4));
     }
 
-    $monto_subtotal_trn    = $raw_subtotal_trn - $igtf_amount_trn;
-    $monto_gravable_trn    = $raw_gravable_trn - $igtf_base_trn;
-    $monto_exento_trn      = $raw_exento_trn - $igtf_exento_trn;
-    $monto_iva_trn         = $raw_iva_trn;
-    $monto_total_trn       = $raw_total_trn - $igtf_amount_trn;
-    $monto_igtf_trn        = $igtf_amount_trn;
-    $monto_total_pagar_trn = $raw_total_trn;
+    if ($tasa_cambio > 0) {
+        // Derivar exactamente desde los montos locales sanitizados para garantizar paridad con TFHKA
+        $monto_subtotal_trn    = round($monto_subtotal / $tasa_cambio, 4);
+        $monto_gravable_trn    = round($monto_gravable / $tasa_cambio, 4);
+        $monto_exento_trn      = round($monto_exento / $tasa_cambio, 4);
+        $monto_iva_trn         = round($monto_iva / $tasa_cambio, 4);
+        $monto_total_trn       = round($monto_total / $tasa_cambio, 4);
+        $monto_igtf_trn        = $igtf_amount_trn;
+        $monto_total_pagar_trn = round($monto_total_pagar / $tasa_cambio, 4);
+    }
 
 } elseif ($moneda_trn === 'EUR') {
-    $tasa_cambio        = (float){rs_fac}[0][13];
-    $raw_subtotal_trn   = (float){rs_fac}[0][14];
-    $raw_iva_trn        = (float){rs_fac}[0][15];
-    $raw_total_trn      = (float){rs_fac}[0][16];
-    $raw_gravable_trn   = (float){rs_fac}[0][17];
-    $raw_exento_trn     = (float){rs_fac}[0][18];
+    $tasa_cambio = round((float){rs_fac}[0][13], 6);
 
     // IGTF EUR
     $strSQL_igtf_eur = "SELECT SUM(total_eur), SUM(gravable_eur), SUM(exento_eur) FROM ofcm021 
@@ -160,18 +153,20 @@ if ($moneda_trn === 'USD') {
     $igtf_base_trn   = 0.0;
     $igtf_exento_trn = 0.0;
     if (!empty({rs_igtf_eur}) && {rs_igtf_eur} !== false) {
-        $igtf_amount_trn = (float){rs_igtf_eur}[0][0];
-        $igtf_base_trn   = (float){rs_igtf_eur}[0][1];
-        $igtf_exento_trn = (float){rs_igtf_eur}[0][2];
+        $igtf_amount_trn = round((float){rs_igtf_eur}[0][0], 4);
+        $igtf_base_trn   = round((float){rs_igtf_eur}[0][1], 4);
+        $igtf_exento_trn = round((float){rs_igtf_eur}[0][2], 4);
     }
 
-    $monto_subtotal_trn    = $raw_subtotal_trn - $igtf_amount_trn;
-    $monto_gravable_trn    = $raw_gravable_trn - $igtf_base_trn;
-    $monto_exento_trn      = $raw_exento_trn - $igtf_exento_trn;
-    $monto_iva_trn         = $raw_iva_trn;
-    $monto_total_trn       = $raw_total_trn - $igtf_amount_trn;
-    $monto_igtf_trn        = $igtf_amount_trn;
-    $monto_total_pagar_trn = $raw_total_trn;
+    if ($tasa_cambio > 0) {
+        $monto_subtotal_trn    = round($monto_subtotal / $tasa_cambio, 4);
+        $monto_gravable_trn    = round($monto_gravable / $tasa_cambio, 4);
+        $monto_exento_trn      = round($monto_exento / $tasa_cambio, 4);
+        $monto_iva_trn         = round($monto_iva / $tasa_cambio, 4);
+        $monto_total_trn       = round($monto_total / $tasa_cambio, 4);
+        $monto_igtf_trn        = $igtf_amount_trn;
+        $monto_total_pagar_trn = round($monto_total_pagar / $tasa_cambio, 4);
+    }
 }
 
 // 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador = 0)
@@ -213,11 +208,11 @@ if (!empty({rs_det}) && {rs_det} !== false) {
     $linea_count = 1;
     foreach ({rs_det} as $row) {
         $descripcion   = sc_sql_injection($row[0]);
-        $cantidad      = $row[1];
-        $precio_un     = $row[2];
-        $total_loc     = $row[3];
-        $iva_loc       = $row[4];
-        $gravable_loc  = $row[5];
+        $cantidad      = abs((float)$row[1]);
+        $precio_un     = abs((float)$row[2]);
+        $total_loc     = abs((float)$row[3]);
+        $iva_loc       = abs((float)$row[4]);
+        $gravable_loc  = abs((float)$row[5]);
         $item_tipo     = $row[6];
         
         // Excluir líneas de IGTF del borrador de items (se reportan consolidadas en Totales)
@@ -228,19 +223,25 @@ if (!empty({rs_det}) && {rs_det} !== false) {
         $ind_bien_servicio = ($item_tipo === 'S') ? '2' : '1';
         
         if ($gravable_loc > 0 && $iva_loc > 0) {
-            $tasa_iva = round(($iva_loc / $gravable_loc) * 100);
+            $calc_tasa  = round(($iva_loc / $gravable_loc) * 100);
+            $tasa_iva   = ($calc_tasa >= 14 && $calc_tasa <= 18) ? 16 : $calc_tasa;
             $codigo_imp = "G";
+            // Recalcular el IVA exacto sobre la base imponible local para evitar descuadres por conversión de divisas
+            $iva_loc    = round($total_loc * ($tasa_iva / 100), 2);
         } else {
-            $tasa_iva = 0;
+            $tasa_iva   = 0;
             $codigo_imp = "E";
+            $iva_loc    = 0.00;
         }
+
+        $valor_total_item = $total_loc + $iva_loc;
 
         $insert_item = "INSERT INTO offve011 (
                             factura_fiscal_id, numero_linea, indicador_bien_servicio, descripcion,
                             cantidad, precio_unitario, precio_item, codigo_impuesto, tasa_iva, valor_iva, valor_total_item
                         ) VALUES (
                             $recordId, $linea_count, '$ind_bien_servicio', $descripcion,
-                            $cantidad, $precio_un, $total_loc, '$codigo_imp', $tasa_iva, $iva_loc, " . ($total_loc + $iva_loc) . "
+                            $cantidad, $precio_un, $total_loc, '$codigo_imp', $tasa_iva, $iva_loc, $valor_total_item
                         )";
         sc_exec_sql($insert_item);
         $linea_count++;
