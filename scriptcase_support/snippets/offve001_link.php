@@ -63,12 +63,28 @@ $strSQL = "SELECT
                numero, moneda_trn, 
                monto_loc, monto_iva_loc, neto_loc, gravable_loc, exento_loc,
                tasa_cambio, monto_usd, monto_iva_usd, neto_usd, gravable_usd, exento_usd,
-               tasa_cambio_eur, monto_eur, monto_iva_eur, neto_eur, gravable_eur, exento_eur
+               tasa_cambio_eur, monto_eur, monto_iva_eur, neto_eur, gravable_eur, exento_eur,
+               fecha_vencimiento, po_cliente, ofgl005_codigo
            FROM ofcm020 
            WHERE id = $ofcm020_id";
 sc_lookup(rs_fac, $strSQL);
 $numero_documento = preg_replace('/[^0-9]/', '', {rs_fac}[0][0]);
 $moneda_trn       = strtoupper(trim({rs_fac}[0][1]));
+
+// Extraer campos comerciales adicionales
+$fecha_vencimiento = !empty({rs_fac}[0][19]) ? {rs_fac}[0][19] : null;
+$raw_po_cliente    = isset({rs_fac}[0][20]) ? trim({rs_fac}[0][20]) : '';
+$raw_ofgl005       = isset({rs_fac}[0][21]) ? trim({rs_fac}[0][21]) : '';
+
+// Sanitizar po_cliente (Nro. de ODC): si es 'N/A', 'NULL' o vacío -> null
+$no_odc = (!empty($raw_po_cliente) && strtoupper($raw_po_cliente) !== 'N/A' && strtoupper($raw_po_cliente) !== 'NULL') ? $raw_po_cliente : null;
+
+// Sanitizar ofgl005_codigo (CC/OPP): si es 'N/A', 'NULL' o vacío -> null
+$no_opp = (!empty($raw_ofgl005) && strtoupper($raw_ofgl005) !== 'N/A' && strtoupper($raw_ofgl005) !== 'NULL') ? $raw_ofgl005 : null;
+
+$sql_venc = !empty($fecha_vencimiento) ? "'" . addslashes($fecha_vencimiento) . "'" : "NULL";
+$sql_odc  = !empty($no_odc) ? "'" . addslashes($no_odc) . "'" : "NULL";
+$sql_opp  = !empty($no_opp) ? "'" . addslashes($no_opp) . "'" : "NULL";
 
 // Montos Locales (VES) con valor absoluto para Notas de Crédito
 $raw_subtotal = abs((float){rs_fac}[0][2]);
@@ -172,10 +188,12 @@ if ($moneda_trn === 'USD') {
 // 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador = 0)
 $insert_cabecera = "INSERT INTO offve001 (
                         factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal,
+                        fecha_vencimiento, no_odc, no_opp,
                         monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar,
                         moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn
                     ) VALUES (
                         $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, '',
+                        $sql_venc, $sql_odc, $sql_opp,
                         $monto_subtotal, $monto_gravable, $monto_exento, $monto_iva, $monto_total, $monto_igtf, $monto_total_pagar,
                         '$moneda_trn', $tasa_cambio, $monto_subtotal_trn, $monto_gravable_trn, $monto_exento_trn, $monto_iva_trn, $monto_total_trn, $monto_igtf_trn, $monto_total_pagar_trn
                     )";
@@ -194,7 +212,8 @@ $sql_detalles = "SELECT
                     d.total_loc,
                     d.iva_loc,
                     d.gravable_loc,
-                    i.tipo
+                    i.tipo,
+                    TRIM(d.ofin009_id) AS codigo_item
                  FROM ofcm021 d
                  LEFT JOIN (
                      SELECT TRIM(codigo) AS codigo, MAX(tipo) AS tipo
@@ -214,6 +233,7 @@ if (!empty({rs_det}) && {rs_det} !== false) {
         $iva_loc       = abs((float)$row[4]);
         $gravable_loc  = abs((float)$row[5]);
         $item_tipo     = $row[6];
+        $codigo_item   = sc_sql_injection($row[7]);
         
         // Excluir líneas de IGTF del borrador de items (se reportan consolidadas en Totales)
         if (strpos($row[0], '*IGT') !== false || strpos($row[0], 'Impuesto a las Grandes Transacciones') !== false) {
@@ -237,10 +257,10 @@ if (!empty({rs_det}) && {rs_det} !== false) {
         $valor_total_item = $total_loc + $iva_loc;
 
         $insert_item = "INSERT INTO offve011 (
-                            factura_fiscal_id, numero_linea, indicador_bien_servicio, descripcion,
+                            factura_fiscal_id, numero_linea, codigo_item, indicador_bien_servicio, descripcion,
                             cantidad, precio_unitario, precio_item, codigo_impuesto, tasa_iva, valor_iva, valor_total_item
                         ) VALUES (
-                            $recordId, $linea_count, '$ind_bien_servicio', $descripcion,
+                            $recordId, $linea_count, $codigo_item, '$ind_bien_servicio', $descripcion,
                             $cantidad, $precio_un, $total_loc, '$codigo_imp', $tasa_iva, $iva_loc, $valor_total_item
                         )";
         sc_exec_sql($insert_item);

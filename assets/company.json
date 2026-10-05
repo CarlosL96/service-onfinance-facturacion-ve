@@ -1,0 +1,31 @@
+{
+  "emisor": {
+    "razonSocial": "ASIMETRIX SOLUCIONES TECNÓLOGICAS, C.A.",
+    "rif": "J-50704779-2",
+    "domicilioFiscal": "AV FRANCISCO DE MIRANDA EDIF TORRE 19-02 PISO 7 OF NO. 7 URB CHACAO CARACAS (CHACAO) MIRANDA ZONA POSTAL 1060",
+    "codigoOperacion": "6209",
+    "telefono": "(0212) 000-0000",
+    "correo": "administracion@asimetrixtech.com",
+    "sitioWeb": "www.asimetrixtech.com"
+  },
+  "estilo": {
+    "logoPath": "assets/images/logo.png",
+    "logoWidth": 155,
+    "colorPrimario": "#3D3A86",
+    "colorAcento": "#F7BA00",
+    "colorRojoControl": "#D32F2F",
+    "colorSlate": "#64748B",
+    "colorTexto": "#334155",
+    "colorLineas": "#E2E8F0",
+    "colorZebra": "#F8FAFC",
+    "marcaDeAguaTexto": "VISTA PREVIA / PROFORMA - NO VÁLIDO COMO DOCUMENTO FISCAL",
+    "marcaDeAguaColor": "#94A3B8",
+    "marcaDeAguaOpacidad": 0.30
+  },
+  "textosLegales": {
+    "clausulaIgtf": "Este pago estará sujeto al cobro adicional del 3% del Impuesto a las Grandes Transacciones Financieras (IGTF), de conformidad con la Providencia Administrativa SNAT/2022/000013 publicada en la G.O.N 42.339 del 17-03-2022, en caso de ser cancelado en divisas. No aplica en pago en Bs.",
+    "clausulaBimonetaria": "Este documento se expresa en Bolívares con su equivalente en [MONEDA] al tipo de cambio corriente del mercado a la fecha de su emisión, según lo establecido en el articulo 13 numeral 14 de la Providencia Administrativa SNAT /2011/0071 (..) en concordancia con el artículo 128 de la Ley del Banco Central de Venezuela (BCV); artículo 25 de la Ley que establece el Impuesto al Valor Agregado (IVA) y 38 del Reglamento General de la Ley que establece el Impuesto al Valor Agregado (RLIVA).",
+    "leyendaSeniat": "DOCUMENTO EMITIDO CONFORME A LA PROVIDENCIA ADMINISTRATIVA SNAT/2024/000102",
+    "pieImprenta": "THE FACTORY HKA VENEZUELA, C.A. J-402385358, AV DON DIEGO CISNEROS EDIF SIEMENS TORRE SUR PISO 2 OF S/N URB LOS RUICES CARACAS MIRANDA ZONA POSTAL 1071 +58(212)202-0811. Imprenta Digital Autorizada mediante Providencia SENIAT/INTI/XXXXXXX de fecha 09/09/2022 Nros de Control desde el N° 00-00000001 hasta el N° 00-00100000 generados digitalmente."
+  }
+}

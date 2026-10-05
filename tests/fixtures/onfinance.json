@@ -1,1 +1,105 @@
-{"documentoElectronico":{"Encabezado":{"IdentificacionDocumento":{"TipoDocumento":"01","NumeroDocumento":"00000466","FechaEmision":"17\/07\/2026","HoraEmision":"12:00:00 am","Serie":"","TipoDeVenta":"Interna","Moneda":"VES"},"Comprador":{"TipoIdentificacion":"J","NumeroIdentificacion":"J-30468971-3","RazonSocial":"Corporacion Digitel, C.A.","Direccion":"Av.Principal de La Castellana c\/c Blandin, Edif. Torre Digitel, Piso 19, OF P19, Urb.La Castellana","Pais":"VE","Telefono":["(0212) 950-5300"]},"Totales":{"NroItems":"1","MontoGravadoTotal":"20717500.80","MontoExentoTotal":"0.00","Subtotal":"20717500.80","TotalIVA":"3314800.13","MontoTotalConIVA":"24032300.93","TotalAPagar":"24032300.93","ImpuestosSubtotal":[{"CodigoTotalImp":"G","AlicuotaImp":"16.00","BaseImponibleImp":"20717500.80","ValorTotalImp":"3314800.13"}],"FormasPago":[{"Descripcion":"Dep\u00f3sito en cuenta","Fecha":"17\/07\/2026","Forma":"01","Monto":"32809.95","Moneda":"USD","TipoCambio":"732.470000"}]},"TotalesOtraMoneda":{"moneda":"USD","tipoCambio":"732.470000","montoGravadoTotal":"28284.10","montoExentoTotal":"0.00","MontoPercibidoTotal":"0.00","subtotal":"28284.10","totalAPagar":"32809.55","totalIVA":"4525.45","montoTotalIVAyOTI":"32809.55","MontoTotalOTI":"0.00","montoTotalConIVA":"32809.55","totalDescuento":"0.00","ImpuestosSubtotal":[{"CodigoTotalImp":"G","AlicuotaImp":"16.00","BaseImponibleImp":"28284.10","ValorTotalImp":"4525.45"}]}},"DetallesItems":[{"NumeroLinea":"1","IndicadorBienoServicio":"2","Descripcion":"Renov.Mtto.Plataforma HP JulDic26 HES 32350","Cantidad":"1.0000","UnidadMedida":"UNI","PrecioUnitario":"20717500.8000","PrecioItem":"20717500.80","CodigoImpuesto":"G","TasaIVA":"16","ValorIVA":"3314800.13","ValorTotalItem":"24032300.93"}]}}
+{
+  "documentoElectronico": {
+    "Encabezado": {
+      "IdentificacionDocumento": {
+        "TipoDocumento": "01",
+        "NumeroDocumento": "00000557",
+        "FechaEmision": "02\/10\/2026",
+        "HoraEmision": "04:49:28 pm",
+        "Serie": "",
+        "TipoDeVenta": "Interna",
+        "Moneda": "VES",
+        "FechaVencimiento": "02\/10\/2026",
+        "TipoDePago": "Contado"
+      },
+      "Comprador": {
+        "TipoIdentificacion": "J",
+        "NumeroIdentificacion": "J-41107331-8",
+        "RazonSocial": "M&P Servicios Integrados UW, S.A.",
+        "Direccion": "Av. Principal de la Castellana Edif Torre La Castellana Piso  4 Of N\u00b0 4-C, 4-D, 4-E y 4-F Urb La Castellana \n (Chacao)",
+        "Pais": "VE",
+        "Correo": ["lwilthew@venezuelamp.com"],
+        "Telefono": ["0212-000-0000"]
+      },
+      "Totales": {
+        "NroItems": "1",
+        "MontoGravadoTotal": "5767392.36",
+        "MontoExentoTotal": "0.00",
+        "Subtotal": "5767392.36",
+        "TotalIVA": "922782.78",
+        "MontoTotalConIVA": "6690175.14",
+        "TotalAPagar": "6690175.14",
+        "ImpuestosSubtotal": [
+          {
+            "CodigoTotalImp": "G",
+            "AlicuotaImp": "16.00",
+            "BaseImponibleImp": "5767392.36",
+            "ValorTotalImp": "922782.78"
+          }
+        ],
+        "FormasPago": [
+          {
+            "Descripcion": "Dep\u00f3sito en cuenta",
+            "Fecha": "02\/10\/2026",
+            "Forma": "01",
+            "Monto": "8752.78",
+            "Moneda": "USD",
+            "TipoCambio": "764.348600"
+          }
+        ]
+      },
+      "TotalesOtraMoneda": {
+        "moneda": "USD",
+        "tipoCambio": "764.348600",
+        "montoGravadoTotal": "7545.50",
+        "montoExentoTotal": "0.00",
+        "MontoPercibidoTotal": "0.00",
+        "subtotal": "7545.50",
+        "totalAPagar": "8752.78",
+        "totalIVA": "1207.28",
+        "montoTotalIVAyOTI": "8752.78",
+        "MontoTotalOTI": "0.00",
+        "montoTotalConIVA": "8752.78",
+        "totalDescuento": "0.00",
+        "ImpuestosSubtotal": [
+          {
+            "CodigoTotalImp": "G",
+            "AlicuotaImp": "16.00",
+            "BaseImponibleImp": "7545.50",
+            "ValorTotalImp": "1207.28"
+          }
+        ]
+      },
+      "InfoAdicional": [
+        { "campo": "Condición de Pago", "Campo": "Condición de Pago", "valor": "Contado", "Valor": "Contado" },
+        { "campo": "ODC", "Campo": "ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
+        { "campo": "OPP", "Campo": "OPP", "valor": "0100-000186", "Valor": "0100-000186" },
+        { "campo": "Nro. de ODC", "Campo": "Nro. de ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
+        { "campo": "CC/OPP", "Campo": "CC/OPP", "valor": "0100-000186", "Valor": "0100-000186" }
+      ]
+    },
+    "DetallesItems": [
+      {
+        "NumeroLinea": "1",
+        "IndicadorBienoServicio": "2",
+        "Descripcion": "Desarrollo Solución Cumplimiento y Contratos Hoja de recepcion 69526GRE01086",
+        "Cantidad": "1.0000",
+        "UnidadMedida": "UNI",
+        "PrecioUnitario": "5767392.3600",
+        "PrecioItem": "5767392.36",
+        "CodigoImpuesto": "G",
+        "TasaIVA": "16",
+        "ValorIVA": "922782.78",
+        "ValorTotalItem": "6690175.14",
+        "codigoPLU": "#SIT-SIN"
+      }
+    ],
+    "InfoAdicional": [
+      { "campo": "Condición de Pago", "Campo": "Condición de Pago", "valor": "Contado", "Valor": "Contado" },
+      { "campo": "ODC", "Campo": "ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
+      { "campo": "OPP", "Campo": "OPP", "valor": "0100-000186", "Valor": "0100-000186" },
+      { "campo": "Nro. de ODC", "Campo": "Nro. de ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
+      { "campo": "CC/OPP", "Campo": "CC/OPP", "valor": "0100-000186", "Valor": "0100-000186" }
+    ]
+  }
+}

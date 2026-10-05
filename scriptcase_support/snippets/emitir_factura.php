@@ -63,7 +63,13 @@ $sql_cabecera = "SELECT
                     
                     -- IGTF si aplica
                     f.igtf_loc,
-                    f.igtf_usd
+                    f.igtf_usd,
+
+                    -- Datos Comerciales adicionales ERP (ofcm020)
+                    f.politica_credito,
+                    f.po_cliente,
+                    f.ofgl005_codigo,
+                    f.fecha_vencimiento
                  FROM ofcm020 f
                  INNER JOIN ofcm001 c ON f.cliente = c.codigo
                  WHERE f.id = " . {factura_id};
@@ -87,6 +93,12 @@ $telefono         = {ds_cabecera}[0][8];
 $email_adm        = {ds_cabecera}[0][9];
 $email_compras    = {ds_cabecera}[0][10];
 
+// Mapear campos comerciales del ERP (ofcm020)
+$erp_politica_credito = isset({ds_cabecera}[0][31]) ? trim({ds_cabecera}[0][31]) : '';
+$erp_po_cliente       = isset({ds_cabecera}[0][32]) ? trim({ds_cabecera}[0][32]) : '';
+$erp_ofgl005          = isset({ds_cabecera}[0][33]) ? trim({ds_cabecera}[0][33]) : '';
+$erp_fecha_venc       = isset({ds_cabecera}[0][34]) ? {ds_cabecera}[0][34] : null;
+
 // Formatear tipo de documento fiscal
 $tipo_doc_fiscal = "01"; // Factura por defecto
 if ($tipo_factura_db === 'C') {
@@ -99,7 +111,8 @@ if ($tipo_factura_db === 'C') {
 $sql_fiscal = "SELECT 
                    id, forma_pago, 
                    monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar,
-                   moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn
+                   moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn,
+                   fecha_vencimiento, no_odc, no_opp
                FROM offve001 
                WHERE factura_id = " . $factura_id . " AND tipo_documento = '" . $tipo_doc_fiscal . "'";
 sc_lookup(ds_fiscal, $sql_fiscal);
@@ -108,26 +121,29 @@ if (empty({ds_fiscal}) || {ds_fiscal} === false) {
     throw new Exception("No se encontró el registro fiscal preliminar en offve001 para la factura ID: " . $factura_id);
 }
 
-$factura_fiscal_id   = {ds_fiscal}[0][0];
-$db_forma_pago       = trim({ds_fiscal}[0][1]);
-$monto_subtotal_ves  = abs((float){ds_fiscal}[0][2]);
-$monto_gravado_ves   = abs((float){ds_fiscal}[0][3]);
-$monto_exento_ves    = abs((float){ds_fiscal}[0][4]);
-$monto_iva           = abs((float){ds_fiscal}[0][5]);
-$monto_total_con_iva = abs((float){ds_fiscal}[0][6]);
-$monto_igtf          = abs((float){ds_fiscal}[0][7]);
-$monto_total_pagar   = abs((float){ds_fiscal}[0][8]);
-$db_moneda_trn       = strtoupper(trim({ds_fiscal}[0][9]));
-$db_tasa_cambio      = abs((float){ds_fiscal}[0][10]);
-$monto_subtotal_trn  = abs((float){ds_fiscal}[0][11]);
-$monto_gravable_trn  = abs((float){ds_fiscal}[0][12]);
-$monto_exento_trn    = abs((float){ds_fiscal}[0][13]);
-$monto_iva_trn       = abs((float){ds_fiscal}[0][14]);
-$monto_total_trn     = abs((float){ds_fiscal}[0][15]);
-$monto_igtf_trn      = abs((float){ds_fiscal}[0][16]);
-$db_total_pagar_trn  = abs((float){ds_fiscal}[0][17]);
+$factura_fiscal_id    = {ds_fiscal}[0][0];
+$db_forma_pago        = trim({ds_fiscal}[0][1]);
+$monto_subtotal_ves   = abs((float){ds_fiscal}[0][2]);
+$monto_gravado_ves    = abs((float){ds_fiscal}[0][3]);
+$monto_exento_ves     = abs((float){ds_fiscal}[0][4]);
+$monto_iva            = abs((float){ds_fiscal}[0][5]);
+$monto_total_con_iva  = abs((float){ds_fiscal}[0][6]);
+$monto_igtf           = abs((float){ds_fiscal}[0][7]);
+$monto_total_pagar    = abs((float){ds_fiscal}[0][8]);
+$db_moneda_trn        = strtoupper(trim({ds_fiscal}[0][9]));
+$db_tasa_cambio       = abs((float){ds_fiscal}[0][10]);
+$monto_subtotal_trn   = abs((float){ds_fiscal}[0][11]);
+$monto_gravable_trn   = abs((float){ds_fiscal}[0][12]);
+$monto_exento_trn     = abs((float){ds_fiscal}[0][13]);
+$monto_iva_trn        = abs((float){ds_fiscal}[0][14]);
+$monto_total_trn      = abs((float){ds_fiscal}[0][15]);
+$monto_igtf_trn       = abs((float){ds_fiscal}[0][16]);
+$db_total_pagar_trn   = abs((float){ds_fiscal}[0][17]);
+$db_fecha_vencimiento = isset({ds_fiscal}[0][18]) ? {ds_fiscal}[0][18] : null;
+$db_no_odc            = isset({ds_fiscal}[0][19]) ? trim({ds_fiscal}[0][19]) : '';
+$db_no_opp            = isset({ds_fiscal}[0][20]) ? trim({ds_fiscal}[0][20]) : '';
 
-$doc_ref             = {ds_cabecera}[0][16];
+$doc_ref              = {ds_cabecera}[0][16];
 
 // VALIDACIÓN DE MONEDAS SOPORTADAS
 if (!in_array($moneda_trn, array('VEB', 'VES', 'USD', 'EUR'))) {
@@ -201,7 +217,8 @@ $sql_detalles = "SELECT
                     codigo_impuesto, 
                     tasa_iva, 
                     valor_iva, 
-                    valor_total_item
+                    valor_total_item,
+                    codigo_item
                  FROM offve011
                  WHERE factura_fiscal_id = $factura_fiscal_id
                  ORDER BY numero_linea ASC";
@@ -224,8 +241,9 @@ foreach ({ds_detalles} as $row) {
     $tasa_iva_val      = abs((int)$row[6]);
     $iva_loc           = abs((float)$row[7]);
     $valor_total_item  = abs((float)$row[8]);
+    $codigo_item       = isset($row[9]) ? trim($row[9]) : '';
     
-    $detalles_items[] = [
+    $item_data = [
         "NumeroLinea" => (string)$linea_count,
         "IndicadorBienoServicio" => $ind_bien_servicio,
         "Descripcion" => trim(preg_replace('/\s+/', ' ', $descripcion)), // Sanitizar saltos de línea
@@ -238,6 +256,12 @@ foreach ({ds_detalles} as $row) {
         "ValorIVA" => number_format($iva_loc, 2, '.', ''),
         "ValorTotalItem" => number_format($valor_total_item, 2, '.', '')
     ];
+
+    if (!empty($codigo_item)) {
+        $item_data["codigoPLU"] = $codigo_item;
+    }
+
+    $detalles_items[] = $item_data;
     $linea_count++;
 }
 
@@ -280,18 +304,45 @@ if (!empty($correo_cliente)) {
 }
 
 // 5. ESTRUCTURAR EL PAYLOAD JSON BÁSICO (EN BOLÍVARES)
+$ident_documento = [
+    "TipoDocumento" => $tipo_doc_fiscal,
+    "NumeroDocumento" => (string)$num_documento,
+    "FechaEmision" => $fecha_emision,
+    "HoraEmision" => $hora_emision,
+    "Serie" => "",
+    "TipoDeVenta" => "Interna",
+    "Moneda" => "VES" // La moneda base del ticket fiscal es siempre VES
+];
+
+// Inyectar FechaVencimiento si está disponible en offve001 o en ofcm020
+$fecha_vencimiento_final = !empty($db_fecha_vencimiento) && $db_fecha_vencimiento !== '0000-00-00' && $db_fecha_vencimiento !== 'NULL' 
+                           ? $db_fecha_vencimiento 
+                           : (!empty($erp_fecha_venc) && $erp_fecha_venc !== '0000-00-00' && $erp_fecha_venc !== 'NULL' ? $erp_fecha_venc : null);
+
+if (!empty($fecha_vencimiento_final)) {
+    $ident_documento["FechaVencimiento"] = date("d/m/Y", strtotime($fecha_vencimiento_final));
+}
+
+// Determinar Condición de Pago desde politica_credito (1='Contado', demás='Crédito')
+$pol_cred_raw = strtoupper(trim((string)$erp_politica_credito));
+if ($pol_cred_raw === '1' || $pol_cred_raw === 'CONTADO') {
+    $condicion_pago = "Contado";
+} elseif (!empty($pol_cred_raw)) {
+    $condicion_pago = "Crédito";
+} else {
+    // Fallback defensivo por fechas si politica_credito no estuviese seteada
+    if (!empty($fecha_vencimiento_final) && !empty($fecha_registro) && strtotime($fecha_vencimiento_final) > strtotime($fecha_registro)) {
+        $condicion_pago = "Crédito";
+    } else {
+        $condicion_pago = "Contado";
+    }
+}
+$ident_documento["TipoDePago"] = $condicion_pago;
+
 $payload = [
     "documentoElectronico" => [
         "Encabezado" => [
-            "IdentificacionDocumento" => [
-                "TipoDocumento" => $tipo_doc_fiscal,
-                "NumeroDocumento" => (string)$num_documento,
-                "FechaEmision" => $fecha_emision,
-                "HoraEmision" => $hora_emision,
-                "Serie" => "",
-                "TipoDeVenta" => "Interna",
-                "Moneda" => "VES" // La moneda base del ticket fiscal es siempre VES
-            ],
+            "IdentificacionDocumento" => $ident_documento,
             "Comprador" => $comprador_payload,
             "Totales" => [
                 "NroItems" => (string)count($detalles_items),
@@ -400,6 +451,63 @@ if ($moneda_trn === 'USD') {
 // Inyectar el nodo TotalesOtraMoneda en Encabezado si corresponde
 if ($totales_otra_moneda !== null) {
     $payload["documentoElectronico"]["Encabezado"]["TotalesOtraMoneda"] = $totales_otra_moneda;
+}
+
+// 6b. INYECTAR INFORMACIÓN ADICIONAL COMERCIAL (Condición de Pago, Nro. de ODC y CC/OPP)
+$info_adicional = [];
+
+// 1. Condición de Pago
+$info_adicional[] = [
+    "campo" => "Condición de Pago",
+    "Campo" => "Condición de Pago",
+    "valor" => $condicion_pago,
+    "Valor" => $condicion_pago
+];
+
+// 2. Nro. de ODC (Resolución en cascada: Formulario -> offve001 -> ofcm020.po_cliente)
+$no_odc_final = (isset({no_odc}) && !empty({no_odc})) ? trim({no_odc}) : (!empty($db_no_odc) ? $db_no_odc : $erp_po_cliente);
+if (!empty($no_odc_final) && strtoupper($no_odc_final) !== 'N/A' && strtoupper($no_odc_final) !== 'NA' && strtoupper($no_odc_final) !== 'NULL') {
+    // Tag "ODC" requerido por la plantilla oficial de The Factory HKA
+    $info_adicional[] = [
+        "campo" => "ODC",
+        "Campo" => "ODC",
+        "valor" => $no_odc_final,
+        "Valor" => $no_odc_final
+    ];
+    // Tag descriptivo complementario
+    $info_adicional[] = [
+        "campo" => "Nro. de ODC",
+        "Campo" => "Nro. de ODC",
+        "valor" => $no_odc_final,
+        "Valor" => $no_odc_final
+    ];
+}
+
+// 3. CC/OPP (Resolución en cascada: Formulario -> offve001 -> ofcm020.ofgl005_codigo)
+$no_opp_final = (isset({no_opp}) && !empty({no_opp})) ? trim({no_opp}) : (!empty($db_no_opp) ? $db_no_opp : $erp_ofgl005);
+if (!empty($no_opp_final) && strtoupper($no_opp_final) !== 'N/A' && strtoupper($no_opp_final) !== 'NA' && strtoupper($no_opp_final) !== 'NULL') {
+    // Tag "OPP" requerido por la plantilla oficial de The Factory HKA
+    $info_adicional[] = [
+        "campo" => "OPP",
+        "Campo" => "OPP",
+        "valor" => $no_opp_final,
+        "Valor" => $no_opp_final
+    ];
+    // Tag descriptivo complementario
+    $info_adicional[] = [
+        "campo" => "CC/OPP",
+        "Campo" => "CC/OPP",
+        "valor" => $no_opp_final,
+        "Valor" => $no_opp_final
+    ];
+}
+
+if (!empty($info_adicional)) {
+    // 1. Ubicación requerida por el esquema oficial TFHKA (Sección 5.1.4, nivel raíz de documentoElectronico)
+    $payload["documentoElectronico"]["InfoAdicional"] = $info_adicional;
+    $payload["documentoElectronico"]["infoAdicional"] = $info_adicional;
+    // 2. Ubicación complementaria dentro de Encabezado
+    $payload["documentoElectronico"]["Encabezado"]["InfoAdicional"] = $info_adicional;
 }
 
 // 7. INYECTAR REFERENCIAS DE DOCUMENTO AFECTADO (NOTAS DE CRÉDITO/DÉBITO)
@@ -586,6 +694,17 @@ if ($exito === 1) {
                               " . $item['ValorTotalItem'] . "
                             )";
         sc_exec_sql($insert_item_sql);
+    }
+    
+    // 3. ACTUALIZACIÓN DE ESTATUS DE IMPRESIÓN EN ERP ONFINANCE (ofcm020)
+    $ofcm020_id_val = $factura_id;
+    if (isset({ofcm020_id}) && !empty({ofcm020_id})) {
+        $ofcm020_id_val = {ofcm020_id};
+    }
+    $strSQL = "UPDATE ofcm020 SET status = 'I' WHERE id = " . $ofcm020_id_val;
+    sc_exec_sql($strSQL);
+    if (isset({status})) {
+        {status} = 'I';
     }
     
     echo "<script>alert('Documento Fiscal emitido y registrado con éxito. Nro Control: " . $nro_control . "');</script>";

@@ -1,6 +1,7 @@
 import express from 'express';
 import { config } from './config.js';
 import { tfhkaClient } from './client.js';
+import { renderPreviewPDF } from './previewRenderer.js';
 
 const app = express();
 app.use(express.json({ limit: '10mb' }));
@@ -303,6 +304,45 @@ app.post('/api/v1/descargar-pdf', async (req, res, next) => {
 
     // Por defecto, enviamos el JSON original de TFHKA (que contiene la representación base64)
     res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * Endpoint para generar la Vista Previa (Preview/Proforma) en PDF de un documento antes de emitirlo
+ */
+app.post('/api/v1/vista-previa/pdf', async (req, res, next) => {
+  try {
+    const rawBody = req.body;
+    if (!rawBody || Object.keys(rawBody).length === 0) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'El cuerpo de la petición no puede estar vacío.'
+      });
+    }
+
+    const documentoElectronico = rawBody.documentoElectronico || rawBody;
+    const ident = getIdentificacionDocumento(documentoElectronico);
+    const numDoc = ident.NumeroDocumento || ident.numeroDocumento || '00000000';
+
+    console.log(`[API] => VISTA PREVIA PDF - Generando vista previa para Documento Nro: ${numDoc}`);
+
+    const pdfBuffer = await renderPreviewPDF(documentoElectronico);
+
+    // Si el cliente pide binario, enviar stream directo
+    if (req.query.format === 'binary' || req.headers.accept === 'application/pdf') {
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `inline; filename=proforma_${numDoc}.pdf`);
+      return res.send(pdfBuffer);
+    }
+
+    // Por defecto, devolver JSON con base64 para máxima interoperabilidad
+    res.status(200).json({
+      status: 'ok',
+      mensaje: 'Vista previa generada exitosamente.',
+      archivo: pdfBuffer.toString('base64')
+    });
   } catch (error) {
     next(error);
   }

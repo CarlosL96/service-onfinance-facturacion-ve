@@ -31,3 +31,6 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Test outputs
+tests/output_*.pdf

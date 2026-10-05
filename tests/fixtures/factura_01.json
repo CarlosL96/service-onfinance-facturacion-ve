@@ -84,7 +84,17 @@
       },
       "TotalesRetencion": null,
       "TotalesOtraMoneda": null,
-      "Orden": null
+      "Orden": null,
+      "InfoAdicional": [
+        {
+          "campo": "Nro. de ODC",
+          "valor": "5387"
+        },
+        {
+          "campo": "CC/OPP",
+          "valor": "0100-000812"
+        }
+      ]
     },
     "DetallesItems": [
       {
