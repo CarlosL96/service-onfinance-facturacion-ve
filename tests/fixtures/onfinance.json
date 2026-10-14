@@ -3,103 +3,163 @@
     "Encabezado": {
       "IdentificacionDocumento": {
         "TipoDocumento": "01",
-        "NumeroDocumento": "00000557",
-        "FechaEmision": "02\/10\/2026",
-        "HoraEmision": "04:49:28 pm",
+        "NumeroDocumento": "00000548",
+        "FechaEmision": "14\/10\/2026",
+        "HoraEmision": "07:26:42 pm",
         "Serie": "",
         "TipoDeVenta": "Interna",
         "Moneda": "VES",
-        "FechaVencimiento": "02\/10\/2026",
+        "FechaVencimiento": "11\/09\/2026",
         "TipoDePago": "Contado"
       },
       "Comprador": {
         "TipoIdentificacion": "J",
-        "NumeroIdentificacion": "J-41107331-8",
-        "RazonSocial": "M&P Servicios Integrados UW, S.A.",
-        "Direccion": "Av. Principal de la Castellana Edif Torre La Castellana Piso  4 Of N\u00b0 4-C, 4-D, 4-E y 4-F Urb La Castellana \n (Chacao)",
+        "NumeroIdentificacion": "J-31658582-4",
+        "RazonSocial": "G3 Logistica, C.A",
+        "Direccion": "Av. Tamanaco Edf. Extebandes Piso 8 Of. Unica urb.El Rosal ",
         "Pais": "VE",
-        "Correo": ["lwilthew@venezuelamp.com"],
-        "Telefono": ["0212-000-0000"]
+        "Correo": ["Daraiza.Ramos@G3Logistica.com"],
+        "Telefono": ["(212) 2121433"]
       },
       "Totales": {
         "NroItems": "1",
-        "MontoGravadoTotal": "5767392.36",
+        "MontoGravadoTotal": "16106692.56",
         "MontoExentoTotal": "0.00",
-        "Subtotal": "5767392.36",
-        "TotalIVA": "922782.78",
-        "MontoTotalConIVA": "6690175.14",
-        "TotalAPagar": "6690175.14",
+        "Subtotal": "16106692.56",
+        "TotalIVA": "2577070.81",
+        "MontoTotalConIVA": "18683763.37",
+        "TotalAPagar": "18683763.37",
         "ImpuestosSubtotal": [
           {
             "CodigoTotalImp": "G",
             "AlicuotaImp": "16.00",
-            "BaseImponibleImp": "5767392.36",
-            "ValorTotalImp": "922782.78"
+            "BaseImponibleImp": "16106692.56",
+            "ValorTotalImp": "2577070.81"
           }
         ],
         "FormasPago": [
           {
-            "Descripcion": "Dep\u00f3sito en cuenta",
-            "Fecha": "02\/10\/2026",
-            "Forma": "01",
-            "Monto": "8752.78",
-            "Moneda": "USD",
-            "TipoCambio": "764.348600"
-          }
-        ]
-      },
-      "TotalesOtraMoneda": {
-        "moneda": "USD",
-        "tipoCambio": "764.348600",
-        "montoGravadoTotal": "7545.50",
-        "montoExentoTotal": "0.00",
-        "MontoPercibidoTotal": "0.00",
-        "subtotal": "7545.50",
-        "totalAPagar": "8752.78",
-        "totalIVA": "1207.28",
-        "montoTotalIVAyOTI": "8752.78",
-        "MontoTotalOTI": "0.00",
-        "montoTotalConIVA": "8752.78",
-        "totalDescuento": "0.00",
-        "ImpuestosSubtotal": [
-          {
-            "CodigoTotalImp": "G",
-            "AlicuotaImp": "16.00",
-            "BaseImponibleImp": "7545.50",
-            "ValorTotalImp": "1207.28"
+            "Descripcion": "Transferencia de fondos",
+            "Fecha": "14\/10\/2026",
+            "Forma": "03",
+            "Monto": "18683763.37",
+            "Moneda": "VES",
+            "TipoCambio": "0.0000"
           }
         ]
       },
       "InfoAdicional": [
-        { "campo": "Condición de Pago", "Campo": "Condición de Pago", "valor": "Contado", "Valor": "Contado" },
-        { "campo": "ODC", "Campo": "ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
-        { "campo": "OPP", "Campo": "OPP", "valor": "0100-000186", "Valor": "0100-000186" },
-        { "campo": "Nro. de ODC", "Campo": "Nro. de ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
-        { "campo": "CC/OPP", "Campo": "CC/OPP", "valor": "0100-000186", "Valor": "0100-000186" }
+        {
+          "campo": "Condici\u00f3n de Pago",
+          "Campo": "Condici\u00f3n de Pago",
+          "valor": "Contado",
+          "Valor": "Contado"
+        },
+        {
+          "campo": "ODC",
+          "Campo": "ODC",
+          "valor": "OC 24928",
+          "Valor": "OC 24928"
+        },
+        {
+          "campo": "Nro. de ODC",
+          "Campo": "Nro. de ODC",
+          "valor": "OC 24928",
+          "Valor": "OC 24928"
+        },
+        {
+          "campo": "OPP",
+          "Campo": "OPP",
+          "valor": "0100-000894",
+          "Valor": "0100-000894"
+        },
+        {
+          "campo": "CC\/OPP",
+          "Campo": "CC\/OPP",
+          "valor": "0100-000894",
+          "Valor": "0100-000894"
+        }
       ]
     },
     "DetallesItems": [
       {
         "NumeroLinea": "1",
         "IndicadorBienoServicio": "2",
-        "Descripcion": "Desarrollo Solución Cumplimiento y Contratos Hoja de recepcion 69526GRE01086",
+        "Descripcion": "Servicio de Nube Septiembre-Octubre-Noviembre 2026",
         "Cantidad": "1.0000",
         "UnidadMedida": "UNI",
-        "PrecioUnitario": "5767392.3600",
-        "PrecioItem": "5767392.36",
+        "PrecioUnitario": "16106692.5600",
+        "PrecioItem": "16106692.56",
         "CodigoImpuesto": "G",
         "TasaIVA": "16",
-        "ValorIVA": "922782.78",
-        "ValorTotalItem": "6690175.14",
-        "codigoPLU": "#SIT-SIN"
+        "ValorIVA": "2577070.81",
+        "ValorTotalItem": "18683763.37",
+        "codigoPLU": "#CLD-SCN"
       }
     ],
     "InfoAdicional": [
-      { "campo": "Condición de Pago", "Campo": "Condición de Pago", "valor": "Contado", "Valor": "Contado" },
-      { "campo": "ODC", "Campo": "ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
-      { "campo": "OPP", "Campo": "OPP", "valor": "0100-000186", "Valor": "0100-000186" },
-      { "campo": "Nro. de ODC", "Campo": "Nro. de ODC", "valor": "69526sp000022", "Valor": "69526sp000022" },
-      { "campo": "CC/OPP", "Campo": "CC/OPP", "valor": "0100-000186", "Valor": "0100-000186" }
+      {
+        "campo": "Condici\u00f3n de Pago",
+        "Campo": "Condici\u00f3n de Pago",
+        "valor": "Contado",
+        "Valor": "Contado"
+      },
+      {
+        "campo": "ODC",
+        "Campo": "ODC",
+        "valor": "OC 24928",
+        "Valor": "OC 24928"
+      },
+      {
+        "campo": "Nro. de ODC",
+        "Campo": "Nro. de ODC",
+        "valor": "OC 24928",
+        "Valor": "OC 24928"
+      },
+      {
+        "campo": "OPP",
+        "Campo": "OPP",
+        "valor": "0100-000894",
+        "Valor": "0100-000894"
+      },
+      {
+        "campo": "CC\/OPP",
+        "Campo": "CC\/OPP",
+        "valor": "0100-000894",
+        "Valor": "0100-000894"
+      }
+    ],
+    "infoAdicional": [
+      {
+        "campo": "Condici\u00f3n de Pago",
+        "Campo": "Condici\u00f3n de Pago",
+        "valor": "Contado",
+        "Valor": "Contado"
+      },
+      {
+        "campo": "ODC",
+        "Campo": "ODC",
+        "valor": "OC 24928",
+        "Valor": "OC 24928"
+      },
+      {
+        "campo": "Nro. de ODC",
+        "Campo": "Nro. de ODC",
+        "valor": "OC 24928",
+        "Valor": "OC 24928"
+      },
+      {
+        "campo": "OPP",
+        "Campo": "OPP",
+        "valor": "0100-000894",
+        "Valor": "0100-000894"
+      },
+      {
+        "campo": "CC\/OPP",
+        "Campo": "CC\/OPP",
+        "valor": "0100-000894",
+        "Valor": "0100-000894"
+      }
     ]
   }
 }

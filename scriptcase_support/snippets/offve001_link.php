@@ -213,7 +213,15 @@ $sql_detalles = "SELECT
                     d.iva_loc,
                     d.gravable_loc,
                     i.tipo,
-                    TRIM(d.ofin009_id) AS codigo_item
+                    TRIM(d.ofin009_id) AS codigo_item,
+                    d.precio_un_usd,
+                    d.total_usd,
+                    d.iva_usd,
+                    d.gravable_usd,
+                    d.precio_un_eur,
+                    d.total_eur,
+                    d.iva_eur,
+                    d.gravable_eur
                  FROM ofcm021 d
                  LEFT JOIN (
                      SELECT TRIM(codigo) AS codigo, MAX(tipo) AS tipo
@@ -228,12 +236,22 @@ if (!empty({rs_det}) && {rs_det} !== false) {
     foreach ({rs_det} as $row) {
         $descripcion   = sc_sql_injection($row[0]);
         $cantidad      = abs((float)$row[1]);
-        $precio_un     = abs((float)$row[2]);
+        $precio_un_loc = abs((float)$row[2]);
         $total_loc     = abs((float)$row[3]);
         $iva_loc       = abs((float)$row[4]);
         $gravable_loc  = abs((float)$row[5]);
         $item_tipo     = $row[6];
         $codigo_item   = sc_sql_injection($row[7]);
+        
+        $precio_un_usd = abs((float)$row[8]);
+        $total_usd     = abs((float)$row[9]);
+        $iva_usd       = abs((float)$row[10]);
+        $gravable_usd  = abs((float)$row[11]);
+
+        $precio_un_eur = abs((float)$row[12]);
+        $total_eur     = abs((float)$row[13]);
+        $iva_eur       = abs((float)$row[14]);
+        $gravable_eur  = abs((float)$row[15]);
         
         // Excluir líneas de IGTF del borrador de items (se reportan consolidadas en Totales)
         if (strpos($row[0], '*IGT') !== false || strpos($row[0], 'Impuesto a las Grandes Transacciones') !== false) {
@@ -242,26 +260,44 @@ if (!empty({rs_det}) && {rs_det} !== false) {
 
         $ind_bien_servicio = ($item_tipo === 'S') ? '2' : '1';
         
-        if ($gravable_loc > 0 && $iva_loc > 0) {
-            $calc_tasa  = round(($iva_loc / $gravable_loc) * 100);
+        // Determinar precios e impuestos según moneda de transacción
+        if ($moneda_trn === 'USD') {
+            $precio_un_final = $precio_un_usd;
+            $total_final     = $total_usd;
+            $iva_final       = $iva_usd;
+            $gravable_final  = $gravable_usd;
+        } elseif ($moneda_trn === 'EUR') {
+            $precio_un_final = $precio_un_eur;
+            $total_final     = $total_eur;
+            $iva_final       = $iva_eur;
+            $gravable_final  = $gravable_eur;
+        } else {
+            $precio_un_final = $precio_un_loc;
+            $total_final     = $total_loc;
+            $iva_final       = $iva_loc;
+            $gravable_final  = $gravable_loc;
+        }
+
+        if ($gravable_final > 0 && $iva_final > 0) {
+            $calc_tasa  = round(($iva_final / $gravable_final) * 100);
             $tasa_iva   = ($calc_tasa >= 14 && $calc_tasa <= 18) ? 16 : $calc_tasa;
             $codigo_imp = "G";
-            // Recalcular el IVA exacto sobre la base imponible local para evitar descuadres por conversión de divisas
-            $iva_loc    = round($total_loc * ($tasa_iva / 100), 2);
+            // Recalcular el IVA exacto sobre la base imponible seleccionada
+            $iva_final  = round($total_final * ($tasa_iva / 100), 2);
         } else {
             $tasa_iva   = 0;
             $codigo_imp = "E";
-            $iva_loc    = 0.00;
+            $iva_final  = 0.00;
         }
 
-        $valor_total_item = $total_loc + $iva_loc;
+        $valor_total_item = $total_final + $iva_final;
 
         $insert_item = "INSERT INTO offve011 (
                             factura_fiscal_id, numero_linea, codigo_item, indicador_bien_servicio, descripcion,
                             cantidad, precio_unitario, precio_item, codigo_impuesto, tasa_iva, valor_iva, valor_total_item
                         ) VALUES (
                             $recordId, $linea_count, $codigo_item, '$ind_bien_servicio', $descripcion,
-                            $cantidad, $precio_un, $total_loc, '$codigo_imp', $tasa_iva, $iva_loc, $valor_total_item
+                            $cantidad, $precio_un_final, $total_final, '$codigo_imp', $tasa_iva, $iva_final, $valor_total_item
                         )";
         sc_exec_sql($insert_item);
         $linea_count++;

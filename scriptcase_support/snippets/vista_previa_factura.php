@@ -232,13 +232,15 @@ foreach ({ds_detalles} as $row) {
 }
 
 // 7. ENSAMBLAR JSON IDENTIFICACIÓN Y CABECERA
+$moneda_fiscal = in_array($moneda_trn, ['USD', 'EUR']) ? $moneda_trn : 'VES';
 $identificacion_doc = [
     "TipoDocumento" => $tipo_doc_fiscal,
     "NumeroDocumento" => $num_documento,
     "NumeroControl" => "BORRADOR / PROFORMA",
     "FechaEmision" => $fecha_emision_fmt,
     "HoraEmision" => $hora_emision_fmt,
-    "TipoTransaccion" => "01"
+    "TipoTransaccion" => "01",
+    "Moneda" => $moneda_fiscal
 ];
 
 // Inyectar FechaVencimiento si está disponible en offve001 o en ofcm020
@@ -286,7 +288,8 @@ $totales = [
             "Descripcion" => $forma_pago_desc,
             "Forma" => $forma_pago_val,
             "Monto" => number_format($monto_total_pagar, 2, '.', ''),
-            "Moneda" => "VES"
+            "Moneda" => "VES",
+            "TipoCambio" => "0.0000"
         ]
     ]
 ];
@@ -353,13 +356,22 @@ if (!empty($info_adicional)) {
 // Multidivisa si aplica (USD o EUR)
 if (in_array($moneda_trn, array('USD', 'EUR')) && $db_tasa_cambio > 0) {
     $encabezado["TotalesOtraMoneda"] = [
+        "Moneda" => $moneda_trn,
         "moneda" => $moneda_trn,
+        "TipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
         "tipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
+        "Subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
         "subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
+        "MontoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
         "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
+        "MontoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
+        "TotalIVA" => number_format($monto_iva_trn, 2, '.', ''),
         "totalIVA" => number_format($monto_iva_trn, 2, '.', ''),
+        "TotalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
         "totalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
+        "MontoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
+        "montoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
         "totalFactura" => number_format($monto_total_trn, 2, '.', '')
     ];
 }

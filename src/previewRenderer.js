@@ -181,14 +181,17 @@ export async function renderPreviewPDF(rawDoc) {
       const cLineas = companyConfig.estilo.colorLineas || '#E2E8F0';     // Borders
       const cZebra = companyConfig.estilo.colorZebra || '#F8FAFC';       // Zebra rows
 
+      const monedaDoc = String(ident.Moneda || ident.moneda || 'VES').toUpperCase();
+      const colMonedaLabel = (monedaDoc === 'USD' || monedaDoc === 'EUR') ? `(${monedaDoc})` : '(Bs.)';
+
       // Anchos milimétricos exactos de las columnas de TFHKA
       const cols = [
         { title: 'CÓDIGO', width: 70.04, align: 'left' },
         { title: 'DESCRIPCIÓN', width: 245.13, align: 'left' },
         { title: 'CANT.', width: 46.69, align: 'center' },
-        { title: 'PRECIO UNIT.(Bs.)', width: 81.71, align: 'right' },
+        { title: `PRECIO UNIT.${colMonedaLabel}`, width: 81.71, align: 'right' },
         { title: 'ALÍCUOTA IVA', width: 58.37, align: 'center' },
-        { title: 'TOTAL (Bs.)', width: 81.71, align: 'right' }
+        { title: `TOTAL ${colMonedaLabel}`, width: 81.71, align: 'right' }
       ];
 
       // Calcular posiciones X absolutas

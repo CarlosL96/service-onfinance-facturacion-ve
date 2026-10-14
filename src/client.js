@@ -53,6 +53,20 @@ class TFHKAClient {
   async emitirDocumento(documentoElectronico) {
     const token = await this.ensureAuthenticated();
     
+    // DIRECTIVA DE SEGURIDAD PARA AMBIENTE DE PRUEBAS / SANDBOX:
+    // Nunca enviar correos a clientes reales durante pruebas en Sandbox o entornos de desarrollo
+    if (config.tfhka.baseUrl?.includes('demo') || config.nodeEnv !== 'production') {
+      const enc = documentoElectronico.Encabezado || documentoElectronico.encabezado;
+      if (enc) {
+        const comp = enc.Comprador || enc.comprador;
+        if (comp) {
+          const testEmail = config.devInterceptEmail || 'carlos.lugo@asimetrixtech.com';
+          if (comp.Correo) comp.Correo = [testEmail];
+          if (comp.correo) comp.correo = [testEmail];
+        }
+      }
+    }
+    
     try {
       const response = await axios.post(`${config.tfhka.baseUrl}/api/Emision`, {
         documentoElectronico

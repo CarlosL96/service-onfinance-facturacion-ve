@@ -1,0 +1,159 @@
+{
+  "documentoElectronico": {
+    "Encabezado": {
+      "IdentificacionDocumento": {
+        "TipoDocumento": "01",
+        "NumeroDocumento": "99927755",
+        "FechaEmision": "13/10/2026",
+        "HoraEmision": "09:00:00 am",
+        "Serie": "",
+        "TipoDeVenta": "Interna",
+        "Moneda": "EUR",
+        "FechaVencimiento": "13/10/2026",
+        "TipoDePago": "Contado"
+      },
+      "Comprador": {
+        "TipoIdentificacion": "J",
+        "NumeroIdentificacion": "J-99999999-9",
+        "RazonSocial": "CLIENTE DE PRUEBAS DEMO, C.A.",
+        "Direccion": "AV FRANCISCO DE MIRANDA URB CHACAO CARACAS",
+        "Pais": "VE",
+        "Correo": [
+          "carlos.lugo@asimetrixtech.com"
+        ],
+        "Telefono": [
+          "0212-000-0000"
+        ]
+      },
+      "Totales": {
+        "NroItems": "1",
+        "MontoGravadoTotal": "4127500.00",
+        "MontoExentoTotal": "0.00",
+        "Subtotal": "4127500.00",
+        "TotalIVA": "660400.00",
+        "MontoTotalConIVA": "4787900.00",
+        "TotalAPagar": "4787900.00",
+        "MontoEnLetras": "CUATRO MILLONES CIENTO VEINTISIETE MIL QUINIENTOS BOLIVARES CON 00/100",
+        "ImpuestosSubtotal": [
+          {
+            "CodigoTotalImp": "G",
+            "AlicuotaImp": "16.00",
+            "BaseImponibleImp": "4127500.00",
+            "ValorTotalImp": "660400.00"
+          }
+        ],
+        "FormasPago": [
+          {
+            "Descripcion": "Depósito en cuenta",
+            "Fecha": "13/10/2026",
+            "Forma": "01",
+            "Monto": "4787900.00",
+            "Moneda": "VES",
+            "TipoCambio": "0.0000"
+          }
+        ]
+      },
+      "TotalesOtraMoneda": {
+        "Moneda": "EUR",
+        "TipoCambio": "825.5000",
+        "MontoGravadoTotal": "5000.00",
+        "MontoExentoTotal": "0.00",
+        "MontoPercibidoTotal": "0.00",
+        "Subtotal": "5000.00",
+        "TotalIVA": "800.00",
+        "MontoTotalConIVA": "5800.00",
+        "TotalAPagar": "5800.00",
+        "MontoEnLetras": "CINCO MIL OCHOCIENTOS EUROS CON 00/100 EUR",
+        "TotalDescuento": "0.00",
+        "ImpuestosSubtotal": [
+          {
+            "CodigoTotalImp": "G",
+            "AlicuotaImp": "16.00",
+            "BaseImponibleImp": "5000.00",
+            "ValorTotalImp": "800.00"
+          }
+        ]
+      },
+      "InfoAdicional": [
+        {
+          "campo": "Condición de Pago",
+          "Campo": "Condición de Pago",
+          "valor": "Contado",
+          "Valor": "Contado"
+        },
+        {
+          "campo": "ODC",
+          "Campo": "ODC",
+          "valor": "69526sp000022",
+          "Valor": "69526sp000022"
+        },
+        {
+          "campo": "OPP",
+          "Campo": "OPP",
+          "valor": "0100-000186",
+          "Valor": "0100-000186"
+        },
+        {
+          "campo": "Nro. de ODC",
+          "Campo": "Nro. de ODC",
+          "valor": "69526sp000022",
+          "Valor": "69526sp000022"
+        },
+        {
+          "campo": "CC/OPP",
+          "Campo": "CC/OPP",
+          "valor": "0100-000186",
+          "Valor": "0100-000186"
+        }
+      ]
+    },
+    "DetallesItems": [
+      {
+        "NumeroLinea": "1",
+        "IndicadorBienoServicio": "2",
+        "Descripcion": "Servicio de Consultoría Tecnológica en Euros Demo",
+        "Cantidad": "1.0000",
+        "UnidadMedida": "UNI",
+        "PrecioUnitario": "5000.0000",
+        "PrecioItem": "5000.00",
+        "CodigoImpuesto": "G",
+        "TasaIVA": "16",
+        "ValorIVA": "800.00",
+        "ValorTotalItem": "5800.00",
+        "codigoPLU": "#SIT-SIN"
+      }
+    ],
+    "InfoAdicional": [
+      {
+        "campo": "Condición de Pago",
+        "Campo": "Condición de Pago",
+        "valor": "Contado",
+        "Valor": "Contado"
+      },
+      {
+        "campo": "ODC",
+        "Campo": "ODC",
+        "valor": "69526sp000022",
+        "Valor": "69526sp000022"
+      },
+      {
+        "campo": "OPP",
+        "Campo": "OPP",
+        "valor": "0100-000186",
+        "Valor": "0100-000186"
+      },
+      {
+        "campo": "Nro. de ODC",
+        "Campo": "Nro. de ODC",
+        "valor": "69526sp000022",
+        "Valor": "69526sp000022"
+      },
+      {
+        "campo": "CC/OPP",
+        "Campo": "CC/OPP",
+        "valor": "0100-000186",
+        "Valor": "0100-000186"
+      }
+    ]
+  }
+}

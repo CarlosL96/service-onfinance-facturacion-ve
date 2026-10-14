@@ -174,16 +174,11 @@ if (!empty({ds_desc_fp}) && {ds_desc_fp} !== false) {
     $forma_pago_desc = trim({ds_desc_fp}[0][0]);
 }
 
-// 5. Determinar moneda, tasa de cambio y monto de la forma de pago según la moneda de transacción
+// 5. Determinar moneda, tasa de cambio y monto de la forma de pago según el estándar de TFHKA
+// En el esquema de TFHKA, el bloque Totales siempre reporta el contravalor en moneda nacional VES
 $forma_pago_moneda = "VES";
-$forma_pago_tipo_cambio = "0.000000";
-$forma_pago_monto = (float)$monto_total_pagar; // Inicialmente en VES (incluyendo IGTF)
-
-if ($moneda_trn === 'USD' || $moneda_trn === 'EUR') {
-    $forma_pago_moneda = $moneda_trn;
-    $forma_pago_tipo_cambio = number_format($db_tasa_cambio, 6, '.', '');
-    $forma_pago_monto = ($db_tasa_cambio > 0) ? round($monto_total_pagar / $db_tasa_cambio, 2) : $db_total_pagar_trn;
-}
+$forma_pago_tipo_cambio = "0.0000";
+$forma_pago_monto = number_format((float)$monto_total_pagar, 2, '.', '');
 
 // Formatear fecha y hora actual en tiempo real al estándar de TFHKA
 $fecha_emision = date("d/m/Y");
@@ -303,7 +298,9 @@ if (!empty($correo_cliente)) {
     $comprador_payload["Telefono"] = [$tel_cliente];
 }
 
-// 5. ESTRUCTURAR EL PAYLOAD JSON BÁSICO (EN BOLÍVARES)
+// 5. ESTRUCTURAR EL PAYLOAD JSON BÁSICO
+// Si la moneda de transacción es USD o EUR, se declara en la cabecera
+$moneda_fiscal_cabecera = in_array($moneda_trn, ['USD', 'EUR']) ? $moneda_trn : 'VES';
 $ident_documento = [
     "TipoDocumento" => $tipo_doc_fiscal,
     "NumeroDocumento" => (string)$num_documento,
@@ -311,7 +308,7 @@ $ident_documento = [
     "HoraEmision" => $hora_emision,
     "Serie" => "",
     "TipoDeVenta" => "Interna",
-    "Moneda" => "VES" // La moneda base del ticket fiscal es siempre VES
+    "Moneda" => $moneda_fiscal_cabecera
 ];
 
 // Inyectar FechaVencimiento si está disponible en offve001 o en ofcm020
@@ -372,7 +369,7 @@ $payload = [
 // 6. INYECTAR MULTIDIVISA (SI moneda_trn ES USD O EUR)
 $totales_otra_moneda = null;
 
-if ($moneda_trn === 'USD') {
+if (in_array($moneda_trn, ['USD', 'EUR']) && $db_tasa_cambio > 0) {
     $impuestos_subtotal_otra = [];
     if ($monto_gravable_trn > 0) {
         $impuestos_subtotal_otra[] = [
@@ -383,66 +380,38 @@ if ($moneda_trn === 'USD') {
         ];
     }
     
-    // Inyectar IGTF en USD si existe
+    // Inyectar IGTF en divisa si existe
     if ($monto_igtf_trn > 0) {
-        $base_igtf_calculada_usd = round($monto_igtf_trn / 0.03, 2);
+        $base_igtf_calculada_div = round($monto_igtf_trn / 0.03, 2);
         $impuestos_subtotal_otra[] = [
             "CodigoTotalImp" => "IGTF",
             "AlicuotaImp" => "3.00",
-            "BaseImponibleImp" => number_format($base_igtf_calculada_usd, 2, '.', ''),
+            "BaseImponibleImp" => number_format($base_igtf_calculada_div, 2, '.', ''),
             "ValorTotalImp" => number_format($monto_igtf_trn, 2, '.', '')
         ];
     }
     
     $totales_otra_moneda = [
-        "moneda" => "USD",
-        "tipoCambio" => number_format($db_tasa_cambio, 6, '.', ''),
+        "Moneda" => $moneda_trn,
+        "moneda" => $moneda_trn,
+        "TipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
+        "tipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
+        "MontoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
         "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
+        "MontoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "MontoPercibidoTotal" => "0.00",
+        "Subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
         "subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
+        "TotalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
         "totalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
+        "TotalIVA" => number_format($monto_iva_trn, 2, '.', ''),
         "totalIVA" => number_format($monto_iva_trn, 2, '.', ''),
+        "MontoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
+        "montoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
         "montoTotalIVAyOTI" => number_format($db_total_pagar_trn, 2, '.', ''),
         "MontoTotalOTI" => "0.00",
-        "montoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
-        "totalDescuento" => "0.00",
-        "ImpuestosSubtotal" => $impuestos_subtotal_otra
-    ];
-} elseif ($moneda_trn === 'EUR') {
-    $impuestos_subtotal_otra = [];
-    if ($monto_gravable_trn > 0) {
-        $impuestos_subtotal_otra[] = [
-            "CodigoTotalImp" => "G",
-            "AlicuotaImp" => "16.00",
-            "BaseImponibleImp" => number_format($monto_gravable_trn, 2, '.', ''),
-            "ValorTotalImp" => number_format($monto_iva_trn, 2, '.', '')
-        ];
-    }
-    
-    // Inyectar IGTF en EUR si existe
-    if ($monto_igtf_trn > 0) {
-        $base_igtf_calculada_eur = round($monto_igtf_trn / 0.03, 2);
-        $impuestos_subtotal_otra[] = [
-            "CodigoTotalImp" => "IGTF",
-            "AlicuotaImp" => "3.00",
-            "BaseImponibleImp" => number_format($base_igtf_calculada_eur, 2, '.', ''),
-            "ValorTotalImp" => number_format($monto_igtf_trn, 2, '.', '')
-        ];
-    }
-    
-    $totales_otra_moneda = [
-        "moneda" => "EUR",
-        "tipoCambio" => number_format($db_tasa_cambio, 6, '.', ''),
-        "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
-        "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
-        "MontoPercibidoTotal" => "0.00",
-        "subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
-        "totalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
-        "totalIVA" => number_format($monto_iva_trn, 2, '.', ''),
-        "montoTotalIVAyOTI" => number_format($db_total_pagar_trn, 2, '.', ''),
-        "MontoTotalOTI" => "0.00",
-        "montoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
+        "TotalDescuento" => "0.00",
         "totalDescuento" => "0.00",
         "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];
