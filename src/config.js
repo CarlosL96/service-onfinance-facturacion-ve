@@ -5,7 +5,8 @@ export const config = {
   nodeEnv: process.env.NODE_ENV || 'development',
   port: parseInt(process.env.PORT || '8000', 10),
   apiKey: process.env.API_KEY || null,
-  devInterceptEmail: process.env.DEV_INTERCEPT_EMAIL || null,
+  devInterceptEmail: process.env.DEV_INTERCEPT_EMAIL || 'carlos.lugo@asimetrixtech.com',
+  devAllowedDomain: process.env.DEV_ALLOWED_DOMAIN || '@asimetrixtech.com',
   tfhka: {
     usuario: process.env.TFHKA_USUARIO,
     clave: process.env.TFHKA_CLAVE,

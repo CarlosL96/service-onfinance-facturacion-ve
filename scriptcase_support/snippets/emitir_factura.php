@@ -112,7 +112,7 @@ $sql_fiscal = "SELECT
                    id, forma_pago, 
                    monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar,
                    moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn,
-                   fecha_vencimiento, no_odc, no_opp
+                   fecha_vencimiento, no_odc, no_opp, enviar_a
                FROM offve001 
                WHERE factura_id = " . $factura_id . " AND tipo_documento = '" . $tipo_doc_fiscal . "'";
 sc_lookup(ds_fiscal, $sql_fiscal);
@@ -142,6 +142,7 @@ $db_total_pagar_trn   = abs((float){ds_fiscal}[0][17]);
 $db_fecha_vencimiento = isset({ds_fiscal}[0][18]) ? {ds_fiscal}[0][18] : null;
 $db_no_odc            = isset({ds_fiscal}[0][19]) ? trim({ds_fiscal}[0][19]) : '';
 $db_no_opp            = isset({ds_fiscal}[0][20]) ? trim({ds_fiscal}[0][20]) : '';
+$db_enviar_a          = isset({ds_fiscal}[0][21]) ? trim({ds_fiscal}[0][21]) : '';
 
 $doc_ref              = {ds_cabecera}[0][16];
 
@@ -184,18 +185,24 @@ $forma_pago_monto = number_format((float)$monto_total_pagar, 2, '.', '');
 $fecha_emision = date("d/m/Y");
 $hora_emision  = date("h:i:s a");
 
-// Normalizar RIF / Cédula del Cliente (ej: J000723060 -> J-00072306-0)
-$raw_rif = trim($id_fiscal);
-$tipo_ident = strtoupper(substr($raw_rif, 0, 1));
-$num_part = substr($raw_rif, 1);
-$num_part = str_replace('.', '', $num_part); // Quitar puntos de miles de la Cédula
+// Normalizar RIF / Cédula del Cliente
+// TFHKA concatena automáticamente [TipoIdentificacion]-[NumeroIdentificacion],
+// por lo que NumeroIdentificacion debe enviarse sin la letra inicial.
+$raw_rif = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $id_fiscal));
+$tipo_ident = "J";
+if (!empty($raw_rif) && in_array(substr($raw_rif, 0, 1), array('V', 'E', 'J', 'G', 'P', 'C'))) {
+    $tipo_ident = substr($raw_rif, 0, 1);
+    $num_part = substr($raw_rif, 1);
+} else {
+    $num_part = $raw_rif;
+}
 
 if (strlen($num_part) >= 9) {
     $cuerpo_rif = substr($num_part, 0, -1);
     $digito_ver = substr($num_part, -1);
-    $rif_cliente = $tipo_ident . "-" . $cuerpo_rif . "-" . $digito_ver;
+    $rif_numero = $cuerpo_rif . "-" . $digito_ver;
 } else {
-    $rif_cliente = $tipo_ident . "-" . $num_part;
+    $rif_numero = $num_part;
 }
 
 // Consolidar teléfono y correo del cliente
@@ -242,7 +249,7 @@ foreach ({ds_detalles} as $row) {
         "NumeroLinea" => (string)$linea_count,
         "IndicadorBienoServicio" => $ind_bien_servicio,
         "Descripcion" => trim(preg_replace('/\s+/', ' ', $descripcion)), // Sanitizar saltos de línea
-        "Cantidad" => number_format($cantidad, 4, '.', ''),
+        "Cantidad" => rtrim(rtrim(number_format($cantidad, 4, '.', ''), '0'), '.'),
         "UnidadMedida" => "UNI",
         "PrecioUnitario" => number_format($precio_un_loc, 4, '.', ''),
         "PrecioItem" => number_format($total_loc, 2, '.', ''),
@@ -285,14 +292,28 @@ if ($monto_igtf > 0) {
 // 4. CONSTRUIR NODO DE COMPRADOR DINÁMICO
 $comprador_payload = [
     "TipoIdentificacion" => $tipo_ident,
-    "NumeroIdentificacion" => $rif_cliente,
+    "NumeroIdentificacion" => $rif_numero,
     "RazonSocial" => $nombre_fiscal,
     "Direccion" => !empty($direccion) ? $direccion : "CARACAS VENEZUELA",
     "Pais" => "VE"
 ];
 
-if (!empty($correo_cliente)) {
-    $comprador_payload["Correo"] = [$correo_cliente];
+// Procesar destinatarios de correo (desde offve001.enviar_a o respaldo del cliente)
+$destinatarios_raw = !empty($db_enviar_a) ? $db_enviar_a : $correo_cliente;
+$lista_correos = [];
+if (!empty($destinatarios_raw)) {
+    $partes_correo = preg_split('/[;,]+/', $destinatarios_raw);
+    foreach ($partes_correo as $p) {
+        $c = trim($p);
+        if (!empty($c) && filter_var($c, FILTER_VALIDATE_EMAIL)) {
+            $lista_correos[] = $c;
+        }
+    }
+}
+$lista_correos = array_values(array_unique($lista_correos));
+
+if (!empty($lista_correos)) {
+    $comprador_payload["Correo"] = $lista_correos;
     $comprador_payload["Telefono"] = [!empty($tel_cliente) ? $tel_cliente : "0212-000-0000"];
 } elseif (!empty($tel_cliente)) {
     $comprador_payload["Telefono"] = [$tel_cliente];

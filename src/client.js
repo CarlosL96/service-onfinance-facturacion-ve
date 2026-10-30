@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { config } from './config.js';
+import { filterDevAllowedEmails } from './utils/devEmailFilter.js';
 
 class TFHKAClient {
   constructor() {
@@ -54,15 +55,17 @@ class TFHKAClient {
     const token = await this.ensureAuthenticated();
     
     // DIRECTIVA DE SEGURIDAD PARA AMBIENTE DE PRUEBAS / SANDBOX:
-    // Nunca enviar correos a clientes reales durante pruebas en Sandbox o entornos de desarrollo
+    // Solo permitir envíos a cuentas con el dominio autorizado (@asimetrixtech.com)
     if (config.tfhka.baseUrl?.includes('demo') || config.nodeEnv !== 'production') {
       const enc = documentoElectronico.Encabezado || documentoElectronico.encabezado;
       if (enc) {
         const comp = enc.Comprador || enc.comprador;
         if (comp) {
-          const testEmail = config.devInterceptEmail || 'carlos.lugo@asimetrixtech.com';
-          if (comp.Correo) comp.Correo = [testEmail];
-          if (comp.correo) comp.correo = [testEmail];
+          const raw = comp.Correo || comp.correo;
+          const filtered = filterDevAllowedEmails(raw);
+          if (comp.Correo !== undefined) comp.Correo = filtered;
+          if (comp.correo !== undefined) comp.correo = filtered;
+          if (!comp.Correo && !comp.correo) comp.Correo = filtered;
         }
       }
     }

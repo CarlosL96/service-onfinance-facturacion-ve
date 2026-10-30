@@ -82,7 +82,7 @@ async function runTests() {
         // ==========================================
         // A. EMISIÓN DE FACTURA
         // ==========================================
-        const invoicePath = path.join(__dirname, './fixtures/onfinance.json');
+        const invoicePath = path.join(__dirname, './fixtures/factura_01.json');
         if (!fs.existsSync(invoicePath)) {
           throw new Error(`No se encontró el JSON de factura en: ${invoicePath}`);
         }

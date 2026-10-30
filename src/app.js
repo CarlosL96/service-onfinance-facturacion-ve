@@ -2,6 +2,7 @@ import express from 'express';
 import { config } from './config.js';
 import { tfhkaClient } from './client.js';
 import { renderPreviewPDF } from './previewRenderer.js';
+import { filterDevAllowedEmails } from './utils/devEmailFilter.js';
 
 const app = express();
 app.use(express.json({ limit: '10mb' }));
@@ -95,19 +96,22 @@ function getIdentificacionDocumento(doc) {
   return encabezado.IdentificacionDocumento || encabezado.identificacionDocumento || {};
 }
 
-// Helper para interceptar y sustituir el correo del comprador en ambiente de desarrollo
+// Helper para aplicar directiva de seguridad de correos en ambiente de desarrollo
 function applyDevEmailInterception(doc, req) {
-  const clientEnv = (req.headers['x-environment'] || 'dev').toLowerCase();
+  const clientEnv = (req.headers['x-environment'] || req.headers['x-client-env'] || 'dev').toLowerCase();
   
-  if (config.devInterceptEmail && clientEnv === 'dev') {
+  if (clientEnv === 'dev' || config.nodeEnv !== 'production' || config.tfhka.baseUrl?.includes('demo')) {
     const encabezado = doc.Encabezado || doc.encabezado;
     if (encabezado) {
-      if (encabezado.Comprador) {
-        console.log(`[DEV INTERCEPT] Sustituyendo correos originales [${encabezado.Comprador.Correo || 'ninguno'}] por: ${config.devInterceptEmail}`);
-        encabezado.Comprador.Correo = [config.devInterceptEmail];
-      } else if (encabezado.comprador) {
-        console.log(`[DEV INTERCEPT] Sustituyendo correos originales [${encabezado.comprador.correo || 'ninguno'}] por: ${config.devInterceptEmail}`);
-        encabezado.comprador.correo = [config.devInterceptEmail];
+      const comp = encabezado.Comprador || encabezado.comprador;
+      if (comp) {
+        const raw = comp.Correo || comp.correo;
+        const filtered = filterDevAllowedEmails(raw);
+        console.log(`[DIRECTIVA DESARROLLO] Filtrando correos para dominio ${config.devAllowedDomain}: [${filtered.join(', ')}] (Originales: [${Array.isArray(raw) ? raw.join(', ') : (raw || 'ninguno')}])`);
+        
+        if (comp.Correo !== undefined) comp.Correo = filtered;
+        if (comp.correo !== undefined) comp.correo = filtered;
+        if (!comp.Correo && !comp.correo) comp.Correo = filtered;
       }
     }
   }

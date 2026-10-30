@@ -17,7 +17,7 @@ $ofcm001_codigo = [ofcm001_codigo];
 $ofcm020_tipo_factura = [ofcm020_tipo_factura];
 
 // 2. VERIFICAR QUE EL CLIENTE EXISTA EN EL ERP Y POSEA RIF/CÉDULA
-$strSQL = "SELECT nombre_fiscal, id_fiscal FROM ofcm001 WHERE codigo = '$ofcm001_codigo'";
+$strSQL = "SELECT nombre_fiscal, id_fiscal, email_contacto_adm, email_contacto_compras FROM ofcm001 WHERE codigo = '$ofcm001_codigo'";
 sc_lookup(rs_cliente, $strSQL);
 
 if (empty({rs_cliente}) || {rs_cliente} === false) {
@@ -30,6 +30,13 @@ if (empty($id_fiscal) || trim($id_fiscal) == '' || trim($id_fiscal) == 'NULL') {
     echo "El cliente no posee un RIF o Cédula registrado en ofcm001, no se puede facturar electrónicamente.";
     return;
 }
+
+// Extraer correos de contacto por defecto para el envío automático
+$raw_email_adm = isset({rs_cliente}[0][2]) ? trim({rs_cliente}[0][2]) : '';
+$raw_email_cmp = isset({rs_cliente}[0][3]) ? trim({rs_cliente}[0][3]) : '';
+$destinatarios_arr = array_filter(array_unique([$raw_email_adm, $raw_email_cmp]));
+$enviar_a_default = implode('; ', $destinatarios_arr);
+$sql_enviar_a = !empty($enviar_a_default) ? "'" . addslashes($enviar_a_default) . "'" : "NULL";
 
 // 3. ELIMINAR BORRADORES PREVIOS DE ESTA FACTURA
 clear_drafts_ve($ofcm020_id);
@@ -188,12 +195,12 @@ if ($moneda_trn === 'USD') {
 // 6. INSERTAR REGISTRO DE CABECERA EN offve001 (Estatus: Borrador = 0)
 $insert_cabecera = "INSERT INTO offve001 (
                         factura_id, tipo_documento, numero_documento, estatus_fiscal, mensaje_fiscal,
-                        fecha_vencimiento, no_odc, no_opp,
+                        fecha_vencimiento, no_odc, no_opp, enviar_a,
                         monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar,
                         moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn
                     ) VALUES (
                         $ofcm020_id, '$tipo_doc_fiscal', '" . addslashes($numero_documento) . "', 0, '',
-                        $sql_venc, $sql_odc, $sql_opp,
+                        $sql_venc, $sql_odc, $sql_opp, $sql_enviar_a,
                         $monto_subtotal, $monto_gravable, $monto_exento, $monto_iva, $monto_total, $monto_igtf, $monto_total_pagar,
                         '$moneda_trn', $tasa_cambio, $monto_subtotal_trn, $monto_gravable_trn, $monto_exento_trn, $monto_iva_trn, $monto_total_trn, $monto_igtf_trn, $monto_total_pagar_trn
                     )";

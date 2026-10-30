@@ -116,7 +116,7 @@ $sql_fiscal = "SELECT
                    id, forma_pago, 
                    monto_subtotal, monto_gravable, monto_exento, monto_iva, monto_total, monto_igtf, monto_total_pagar,
                    moneda_trn, tasa_cambio, monto_subtotal_trn, monto_gravable_trn, monto_exento_trn, monto_iva_trn, monto_total_trn, monto_igtf_trn, monto_total_pagar_trn,
-                   fecha_vencimiento, no_odc, no_opp
+                   fecha_vencimiento, no_odc, no_opp, enviar_a
                FROM offve001 
                WHERE factura_id = " . $factura_id . " AND tipo_documento = '" . $tipo_doc_fiscal . "'";
 sc_lookup(ds_fiscal, $sql_fiscal);
@@ -146,6 +146,7 @@ $db_total_pagar_trn   = abs((float){ds_fiscal}[0][17]);
 $db_fecha_vencimiento = isset({ds_fiscal}[0][18]) ? {ds_fiscal}[0][18] : null;
 $db_no_odc            = isset({ds_fiscal}[0][19]) ? trim({ds_fiscal}[0][19]) : '';
 $db_no_opp            = isset({ds_fiscal}[0][20]) ? trim({ds_fiscal}[0][20]) : '';
+$db_enviar_a          = isset({ds_fiscal}[0][21]) ? trim({ds_fiscal}[0][21]) : '';
 
 // 4. FORMA DE PAGO
 $forma_pago_val = isset({forma_pago}) && !empty({forma_pago}) ? trim({forma_pago}) : $db_forma_pago;
@@ -161,15 +162,25 @@ if (!empty({ds_desc_fp}) && {ds_desc_fp} !== false) {
 }
 
 // 5. FORMATEO DE CLIENTE Y FECHAS
-$tipo_ident = "J";
+// Normalizar RIF / Cédula del Cliente
+// TFHKA concatena automáticamente [TipoIdentificacion]-[NumeroIdentificacion],
+// por lo que NumeroIdentificacion debe enviarse sin la letra inicial.
 $id_limpio = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $id_fiscal));
-if (in_array(substr($id_limpio, 0, 1), array('V', 'E', 'J', 'G', 'P', 'C'))) {
+$tipo_ident = "J";
+if (!empty($id_limpio) && in_array(substr($id_limpio, 0, 1), array('V', 'E', 'J', 'G', 'P', 'C'))) {
     $tipo_ident = substr($id_limpio, 0, 1);
     $num_part = substr($id_limpio, 1);
 } else {
     $num_part = $id_limpio;
 }
-$rif_cliente = $tipo_ident . "-" . $num_part;
+
+if (strlen($num_part) >= 9) {
+    $cuerpo_rif = substr($num_part, 0, -1);
+    $digito_ver = substr($num_part, -1);
+    $rif_numero = $cuerpo_rif . "-" . $digito_ver;
+} else {
+    $rif_numero = $num_part;
+}
 $fecha_emision_fmt = date("d/m/Y", strtotime($fecha_registro));
 $hora_emision_fmt = date("h:i:s a");
 
@@ -213,7 +224,7 @@ foreach ({ds_detalles} as $row) {
         "NumeroLinea" => (string)$linea_count,
         "IndicadorBienoServicio" => $ind_bien_servicio,
         "Descripcion" => trim(preg_replace('/\s+/', ' ', $descripcion)),
-        "Cantidad" => number_format($cantidad, 4, '.', ''),
+        "Cantidad" => rtrim(rtrim(number_format($cantidad, 4, '.', ''), '0'), '.'),
         "UnidadMedida" => "UNI",
         "PrecioUnitario" => number_format($precio_un_loc, 4, '.', ''),
         "PrecioItem" => number_format($total_loc, 2, '.', ''),
@@ -267,13 +278,29 @@ if ($pol_cred_raw === '1' || $pol_cred_raw === 'CONTADO') {
 }
 $identificacion_doc["TipoDePago"] = $condicion_pago;
 
+// Procesar destinatarios de correo (desde offve001.enviar_a o respaldo del cliente)
+$correo_cliente = !empty($email_adm) ? trim($email_adm) : (!empty($email_compras) ? trim($email_compras) : '');
+$destinatarios_raw = !empty($db_enviar_a) ? $db_enviar_a : $correo_cliente;
+$lista_correos = [];
+if (!empty($destinatarios_raw)) {
+    $partes_correo = preg_split('/[;,]+/', $destinatarios_raw);
+    foreach ($partes_correo as $p) {
+        $c = trim($p);
+        if (!empty($c) && filter_var($c, FILTER_VALIDATE_EMAIL)) {
+            $lista_correos[] = $c;
+        }
+    }
+}
+$lista_correos = array_values(array_unique($lista_correos));
+
 $comprador = [
     "TipoIdentificacion" => $tipo_ident,
-    "NumeroIdentificacion" => $rif_cliente,
+    "NumeroIdentificacion" => $rif_numero,
     "RazonSocial" => trim($nombre_fiscal),
     "Direccion" => !empty($direccion) ? trim($direccion) : "CARACAS VENEZUELA",
     "Telefono" => trim($telefono),
-    "Email" => !empty($email_adm) ? trim($email_adm) : (!empty($email_compras) ? trim($email_compras) : '')
+    "Correo" => !empty($lista_correos) ? $lista_correos : (!empty($correo_cliente) ? [$correo_cliente] : []),
+    "Email" => !empty($lista_correos) ? implode('; ', $lista_correos) : $correo_cliente
 ];
 
 $totales = [

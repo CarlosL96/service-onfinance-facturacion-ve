@@ -141,7 +141,8 @@ export async function renderPreviewPDF(rawDoc) {
 
       const dirCliente = comprador.Direccion || comprador.direccion || 'CARACAS VENEZUELA';
       const telCliente = firstValue(comprador.Telefono || comprador.telefono, '0212-000-0000');
-      const emailCliente = firstValue(comprador.Correo || comprador.correo, '');
+      const rawEmails = comprador.Correo || comprador.correo || comprador.Email || comprador.email;
+      const emailCliente = Array.isArray(rawEmails) ? rawEmails.join('; ') : (rawEmails ? String(rawEmails) : '');
       const condicionPago = ident.TipoDePago || ident.tipoDePago || ident.CondicionPago || condicionPagoInfo || 'Contado';
 
       // Pre-generar QR Code en memoria (buffer PNG)
