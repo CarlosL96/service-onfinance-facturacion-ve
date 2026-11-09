@@ -422,13 +422,30 @@ app.post('/api/v1/vista-previa/hka', async (req, res, next) => {
         }
       } catch (errEmit) {
         const errData = errEmit.response?.data;
-        const errMsg = errData?.mensaje || errEmit.message;
-        console.error(`[API] => VISTA PREVIA TFHKA DEMO - Error en intento ${intento + 1}:`, errMsg);
+        // TFHKA devuelve los errores de validación en la propiedad "validaciones" o "errores"
+        const validaciones = errData?.validaciones || errData?.errores || errData?.observaciones || [];
+        const validacionesStr = Array.isArray(validaciones) && validaciones.length > 0
+          ? validaciones.join('; ')
+          : (errData?.mensaje || errEmit.message);
+
+        console.error(`[API] => VISTA PREVIA TFHKA DEMO - Error en intento ${intento + 1}:`, validacionesStr);
+
+        // Si es un error de validación fiscal (400 / Código 203), no tiene sentido reintentar con otro número
+        if (errEmit.response?.status === 400 || errData?.codigo === '203') {
+          return res.status(422).json({
+            status: 'error',
+            codigo: errData?.codigo || '203',
+            message: `TFHKA Demo rechazó el documento: ${validacionesStr}`,
+            validaciones: validaciones,
+            detalle: errData || null
+          });
+        }
 
         if (intento === maxIntentos - 1) {
           return res.status(502).json({
             status: 'error',
-            message: `Fallo de comunicación con TFHKA Demo: ${errMsg}`,
+            message: `Fallo de comunicación con TFHKA Demo: ${validacionesStr}`,
+            validaciones: validaciones,
             detalle: errData || null
           });
         }
