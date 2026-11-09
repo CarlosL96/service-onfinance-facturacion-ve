@@ -437,16 +437,39 @@ $curl_err   = curl_error($ch);
 curl_close($ch);
 
 if (!empty($curl_err)) {
+    // Registrar error de conexión en ofint001
+    $log_endpoint = "/api/v1/vista-previa/hka";
+    $insert_err_sql = "INSERT INTO ofint001 (
+                         origen, endpoint, tipo_documento, numero_documento, referencia_id, 
+                         peticion_json, respuesta_json, codigo_respuesta, exito
+                       ) VALUES (
+                         'Scriptcase', '" . addslashes($log_endpoint) . "', '" . addslashes($tipo_doc_fiscal) . "', '" . addslashes($num_documento) . "', " . (int)$factura_id . ",
+                         '" . addslashes($json_data) . "', 'Error de conexión cURL: " . addslashes($curl_err) . "', 'CURL_ERR', 0
+                       )";
+    sc_exec_sql($insert_err_sql);
+
     throw new Exception("Error de conexión al microservicio de vista previa: " . $curl_err);
 }
 
 if ($http_code !== 200 || empty($pdf_binary)) {
-    $err_detalle = $pdf_binary ? substr($pdf_binary, 0, 500) : "Respuesta vacía";
+    $err_detalle = $pdf_binary ? substr($pdf_binary, 0, 1000) : "Respuesta vacía";
     // Intentar decodificar mensaje JSON si la API devolvió error detallado
     $json_err = json_decode($pdf_binary, true);
     if (isset($json_err['message'])) {
         $err_detalle = $json_err['message'];
     }
+
+    // Registrar fallo o rechazo fiscal en ofint001
+    $log_endpoint = "/api/v1/vista-previa/hka";
+    $insert_err_sql = "INSERT INTO ofint001 (
+                         origen, endpoint, tipo_documento, numero_documento, referencia_id, 
+                         peticion_json, respuesta_json, codigo_respuesta, exito
+                       ) VALUES (
+                         'Scriptcase', '" . addslashes($log_endpoint) . "', '" . addslashes($tipo_doc_fiscal) . "', '" . addslashes($num_documento) . "', " . (int)$factura_id . ",
+                         '" . addslashes($json_data) . "', '" . addslashes($err_detalle) . "', '" . addslashes($http_code) . "', 0
+                       )";
+    sc_exec_sql($insert_err_sql);
+
     throw new Exception("TFHKA Demo retornó error (HTTP $http_code): " . $err_detalle);
 }
 
