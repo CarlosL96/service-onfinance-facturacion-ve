@@ -412,8 +412,9 @@ $payload = [
     ]
 ];
 
-// 8. PETICIÓN AL MICROSERVICIO LOCAL PARA GENERAR EL PDF BINARIO
-$url_preview = $api_base_url . "/api/v1/vista-previa/pdf?format=binary";
+// 8. PETICIÓN AL MICROSERVICIO PARA GENERAR EL PDF OFICIAL VÍA TFHKA DEMO
+// Utiliza el motor FastReport oficial de The Factory HKA Sandbox (sin consumir folios en producción)
+$url_preview = $api_base_url . "/api/v1/vista-previa/hka?format=binary";
 $json_data   = json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
 $ch = curl_init($url_preview);
@@ -423,6 +424,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'Accept: application/pdf',
+    'x-api-key: ' . $api_token,
     'Authorization: Bearer ' . $api_token
 ]);
 curl_setopt($ch, CURLOPT_TIMEOUT, 30);
@@ -439,8 +441,13 @@ if (!empty($curl_err)) {
 }
 
 if ($http_code !== 200 || empty($pdf_binary)) {
-    $err_detalle = $pdf_binary ? substr($pdf_binary, 0, 300) : "Respuesta vacía";
-    throw new Exception("El microservicio retornó código HTTP $http_code. Detalle: " . $err_detalle);
+    $err_detalle = $pdf_binary ? substr($pdf_binary, 0, 500) : "Respuesta vacía";
+    // Intentar decodificar mensaje JSON si la API devolvió error detallado
+    $json_err = json_decode($pdf_binary, true);
+    if (isset($json_err['message'])) {
+        $err_detalle = $json_err['message'];
+    }
+    throw new Exception("TFHKA Demo retornó error (HTTP $http_code): " . $err_detalle);
 }
 
 // 9. ENVIAR ARCHIVO AL NAVEGADOR FORZANDO LA DESCARGA
