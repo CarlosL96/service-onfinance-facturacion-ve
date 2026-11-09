@@ -242,15 +242,36 @@ foreach ({ds_detalles} as $row) {
     $linea_count++;
 }
 
+// 6b. CONSTRUIR IMPUESTOS DEL SUB-TOTAL (EN BOLÍVARES)
+$impuestos_subtotal_ves = [];
+if ($monto_gravado_ves > 0) {
+    $impuestos_subtotal_ves[] = [
+        "CodigoTotalImp" => "G",
+        "AlicuotaImp" => "16.00",
+        "BaseImponibleImp" => number_format($monto_gravado_ves, 2, '.', ''),
+        "ValorTotalImp" => number_format($monto_iva, 2, '.', '')
+    ];
+}
+
+if ($monto_igtf > 0) {
+    $base_igtf_calculada = round($monto_igtf / 0.03, 2);
+    $impuestos_subtotal_ves[] = [
+        "CodigoTotalImp" => "IGTF",
+        "AlicuotaImp" => "3.00",
+        "BaseImponibleImp" => number_format($base_igtf_calculada, 2, '.', ''),
+        "ValorTotalImp" => number_format($monto_igtf, 2, '.', '')
+    ];
+}
+
 // 7. ENSAMBLAR JSON IDENTIFICACIÓN Y CABECERA
 $moneda_fiscal = in_array($moneda_trn, ['USD', 'EUR']) ? $moneda_trn : 'VES';
 $identificacion_doc = [
     "TipoDocumento" => $tipo_doc_fiscal,
     "NumeroDocumento" => $num_documento,
-    "NumeroControl" => "BORRADOR / PROFORMA",
+    "Serie" => "",
+    "TipoDeVenta" => "Interna",
     "FechaEmision" => $fecha_emision_fmt,
     "HoraEmision" => $hora_emision_fmt,
-    "TipoTransaccion" => "01",
     "Moneda" => $moneda_fiscal
 ];
 
@@ -293,26 +314,35 @@ if (!empty($destinatarios_raw)) {
 }
 $lista_correos = array_values(array_unique($lista_correos));
 
+// Normalizar Teléfono como lista (array de strings) según esquema de TFHKA: List<string>
+$tel_limpio = trim($telefono);
+$telefonos_list = !empty($tel_limpio) ? [$tel_limpio] : ["0212-000-0000"];
+
 $comprador = [
     "TipoIdentificacion" => $tipo_ident,
     "NumeroIdentificacion" => $rif_numero,
     "RazonSocial" => trim($nombre_fiscal),
     "Direccion" => !empty($direccion) ? trim($direccion) : "CARACAS VENEZUELA",
-    "Telefono" => trim($telefono),
+    "Pais" => "VE",
+    "Telefono" => $telefonos_list,
     "Correo" => !empty($lista_correos) ? $lista_correos : (!empty($correo_cliente) ? [$correo_cliente] : []),
     "Email" => !empty($lista_correos) ? implode('; ', $lista_correos) : $correo_cliente
 ];
 
 $totales = [
+    "NroItems" => (string)count($detalles_items),
     "Subtotal" => number_format($monto_subtotal_ves, 2, '.', ''),
     "MontoGravadoTotal" => number_format($monto_gravado_ves, 2, '.', ''),
     "MontoExentoTotal" => number_format($monto_exento_ves, 2, '.', ''),
     "TotalIVA" => number_format($monto_iva, 2, '.', ''),
     "TotalAPagar" => number_format($monto_total_pagar, 2, '.', ''),
     "TotalFactura" => number_format($monto_total_con_iva, 2, '.', ''),
+    "MontoTotalConIVA" => number_format($monto_total_con_iva, 2, '.', ''),
+    "ImpuestosSubtotal" => $impuestos_subtotal_ves,
     "FormasPago" => [
         [
             "Descripcion" => $forma_pago_desc,
+            "Fecha" => $fecha_emision_fmt,
             "Forma" => $forma_pago_val,
             "Monto" => number_format($monto_total_pagar, 2, '.', ''),
             "Moneda" => "VES",
@@ -382,24 +412,50 @@ if (!empty($info_adicional)) {
 
 // Multidivisa si aplica (USD o EUR)
 if (in_array($moneda_trn, array('USD', 'EUR')) && $db_tasa_cambio > 0) {
+    $impuestos_subtotal_otra = [];
+    if ($monto_gravable_trn > 0) {
+        $impuestos_subtotal_otra[] = [
+            "CodigoTotalImp" => "G",
+            "AlicuotaImp" => "16.00",
+            "BaseImponibleImp" => number_format($monto_gravable_trn, 2, '.', ''),
+            "ValorTotalImp" => number_format($monto_iva_trn, 2, '.', '')
+        ];
+    }
+    
+    // Inyectar IGTF en divisa si existe
+    if ($monto_igtf_trn > 0) {
+        $base_igtf_calculada_div = round($monto_igtf_trn / 0.03, 2);
+        $impuestos_subtotal_otra[] = [
+            "CodigoTotalImp" => "IGTF",
+            "AlicuotaImp" => "3.00",
+            "BaseImponibleImp" => number_format($base_igtf_calculada_div, 2, '.', ''),
+            "ValorTotalImp" => number_format($monto_igtf_trn, 2, '.', '')
+        ];
+    }
+
     $encabezado["TotalesOtraMoneda"] = [
         "Moneda" => $moneda_trn,
         "moneda" => $moneda_trn,
         "TipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
         "tipoCambio" => number_format($db_tasa_cambio, 4, '.', ''),
-        "Subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
-        "subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
         "MontoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
         "montoGravadoTotal" => number_format($monto_gravable_trn, 2, '.', ''),
         "MontoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
         "montoExentoTotal" => number_format($monto_exento_trn, 2, '.', ''),
-        "TotalIVA" => number_format($monto_iva_trn, 2, '.', ''),
-        "totalIVA" => number_format($monto_iva_trn, 2, '.', ''),
+        "MontoPercibidoTotal" => "0.00",
+        "Subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
+        "subtotal" => number_format($monto_subtotal_trn, 2, '.', ''),
         "TotalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
         "totalAPagar" => number_format($db_total_pagar_trn, 2, '.', ''),
+        "TotalIVA" => number_format($monto_iva_trn, 2, '.', ''),
+        "totalIVA" => number_format($monto_iva_trn, 2, '.', ''),
         "MontoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
         "montoTotalConIVA" => number_format($monto_total_trn, 2, '.', ''),
-        "totalFactura" => number_format($monto_total_trn, 2, '.', '')
+        "montoTotalIVAyOTI" => number_format($db_total_pagar_trn, 2, '.', ''),
+        "MontoTotalOTI" => "0.00",
+        "TotalDescuento" => "0.00",
+        "totalDescuento" => "0.00",
+        "ImpuestosSubtotal" => $impuestos_subtotal_otra
     ];
 }
 

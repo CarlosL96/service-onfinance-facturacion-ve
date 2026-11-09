@@ -375,6 +375,20 @@ app.post('/api/v1/vista-previa/hka', async (req, res, next) => {
       comprador.correo = [];
     }
 
+    // Normalizar Teléfono a Array según el esquema de .NET / TFHKA (List<string>)
+    // Evita error: The JSON value could not be converted to System.Collections.Generic.List`1[System.String]
+    if (comprador.Telefono !== undefined && !Array.isArray(comprador.Telefono)) {
+      const rawTel = String(comprador.Telefono || '').trim();
+      comprador.Telefono = rawTel ? [rawTel] : ["0212-000-0000"];
+    }
+    if (comprador.telefono !== undefined && !Array.isArray(comprador.telefono)) {
+      const rawTel = String(comprador.telefono || '').trim();
+      comprador.telefono = rawTel ? [rawTel] : ["0212-000-0000"];
+    }
+    if (!comprador.Telefono && !comprador.telefono) {
+      comprador.Telefono = ["0212-000-0000"];
+    }
+
     console.log(`[API] => VISTA PREVIA TFHKA DEMO - Iniciando generación para Documento Original: ${originalDocNum} (Tipo: ${tipoDoc})`);
 
     // 2. EMISIÓN EN TFHKA DEMO CON REINTENTO AUTOMÁTICO DE CORRELATIVO
