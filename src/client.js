@@ -3,26 +3,35 @@ import { config } from './config.js';
 import { filterDevAllowedEmails } from './utils/devEmailFilter.js';
 
 class TFHKAClient {
-  constructor() {
+  constructor(customConfig = null) {
+    this.customConfig = customConfig;
     this.token = null;
     this.tokenExpiry = null;
+  }
+
+  getCredentials() {
+    if (this.customConfig) {
+      return this.customConfig;
+    }
+    return config.tfhka;
   }
 
   /**
    * Obtiene o renueva el token JWT automáticamente
    */
   async ensureAuthenticated() {
+    const creds = this.getCredentials();
     const now = new Date();
     // Si ya tenemos un token y no ha expirado (dejando un margen de 15 minutos), lo usamos.
     if (this.token && this.tokenExpiry && (this.tokenExpiry - now > 15 * 60 * 1000)) {
       return this.token;
     }
 
-    console.log('TFHKAClient: Obteniendo nuevo token de autenticación...');
+    console.log(`TFHKAClient (${creds.baseUrl}): Obteniendo nuevo token de autenticación...`);
     try {
-      const response = await axios.post(`${config.tfhka.baseUrl}/api/Autenticacion`, {
-        usuario: config.tfhka.usuario,
-        clave: config.tfhka.clave
+      const response = await axios.post(`${creds.baseUrl}/api/Autenticacion`, {
+        usuario: creds.usuario,
+        clave: creds.clave
       }, {
         headers: {
           'Content-Type': 'application/json'
@@ -34,15 +43,14 @@ class TFHKAClient {
       // La API v2 de TFHKA devuelve un JSON con { codigo, mensaje, token, expiracion }
       if (data && data.token) {
         this.token = data.token;
-        // La fecha de expiración suele venir en formato ISO (ej. 2025-02-12T15:15:13.7744331Z)
         this.tokenExpiry = data.expiracion ? new Date(data.expiracion) : new Date(Date.now() + 12 * 60 * 60 * 1000);
-        console.log('TFHKAClient: Token obtenido con éxito. Expira en:', this.tokenExpiry);
+        console.log(`TFHKAClient (${creds.baseUrl}): Token obtenido con éxito. Expira en:`, this.tokenExpiry);
         return this.token;
       } else {
         throw new Error(`Respuesta de autenticación inválida: ${JSON.stringify(data)}`);
       }
     } catch (error) {
-      console.error('TFHKAClient: Error de autenticación:', error.response?.data || error.message);
+      console.error(`TFHKAClient (${creds.baseUrl}): Error de autenticación:`, error.response?.data || error.message);
       throw new Error(`Fallo en la autenticación con TFHKA: ${error.response?.data?.mensaje || error.message}`);
     }
   }
@@ -52,11 +60,12 @@ class TFHKAClient {
    * @param {Object} documentoElectronico El cuerpo del documento electrónico en formato JSON
    */
   async emitirDocumento(documentoElectronico) {
+    const creds = this.getCredentials();
     const token = await this.ensureAuthenticated();
     
     // DIRECTIVA DE SEGURIDAD PARA AMBIENTE DE PRUEBAS / SANDBOX:
     // Solo permitir envíos a cuentas con el dominio autorizado (@asimetrixtech.com)
-    if (config.tfhka.baseUrl?.includes('demo') || config.nodeEnv !== 'production') {
+    if (creds.baseUrl?.includes('demo') || config.nodeEnv !== 'production') {
       const enc = documentoElectronico.Encabezado || documentoElectronico.encabezado;
       if (enc) {
         const comp = enc.Comprador || enc.comprador;
@@ -71,7 +80,7 @@ class TFHKAClient {
     }
     
     try {
-      const response = await axios.post(`${config.tfhka.baseUrl}/api/Emision`, {
+      const response = await axios.post(`${creds.baseUrl}/api/Emision`, {
         documentoElectronico
       }, {
         headers: {
@@ -93,6 +102,7 @@ class TFHKAClient {
    * @param {Object} datosAnulacion Datos de la anulación (serie, tipoDocumento, numeroDocumento, motivoAnulacion, fechaAnulacion, horaAnulacion)
    */
   async anularDocumento(datosAnulacion) {
+    const creds = this.getCredentials();
     const token = await this.ensureAuthenticated();
 
     const payload = {
@@ -105,7 +115,7 @@ class TFHKAClient {
     };
 
     try {
-      const response = await axios.post(`${config.tfhka.baseUrl}/api/Anular`, payload, {
+      const response = await axios.post(`${creds.baseUrl}/api/Anular`, payload, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -124,6 +134,7 @@ class TFHKAClient {
    * @param {Object} datosDescarga Datos de descarga (serie, tipoDocumento, numeroDocumento)
    */
   async descargarArchivo(datosDescarga) {
+    const creds = this.getCredentials();
     const token = await this.ensureAuthenticated();
 
     const payload = {
@@ -133,7 +144,7 @@ class TFHKAClient {
     };
 
     try {
-      const response = await axios.post(`${config.tfhka.baseUrl}/api/DescargaArchivo`, payload, {
+      const response = await axios.post(`${creds.baseUrl}/api/DescargaArchivo`, payload, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -150,4 +161,11 @@ class TFHKAClient {
   }
 }
 
-export const tfhkaClient = new TFHKAClient();
+// Instancia estándar (apunta a Producción si está configurado tfhkaProd, o a tfhka por defecto)
+export const tfhkaClient = new TFHKAClient(config.tfhkaProd?.usuario ? config.tfhkaProd : config.tfhka);
+
+// Instancia para Producción (emisión definitiva)
+export const tfhkaProdClient = tfhkaClient;
+
+// Instancia dedicada para Demo / Sandbox (vistas previas oficiales con FastReport)
+export const tfhkaDemoClient = new TFHKAClient(config.tfhkaDemo);

@@ -1,6 +1,6 @@
 import express from 'express';
 import { config } from './config.js';
-import { tfhkaClient } from './client.js';
+import { tfhkaClient, tfhkaProdClient, tfhkaDemoClient } from './client.js';
 import { renderPreviewPDF } from './previewRenderer.js';
 import { filterDevAllowedEmails } from './utils/devEmailFilter.js';
 
@@ -308,6 +308,220 @@ app.post('/api/v1/descargar-pdf', async (req, res, next) => {
 
     // Por defecto, enviamos el JSON original de TFHKA (que contiene la representación base64)
     res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * Helper para generar un correlativo único virtual en TFHKA Demo
+ * Base: 90000000 + id (con sufijo de versión si hay reintentos)
+ */
+function buildDemoVirtualDocumentNumber(originalDocNum, attempt = 0) {
+  const numericOnly = String(originalDocNum || '').replace(/[^0-9]/g, '');
+  const baseNum = numericOnly ? parseInt(numericOnly, 10) : Math.floor(1000 + Math.random() * 9000);
+  
+  if (attempt === 0) {
+    // Primer intento: base virtual 90000000 + número original (módulo 10 millones)
+    const virtualNum = 90000000 + (baseNum % 10000000);
+    return String(virtualNum).padStart(8, '0');
+  }
+  
+  // Reintentos si TFHKA Demo responde 201 (documento duplicado):
+  // Combinar base con timestamp y número de intento para correlativo único garantizado
+  const timeSlice = Date.now() % 100000;
+  const retryNum = 90000000 + ((baseNum + timeSlice + attempt) % 10000000);
+  return String(retryNum).padStart(8, '0');
+}
+
+/**
+ * Endpoint para generar la Vista Previa (Preview/Proforma) OFICIAL en PDF
+ * utilizando el motor FastReport de The Factory HKA (TFHKA Demo Sandbox).
+ * 
+ * - NO altera la base de datos de producción (offve001).
+ * - Utiliza correlativo virtual (base 90000000 + id) con reintento automático si ya existe.
+ * - Limpia estrictamente los correos (Comprador.Correo = []) para cero envíos a clientes.
+ * - Descarga y entrega el PDF oficial de TFHKA en binario o JSON Base64.
+ */
+app.post('/api/v1/vista-previa/hka', async (req, res, next) => {
+  try {
+    const rawBody = req.body;
+    if (!rawBody || Object.keys(rawBody).length === 0) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'El cuerpo de la petición no puede estar vacío.'
+      });
+    }
+
+    // Clonar profundamente el documento para no mutar el payload recibido
+    const docClonado = JSON.parse(JSON.stringify(rawBody.documentoElectronico || rawBody));
+    const encabezado = docClonado.Encabezado || docClonado.encabezado;
+    if (!encabezado) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'El documento electrónico no contiene la sección Encabezado.'
+      });
+    }
+
+    const identDoc = encabezado.IdentificacionDocumento || encabezado.identificacionDocumento || {};
+    const comprador = encabezado.Comprador || encabezado.comprador || {};
+    const tipoDoc = identDoc.TipoDocumento || identDoc.tipoDocumento || '01';
+    const originalDocNum = identDoc.NumeroDocumento || identDoc.numeroDocumento || '00000001';
+
+    // 1. POLÍTICA DE SEGURIDAD ESTRICTA PARA VISTA PREVIA:
+    // Vaciar completamente la lista de correos para garantizar que TFHKA Demo no envíe ningún email
+    comprador.Correo = [];
+    if (comprador.correo !== undefined) {
+      comprador.correo = [];
+    }
+
+    // Normalizar Teléfono a Array según el esquema de .NET / TFHKA (List<string>)
+    // Evita error: The JSON value could not be converted to System.Collections.Generic.List`1[System.String]
+    if (comprador.Telefono !== undefined && !Array.isArray(comprador.Telefono)) {
+      const rawTel = String(comprador.Telefono || '').trim();
+      comprador.Telefono = rawTel ? [rawTel] : ["0212-000-0000"];
+    }
+    if (comprador.telefono !== undefined && !Array.isArray(comprador.telefono)) {
+      const rawTel = String(comprador.telefono || '').trim();
+      comprador.telefono = rawTel ? [rawTel] : ["0212-000-0000"];
+    }
+    if (!comprador.Telefono && !comprador.telefono) {
+      comprador.Telefono = ["0212-000-0000"];
+    }
+
+    console.log(`[API] => VISTA PREVIA TFHKA DEMO - Iniciando generación para Documento Original: ${originalDocNum} (Tipo: ${tipoDoc})`);
+
+    // 2. EMISIÓN EN TFHKA DEMO CON REINTENTO AUTOMÁTICO DE CORRELATIVO
+    let emitidaExitosa = false;
+    let demoDocNum = '';
+    let emisionResult = null;
+    const maxIntentos = 5;
+
+    for (let intento = 0; intento < maxIntentos; intento++) {
+      demoDocNum = buildDemoVirtualDocumentNumber(originalDocNum, intento);
+      identDoc.NumeroDocumento = demoDocNum;
+      if (identDoc.numeroDocumento !== undefined) {
+        identDoc.numeroDocumento = demoDocNum;
+      }
+
+      console.log(`[API] => VISTA PREVIA TFHKA DEMO - Intento ${intento + 1}/${maxIntentos} con Nro Virtual: ${demoDocNum}...`);
+
+      try {
+        emisionResult = await tfhkaDemoClient.emitirDocumento(docClonado);
+
+        const codigoResp = String(emisionResult?.codigo || '');
+        const mensajeResp = String(emisionResult?.mensaje || '');
+        const esDuplicado = codigoResp === '201' || 
+                            codigoResp === '99' || 
+                            mensajeResp.toLowerCase().includes('ya ha sido enviado') ||
+                            mensajeResp.toLowerCase().includes('duplicado') ||
+                            mensajeResp.toLowerCase().includes('ya existe');
+
+        if (codigoResp === '200') {
+          console.log(`[API] => VISTA PREVIA TFHKA DEMO - Documento ${demoDocNum} aceptado exitosamente por Demo (Código 200).`);
+          emitidaExitosa = true;
+          break;
+        } else if (esDuplicado) {
+          // Documento duplicado en Demo: reintentar con correlativo fresco
+          console.log(`[API] => VISTA PREVIA TFHKA DEMO - Documento ${demoDocNum} ya existía en Demo (Código ${codigoResp}: "${mensajeResp}"). Generando nuevo correlativo...`);
+        } else {
+          // Error fiscal específico retornado por HKA Demo (ej. 0102 formato)
+          const errorHka = emisionResult?.mensaje || 'Error no especificado por TFHKA Demo';
+          return res.status(422).json({
+            status: 'error',
+            codigo: codigoResp,
+            message: `TFHKA Demo rechazó el documento: ${errorHka}`,
+            resultado: emisionResult?.resultado || null
+          });
+        }
+      } catch (errEmit) {
+        const errData = errEmit.response?.data;
+        // TFHKA devuelve los errores de validación en la propiedad "validaciones" o "errores"
+        const validaciones = errData?.validaciones || errData?.errores || errData?.observaciones || [];
+        const validacionesStr = Array.isArray(validaciones) && validaciones.length > 0
+          ? validaciones.join('; ')
+          : (errData?.mensaje || errEmit.message);
+
+        console.error(`[API] => VISTA PREVIA TFHKA DEMO - Error en intento ${intento + 1}:`, validacionesStr);
+
+        // Si es un error de validación fiscal (400 / Código 203), no tiene sentido reintentar con otro número
+        if (errEmit.response?.status === 400 || errData?.codigo === '203') {
+          return res.status(422).json({
+            status: 'error',
+            codigo: errData?.codigo || '203',
+            message: `TFHKA Demo rechazó el documento: ${validacionesStr}`,
+            validaciones: validaciones,
+            detalle: errData || null
+          });
+        }
+
+        if (intento === maxIntentos - 1) {
+          return res.status(502).json({
+            status: 'error',
+            message: `Fallo de comunicación con TFHKA Demo: ${validacionesStr}`,
+            validaciones: validaciones,
+            detalle: errData || null
+          });
+        }
+      }
+    }
+
+    if (!emitidaExitosa) {
+      return res.status(409).json({
+        status: 'error',
+        message: 'No fue posible asignar un correlativo libre en TFHKA Demo tras múltiples reintentos.'
+      });
+    }
+
+    // 3. DESCARGA DEL PDF OFICIAL DE TFHKA FASTREPORT (con breve sondeo para compilación)
+    console.log(`[API] => VISTA PREVIA TFHKA DEMO - Esperando generación de PDF para ${demoDocNum}...`);
+    let pdfBase64 = null;
+    const maxSondeos = 4;
+
+    for (let s = 0; s < maxSondeos; s++) {
+      // Esperar 1.5s entre consultas para dar tiempo al generador de reportes de TFHKA
+      await new Promise(r => setTimeout(r, 1500));
+
+      try {
+        const descargaResp = await tfhkaDemoClient.descargarArchivo({
+          tipoDocumento: tipoDoc,
+          numeroDocumento: demoDocNum,
+          serie: identDoc.Serie || identDoc.serie || ''
+        });
+
+        pdfBase64 = descargaResp?.archivo || descargaResp?.Archivo || null;
+        if (pdfBase64 && pdfBase64.length > 0) {
+          console.log(`[API] => VISTA PREVIA TFHKA DEMO - PDF descargado exitosamente (${pdfBase64.length} caracteres).`);
+          break;
+        }
+      } catch (errDesc) {
+        console.log(`[API] => VISTA PREVIA TFHKA DEMO - Sondeo ${s + 1}/${maxSondeos} no disponible aún:`, errDesc.message);
+      }
+    }
+
+    if (!pdfBase64) {
+      return res.status(504).json({
+        status: 'error',
+        message: 'El documento fue procesado en TFHKA Demo pero el PDF aún no estuvo listo para su descarga.'
+      });
+    }
+
+    // 4. RETORNAR EL ARCHIVO SEGÚN EL FORMATO SOLICITADO
+    if (req.query.format === 'binary' || req.headers.accept === 'application/pdf') {
+      const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `inline; filename=vista_previa_${originalDocNum}.pdf`);
+      return res.send(pdfBuffer);
+    }
+
+    res.status(200).json({
+      status: 'ok',
+      mensaje: 'Vista previa oficial de TFHKA generada exitosamente.',
+      numeroDocumentoVirtual: demoDocNum,
+      numeroControlDemo: emisionResult?.resultado?.numeroControl || null,
+      archivo: pdfBase64
+    });
+
   } catch (error) {
     next(error);
   }
