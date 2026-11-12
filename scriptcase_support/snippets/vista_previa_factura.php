@@ -97,6 +97,7 @@ $direccion        = {ds_cabecera}[0][7];
 $telefono         = {ds_cabecera}[0][8];
 $email_adm        = {ds_cabecera}[0][9];
 $email_compras    = {ds_cabecera}[0][10];
+$doc_ref          = isset({ds_cabecera}[0][16]) ? {ds_cabecera}[0][16] : '';
 
 // Mapear campos comerciales del ERP (ofcm020)
 $erp_politica_credito = isset({ds_cabecera}[0][29]) ? trim({ds_cabecera}[0][29]) : '';
@@ -408,6 +409,34 @@ if (!empty($no_opp_final) && strtoupper($no_opp_final) !== 'N/A' && strtoupper($
 
 if (!empty($info_adicional)) {
     $encabezado["InfoAdicional"] = $info_adicional;
+}
+
+// 7b. INYECTAR REFERENCIAS DE DOCUMENTO AFECTADO (NOTAS DE CRÉDITO / DÉBITO)
+if ($tipo_doc_fiscal === "02" || $tipo_doc_fiscal === "03") {
+    $fecha_fac_afectada = $fecha_emision_fmt;
+    $monto_fac_afectada = number_format(abs((float)$monto_total_con_iva), 2, '.', '');
+    
+    // Buscar datos históricos en ofcm020 si doc_ref no está vacío
+    $clean_doc_ref = preg_replace('/[^0-9]/', '', (string)$doc_ref);
+    if (!empty($doc_ref)) {
+        $sql_ref = "SELECT fecha, neto_loc FROM ofcm020 WHERE numero = '" . addslashes($doc_ref) . "' OR numero = '" . addslashes($clean_doc_ref) . "'";
+        sc_lookup(ds_ref, $sql_ref);
+        if (!empty({ds_ref}) && {ds_ref} !== false) {
+            $fecha_fac_afectada = date("d/m/Y", strtotime({ds_ref}[0][0]));
+            $monto_fac_afectada = number_format(abs((float){ds_ref}[0][1]), 2, '.', '');
+        }
+    }
+    
+    // Fallback defensivo si clean_doc_ref está vacío
+    if (empty($clean_doc_ref)) {
+        $clean_doc_ref = "00000001";
+    }
+
+    $encabezado["IdentificacionDocumento"]["NumeroFacturaAfectada"] = (string)$clean_doc_ref;
+    $encabezado["IdentificacionDocumento"]["FechaFacturaAfectada"] = $fecha_fac_afectada;
+    $encabezado["IdentificacionDocumento"]["MontoFacturaAfectada"] = $monto_fac_afectada;
+    $encabezado["IdentificacionDocumento"]["SerieFacturaAfectada"] = "";
+    $encabezado["IdentificacionDocumento"]["ComentarioFacturaAfectada"] = ($tipo_doc_fiscal === "02") ? "Nota de credito por devolucion o ajuste" : "Nota de debito por cargo adicional";
 }
 
 // Multidivisa si aplica (USD o EUR)
