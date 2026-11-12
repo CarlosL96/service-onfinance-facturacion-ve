@@ -389,6 +389,32 @@ app.post('/api/v1/vista-previa/hka', async (req, res, next) => {
       comprador.Telefono = ["0212-000-0000"];
     }
 
+    // Normalización defensiva para Notas de Crédito (02) y Notas de Débito (03)
+    // TFHKA exige obligatoriamente los campos de FacturaAfectada en IdentificacionDocumento
+    if (tipoDoc === '02' || tipoDoc === '03') {
+      const fechaEmisionDoc = identDoc.FechaEmision || identDoc.fechaEmision || '01/01/2026';
+      const totalesDoc = encabezado.Totales || encabezado.totales || {};
+      const montoTotalDoc = totalesDoc.MontoTotalConIVA || totalesDoc.TotalAPagar || totalesDoc.TotalFactura || '1.00';
+
+      if (!identDoc.NumeroFacturaAfectada && !identDoc.numeroFacturaAfectada) {
+        identDoc.NumeroFacturaAfectada = '00000001';
+      }
+      if (!identDoc.FechaFacturaAfectada && !identDoc.fechaFacturaAfectada) {
+        identDoc.FechaFacturaAfectada = fechaEmisionDoc;
+      }
+      if (!identDoc.MontoFacturaAfectada && !identDoc.montoFacturaAfectada) {
+        identDoc.MontoFacturaAfectada = String(montoTotalDoc);
+      }
+      if (identDoc.SerieFacturaAfectada === undefined && identDoc.serieFacturaAfectada === undefined) {
+        identDoc.SerieFacturaAfectada = '';
+      }
+      if (!identDoc.ComentarioFacturaAfectada && !identDoc.comentarioFacturaAfectada) {
+        identDoc.ComentarioFacturaAfectada = (tipoDoc === '02')
+          ? 'Nota de credito por devolucion o ajuste'
+          : 'Nota de debito por cargo adicional';
+      }
+    }
+
     console.log(`[API] => VISTA PREVIA TFHKA DEMO - Iniciando generación para Documento Original: ${originalDocNum} (Tipo: ${tipoDoc})`);
 
     // 2. EMISIÓN EN TFHKA DEMO CON REINTENTO AUTOMÁTICO DE CORRELATIVO
